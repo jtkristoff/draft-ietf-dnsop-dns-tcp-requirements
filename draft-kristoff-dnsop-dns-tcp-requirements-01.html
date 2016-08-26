@@ -1,0 +1,693 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+
+  <title>DNS Transport over TCP - Operational Requirements</title>
+
+  <style type="text/css" title="Xml2Rfc (sans serif)">
+  /*<![CDATA[*/
+	  a {
+	  text-decoration: none;
+	  }
+      /* info code from SantaKlauss at http://www.madaboutstyle.com/tooltip2.html */
+      a.info {
+          /* This is the key. */
+          position: relative;
+          z-index: 24;
+          text-decoration: none;
+      }
+      a.info:hover {
+          z-index: 25;
+          color: #FFF; background-color: #900;
+      }
+      a.info span { display: none; }
+      a.info:hover span.info {
+          /* The span will display just on :hover state. */
+          display: block;
+          position: absolute;
+          font-size: smaller;
+          top: 2em; left: -5em; width: 15em;
+          padding: 2px; border: 1px solid #333;
+          color: #900; background-color: #EEE;
+          text-align: left;
+      }
+	  a.smpl {
+	  color: black;
+	  }
+	  a:hover {
+	  text-decoration: underline;
+	  }
+	  a:active {
+	  text-decoration: underline;
+	  }
+	  address {
+	  margin-top: 1em;
+	  margin-left: 2em;
+	  font-style: normal;
+	  }
+	  body {
+	  color: black;
+	  font-family: verdana, helvetica, arial, sans-serif;
+	  font-size: 10pt;
+	  max-width: 55em;
+	  
+	  }
+	  cite {
+	  font-style: normal;
+	  }
+	  dd {
+	  margin-right: 2em;
+	  }
+	  dl {
+	  margin-left: 2em;
+	  }
+	
+	  ul.empty {
+	  list-style-type: none;
+	  }
+	  ul.empty li {
+	  margin-top: .5em;
+	  }
+	  dl p {
+	  margin-left: 0em;
+	  }
+	  dt {
+	  margin-top: .5em;
+	  }
+	  h1 {
+	  font-size: 14pt;
+	  line-height: 21pt;
+	  page-break-after: avoid;
+	  }
+	  h1.np {
+	  page-break-before: always;
+	  }
+	  h1 a {
+	  color: #333333;
+	  }
+	  h2 {
+	  font-size: 12pt;
+	  line-height: 15pt;
+	  page-break-after: avoid;
+	  }
+	  h3, h4, h5, h6 {
+	  font-size: 10pt;
+	  page-break-after: avoid;
+	  }
+	  h2 a, h3 a, h4 a, h5 a, h6 a {
+	  color: black;
+	  }
+	  img {
+	  margin-left: 3em;
+	  }
+	  li {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  ol {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  ol p {
+	  margin-left: 0em;
+	  }
+	  p {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  pre {
+	  margin-left: 3em;
+	  background-color: lightyellow;
+	  padding: .25em;
+	  }
+	  pre.text2 {
+	  border-style: dotted;
+	  border-width: 1px;
+	  background-color: #f0f0f0;
+	  width: 69em;
+	  }
+	  pre.inline {
+	  background-color: white;
+	  padding: 0em;
+	  }
+	  pre.text {
+	  border-style: dotted;
+	  border-width: 1px;
+	  background-color: #f8f8f8;
+	  width: 69em;
+	  }
+	  pre.drawing {
+	  border-style: solid;
+	  border-width: 1px;
+	  background-color: #f8f8f8;
+	  padding: 2em;
+	  }
+	  table {
+	  margin-left: 2em;
+	  }
+	  table.tt {
+	  vertical-align: top;
+	  }
+	  table.full {
+	  border-style: outset;
+	  border-width: 1px;
+	  }
+	  table.headers {
+	  border-style: outset;
+	  border-width: 1px;
+	  }
+	  table.tt td {
+	  vertical-align: top;
+	  }
+	  table.full td {
+	  border-style: inset;
+	  border-width: 1px;
+	  }
+	  table.tt th {
+	  vertical-align: top;
+	  }
+	  table.full th {
+	  border-style: inset;
+	  border-width: 1px;
+	  }
+	  table.headers th {
+	  border-style: none none inset none;
+	  border-width: 1px;
+	  }
+	  table.left {
+	  margin-right: auto;
+	  }
+	  table.right {
+	  margin-left: auto;
+	  }
+	  table.center {
+	  margin-left: auto;
+	  margin-right: auto;
+	  }
+	  caption {
+	  caption-side: bottom;
+	  font-weight: bold;
+	  font-size: 9pt;
+	  margin-top: .5em;
+	  }
+	
+	  table.header {
+	  border-spacing: 1px;
+	  width: 95%;
+	  font-size: 10pt;
+	  color: white;
+	  }
+	  td.top {
+	  vertical-align: top;
+	  }
+	  td.topnowrap {
+	  vertical-align: top;
+	  white-space: nowrap; 
+	  }
+	  table.header td {
+	  background-color: gray;
+	  width: 50%;
+	  }
+	  table.header a {
+	  color: white;
+	  }
+	  td.reference {
+	  vertical-align: top;
+	  white-space: nowrap;
+	  padding-right: 1em;
+	  }
+	  thead {
+	  display:table-header-group;
+	  }
+	  ul.toc, ul.toc ul {
+	  list-style: none;
+	  margin-left: 1.5em;
+	  margin-right: 0em;
+	  padding-left: 0em;
+	  }
+	  ul.toc li {
+	  line-height: 150%;
+	  font-weight: bold;
+	  font-size: 10pt;
+	  margin-left: 0em;
+	  margin-right: 0em;
+	  }
+	  ul.toc li li {
+	  line-height: normal;
+	  font-weight: normal;
+	  font-size: 9pt;
+	  margin-left: 0em;
+	  margin-right: 0em;
+	  }
+	  li.excluded {
+	  font-size: 0pt;
+	  }
+	  ul p {
+	  margin-left: 0em;
+	  }
+	
+	  .comment {
+	  background-color: yellow;
+	  }
+	  .center {
+	  text-align: center;
+	  }
+	  .error {
+	  color: red;
+	  font-style: italic;
+	  font-weight: bold;
+	  }
+	  .figure {
+	  font-weight: bold;
+	  text-align: center;
+	  font-size: 9pt;
+	  }
+	  .filename {
+	  color: #333333;
+	  font-weight: bold;
+	  font-size: 12pt;
+	  line-height: 21pt;
+	  text-align: center;
+	  }
+	  .fn {
+	  font-weight: bold;
+	  }
+	  .hidden {
+	  display: none;
+	  }
+	  .left {
+	  text-align: left;
+	  }
+	  .right {
+	  text-align: right;
+	  }
+	  .title {
+	  color: #990000;
+	  font-size: 18pt;
+	  line-height: 18pt;
+	  font-weight: bold;
+	  text-align: center;
+	  margin-top: 36pt;
+	  }
+	  .vcardline {
+	  display: block;
+	  }
+	  .warning {
+	  font-size: 14pt;
+	  background-color: yellow;
+	  }
+	
+	
+	  @media print {
+	  .noprint {
+		display: none;
+	  }
+	
+	  a {
+		color: black;
+		text-decoration: none;
+	  }
+	
+	  table.header {
+		width: 90%;
+	  }
+	
+	  td.header {
+		width: 50%;
+		color: black;
+		background-color: white;
+		vertical-align: top;
+		font-size: 12pt;
+	  }
+	
+	  ul.toc a::after {
+		content: leader('.') target-counter(attr(href), page);
+	  }
+	
+	  ul.ind li li a {
+		content: target-counter(attr(href), page);
+	  }
+	
+	  .print2col {
+		column-count: 2;
+		-moz-column-count: 2;
+		column-fill: auto;
+	  }
+	  }
+	
+	  @page {
+	  @top-left {
+		   content: "Internet-Draft"; 
+	  } 
+	  @top-right {
+		   content: "December 2010"; 
+	  } 
+	  @top-center {
+		   content: "Abbreviated Title";
+	  } 
+	  @bottom-left {
+		   content: "Doe"; 
+	  } 
+	  @bottom-center {
+		   content: "Expires June 2011"; 
+	  } 
+	  @bottom-right {
+		   content: "[Page " counter(page) "]"; 
+	  } 
+	  }
+	
+	  @page:first { 
+		@top-left {
+		  content: normal;
+		}
+		@top-right {
+		  content: normal;
+		}
+		@top-center {
+		  content: normal;
+		}
+	  }
+  /*]]>*/
+  </style>
+
+  <link href="#rfc.toc" rel="Contents"/>
+<link href="#rfc.section.1" rel="Chapter" title="1 Introduction"/>
+<link href="#rfc.section.1.1" rel="Chapter" title="1.1 Requirements Language"/>
+<link href="#rfc.section.2" rel="Chapter" title="2 Background"/>
+<link href="#rfc.section.2.1" rel="Chapter" title="2.1 Uneven Transport Usage and Preference"/>
+<link href="#rfc.section.2.2" rel="Chapter" title="2.2 Waiting for Large Messages and Reliability"/>
+<link href="#rfc.section.2.3" rel="Chapter" title="2.3 EDNS0"/>
+<link href="#rfc.section.3" rel="Chapter" title="3 DNS over TCP Requirements"/>
+<link href="#rfc.section.4" rel="Chapter" title="4 DNS over TCP Filtering Risks"/>
+<link href="#rfc.section.5" rel="Chapter" title="5 Acknowledgements"/>
+<link href="#rfc.section.6" rel="Chapter" title="6 IANA Considerations"/>
+<link href="#rfc.section.7" rel="Chapter" title="7 Security Considerations"/>
+<link href="#rfc.references" rel="Chapter" title="8 References"/>
+<link href="#rfc.references.1" rel="Chapter" title="8.1 Normative References"/>
+<link href="#rfc.references.2" rel="Chapter" title="8.2 Informative References"/>
+<link href="#rfc.authors" rel="Chapter"/>
+
+
+  <meta name="generator" content="xml2rfc version 2.5.1 - http://tools.ietf.org/tools/xml2rfc" />
+  <link rel="schema.dct" href="http://purl.org/dc/terms/" />
+
+  <meta name="dct.creator" content="Kristoff, J." />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-kristoff-dnsop-dns-tcp-requirements-01" />
+  <meta name="dct.issued" scheme="ISO8601" content="2016-8-25" />
+  <meta name="dct.abstract" content="This document encourages the practice of permitting DNS messages to be carried over TCP on the Internet.  It also describes some of the consequences of this behavior and the potential operational issues that can arise when this best common practice is not applied." />
+  <meta name="description" content="This document encourages the practice of permitting DNS messages to be carried over TCP on the Internet.  It also describes some of the consequences of this behavior and the potential operational issues that can arise when this best common practice is not applied." />
+
+</head>
+
+<body>
+
+  <table class="header">
+    <tbody>
+    
+    	<tr>
+  <td class="left">Domain Name System Operations</td>
+  <td class="right">J. Kristoff</td>
+</tr>
+<tr>
+  <td class="left">Internet-Draft</td>
+  <td class="right">DePaul University</td>
+</tr>
+<tr>
+  <td class="left">Intended status: Best Current Practice</td>
+  <td class="right">August 25, 2016</td>
+</tr>
+<tr>
+  <td class="left">Expires: February 26, 2017</td>
+  <td class="right"></td>
+</tr>
+
+    	
+    </tbody>
+  </table>
+
+  <p class="title">DNS Transport over TCP - Operational Requirements<br />
+  <span class="filename">draft-kristoff-dnsop-dns-tcp-requirements-01</span></p>
+  
+  <h1 id="rfc.abstract">
+  <a href="#rfc.abstract">Abstract</a>
+</h1>
+<p>This document encourages the practice of permitting DNS messages to be carried over TCP on the Internet.  It also describes some of the consequences of this behavior and the potential operational issues that can arise when this best common practice is not applied.</p>
+<h1 id="rfc.status">
+  <a href="#rfc.status">Status of This Memo</a>
+</h1>
+<p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
+<p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
+<p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
+<p>This Internet-Draft will expire on February 26, 2017.</p>
+<h1 id="rfc.copyrightnotice">
+  <a href="#rfc.copyrightnotice">Copyright Notice</a>
+</h1>
+<p>Copyright (c) 2016 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
+
+  
+  <hr class="noprint" />
+  <h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
+  <ul class="toc">
+
+  	<li>1.   <a href="#rfc.section.1">Introduction</a></li>
+<ul><li>1.1.   <a href="#rfc.section.1.1">Requirements Language</a></li>
+</ul><li>2.   <a href="#rfc.section.2">Background</a></li>
+<ul><li>2.1.   <a href="#rfc.section.2.1">Uneven Transport Usage and Preference</a></li>
+<li>2.2.   <a href="#rfc.section.2.2">Waiting for Large Messages and Reliability</a></li>
+<li>2.3.   <a href="#rfc.section.2.3">EDNS0</a></li>
+</ul><li>3.   <a href="#rfc.section.3">DNS over TCP Requirements</a></li>
+<li>4.   <a href="#rfc.section.4">DNS over TCP Filtering Risks</a></li>
+<li>5.   <a href="#rfc.section.5">Acknowledgements</a></li>
+<li>6.   <a href="#rfc.section.6">IANA Considerations</a></li>
+<li>7.   <a href="#rfc.section.7">Security Considerations</a></li>
+<li>8.   <a href="#rfc.references">References</a></li>
+<ul><li>8.1.   <a href="#rfc.references.1">Normative References</a></li>
+<li>8.2.   <a href="#rfc.references.2">Informative References</a></li>
+</ul><li><a href="#rfc.authors">Author's Address</a></li>
+
+
+  </ul>
+
+  <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> Introduction</h1>
+<p id="rfc.section.1.p.1">DNS messages may be delivered using UDP or TCP communications.  While most DNS transactions are carried over UDP, some operators have been led to believe that any DNS over TCP traffic is unwanted or unnecessary for general DNS operation.  As usage and features have evolved, TCP transport has become increasingly important for correct and safe operation of the Internet DNS.  Reflecting modern usage, the DNS standards were recently updated to declare support for TCP is now a required part of the DNS implementation specifications in <a href="#RFC7766">[RFC7766]</a>.  This document is the formal requirements equivalent for the operational community, encouraging operators to ensure DNS over TCP communications support in on par with DNS over UDP communications.</p>
+<h1 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1.</a> Requirements Language</h1>
+<p id="rfc.section.1.1.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119">RFC 2119</a> <cite title="NONE">[RFC2119]</cite>.</p>
+<h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> Background</h1>
+<h1 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1.</a> Uneven Transport Usage and Preference</h1>
+<p id="rfc.section.2.1.p.1">In the original suite of DNS specifications, <a href="#RFC1034">[RFC1034]</a> and <a href="#RFC1035">[RFC1035]</a> clearly specified that DNS messages could be carried in either UDP or TCP, but they also made clear a preference for UDP as the transport for queries in the general case.  As stated in <a href="#RFC1035">[RFC1035]</a>: </p>
+
+<ul class="empty">
+  <li>"While virtual circuits can be used for any DNS activity, datagrams are preferred for queries due to their lower overhead and better performance."</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.2.1.p.2">Another early, important, and influential document, <a href="#RFC1123">[RFC1123]</a>, detailed the preference for UDP more explicitly:</p>
+
+<ul class="empty">
+  <li>"DNS resolvers and recursive servers MUST support UDP, and SHOULD support TCP, for sending (non-zone-transfer) queries." </li>
+</ul>
+
+<p> and further stipulated:</p>
+
+<ul class="empty">
+  <li>A name server MAY limit the resources it devotes to TCP queries, but it SHOULD NOT refuse to service a TCP query just because it would have succeeded with UDP.</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.2.1.p.3">Culminating in <a href="#RFC1536">[RFC1536]</a>, DNS over TCP came to be associated primarily with the zone transfer mechanism, while most DNS queries and responses were seen as the dominion of UDP.</p>
+<h1 id="rfc.section.2.2"><a href="#rfc.section.2.2">2.2.</a> Waiting for Large Messages and Reliability</h1>
+<p id="rfc.section.2.2.p.1">As stipulated in the original specifications, DNS messages over UDP were restricted to a 512-byte message size.  However, even while <a href="#RFC1123">[RFC1123]</a> made a clear preference for UDP, it foresaw DNS over TCP becoming more popular in the future: <a href="#RFC2136">[RFC2136]</a> and the second was the set of extensions collectively known as DNSSEC originally specified in <a href="#RFC2541">[RFC2541]</a>.  The former suggested "requestors who require an accurate response code must use TCP", while the later warned "[...] larger keys increase the size of KEY and SIG RRs.  This increases the chance of DNS UDP packet overflow and the possible necessity for using higher overhead TCP in responses."</p>
+
+<ul class="empty">
+  <li>"[...] it is also clear that some new DNS record types defined in the future will contain information exceeding the 512 byte limit that applies to UDP, and hence will require TCP.</li>
+</ul>
+
+<p> At least two new, widely anticipated developments were set to elevate the need for DNS over TCP transactions.  The first was dynamic updates defined in </p>
+<p id="rfc.section.2.2.p.2">Yet defying some expectations, DNS over TCP remained little used in real traffic across the Internet.  Dynamic updates saw little deployment between autonomous networks.  Around the time DNSSEC was first defined, another new feature affecting DNS over UDP helped solidify its dominance for message transactions.</p>
+<h1 id="rfc.section.2.3"><a href="#rfc.section.2.3">2.3.</a> EDNS0</h1>
+<p id="rfc.section.2.3.p.1">In 1999 the IETF published the Extension Mechanisms for DNS (EDNS0) in <a href="#RFC2671">[RFC2671]</a>.  This document standardized a way for communicating DNS nodes to perform rudimentary capabilities negotiation.  One such capability written into the base specification and present in every ENDS0 compatible message is the value of the maximum UDP payload size the sender can support.  This unsigned 16-bit field specifies in bytes the maximum DNS MTU.  In practice, typical values are a subset of the 512 to 4096 byte range.  EDNS0 was rapidly and widely deployed over the next several years and numerous surveys have shown many systems currently support larger UDP MTUs <a href="#CASTRO2010">[CASTRO2010]</a>, <a href="#NETALYZR">[NETALYZR]</a> with EDNS0.</p>
+<p id="rfc.section.2.3.p.2">The natural effect of EDNS0 deployment meant large DNS messages would be less reliant on TCP than they might otherwise have been.  While a nonneglible population of DNS systems lack EDNS0 or may still fall back to TCP for some transactions, DNS over TCP transactions remain a very small fraction of overall DNS traffic <a href="#VERISIGN">[VERISIGN]</a>.  Nevertheless, some average increase in DNS message size, the continued development of new DNS features and a denial of service mitigation technique (see <a href="#Security">Section 7</a>) have suggested that DNS over TCP transactions are as important to the correct and safe operation of the Internet DNS as ever, if not more so.  Furthermore, there has been serious research that has suggested connection-oriented DNS transactions may provide security and privacy advantages over UDP transport <a href="#TDNS">[TDNS]</a>.  Therefore, it might be desirable for network operators to avoid artificially inhibiting the potential utility and advances in the DNS such as these.</p>
+<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> DNS over TCP Requirements</h1>
+<p id="rfc.section.3.p.1">Even while many in the DNS community expect DNS over TCP transactions to occur without interference, in practice there has been a long held belief by some operators, particularly for security-related reasons, to the contrary <a href="#CHES94">[CHES94]</a>, <a href="#DJBDNS">[DJBDNS]</a>.  A popular meme has also held the imagination of some that DNS over TCP is only ever used for zone transfers and is generally unnecessary otherwise, with filtering all DNS over TCP traffic even described as a best practice.  Arguably any exposed Internet service poses some risk, but these beliefs are often invalid.  DNS over TCP filtering is considered harmful in the general case.  DNS resolver and server operators MUST provide DNS service over both UDP and TCP transports.  Likewise, network operators MUST allow DNS service over both UDP and TCP transports.</p>
+<h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> DNS over TCP Filtering Risks</h1>
+<p id="rfc.section.4.p.1">Networks that filter DNS over TCP may inadvertently cause problems for third party resolvers as experienced by <a href="#TOYAMA">[TOYAMA]</a>.  If for instance a resolver receives a truncated answer from a server, but if when the resolver resends the query using TCP and the TCP response never arrives, the resolver will incur the full extent of TCP retransmissions and time outs.</p>
+<p id="rfc.section.4.p.2">Networks that filter DNS over TCP risk losing access to significant or important pieces of the DNS name space.  For a variety of reasons a DNS answer may require a DNS over TCP query.  This may include large message sizes, lack of EDNS0 support, DDoS mitigation techniques, or perhaps some future capability that is as yet unforeseen will also demand TCP transport.</p>
+<p id="rfc.section.4.p.3">Even if any or all particular answers have consistently been returned successfuly with UDP in the past, this continued behavior cannot be guaranteed when DNS messages are exchanged between autonomous systems.  Therefore, filtering of DNS over TCP is considered harmful and contrary to the safe and successful operation of the Internet.</p>
+<h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#Acknowledgements" id="Acknowledgements">Acknowledgements</a></h1>
+<p id="rfc.section.5.p.1">This document was initially motivated by feedback from students who pointed out that they were hearing contradictory information about filtering DNS over TCP messages.  Thanks in particular to my teaching colleague, JPL, who perhaps unknowingly encouraged the initial research into the differences of what the IETF community has historically said and did.  Thanks to all the NANOG 63 attendees who provided feedback to an early talk on this subject.</p>
+<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#IANA" id="IANA">IANA Considerations</a></h1>
+<p id="rfc.section.6.p.1">This memo includes no request to IANA.</p>
+<h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#Security" id="Security">Security Considerations</a></h1>
+<p id="rfc.section.7.p.1">Ironically, returning truncated DNS over UDP answers in order to induce a client query to switch to DNS over TCP has become a common response to source address spoofed, DNS denial-of-service attacks <a href="#RRL">[RRL]</a>.  Historically, operators have been wary of TCP-based attacks, but in recent years, UDP-based flooding attacks have proven to be the most common protocol attack on the DNS.  Nevertheless, a high rate of short-lived DNS transactions over TCP may pose challenges.  While many operators have provided DNS over TCP service for many years without duress, past experience is no guarantee of future success.</p>
+<p id="rfc.section.7.p.2">DNS over TCP is not unlike many other Internet TCP services.  TCP threats and many mitigation strategies have been well documented in series of documents such as <a href="#RFC4953">[RFC4953]</a>, <a href="#RFC4987">[RFC4987]</a>, <a href="#RFC5927">[RFC5927]</a>, and <a href="#RFC5961">[RFC5961]</a>.</p>
+<h1 id="rfc.references"><a href="#rfc.references">8.</a> References</h1>
+<h1 id="rfc.references.1"><a href="#rfc.references.1">8.1.</a> Normative References</h1>
+<table>
+  <tbody>
+    <tr>
+      <td class="reference">
+        <b id="RFC2119">[RFC2119]</b>
+      </td>
+      <td class="top"><a>Bradner, S.</a>, "<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997.</td>
+    </tr>
+  </tbody>
+</table>
+<h1 id="rfc.references.2"><a href="#rfc.references.2">8.2.</a> Informative References</h1>
+<table>
+  <tbody>
+    <tr>
+      <td class="reference">
+        <b id="CASTRO2010">[CASTRO2010]</b>
+      </td>
+      <td class="top"><a>Castro, S.</a>, <a>Zhang, M.</a>, <a>John, W.</a>, <a>Wessels, D.</a> and <a>k. claffy</a>, "<a>Understanding and preparing for DNS evolution</a>", 2010.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="CHES94">[CHES94]</b>
+      </td>
+      <td class="top"><a>Cheswick, W.</a> and <a>S. Bellovin</a>, "<a>Firewalls and Internet Security: Repelling the Wily Hacker</a>", 1994.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="DJBDNS">[DJBDNS]</b>
+      </td>
+      <td class="top"><a>D.J. Bernstein</a>, "<a href="https://cr.yp.to/djbdns/tcp.html#why">When are TCP queries sent?</a>", 2002.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="NETALYZR">[NETALYZR]</b>
+      </td>
+      <td class="top"><a>Kreibich, C.</a>, <a>Weaver, N.</a>, <a>Nechaev, B.</a> and <a>V. Paxson</a>, "<a>Netalyzr: Illuminating The Edge Network</a>", 2010.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC1034">[RFC1034]</b>
+      </td>
+      <td class="top"><a>Mockapetris, P.</a>, "<a href="http://tools.ietf.org/html/rfc1034">Domain names - concepts and facilities</a>", STD 13, RFC 1034, DOI 10.17487/RFC1034, November 1987.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC1035">[RFC1035]</b>
+      </td>
+      <td class="top"><a>Mockapetris, P.</a>, "<a href="http://tools.ietf.org/html/rfc1035">Domain names - implementation and specification</a>", STD 13, RFC 1035, DOI 10.17487/RFC1035, November 1987.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC1123">[RFC1123]</b>
+      </td>
+      <td class="top"><a>Braden, R.</a>, "<a href="http://tools.ietf.org/html/rfc1123">Requirements for Internet Hosts - Application and Support</a>", STD 3, RFC 1123, DOI 10.17487/RFC1123, October 1989.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC1536">[RFC1536]</b>
+      </td>
+      <td class="top"><a>Kumar, A.</a>, <a>Postel, J.</a>, <a>Neuman, C.</a>, <a>Danzig, P.</a> and <a>S. Miller</a>, "<a href="http://tools.ietf.org/html/rfc1536">Common DNS Implementation Errors and Suggested Fixes</a>", RFC 1536, DOI 10.17487/RFC1536, October 1993.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC2136">[RFC2136]</b>
+      </td>
+      <td class="top"><a>Vixie, P.</a>, <a>Thomson, S.</a>, <a>Rekhter, Y.</a> and <a>J. Bound</a>, "<a href="http://tools.ietf.org/html/rfc2136">Dynamic Updates in the Domain Name System (DNS UPDATE)</a>", RFC 2136, DOI 10.17487/RFC2136, April 1997.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC2541">[RFC2541]</b>
+      </td>
+      <td class="top"><a>Eastlake 3rd, D.</a>, "<a href="http://tools.ietf.org/html/rfc2541">DNS Security Operational Considerations</a>", RFC 2541, DOI 10.17487/RFC2541, March 1999.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC2671">[RFC2671]</b>
+      </td>
+      <td class="top"><a>Vixie, P.</a>, "<a href="http://tools.ietf.org/html/rfc2671">Extension Mechanisms for DNS (EDNS0)</a>", RFC 2671, DOI 10.17487/RFC2671, August 1999.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC4953">[RFC4953]</b>
+      </td>
+      <td class="top"><a>Touch, J.</a>, "<a href="http://tools.ietf.org/html/rfc4953">Defending TCP Against Spoofing Attacks</a>", RFC 4953, DOI 10.17487/RFC4953, July 2007.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC4987">[RFC4987]</b>
+      </td>
+      <td class="top"><a>Eddy, W.</a>, "<a href="http://tools.ietf.org/html/rfc4987">TCP SYN Flooding Attacks and Common Mitigations</a>", RFC 4987, DOI 10.17487/RFC4987, August 2007.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC5927">[RFC5927]</b>
+      </td>
+      <td class="top"><a>Gont, F.</a>, "<a href="http://tools.ietf.org/html/rfc5927">ICMP Attacks against TCP</a>", RFC 5927, DOI 10.17487/RFC5927, July 2010.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC5961">[RFC5961]</b>
+      </td>
+      <td class="top"><a>Ramaiah, A.</a>, <a>Stewart, R.</a> and <a>M. Dalal</a>, "<a href="http://tools.ietf.org/html/rfc5961">Improving TCP's Robustness to Blind In-Window Attacks</a>", RFC 5961, DOI 10.17487/RFC5961, August 2010.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC7766">[RFC7766]</b>
+      </td>
+      <td class="top"><a>Dickinson, J.</a>, <a>Dickinson, S.</a>, <a>Bellis, R.</a>, <a>Mankin, A.</a> and <a>D. Wessels</a>, "<a href="http://tools.ietf.org/html/rfc7766">DNS Transport over TCP - Implementation Requirements</a>", RFC 7766, DOI 10.17487/RFC7766, March 2016.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RRL">[RRL]</b>
+      </td>
+      <td class="top"><a>Vixie, P.</a> and <a>V. Schryver</a>, "<a>DNS Response Rate Limiting (DNS RRL)</a>", ISC-TN 2012-1 Draft1, April 2012.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="TDNS">[TDNS]</b>
+      </td>
+      <td class="top"><a>Zhu, L.</a>, <a>Heidemann, J.</a>, <a>Wessels, D.</a>, <a>Mankin, A.</a> and <a>N. Somaiya</a>, "<a>Connection-oriented DNS to Improve Privacy and Security</a>", 2015.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="TOYAMA">[TOYAMA]</b>
+      </td>
+      <td class="top"><a>Toyama, K.</a>, <a>Ishibashi, K.</a>, <a>Ishino, M.</a>, <a>Yoshimura, C.</a> and <a>K. Fujiwara</a>, "<a>DNS Anomalies and Their Impacts on DNS Cache Servers</a>", NANOG 32 Reston, VA USA, 2004.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="VERISIGN">[VERISIGN]</b>
+      </td>
+      <td class="top"><a>Thomas, M.</a> and <a>D. Wessels</a>, "<a>An Analysis of TCP Traffic in Root Server DITL Data</a>", DNS-OARC 2014 Fall Workshop Los Angeles, 2014.</td>
+    </tr>
+  </tbody>
+</table>
+<h1 id="rfc.authors">
+  <a href="#rfc.authors">Author's Address</a>
+</h1>
+<div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">John Kristoff</span> 
+	  <span class="n hidden">
+		<span class="family-name">Kristoff</span>
+	  </span>
+	</span>
+	<span class="org vcardline">DePaul University</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality">Chicago</span>,  
+		<span class="region">IL</span> 
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">US</span>
+	</span>
+	<span class="vcardline">Phone: +1 312 493 0305</span>
+
+<span class="vcardline">EMail: <a href="mailto:jtk@depaul.edu">jtk@depaul.edu</a></span>
+
+  </address>
+</div>
+
+</body>
+</html>
