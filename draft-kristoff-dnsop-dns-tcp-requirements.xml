@@ -28,10 +28,23 @@
   <!ENTITY RFC5927 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5927.xml">
   <!-- Improving TCP's Robustness to Blind In-Window Attacks -->
   <!ENTITY RFC5961 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5961.xml">
+  <!-- Child-to-Parent Synchronization in DNS -->
+  <!ENTITY RFC7477 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7477.xml">
+  <!-- DNS Transport over TCP - Implementation Requirements -->
+  <!ENTITY RFC7766 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7766.xml">
+  <!-- The edns-tcp-keepalive EDNS0 Option -->
+  <!ENTITY RFC7828 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7828.xml">
+  <!-- Specification for DNS over Transport Layer Security (TLS) -->
+  <!ENTITY RFC7858 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7858.xml">
+  <!-- Domain Name System (DNS) Cookies -->
+  <!ENTITY RFC7873 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7873.xml">
+  <!-- CHAIN Query Requests in DNS -->
+  <!ENTITY RFC7901 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7901.xml">
+  <!-- DNSSEC Roadblock Avoidance -->
+  <!ENTITY RFC8027 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8027.xml">
 
   <!ENTITY RFC2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
   <!ENTITY RFC2629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2629.xml">
-  <!ENTITY RFC7766 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7766.xml">
 ]>
 
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
@@ -60,7 +73,7 @@
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
 
-<rfc category="bcp" docName="draft-kristoff-dnsop-dns-tcp-requirements-01" ipr="trust200902">
+<rfc category="bcp" docName="draft-kristoff-dnsop-dns-tcp-requirements-02" ipr="trust200902">
  <!-- category values: std, bcp, info, exp, and historic
     ipr values: trust200902, noModificationTrust200902, noDerivativesTrust200902,
        or pre5378Trust200902
@@ -94,7 +107,7 @@
      </address>
    </author>
 
-   <date year="2016" />
+   <date year="2017" />
    <!-- If the month and year are both specified and are the current ones, xml2rfc will fill 
         in the current day for you. If only the current year is specified, xml2rfc will fill 
 	 in the current day and month for you. If the year is not the current one, it is 
@@ -122,7 +135,7 @@
      <t>This document encourages the practice of permitting DNS messages to
      be carried over TCP on the Internet.  It also describes some of the
      consequences of this behavior and the potential operational issues
-     that can arise when this best common practice is not applied.</t>
+     that can arise when this best common practice is not upheld.</t>
    </abstract>
  </front>
 
@@ -139,7 +152,7 @@
      required part of the DNS implementation specifications in
      <xref target="RFC7766"></xref>.  This document is the formal
      requirements equivalent for the operational community, encouraging
-     operators to ensure DNS over TCP communications support in on par
+     operators to ensure DNS over TCP communications support is on par
      with DNS over UDP communications.</t>
 
      <section title="Requirements Language">
@@ -246,28 +259,67 @@
        there has been serious research that has suggested
        connection-oriented DNS transactions may provide security and
        privacy advantages over UDP transport <xref
-       target="TDNS"></xref>.  Therefore, it might be desirable for network
-       operators to avoid artificially inhibiting the potential utility
-       and advances in the DNS such as these.</t>
+       target="TDNS"></xref>.  In fact, <xref target="RFC7858"></xref>,
+       a Standards Track document is just this sort of specification.
+       Therefore, it might be desirable for network operators to avoid
+       artificially inhibiting the potential utility and advances in the
+       DNS such as these.</t>
      </section>
 
+     <section title="&quot;Only Zone Tranfers Use TCP&quot;">
+       <t>Even while many in the DNS community expect DNS over TCP
+       transactions to occur without interference, in practice there has
+       been a long held belief by some operators, particularly for
+       security-related reasons, to the contrary <xref
+       target="CHES94"></xref>, <xref target="DJBDNS"></xref>.  A
+       popular meme has also held the imagination of some that DNS over
+       TCP is only ever used for zone transfers and is generally
+       unnecessary otherwise, with filtering all DNS over TCP traffic
+       even described as a best practice.  Arguably any exposed Internet
+       service poses some risk, but this reasoning is often invalid.</t>
+     </section>
    </section>
 
    <section title="DNS over TCP Requirements">
-     <t>Even while many in the DNS community expect DNS over TCP
-     transactions to occur without interference, in practice there has
-     been a long held belief by some operators, particularly for
-     security-related reasons, to the contrary <xref
-     target="CHES94"></xref>, <xref target="DJBDNS"></xref>.  A
-     popular meme has also held the imagination of some that DNS over
-     TCP is only ever used for zone transfers and is generally
-     unnecessary otherwise, with filtering all DNS over TCP traffic
-     even described as a best practice.  Arguably any exposed Internet
-     service poses some risk, but these beliefs are often invalid.
-     DNS over TCP filtering is considered harmful in the general case.
-     DNS resolver and server operators MUST provide DNS service over
-     both UDP and TCP transports.  Likewise, network operators MUST
-     allow DNS service over both UDP and TCP transports.</t>
+     <t>Section 6.1.3.2 in <xref target="RFC1123" /> is updated: All
+     general-purpose DNS servers MUST be able to service both UDP and
+     TCP queries.
+       <list hangIndent="10" style="symbols">
+         <t>Authoritative servers MUST service TCP queries so that they
+	 do not limit the size of responses to what fits in a single UDP
+	 packet.</t>
+         <t>Recursive servers (or forwarders) MUST service TCP queries
+	 so that they do not prevent large responses from a TCP-capable
+	 server from reaching its TCP-capable clients.</t>
+       </list>
+     Regarding the choice of limiting the resources a server devotes to
+     queries, Section 6.1.3.2 in <xref target="RFC1123" /> also says:
+       <list hangIndent="10" style="empty">
+         <t>A name server MAY limit the resources it devotes to TCP
+         queries, but it SHOULD NOT refuse to service a TCP query just
+	 because it would have succeeded with UDP.</t>
+       </list>
+     This requirement is hereby updated: A name server MAY limit the
+     the resources it devotes to queries, but it MUST NOT refuse to
+     service a query just because it would have succeeded with another
+     transport protocol.</t>
+
+     <t> DNS over TCP filtering is considered harmful in the general
+     case.  DNS resolver and server operators MUST provide DNS service
+     over both UDP and TCP transports.  Likewise, network operators MUST
+     allow DNS service over both UDP and TCP transports.  It must be
+     acknowledged that DNS over TCP service can pose operational
+     challenges that are not present when running DNS over UDP alone.
+     However, it is the aim of this document to argue that the potential
+     damage incurred by prohibiting DNS over TCP service is more
+     detrimental to the continued utility and success of the DNS than
+     when its usage is allowed.</t>
+   </section>
+
+   <section title="Network and System Considerations">
+     <t>TODO: refer to IETF RFC 7766 connection handling discussion,
+     various TCP hardening documents, network operator protocol and
+     traffic best practices, etc.</t>
    </section>
 
    <section title="DNS over TCP Filtering Risks">
@@ -287,11 +339,83 @@
      yet unforeseen will also demand TCP transport.</t>
 
      <t>Even if any or all particular answers have consistently been
-     returned successfuly with UDP in the past, this continued behavior
+     returned successfully with UDP in the past, this continued behavior
      cannot be guaranteed when DNS messages are exchanged between
      autonomous systems.  Therefore, filtering of DNS over TCP is
      considered harmful and contrary to the safe and successful operation
      of the Internet.</t>
+   </section>
+
+   <section title="Standards Related to DNS Transport over TCP">
+     <t>This section enumerates all known IETF RFC documents that are
+     currently of status standard, informational, best common practice
+     or experimental and either implicitly or explicitly make
+     assumptions or statements about the use of TCP as a transport for
+     the DNS germane to this document.</t>
+
+     <section title="TODO - additional, relevant RFCs">
+     </section>
+
+     <section title="IETF RFC 7477 - Child-to-Parent Synchronization in DNS">
+       <t>This standards track document <xref target="RFC7477"></xref>
+       specifies a RRType and protocol to signal and synchronize NS, A,
+       and AAAA resource record changes from a child to parent zone.
+       Since this protocol may require multiple requests and responses,
+       it recommends utilizing DNS over TCP to ensure the conversation
+       takes place between a consistent pair of end nodes.</t>
+     </section>
+
+     <section title="IETF RFC 7766 - DNS Transport over TCP - Implementation Requirements">
+       <t>The standards track document <xref target="RFC7766"></xref>
+       is might be considered the direct ancestor of this operational
+       requirements document.  The implementation requirements document
+       codifies mandatory support for DNS over TCP in compliant DNS
+       software.</t>
+     </section>
+
+     <section title="IETF RFC 7828 - The edns-tcp-keepalive EDNS0 Option">
+       <t>This standards track document <xref target="RFC7828"></xref>
+       defines an EDNS0 option to negotiate an idle timeout value for
+       long-lived DNS over TCP connections.  Consequently, this document
+       is only applicable and relevant to DNS over TCP sessions and
+       between implementations that support this option.</t>
+     </section>
+
+     <section title="IETF RFC 7873 - Domain Name System (DNS) Cookies">
+       <t>This standards track document <xref target="RFC7873"></xref>
+       describes an EDNS0 option to provide additional protection
+       against query and answer forgery.  This specification mentions
+       DNS over TCP as a reasonable fallback mechanism when DNS Cookies
+       are not available.  The specification does make mention of DNS
+       over TCP processing in two specific situations.  In one, when a
+       server receives only a client cookie in a request, the server
+       should consider whether the request arrived over TCP and if so,
+       it should consider accept TCP as sufficient to authenticate the
+       request and respond accordingly.  In another, when a client
+       receives a BADCOOKIE reply using a fresh server cookie, the
+       client should retry using TCP as the transport.</t>
+     </section>
+
+     <section title="IETF RFC 7901 - CHAIN Query Requests in DNS">
+       <t>This experimental specification <xref target="RFC7901"></xref>
+       describes an EDNS0 option that can be used by a security-aware
+       validating resolver to request and obtain a complete DNSSEC
+       validation path for any single query.  This document requires the
+       use of DNS over TCP or a source IP address verified transport
+       mechanism such as EDNS-COOKIE.<xref target="RFC7873"></xref></t>
+     </section>
+
+     <section title="IETF RFC 8027 - DNSSEC Roadblock Avoidance">
+       <t>This document <xref target="RFC8027"></xref> details observed
+       problems with DNSSEC deployment and mitigation techniques.
+       Network traffic blocking and restrictions, including DNS over TCP
+       messages, are highlighted as one reason for DNSSEC deployment
+       issues.  While this document suggests these sorts of problems are
+       due to "non-compliant infrastructure" and is of type BCP, the
+       scope of the document is limited to detection and mitigation
+       techniques to avoid so-called DNSSEC roadblocks.</t>
+     </section>
+
    </section>
 
    <section anchor="Acknowledgements" title="Acknowledgements">
@@ -302,6 +426,12 @@
      initial research into the differences of what the IETF community has
      historically said and did.  Thanks to all the NANOG 63 attendees
      who provided feedback to an early talk on this subject.</t>
+
+     <t>The following individuals provided an array of feedback to help
+     improve this document: Bob Harold, Paul Hoffman, and Sara
+     Dickinson.  The author is indebted to their contributions.  Any
+     remaining errors or imperfections are the sole responsbility of the
+     document author.</t>
    </section>
 
    <section anchor="IANA" title="IANA Considerations">
@@ -322,7 +452,7 @@
 
      <t>DNS over TCP is not unlike many other Internet TCP services.
      TCP threats and many mitigation strategies have been well
-     documented in series of documents such as <xref
+     documented in a series of documents such as <xref
      target="RFC4953"></xref>, <xref target="RFC4987"></xref>, <xref
      target="RFC5927"></xref>, and <xref target="RFC5961"></xref>.</t>
 
@@ -364,7 +494,13 @@
      &RFC4987;
      &RFC5927;
      &RFC5961;
+     &RFC7477;
      &RFC7766;
+     &RFC7828;
+     &RFC7858;
+     &RFC7873;
+     &RFC7901;
+     &RFC8027;
 
      <!-- A reference written by by an organization not a person. -->
 
