@@ -390,8 +390,8 @@
        over TCP processing in two specific situations.  In one, when a
        server receives only a client cookie in a request, the server
        should consider whether the request arrived over TCP and if so,
-       it should consider accept TCP as sufficient to authenticate the
-       request and respond accordingly.  In another, when a client
+       it should consider accepting TCP as sufficient to authenticate
+       the request and respond accordingly.  In another, when a client
        receives a BADCOOKIE reply using a fresh server cookie, the
        client should retry using TCP as the transport.</t>
      </section>
