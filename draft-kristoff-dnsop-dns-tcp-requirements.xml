@@ -107,6 +107,22 @@
      </address>
    </author>
 
+   <author fullname="Duane Wessels" initials="D." surname="Wessels">
+     <organization>Verisign</organization>
+     <address>
+       <postal>
+         <street>12061 Bluemont Way</street>
+         <city>Reston</city>
+         <region>VA</region>
+         <code>20190</code>
+         <country>United States</country>
+       </postal>
+       <phone>+1 703 948 3200</phone>
+       <email>dwessels@verisign.com</email>
+       <uri>http://verisigninc.com</uri>
+     </address>
+   </author>
+
    <date year="2017" />
    <!-- If the month and year are both specified and are the current ones, xml2rfc will fill 
         in the current day for you. If only the current year is specified, xml2rfc will fill 
