@@ -383,7 +383,7 @@
 
      <section title="IETF RFC 7766 - DNS Transport over TCP - Implementation Requirements">
        <t>The standards track document <xref target="RFC7766"></xref>
-       is might be considered the direct ancestor of this operational
+       might be considered the direct ancestor of this operational
        requirements document.  The implementation requirements document
        codifies mandatory support for DNS over TCP in compliant DNS
        software.</t>
@@ -437,17 +437,17 @@
    <section anchor="Acknowledgements" title="Acknowledgements">
      <t>This document was initially motivated by feedback from students
      who pointed out that they were hearing contradictory information
-     about filtering DNS over TCP messages.  Thanks in particular to my
+     about filtering DNS over TCP messages.  Thanks in particular to a
      teaching colleague, JPL, who perhaps unknowingly encouraged the
-     initial research into the differences of what the IETF community has
+     initial research into the differences of what the community has
      historically said and did.  Thanks to all the NANOG 63 attendees
      who provided feedback to an early talk on this subject.</t>
 
      <t>The following individuals provided an array of feedback to help
-     improve this document: Bob Harold, Paul Hoffman, and Sara
-     Dickinson.  The author is indebted to their contributions.  Any
-     remaining errors or imperfections are the sole responsbility of the
-     document author.</t>
+     improve this document: Sara Dickinson, Bob Harold, Tatuya Jinmei,
+     and Paul Hoffman.  The authors are indebted to their contributions.
+     Any remaining errors or imperfections are the sole responsbility of
+     the document authors.</t>
    </section>
 
    <section anchor="IANA" title="IANA Considerations">
