@@ -285,16 +285,25 @@
      </section>
 
      <section title="&quot;Only Zone Tranfers Use TCP&quot;">
-       <t>Even while many in the DNS community expect DNS over TCP
-       transactions to occur without interference, in practice there has
-       been a long held belief by some operators, particularly for
-       security-related reasons, to the contrary <xref
-       target="CHES94"></xref>, <xref target="DJBDNS"></xref>.  A
-       popular meme has also held the imagination of some that DNS over
-       TCP is only ever used for zone transfers and is generally
-       unnecessary otherwise, with filtering all DNS over TCP traffic
-       even described as a best practice.  Arguably any exposed Internet
-       service poses some risk, but this reasoning is often invalid.</t>
+       <t>There are many in the DNS community who configure DNS over TCP
+       services and expect DNS over TCP transactions to occur without
+       interference.  However there has also been a long held belief by
+       some operators, particularly for security-related reasons, that
+       DNS over TCP services should be purposely limited or not provided
+       at all <xref target="CHES94"></xref>, <xref
+       target="DJBDNS"></xref>.  A popular meme has also held the
+       imagination of some that DNS over TCP is only ever used for zone
+       transfers and is generally unnecessary otherwise, with filtering
+       all DNS over TCP traffic even described as a best practice.</t>
+
+       <t>The position on restricting DNS over TCP had some
+       justification given that historic implementations of DNS
+       nameservers provided very little in the way of TCP connection
+       management (for example see Section 6.1.2 of <xref
+       target="RFC7766"></xref> for more details).  However modern
+       standards and implementations are moving to align with the more
+       sophisticated TCP management techniques employed by, for example,
+       HTTP(S) servers and load balancers.</t>
      </section>
    </section>
 
