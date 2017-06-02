@@ -16,6 +16,8 @@
   <!ENTITY RFC1536 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1536.xml">
   <!-- Dynamic Updates in the Domain Name System (DNS UPDATE) -->
   <!ENTITY RFC2136 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2136.xml">
+  <!-- Internet Protocol, Version 6 (IPv6) Specification -->
+  <!ENTITY RFC2460 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2460.xml">
   <!-- DNS Security Operational Considerations -->
   <!ENTITY RFC2541 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2541.xml">
   <!-- Extension Mechanisms for DNS (EDNS0) -->
@@ -339,13 +341,6 @@
    </section>
 
    <section title="DNS over TCP Filtering Risks">
-     <t>Networks that filter DNS over TCP may inadvertently cause
-     problems for third party resolvers as experienced by <xref
-     target="TOYAMA"></xref>.  If for instance a resolver receives a
-     truncated answer from a server, but if when the resolver resends
-     the query using TCP and the TCP response never arrives, the
-     resolver will incur the full extent of TCP retransmissions and time
-     outs.</t>
 
      <t>Networks that filter DNS over TCP risk losing access to
      significant or important pieces of the DNS name space.  For a
@@ -359,7 +354,38 @@
      cannot be guaranteed when DNS messages are exchanged between
      autonomous systems.  Therefore, filtering of DNS over TCP is
      considered harmful and contrary to the safe and successful operation
-     of the Internet.</t>
+     of the Internet.  This section enumerates some of the known risks
+     we know about at the time of this writing when networks filter DNS
+     over TCP.</t>
+
+     <section title="DNS Wedgie">
+       <t>Networks that filter DNS over TCP may inadvertently cause
+       problems for third party resolvers as experienced by <xref
+       target="TOYAMA"></xref>.  If for instance a resolver receives a
+       truncated answer from a server, but if when the resolver resends
+       the query using TCP and the TCP response never arrives, not only
+       will full answer be unavailable, but the resolver will incur the
+       full extent of TCP retransmissions and time outs.  This situation
+       might place extreme strain on resolver resources.  If the nunber
+       and frequency of these truncated answers are sufficiently high,
+       we refer to the steady-state of lost resources as a result a "DNS"
+       wedgie".  A DNS wedgie is often not easily or completely mitigated
+       by the affected DNS resolver operator.</t>
+     </section>
+
+     <section title="DNS Root Zone KSK Rollover">
+       <t>Recent plans for a new root zone DNSSEC KSK have highlighted
+       a potential problem in retrieving the keys.<xref
+       target="LEWIS"></xref>  Some packets in the KSK rollover process
+       will be larger than 1280 bytes, the IPv6 minimum MTU for links
+       carrying IPv6 traffic.  While studies have shown that problems
+       due to fragment filtering or an inability to generate and receive
+       these larger messages are negible, any DNS server that is unable
+       to receive large DNS over UDP messages or perform DNS over TCP
+       may experience severe disruption of DNS service if performing
+       DNSSEC validation.
+     </section>
+
    </section>
 
    <section title="Standards Related to DNS Transport over TCP">
@@ -503,6 +529,7 @@
      &RFC1123;
      &RFC1536;
      &RFC2136;
+     &RFC2460;
      &RFC2541;
      &RFC2671;
      <!-- &RFC2629; -->
@@ -593,6 +620,15 @@
          <date year="2012" month="April" />
        </front>
        <seriesInfo name="ISC-TN 2012-1" value="Draft1" />
+     </reference>
+
+     <reference anchor="LEWIS">
+       <front>
+         <title>2017 DNSSEC KSK Rollover</title>
+         <author fullname="Edward Lewis" initials "E." surname="Lewis </>
+         <date year="2017" />
+       </front>
+       <seriesInfo name="RIPE 74" value="Budapest, Hungary" />
      </reference>
 
      <reference anchor="TOYAMA">
