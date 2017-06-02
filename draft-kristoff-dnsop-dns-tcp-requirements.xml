@@ -97,15 +97,14 @@
      <address>
        <postal>
          <street></street>
-         <!-- Reorder these if your country does things differently -->
          <city>Chicago</city>
          <region>IL</region>
-         <code></code>
+         <code>60604</code>
          <country>US</country>
        </postal>
        <phone>+1 312 493 0305</phone>
        <email>jtk@depaul.edu</email>
-       <!-- uri and facsimile elements may also be added -->
+       <uri>https://aharp.iorc.depaul.edu</uri>
      </address>
    </author>
 
@@ -117,7 +116,7 @@
          <city>Reston</city>
          <region>VA</region>
          <code>20190</code>
-         <country>United States</country>
+         <country>US</country>
        </postal>
        <phone>+1 703 948 3200</phone>
        <email>dwessels@verisign.com</email>
@@ -387,84 +386,12 @@
        a potential problem in retrieving the keys.<xref
        target="LEWIS"></xref>  Some packets in the KSK rollover process
        will be larger than 1280 bytes, the IPv6 minimum MTU for links
-       carrying IPv6 traffic.  While studies have shown that problems
-       due to fragment filtering or an inability to generate and receive
-       these larger messages are negible, any DNS server that is unable
-       to receive large DNS over UDP messages or perform DNS over TCP
-       may experience severe disruption of DNS service if performing
-       DNSSEC validation.
-     </section>
-
-   </section>
-
-   <section title="Standards Related to DNS Transport over TCP">
-     <t>This section enumerates all known IETF RFC documents that are
-     currently of status standard, informational, best common practice
-     or experimental and either implicitly or explicitly make
-     assumptions or statements about the use of TCP as a transport for
-     the DNS germane to this document.</t>
-
-     <section title="TODO - additional, relevant RFCs">
-     </section>
-
-     <section title="IETF RFC 7477 - Child-to-Parent Synchronization in DNS">
-       <t>This standards track document <xref target="RFC7477"></xref>
-       specifies a RRType and protocol to signal and synchronize NS, A,
-       and AAAA resource record changes from a child to parent zone.
-       Since this protocol may require multiple requests and responses,
-       it recommends utilizing DNS over TCP to ensure the conversation
-       takes place between a consistent pair of end nodes.</t>
-     </section>
-
-     <section title="IETF RFC 7766 - DNS Transport over TCP - Implementation Requirements">
-       <t>The standards track document <xref target="RFC7766"></xref>
-       might be considered the direct ancestor of this operational
-       requirements document.  The implementation requirements document
-       codifies mandatory support for DNS over TCP in compliant DNS
-       software.</t>
-     </section>
-
-     <section title="IETF RFC 7828 - The edns-tcp-keepalive EDNS0 Option">
-       <t>This standards track document <xref target="RFC7828"></xref>
-       defines an EDNS0 option to negotiate an idle timeout value for
-       long-lived DNS over TCP connections.  Consequently, this document
-       is only applicable and relevant to DNS over TCP sessions and
-       between implementations that support this option.</t>
-     </section>
-
-     <section title="IETF RFC 7873 - Domain Name System (DNS) Cookies">
-       <t>This standards track document <xref target="RFC7873"></xref>
-       describes an EDNS0 option to provide additional protection
-       against query and answer forgery.  This specification mentions
-       DNS over TCP as a reasonable fallback mechanism when DNS Cookies
-       are not available.  The specification does make mention of DNS
-       over TCP processing in two specific situations.  In one, when a
-       server receives only a client cookie in a request, the server
-       should consider whether the request arrived over TCP and if so,
-       it should consider accepting TCP as sufficient to authenticate
-       the request and respond accordingly.  In another, when a client
-       receives a BADCOOKIE reply using a fresh server cookie, the
-       client should retry using TCP as the transport.</t>
-     </section>
-
-     <section title="IETF RFC 7901 - CHAIN Query Requests in DNS">
-       <t>This experimental specification <xref target="RFC7901"></xref>
-       describes an EDNS0 option that can be used by a security-aware
-       validating resolver to request and obtain a complete DNSSEC
-       validation path for any single query.  This document requires the
-       use of DNS over TCP or a source IP address verified transport
-       mechanism such as EDNS-COOKIE.<xref target="RFC7873"></xref></t>
-     </section>
-
-     <section title="IETF RFC 8027 - DNSSEC Roadblock Avoidance">
-       <t>This document <xref target="RFC8027"></xref> details observed
-       problems with DNSSEC deployment and mitigation techniques.
-       Network traffic blocking and restrictions, including DNS over TCP
-       messages, are highlighted as one reason for DNSSEC deployment
-       issues.  While this document suggests these sorts of problems are
-       due to "non-compliant infrastructure" and is of type BCP, the
-       scope of the document is limited to detection and mitigation
-       techniques to avoid so-called DNSSEC roadblocks.</t>
+       carrying IPv6 traffic.<xref target="RFC2460"></xref>  While
+       studies have shown that problems due to fragment filtering or an
+       inability to generate and receive these larger messages are
+       negible, any DNS server that is unable to receive large DNS over
+       UDP messages or perform DNS over TCP may experience severe
+       disruption of DNS service if performing DNSSEC validation.</t>
      </section>
 
    </section>
@@ -634,8 +561,8 @@
      <reference anchor="LEWIS">
        <front>
          <title>2017 DNSSEC KSK Rollover</title>
-         <author fullname="Edward Lewis" initials "E." surname="Lewis </>
-         <date year="2017" />
+         <author fullname="Edward Lewis" initials="E." surname="Lewis" />
+         <date year="2017" month="May" day="8" />
        </front>
        <seriesInfo name="RIPE 74" value="Budapest, Hungary" />
      </reference>
@@ -654,6 +581,78 @@
      </reference>         
 
    </references>
+
+   <section title="Standards Related to DNS Transport over TCP">
+     <t>This section enumerates all known IETF RFC documents that are
+     currently of status standard, informational, best common practice
+     or experimental and either implicitly or explicitly make
+     assumptions or statements about the use of TCP as a transport for
+     the DNS germane to this document.</t>
+
+     <section title="TODO - additional, relevant RFCs">
+     </section>
+
+     <section title="IETF RFC 7477 - Child-to-Parent Synchronization in DNS">
+       <t>This standards track document <xref target="RFC7477"></xref>
+       specifies a RRType and protocol to signal and synchronize NS, A,
+       and AAAA resource record changes from a child to parent zone.
+       Since this protocol may require multiple requests and responses,
+       it recommends utilizing DNS over TCP to ensure the conversation
+       takes place between a consistent pair of end nodes.</t>
+     </section>
+
+     <section title="IETF RFC 7766 - DNS Transport over TCP - Implementation Requirements">
+       <t>The standards track document <xref target="RFC7766"></xref>
+       might be considered the direct ancestor of this operational
+       requirements document.  The implementation requirements document
+       codifies mandatory support for DNS over TCP in compliant DNS
+       software.</t>
+     </section>
+
+     <section title="IETF RFC 7828 - The edns-tcp-keepalive EDNS0 Option">
+       <t>This standards track document <xref target="RFC7828"></xref>
+       defines an EDNS0 option to negotiate an idle timeout value for
+       long-lived DNS over TCP connections.  Consequently, this document
+       is only applicable and relevant to DNS over TCP sessions and
+       between implementations that support this option.</t>
+     </section>
+
+     <section title="IETF RFC 7873 - Domain Name System (DNS) Cookies">
+       <t>This standards track document <xref target="RFC7873"></xref>
+       describes an EDNS0 option to provide additional protection
+       against query and answer forgery.  This specification mentions
+       DNS over TCP as a reasonable fallback mechanism when DNS Cookies
+       are not available.  The specification does make mention of DNS
+       over TCP processing in two specific situations.  In one, when a
+       server receives only a client cookie in a request, the server
+       should consider whether the request arrived over TCP and if so,
+       it should consider accepting TCP as sufficient to authenticate
+       the request and respond accordingly.  In another, when a client
+       receives a BADCOOKIE reply using a fresh server cookie, the
+       client should retry using TCP as the transport.</t>
+     </section>
+
+     <section title="IETF RFC 7901 - CHAIN Query Requests in DNS">
+       <t>This experimental specification <xref target="RFC7901"></xref>
+       describes an EDNS0 option that can be used by a security-aware
+       validating resolver to request and obtain a complete DNSSEC
+       validation path for any single query.  This document requires the
+       use of DNS over TCP or a source IP address verified transport
+       mechanism such as EDNS-COOKIE.<xref target="RFC7873"></xref></t>
+     </section>
+
+     <section title="IETF RFC 8027 - DNSSEC Roadblock Avoidance">
+       <t>This document <xref target="RFC8027"></xref> details observed
+       problems with DNSSEC deployment and mitigation techniques.
+       Network traffic blocking and restrictions, including DNS over TCP
+       messages, are highlighted as one reason for DNSSEC deployment
+       issues.  While this document suggests these sorts of problems are
+       due to "non-compliant infrastructure" and is of type BCP, the
+       scope of the document is limited to detection and mitigation
+       techniques to avoid so-called DNSSEC roadblocks.</t>
+     </section>
+
+   </section>
 
  </back>
 </rfc>
