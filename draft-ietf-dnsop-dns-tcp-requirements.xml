@@ -255,15 +255,15 @@
        written into the base specification and present in every ENDS0
        compatible message is the value of the maximum UDP payload size
        the sender can support.  This unsigned 16-bit field specifies
-       in bytes the maximum DNS MTU.  In practice, typical values are
-       a subset of the 512 to 4096 byte range.  EDNS0 was rapidly and
+       in bytes the maximum (possibly fragmented) DNS message size a node is capable of receiving.  In practice, typical values are
+       a subset of the 512 to 4096 byte range.  EDNS0 became
        widely deployed over the next several years and numerous surveys
        have shown many systems currently support larger UDP MTUs
        <xref target="CASTRO2010"></xref>, <xref target="NETALYZR"></xref>
        with EDNS0.</t>
 
-       <t>The natural effect of EDNS0 deployment meant large DNS
-       messages would be less reliant on TCP than they might otherwise
+       <t>The natural effect of EDNS0 deployment meant DNS
+       messages larger than 512 bytes would be less reliant on TCP than they might otherwise
        have been.  While a nonneglible population of DNS systems lack
        EDNS0 or may still fall back to TCP for some transactions, DNS
        over TCP transactions remain a very small fraction of overall
@@ -281,6 +281,47 @@
        Therefore, it might be desirable for network operators to avoid
        artificially inhibiting the potential utility and advances in the
        DNS such as these.</t>
+     </section>
+
+     <section title="Fragmentation and Truncation">
+       <t>
+	Although EDNS0 provides a way for endpoints to signal support
+	for DNS messages exceeding 512 bytes, the realities of
+	today's Internet mean large messages do not always get
+	through.  Any IP packet whose size exceeds the MTU of a
+	link it transits will be fragmented and then reassembled
+	by the receiving host.  Unfortunately, it is not uncommon
+	for middleboxes and firewalls to block IP fragments.  If
+	one or more fragments do not arrive, the application does
+	not receive the message and the reuqest times out.
+      </t>
+      <t>
+	For IPv4-connected hosts, the de-facto MTU is the Ethernet
+	payload size of 1500 bytes.  This means that the largest
+	unfragmented UDP DNS message that can be sent over IPv4 is
+	1472 bytes.  For IPv6 the situation is a little more
+	complicated.  First, IPv6 headers are 40 bytes (versus 20
+	in IPv4).  Second, and more important, it seems as though
+	people have mis-interpreted IPv6's required minimum MTU of
+	1280 as a required maximum.  [XXX again Geoff's data]
+<!-- https://blog.apnic.net/2017/08/22/dealing-ipv6-fragmentation-dns/ -->
+<!-- About 35% of IPV6 DNs resolvers unable to receive IPv6 fragments -->
+      </t>
+      <t>
+	The practical consequence of all this is that DNS requestors
+	must be prepared to retry queries with different EDNS0 maximum
+	message size values.  Administrators of BIND are likely to be 
+	familiar with seeing "success resolving ... after reducing the advertised EDNS UDP packet size to 512 octets"
+	in their system logs.
+      </t>
+      <t>
+	XXX truncation
+      </t>
+      <t>
+	XXX these issues driving DNSSEC policy.  cloudflare avoids large messages with ECDSA and white lies.
+ 	KSK design team devoted much time to large responses.  calls for ECDSA because RSA 2048/2048 is just
+	at the fragmentation limit.
+      </t>
      </section>
 
      <section title="&quot;Only Zone Tranfers Use TCP&quot;">
@@ -330,12 +371,12 @@
      service a query just because it would have succeeded with another
      transport protocol.</t>
 
-     <t> DNS over TCP filtering is considered harmful in the general
+     <t>Filtering of DNS over TCP is considered harmful in the general
      case.  DNS resolver and server operators MUST provide DNS service
      over both UDP and TCP transports.  Likewise, network operators MUST
      allow DNS service over both UDP and TCP transports.  It must be
      acknowledged that DNS over TCP service can pose operational
-     challenges that are not present when running DNS over UDP alone.
+     challenges that are not present when running DNS over UDP alone, and vice-versa.
      However, it is the aim of this document to argue that the potential
      damage incurred by prohibiting DNS over TCP service is more
      detrimental to the continued utility and success of the DNS than
@@ -346,6 +387,7 @@
      <t>TODO: refer to IETF RFC 7766 connection handling discussion,
      various TCP hardening documents, network operator protocol and
      traffic best practices, etc.</t>
+     <t>XXX about how v6 fragmentation is a disaster, PMTU is not reliable, v4 de-facto MTU is 1500, but v6 effective MTU is 1280.</t>
    </section>
 
    <section title="DNS over TCP Filtering Risks">
@@ -356,6 +398,14 @@
      This may include large message sizes, lack of EDNS0 support, DDoS
      mitigation techniques, or perhaps some future capability that is as
      yet unforeseen will also demand TCP transport.</t>
+
+     <t>For example, both <xref target="RFC7901"/> and <xref
+     target="draft-extra-answers"/> describe latency-avoiding
+     techniques that send extra data in DNS responses.  This makes
+     the responses larger and potentially damaging in DDoS reflection
+     attacks.  The former mandates the use of TCP or DNS Cookies
+     (<xref target="RFC7873"/>) and the latter offers it as a possibility
+     in Security Considerations.</t>
 
      <t>Even if any or all particular answers have consistently been
      returned successfully with UDP in the past, this continued behavior
@@ -370,11 +420,11 @@
        <t>Networks that filter DNS over TCP may inadvertently cause
        problems for third party resolvers as experienced by <xref
        target="TOYAMA"></xref>.  If for instance a resolver receives a
-       truncated answer from a server, but if when the resolver resends
+       truncated answer from a server, but when the resolver resends
        the query using TCP and the TCP response never arrives, not only
        will full answer be unavailable, but the resolver will incur the
        full extent of TCP retransmissions and time outs.  This situation
-       might place extreme strain on resolver resources.  If the nunber
+       might place extreme strain on resolver resources.  If the number
        and frequency of these truncated answers are sufficiently high,
        we refer to the steady-state of lost resources as a result a "DNS"
        wedgie".  A DNS wedgie is often not easily or completely mitigated
@@ -394,6 +444,19 @@
        disruption of DNS service if performing DNSSEC validation.</t>
      </section>
 
+     <section title="DNS-over-TLS">
+       <t>DNS-over-TLS</t>
+     </section>
+
+   </section>
+
+   <section title="Logging and Monitoring">
+     <t>XXX Developers of applications that log or monitor DNS are
+     advised to not ignore TCP because it is hard.  Also be prepared
+     for connection reuse, pipelining, and out-of-order responses.
+     If using packet-based (e.g. libpcap) collection techniques,
+     the application must be prepared to implement/perform TCP
+     segment reassembly.</t>
    </section>
 
    <section anchor="Acknowledgements" title="Acknowledgements">
@@ -435,6 +498,10 @@
      target="RFC5927"></xref>, and <xref target="RFC5961"></xref>.</t>
 
    </section>
+
+   <section anchor="Privacy" title="Privacy Considerations">
+   </section>
+
  </middle>
 
  <back>
@@ -579,6 +646,19 @@
        </front>
        <seriesInfo name="NANOG 32" value="Reston, VA USA" />
      </reference>         
+
+     <reference anchor="draft-extra-answers">
+	<front>
+	  <title>Returning extra answers in DNS responses.</title>
+	  <author fullname="Warren Kumari" initials="W." surname="Kumari" />
+	  <author fullname="Zhiwei Yan" initials="Z." surname="Yan" />
+	  <author fullname="Wes Hardaker" initials="W." surname="Hardaker" />
+	  <author fullname="David Lawrence" initials="D." surname="Lawrence" />
+	  <date year="2017" month="July" day="3"/>
+	</front>
+	<seriesInfo name="Internet-Draft" value="draft-wkumari-dnsop-multiple-responses-05"/>
+	<format type="TXT" target="https://www.ietf.org/id/draft-wkumari-dnsop-multiple-responses-05.txt"/>
+     </reference>
 
    </references>
 
