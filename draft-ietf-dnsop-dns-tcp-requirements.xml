@@ -301,11 +301,18 @@
 	unfragmented UDP DNS message that can be sent over IPv4 is
 	1472 bytes.  For IPv6 the situation is a little more
 	complicated.  First, IPv6 headers are 40 bytes (versus 20
-	in IPv4).  Second, and more important, it seems as though
+	in IPv4).  Second, it seems as though some
 	people have mis-interpreted IPv6's required minimum MTU of
-	1280 as a required maximum.  [XXX again Geoff's data]
-<!-- https://blog.apnic.net/2017/08/22/dealing-ipv6-fragmentation-dns/ -->
-<!-- About 35% of IPV6 DNs resolvers unable to receive IPv6 fragments -->
+	1280 as a required maximum.  Third, fragmentation in IPv6
+	can only be done by the host originating the packet.  The
+	need to fragment is conveyed in an ICMPv6 "packet too big"
+	message.  The originating host indicates a fragmented packet
+	with IPv6 extension headers.  Unfortunately, it is quite
+	common for both ICMPv6 and IPv6 extension headers to be
+	blocked by middleboxes.  According to <xref
+	target="huston-v6-frag"/> some 35% <!-- 3,592 / 10,115 -->
+	of IPv6-capable recursive resolvers are unable to receive
+	a fragmented IPv6 packet.
       </t>
       <t>
 	The practical consequence of all this is that DNS requestors
@@ -660,6 +667,14 @@
 	<format type="TXT" target="https://www.ietf.org/id/draft-wkumari-dnsop-multiple-responses-05.txt"/>
      </reference>
 
+     <reference anchor="huston-v6-frag">
+	<front>
+	  <title>Dealing with IPv6 fragmentation in the DNS</title>
+	  <author fullname="Geoff Huston" initials="G." surname="Huston" />
+	  <date year="2017" month="August" day="22"/>
+	</front>
+	<format type="HTML" target="https://blog.apnic.net/2017/08/22/dealing-ipv6-fragmentation-dns/"/>
+     </reference>
    </references>
 
    <section title="Standards Related to DNS Transport over TCP">
