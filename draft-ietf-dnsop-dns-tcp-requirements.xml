@@ -310,7 +310,7 @@
 	with IPv6 extension headers.  Unfortunately, it is quite
 	common for both ICMPv6 and IPv6 extension headers to be
 	blocked by middleboxes.  According to <xref
-	target="huston-v6-frag"/> some 35% <!-- 3,592 / 10,115 -->
+	target="HUSTON"/> some 35% <!-- 3,592 / 10,115 -->
 	of IPv6-capable recursive resolvers are unable to receive
 	a fragmented IPv6 packet.
       </t>
@@ -331,14 +331,14 @@
 	because it adds more latency, and potentially undesirable from
 	the server's point of view due to the increased resource
 	requirements of TCP.
-	<!- XXX maybe there is a better way to put that? -->
+	<!-- XXX maybe there is a better way to put that? -->
       </t>
       <t>
 	The issues around fragmentation, truncation, and TCP are driving
 	certain implementation and policy decisions in the DNS.
-	Notably, Cloudflare implemented what it calls "DNSSEC black lies" <xref target="cloudflare-black-lies"/> and
+	Notably, Cloudflare implemented what it calls "DNSSEC black lies" <xref target="CLOUDFLARE"/> and
 	uses ECDSA algorithms, such that their signed responses fit easily in 512 bytes.
-	The KSK Rollover design team <xref target="ksk-rollover-design"/> spent a lot of time
+	The KSK Rollover design team <xref target="DESIGNTEAM"/> spent a lot of time
 	thinking and worrying about response sizes.  There is growing sentiment
 	in the DNSSEC community that RSA key sizes beyond 2048-bits are impractical and
 	that critical infrastructure zones should transition to elliptic curve algorithms to
@@ -647,7 +647,7 @@
        <seriesInfo name="ISC-TN 2012-1" value="Draft1" />
      </reference>
 
-     <reference anchor="LEWIS">
+     <reference anchor="LEWIS" target="https://ripe74.ripe.net/presentations/25-RIPE74-lewis-submission.pdf">
        <front>
          <title>2017 DNSSEC KSK Rollover</title>
          <author fullname="Edward Lewis" initials="E." surname="Lewis" />
@@ -682,7 +682,7 @@
 	<format type="TXT" target="https://www.ietf.org/id/draft-wkumari-dnsop-multiple-responses-05.txt"/>
      </reference>
 
-     <reference anchor="huston-v6-frag">
+     <reference anchor="HUSTON" target="https://blog.apnic.net/2017/08/22/dealing-ipv6-fragmentation-dns/">
 	<front>
 	  <title>Dealing with IPv6 fragmentation in the DNS</title>
 	  <author fullname="Geoff Huston" initials="G." surname="Huston" />
@@ -690,6 +690,29 @@
 	</front>
 	<format type="HTML" target="https://blog.apnic.net/2017/08/22/dealing-ipv6-fragmentation-dns/"/>
      </reference>
+
+     <reference anchor="CLOUDFLARE" target="https://blog.cloudflare.com/black-lies/">
+	<front>
+	  <title>Economical With The Truth: Making DNSSEC Answers Cheap</title>
+	  <author fullname="Dani Grant" initials="D." surname="Grant">
+	    <organization>Cloudflare</organization>
+	  </author>
+	  <date year="2016" month="June" day="24"/>
+	</front>
+	<format type="HTML" target="https://blog.cloudflare.com/black-lies/"/>
+     </reference>
+
+     <reference anchor="DESIGNTEAM" target="https://www.iana.org/reports/2016/root-ksk-rollover-design-20160307.pdf">
+	<front>
+	  <title>Root Zone KSK Rollover Plan</title>
+	  <author>
+	    <organization>Design Team Report</organization>
+	  </author>
+	  <date year="2015" month="December" day="18"/>
+	</front>
+	<format type="PDF" target="https://www.iana.org/reports/2016/root-ksk-rollover-design-20160307.pdf"/>
+     </reference>
+
    </references>
 
    <section title="Standards Related to DNS Transport over TCP">
