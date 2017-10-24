@@ -331,7 +331,7 @@
 	because it adds more latency, and potentially undesirable from
 	the server's point of view due to the increased resource
 	requirements of TCP.
-	<!-- XXX maybe there is a better way to put that? -->
+	<!-- TODO maybe there is a better way to put that? -->
       </t>
       <t>
 	The issues around fragmentation, truncation, and TCP are driving
@@ -409,7 +409,6 @@
      <t>TODO: refer to IETF RFC 7766 connection handling discussion,
      various TCP hardening documents, network operator protocol and
      traffic best practices, etc.</t>
-     <t>XXX about how v6 fragmentation is a disaster, PMTU is not reliable, v4 de-facto MTU is 1500, but v6 effective MTU is 1280.</t>
    </section>
 
    <section title="DNS over TCP Filtering Risks">
@@ -467,7 +466,7 @@
      </section>
 
      <section title="DNS-over-TLS">
-       <t>DNS-over-TLS</t>
+       <t>TODO: DNS-over-TLS</t>
      </section>
 
    </section>
