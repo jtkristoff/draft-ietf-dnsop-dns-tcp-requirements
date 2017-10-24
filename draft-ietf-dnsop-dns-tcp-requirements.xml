@@ -318,16 +318,31 @@
 	The practical consequence of all this is that DNS requestors
 	must be prepared to retry queries with different EDNS0 maximum
 	message size values.  Administrators of BIND are likely to be 
-	familiar with seeing "success resolving ... after reducing the advertised EDNS UDP packet size to 512 octets"
+	familiar with seeing "success resolving ... after reducing the advertised EDNS0 UDP packet size to 512 octets"
 	in their system logs.
       </t>
       <t>
-	XXX truncation
+	Often, reducing the EDNS0 UDP packet size leads to a successul
+	response.  That is, the necessary data fits within the
+	smaller packet size.  However, when the data does not fit,
+	the server sets the truncated flag in its response, indicating
+	the client should retry over TCP to receive the whole
+	response.  This is undesirable from the client's point of view
+	because it adds more latency, and potentially undesirable from
+	the server's point of view due to the increased resource
+	requirements of TCP.
+	<!- XXX maybe there is a better way to put that? -->
       </t>
       <t>
-	XXX these issues driving DNSSEC policy.  cloudflare avoids large messages with ECDSA and white lies.
- 	KSK design team devoted much time to large responses.  calls for ECDSA because RSA 2048/2048 is just
-	at the fragmentation limit.
+	The issues around fragmentation, truncation, and TCP are driving
+	certain implmentation and policy decisions in the DNS.
+	Notably, Cloudflare implemented what it calls "DNSSEC black lies" <xref target="cloudflare-black-lies"/> and
+	uses ECDSA algorithms, such that their signed responses fit easily in 512 bytes.
+	The KSK Rollover design team <xref target="ksk-rollover-design"/> spent a lot of time
+	thinking and worrying about response sizes.  There is growing sentiment
+	in the DNSSEC community that RSA key sizes beyond 2048-bits are impractical and
+	that critical infrastructure zones should transition to elliptic curve algorithms to
+	keep response sizes managable.
       </t>
      </section>
 
