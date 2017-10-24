@@ -293,7 +293,7 @@
 	by the receiving host.  Unfortunately, it is not uncommon
 	for middleboxes and firewalls to block IP fragments.  If
 	one or more fragments do not arrive, the application does
-	not receive the message and the reuqest times out.
+	not receive the message and the request times out.
       </t>
       <t>
 	For IPv4-connected hosts, the de-facto MTU is the Ethernet
@@ -322,7 +322,7 @@
 	in their system logs.
       </t>
       <t>
-	Often, reducing the EDNS0 UDP packet size leads to a successul
+	Often, reducing the EDNS0 UDP packet size leads to a successful
 	response.  That is, the necessary data fits within the
 	smaller packet size.  However, when the data does not fit,
 	the server sets the truncated flag in its response, indicating
@@ -335,18 +335,18 @@
       </t>
       <t>
 	The issues around fragmentation, truncation, and TCP are driving
-	certain implmentation and policy decisions in the DNS.
+	certain implementation and policy decisions in the DNS.
 	Notably, Cloudflare implemented what it calls "DNSSEC black lies" <xref target="cloudflare-black-lies"/> and
 	uses ECDSA algorithms, such that their signed responses fit easily in 512 bytes.
 	The KSK Rollover design team <xref target="ksk-rollover-design"/> spent a lot of time
 	thinking and worrying about response sizes.  There is growing sentiment
 	in the DNSSEC community that RSA key sizes beyond 2048-bits are impractical and
 	that critical infrastructure zones should transition to elliptic curve algorithms to
-	keep response sizes managable.
+	keep response sizes manageable.
       </t>
      </section>
 
-     <section title="&quot;Only Zone Tranfers Use TCP&quot;">
+     <section title="&quot;Only Zone Transfers Use TCP&quot;">
        <t>There are many in the DNS community who configure DNS over TCP
        services and expect DNS over TCP transactions to occur without
        interference.  However there has also been a long held belief by
@@ -461,7 +461,7 @@
        carrying IPv6 traffic.<xref target="RFC2460"></xref>  While
        studies have shown that problems due to fragment filtering or an
        inability to generate and receive these larger messages are
-       negible, any DNS server that is unable to receive large DNS over
+       negligible, any DNS server that is unable to receive large DNS over
        UDP messages or perform DNS over TCP may experience severe
        disruption of DNS service if performing DNSSEC validation.</t>
      </section>
@@ -481,7 +481,7 @@
      segment reassembly.</t>
    </section>
 
-   <section anchor="Acknowledgements" title="Acknowledgements">
+   <section anchor="Acknowledgments" title="Acknowledgments">
      <t>This document was initially motivated by feedback from students
      who pointed out that they were hearing contradictory information
      about filtering DNS over TCP messages.  Thanks in particular to a
@@ -493,7 +493,7 @@
      <t>The following individuals provided an array of feedback to help
      improve this document: Sara Dickinson, Bob Harold, Tatuya Jinmei,
      and Paul Hoffman.  The authors are indebted to their contributions.
-     Any remaining errors or imperfections are the sole responsbility of
+     Any remaining errors or imperfections are the sole responsibility of
      the document authors.</t>
    </section>
 
