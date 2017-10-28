@@ -472,7 +472,7 @@
    </section>
 
    <section title="Logging and Monitoring">
-     <t>XXX Developers of applications that log or monitor DNS are
+     <t>TODO: Developers of applications that log or monitor DNS are
      advised to not ignore TCP because it is hard.  Also be prepared
      for connection reuse, pipelining, and out-of-order responses.
      If using packet-based (e.g. libpcap) collection techniques,
