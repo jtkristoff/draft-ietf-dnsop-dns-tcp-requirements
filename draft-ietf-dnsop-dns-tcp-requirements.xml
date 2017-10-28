@@ -264,7 +264,7 @@
 
        <t>The natural effect of EDNS0 deployment meant DNS
        messages larger than 512 bytes would be less reliant on TCP than they might otherwise
-       have been.  While a nonneglible population of DNS systems lack
+       have been.  While a non-negligible population of DNS systems lack
        EDNS0 or may still fall back to TCP for some transactions, DNS
        over TCP transactions remain a very small fraction of overall
        DNS traffic <xref target="VERISIGN"></xref>.  Nevertheless, some
