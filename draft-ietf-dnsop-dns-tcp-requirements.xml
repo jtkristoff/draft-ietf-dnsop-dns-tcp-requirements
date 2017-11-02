@@ -269,20 +269,8 @@
        might otherwise have been.  While a non-negligible population of
        DNS systems lack EDNS0 or may still fall back to TCP for some
        transactions, DNS over TCP transactions remain a very small
-       fraction of overall DNS traffic <xref target="VERISIGN"></xref>.
-       Nevertheless, some average increase in DNS message size, the
-       continued development of new DNS features and a denial of service
-       mitigation technique (see <xref target="Security"></xref>) have
-       suggested that DNS over TCP transactions are as important to the
-       correct and safe operation of the Internet DNS as ever, if not
-       more so.  Furthermore, there has been serious research that has
-       suggested connection-oriented DNS transactions may provide
-       security and privacy advantages over UDP transport <xref
-       target="TDNS"></xref>.  In fact, <xref target="RFC7858"></xref>,
-       a Standards Track document is just this sort of specification.
-       Therefore, it might be desirable for network operators to avoid
-       artificially inhibiting the potential utility and advances in the
-       DNS such as these.</t>
+       fraction of overall DNS traffic <xref
+       target="VERISIGN"></xref>.</t>
      </section>
 
      <section title="Fragmentation and Truncation">
@@ -366,23 +354,37 @@
    </section>
 
    <section title="DNS over TCP Requirements">
+     <t>An average increase in DNS message size,<!--XXX: cite needed-->
+     the continued development of new DNS features and a denial of
+     service mitigation technique (see <xref target="Security"></xref>)
+     have suggested that DNS over TCP transactions are as important to
+     the correct and safe operation of the Internet DNS as ever, if not
+     more so.  Furthermore, there has been serious research that has
+     suggested connection-oriented DNS transactions may provide
+     security and privacy advantages over UDP transport <xref
+     target="TDNS"></xref>.  In fact, <xref target="RFC7858"></xref>,
+     a Standards Track document is just this sort of specification.
+     Therefore, it might be desirable for network operators to avoid
+     artificially inhibiting the potential utility and advances in the
+     DNS such as these.</t>
+
      <t>Section 6.1.3.2 in <xref target="RFC1123" /> is updated: All
      general-purpose DNS servers MUST be able to service both UDP and
      TCP queries.
        <list hangIndent="10" style="symbols">
          <t>Authoritative servers MUST service TCP queries so that they
-	 do not limit the size of responses to what fits in a single UDP
-	 packet.</t>
+         do not limit the size of responses to what fits in a single UDP
+         packet.</t>
          <t>Recursive servers (or forwarders) MUST service TCP queries
-	 so that they do not prevent large responses from a TCP-capable
-	 server from reaching its TCP-capable clients.</t>
+         so that they do not prevent large responses from a TCP-capable
+         server from reaching its TCP-capable clients.</t>
        </list>
      Regarding the choice of limiting the resources a server devotes to
      queries, Section 6.1.3.2 in <xref target="RFC1123" /> also says:
        <list hangIndent="10" style="empty">
          <t>A name server MAY limit the resources it devotes to TCP
          queries, but it SHOULD NOT refuse to service a TCP query just
-	 because it would have succeeded with UDP.</t>
+         because it would have succeeded with UDP.</t>
        </list>
      This requirement is hereby updated: A name server MAY limit the
      the resources it devotes to queries, but it MUST NOT refuse to
@@ -408,7 +410,6 @@
    </section>
 
    <section title="DNS over TCP Filtering Risks">
-
      <t>Networks that filter DNS over TCP risk losing access to
      significant or important pieces of the DNS name space.  For a
      variety of reasons a DNS answer may require a DNS over TCP query.
