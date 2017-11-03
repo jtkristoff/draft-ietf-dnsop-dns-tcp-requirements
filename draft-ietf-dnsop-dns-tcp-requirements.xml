@@ -32,6 +32,8 @@
   <!ENTITY RFC5961 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5961.xml">
   <!-- Child-to-Parent Synchronization in DNS -->
   <!ENTITY RFC7477 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7477.xml">
+  <!-- Root Name Service Requirements -->
+  <!ENTITY RFC7720 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7720.xml">
   <!-- DNS Transport over TCP - Implementation Requirements -->
   <!ENTITY RFC7766 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7766.xml">
   <!-- The edns-tcp-keepalive EDNS0 Option -->
@@ -563,6 +565,7 @@
      &RFC5927;
      &RFC5961;
      &RFC7477;
+     &RFC7720;
      &RFC7766;
      &RFC7828;
      &RFC7858;
@@ -734,6 +737,12 @@
        Since this protocol may require multiple requests and responses,
        it recommends utilizing DNS over TCP to ensure the conversation
        takes place between a consistent pair of end nodes.</t>
+     </section>
+
+     <section title="IETF RFC 7720 - DNS Root Name Service Protocol and Deployment Requirements">
+       <t>This best current practice<xref target="RFC7720"></xref>
+       declares root name service "MUST support UDP [RFC768] and TCP
+       [RFC793] transport of DNS queries and responses."</t>
      </section>
 
      <section title="IETF RFC 7766 - DNS Transport over TCP - Implementation Requirements">
