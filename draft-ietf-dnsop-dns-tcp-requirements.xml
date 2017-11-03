@@ -752,6 +752,15 @@
        between implementations that support this option.</t>
      </section>
 
+     <section title="IETF RFC 7858 - Specification for DNS over Transport Layer Security (TLS)">
+       <t>This standards track document <xref target="RFC7858"></xref>
+       defines a method for putting DNS messages into a TCP-based
+       encrypted channel using TLS.  This specification is noteworthy
+       for explicitly targetting the stub-to-recursive traffic, but
+       does not preclude its application from recursive-to-authoritative
+       traffic.</> 
+     </section>
+
      <section title="IETF RFC 7873 - Domain Name System (DNS) Cookies">
        <t>This standards track document <xref target="RFC7873"></xref>
        describes an EDNS0 option to provide additional protection
