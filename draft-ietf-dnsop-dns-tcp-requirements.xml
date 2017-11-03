@@ -569,7 +569,7 @@
      &RFC7873;
      &RFC7901;
      &RFC8027;
-     &RFC8094
+     &RFC8094;
      &RFC8162;
 
      <!-- A reference written by by an organization not a person. -->
@@ -758,7 +758,7 @@
        encrypted channel using TLS.  This specification is noteworthy
        for explicitly targetting the stub-to-recursive traffic, but
        does not preclude its application from recursive-to-authoritative
-       traffic.</> 
+       traffic.</t> 
      </section>
 
      <section title="IETF RFC 7873 - Domain Name System (DNS) Cookies">
@@ -797,7 +797,7 @@
      </section>
 
      <section title="IETF RFC 8094 - DNS over Datagram Transport Layer Security (DTLS)">
-       <t>This experimental specification <xref target="RFC8094"><xref>
+       <t>This experimental specification <xref target="RFC8094"></xref>
        details a protocol that uses a datagram transport (UDP), but
        stipulates that "DNS clients and servers that implement DNS over
        DTLS MUST also implement DNS over TLS in order to provide privacy
