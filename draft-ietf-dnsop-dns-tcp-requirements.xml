@@ -44,6 +44,8 @@
   <!ENTITY RFC7901 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7901.xml">
   <!-- DNSSEC Roadblock Avoidance -->
   <!ENTITY RFC8027 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8027.xml">
+  <!-- DNS over DTLS -->
+  <!ENTITY RFC8094 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8094.xml">
   <!-- DNS-Based Authentication for S/MIME -->
   <!ENTITY RFC8162 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8162.xml">
 
@@ -567,6 +569,7 @@
      &RFC7873;
      &RFC7901;
      &RFC8027;
+     &RFC8094
      &RFC8162;
 
      <!-- A reference written by by an organization not a person. -->
@@ -782,6 +785,16 @@
        due to "non-compliant infrastructure" and is of type BCP, the
        scope of the document is limited to detection and mitigation
        techniques to avoid so-called DNSSEC roadblocks.</t>
+     </section>
+
+     <section title="IETF RFC 8094 - DNS over Datagram Transport Layer Security (DTLS)">
+       <t>This experimental specification <xref target="RFC8094"><xref>
+       details a protocol that uses a datagram transport (UDP), but
+       stipulates that "DNS clients and servers that implement DNS over
+       DTLS MUST also implement DNS over TLS in order to provide privacy
+       for clients that desire Strict Privacy [...]".  This requirement
+       implies DNS over TCP must be supported in case the message size
+       is larger than the path MTU.</t>
      </section>
 
      <section title="IETF RFC 8162 - Using Secure DNS to Associate Certificates with Domain Names for S/MIME">
