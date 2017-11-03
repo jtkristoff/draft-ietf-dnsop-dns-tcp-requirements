@@ -44,6 +44,8 @@
   <!ENTITY RFC7901 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7901.xml">
   <!-- DNSSEC Roadblock Avoidance -->
   <!ENTITY RFC8027 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8027.xml">
+  <!-- DNS-Based Authentication for S/MIME -->
+  <!ENTITY RFC8162 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8162.xml">
 
   <!ENTITY RFC2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
   <!ENTITY RFC2629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2629.xml">
@@ -565,6 +567,7 @@
      &RFC7873;
      &RFC7901;
      &RFC8027;
+     &RFC8162;
 
      <!-- A reference written by by an organization not a person. -->
 
@@ -781,6 +784,16 @@
        techniques to avoid so-called DNSSEC roadblocks.</t>
      </section>
 
+     <section title="IETF RFC 8162 - Using Secure DNS to Associate Certificates with Domain Names for S/MIME">
+       <t>This experimental specification <xref target="RFC8162"></xref>
+       describes a technique to authenticate user X.509 certificates
+       in an S/MIME system via the DNS.  The document points out that
+       the new experimental resource record types are expected to carry
+       large payloads, resulting in the suggestion that "applications
+       SHOULD use TCP -- not UDP -- to perform queries for the SMIMEA
+       resource record."</t>
+     </section>
+ 
    </section>
 
  </back>
