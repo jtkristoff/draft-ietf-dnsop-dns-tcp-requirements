@@ -374,6 +374,12 @@
      artificially inhibiting the potential utility and advances in the
      DNS such as these.</t>
 
+     <t>TODO: I think the text below needs some work/discussion
+     because 7766 already updated 1123 in a very similar way except
+     that 7766 speaks of "implment" and this one speaks of "service".
+     1123 speaks of "support" and doesn't distinguish between
+     implement/service.</t>
+
      <t>Section 6.1.3.2 in <xref target="RFC1123" /> is updated: All
      general-purpose DNS servers MUST be able to service both UDP and
      TCP queries.
@@ -410,9 +416,35 @@
    </section>
 
    <section title="Network and System Considerations">
-     <t>TODO: refer to IETF RFC 7766 connection handling discussion,
-     various TCP hardening documents, network operator protocol and
-     traffic best practices, etc.</t>
+
+   <t>This section describes measures that systems and applications can take to protect
+   themselves from TCP-based resource exhaustion and attacks.</t>
+
+     <section title="Connection Admission">
+       <t>SYN cookies in the operating system</t>
+       <t>ACLs, preferably in the network or at least before the application</t>
+       <t>Maybe consider dns_accf(9) on BSD</t>
+       <t>Realize that TCP may happen before UDP</t>
+       <t>As server, TFO shared keys</t>
+       <t>As client, enable TFO</t>
+     </section>
+
+     <section title="Connection Management">
+       <t>balance opportunity for connection reuse with risk of resource exhaustion.  Maybe implies dynamic.</t>
+       <t>Limit total number of TCP connections</t>
+       <t>Limit connections per IP or subnet</t>
+       <t>Sensible idle timeout</t>
+       <t>Limit number of transactions per connection</t>
+       <t>Limit total connection duration</t>
+       <t>As client, be prepared to retry</t>
+       <t>Reference 7828 EDNS0 TCP keepalive</t>
+     </section>
+
+     <section title="Connection Termination">
+       <t>Preferable for client to close connection and be in TIME_WAIT state</t>
+       <t>As server, be more agressive as resource capacity drops</t>
+     </section>
+
    </section>
 
    <section title="DNS over TCP Filtering Risks">
@@ -466,6 +498,10 @@
        negligible, any DNS server that is unable to receive large DNS over
        UDP messages or perform DNS over TCP may experience severe
        disruption of DNS service if performing DNSSEC validation.</t>
+
+       <t>TODO: Is this "overcome by events" now?  We've had 1414
+       byte DNSKEY responses at the three ZSK rollover periods since
+       KSK-2017 became published in the root zone.</t>
      </section>
 
      <section title="DNS-over-TLS">
