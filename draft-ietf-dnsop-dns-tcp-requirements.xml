@@ -417,16 +417,56 @@
 
    <section title="Network and System Considerations">
 
-   <t>This section describes measures that systems and applications can take to protect
-   themselves from TCP-based resource exhaustion and attacks.</t>
+   <t>This section describes measures that systems and applications
+   can take to optimize performance over TCP and to protect themselves
+   from TCP-based resource exhaustion and attacks.</t>
 
      <section title="Connection Admission">
-       <t>SYN cookies in the operating system</t>
-       <t>ACLs, preferably in the network or at least before the application</t>
-       <t>Maybe consider dns_accf(9) on BSD</t>
-       <t>Realize that TCP may happen before UDP</t>
-       <t>As server, TFO shared keys</t>
-       <t>As client, enable TFO</t>
+
+       <t>The SYN flooding attack is a denial-of-service method
+       affecting hosts that run TCP server processes <xref
+       target="RFC4987"/>.  This attack can be very effective if
+       not mitigated.  One of the most effective mitigation techniques
+       is SYN cookies, which allows the server to avoid allocating
+       any state until the successful completion of the three-way
+       handshake.</t>
+
+       <t>Services not intended for use by the public Internet,
+       such as most recursive name servers, SHOULD be protected
+       with access controls.  Ideally these controls are placed in
+       the network, well before before any unwanted TCP packets can
+       reach the DNS server host or application.  If this is not
+       possible, the controls can be placed in the application
+       itself.  In some situations (e.g. attacks) it may be necessary
+       to deploy access controls for DNS services that should
+       otherwise be globally reachable.</t>
+
+       <t>The FreeBSD operating system has an "accept filter" feature
+       that postpones delivery of TCP connections to applications
+       until a complete, valid request has been received.  The
+       dns_accf(9) filter ensures that a valid DNS message is
+       received.  If not, the bogus connection never reaches the
+       application.  Applications must be coded and configured to
+       make use of this filter.</t>
+
+       <t>Per <xref target="RFC7766">, applications and administrators
+       are advised to remember that TCP MAY be used before sending
+       any UDP queries.  Networks and applications MUST NOT be configured
+       to refuse TCP queries that were not prceeded by a UDP query.</t>
+
+       <t>TCP Fast Open <xref target="RFC7413"/> (TFO) allows TCP
+       clients to shorten the handshake for subsquent connections
+       to the same server.  TFO saves one round-trip time in the
+       connection setup.  DNS servers SHOULD enable TFO when possible.
+       Furthermore, DNS servers clustered behind a single service
+       address (e.g., anycast or load-balancing), SHOULD use the
+       same TFO server key on all instances.</t>
+
+       <t>DNS clients SHOULD also enable TFO when possible.  Currently,
+       on some operating systems it is disabled by default. TODO:
+       remember what, if any, client and server applications need
+       to do to enable TFO.  A setsockopt()?</t>
+
      </section>
 
      <section title="Connection Management">
