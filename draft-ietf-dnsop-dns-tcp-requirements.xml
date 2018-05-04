@@ -472,14 +472,53 @@
      </section>
 
      <section title="Connection Management">
-       <t>balance opportunity for connection reuse with risk of resource exhaustion.  Maybe implies dynamic.</t>
-       <t>Limit total number of TCP connections</t>
-       <t>Limit connections per IP or subnet</t>
-       <t>Sensible idle timeout</t>
-       <t>Limit number of transactions per connection</t>
-       <t>Limit total connection duration</t>
-       <t>As client, be prepared to retry</t>
-       <t>Reference 7828 EDNS0 TCP keepalive</t>
+
+       <t>Since host memory for TCP state is a finite resource, DNS
+       servers MUST actively manage their connections.  Applications
+       that do not actively manage their connections
+       can encounter resource exhaustion leading to denial of
+       service.  For DNS, as in other protocols, there is a tradeoff
+       between keeping connections open for potential future use and
+       the need to free up resources for new connections that will arrive.</t>
+
+       <t>DNS server software SHOULD provide a configurable limit
+       on the total number of established TCP connections.  If the
+       limit is reached, the application is expected to either close
+       existing (idle) connections or refuse new connections.
+       Operators SHOULD ensure the limit is configured appropriately
+       for their particular situation.</t>
+
+       <t>DNS server software MAY provide a configurable limit on
+       the number of established connections per source IP address
+       or subnet.  This can be used to ensure that a single or small
+       set of users can not consume all TCP resources and deny
+       service to other users.  Operators SHOULD ensure this limit
+       is configured appropriately, based on their number of diversity
+       of users.</t>
+
+       <t>DNS server software SHOULD provide a configurable timeout
+       for idle TCP connections.  For very busy name servers this
+       might be set to a low value, such as a few seconds.  For
+       less busy servers it might be set to a higher value, such
+       as tens of seconds.  DNS clients and servers SHOULD signal
+       their timeout values using the edns-tcp-keepalive option
+       <xref target="RFC7828"/>.</t>
+
+       <t>DNS server software MAY provide a configurable limit on
+       the number of transactions per TCP connection. This document
+       does not offer advice on particular values for such a
+       limit.</t>
+
+       <t>Similarly, DNS server software MAY provide a configurable
+       limit on the total duration of a TCP connection.  This
+       document does not offer advice on particular values for such
+       a limit.</t>
+
+       <t>Since clients may not be aware of server-imposed limits,
+       clients utilizing TCP for DNS need to always be prepared to
+       re-establish connections or otherwise retry outstanding
+       queries.</t> <!-- language lifted from RFC7766 -->
+
      </section>
 
      <section title="Connection Termination">
