@@ -449,7 +449,7 @@
        application.  Applications must be coded and configured to
        make use of this filter.</t>
 
-       <t>Per <xref target="RFC7766">, applications and administrators
+       <t>Per <xref target="RFC7766"/>, applications and administrators
        are advised to remember that TCP MAY be used before sending
        any UDP queries.  Networks and applications MUST NOT be configured
        to refuse TCP queries that were not prceeded by a UDP query.</t>
