@@ -30,6 +30,8 @@
   <!ENTITY RFC5927 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5927.xml">
   <!-- Improving TCP's Robustness to Blind In-Window Attacks -->
   <!ENTITY RFC5961 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5961.xml">
+  <!-- TCP Fast Open -->
+  <!ENTITY RFC7413 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7413.xml">
   <!-- Child-to-Parent Synchronization in DNS -->
   <!ENTITY RFC7477 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7477.xml">
   <!-- Root Name Service Requirements -->
@@ -463,9 +465,9 @@
        same TFO server key on all instances.</t>
 
        <t>DNS clients SHOULD also enable TFO when possible.  Currently,
-       on some operating systems it is disabled by default. TODO:
-       remember what, if any, client and server applications need
-       to do to enable TFO.  A setsockopt()?</t>
+       on some operating systems it is not implemented or disabled by default.
+       <xref target="WIKIPEDIA_TFO"/> describes applications and operating systems
+       that support TFO.</t>
 
      </section>
 
@@ -640,6 +642,7 @@
      &RFC4987;
      &RFC5927;
      &RFC5961;
+     &RFC7413;
      &RFC7477;
      &RFC7720;
      &RFC7766;
@@ -792,6 +795,16 @@
 	  <date year="2015" month="December" day="18"/>
 	</front>
 	<format type="PDF" target="https://www.iana.org/reports/2016/root-ksk-rollover-design-20160307.pdf"/>
+     </reference>
+
+     <reference anchor="WIKIPEDIA_TFO" target="https://en.wikipedia.org/wiki/TCP_Fast_Open">
+	<front>
+	  <title>TCP Fast Open</title>
+	  <author>
+	    <organization>Wikipedia</organization>
+	  </author>
+	  <date year="2018" month="May" day="4"/>
+	</front>
      </reference>
 
    </references>
