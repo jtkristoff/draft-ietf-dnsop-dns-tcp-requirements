@@ -378,7 +378,7 @@
 
      <t>TODO: I think the text below needs some work/discussion
      because 7766 already updated 1123 in a very similar way except
-     that 7766 speaks of "implment" and this one speaks of "service".
+     that 7766 speaks of "implement" and this one speaks of "service".
      1123 speaks of "support" and doesn't distinguish between
      implement/service.</t>
 
@@ -454,10 +454,10 @@
        <t>Per <xref target="RFC7766"/>, applications and administrators
        are advised to remember that TCP MAY be used before sending
        any UDP queries.  Networks and applications MUST NOT be configured
-       to refuse TCP queries that were not prceeded by a UDP query.</t>
+       to refuse TCP queries that were not preceded by a UDP query.</t>
 
        <t>TCP Fast Open <xref target="RFC7413"/> (TFO) allows TCP
-       clients to shorten the handshake for subsquent connections
+       clients to shorten the handshake for subsequent connections
        to the same server.  TFO saves one round-trip time in the
        connection setup.  DNS servers SHOULD enable TFO when possible.
        Furthermore, DNS servers clustered behind a single service
@@ -523,7 +523,7 @@
 
      <section title="Connection Termination">
        <t>Preferable for client to close connection and be in TIME_WAIT state</t>
-       <t>As server, be more agressive as resource capacity drops</t>
+       <t>As server, be more aggressive as resource capacity drops</t>
      </section>
 
    </section>
