@@ -627,12 +627,25 @@
    </section>
 
    <section title="Logging and Monitoring">
-     <t>TODO: Developers of applications that log or monitor DNS are
-     advised to not ignore TCP because it is hard.  Also be prepared
-     for connection reuse, pipelining, and out-of-order responses.
-     If using packet-based (e.g. libpcap) collection techniques,
-     the application must be prepared to implement/perform TCP
-     segment reassembly.</t>
+     <t>Developers of applications that log or monitor DNS are
+     advised to not ignore TCP because it is rarely used or because
+     it is hard to process.  Operators are advised to ensure that
+     their monitoring and logging applications properly capture
+     DNS-over-TCP messages.  Otherwise, attacks, exfiltration
+     attemps, and normal traffic may got undetected.</t>
+
+     <t>DNS messages over TCP are in no way guaranteed to arrive
+     in single segments.  In fact, a clever attacker may attempt
+     to hide certain messages by forcing them over very small TCP
+     segments.  Applications that capture network packets (e.g.,
+     with libpcap) should be prepared to implement and perform full
+     TCP segment reassembly.  dnscap <xref target="dnscap"/> is an
+     open-source example of a DNS logging program that implements
+     TCP reassembly.</t>
+
+     <t>Developers should also keep in mind connection reuse,
+     pipelining, and out-of-order responses when building and testing
+     DNS monitoring applications.</t>
    </section>
 
    <section anchor="Acknowledgments" title="Acknowledgments">
@@ -890,6 +903,16 @@
           <author fullname="Bill Fenner" initials="B." surname="Fenner"/>
           <author fullname="Andrew M. Rudoff" initials="A.M." surname="Rudoff"/>
 	  <date year="2003" month="November" day="21"/>
+	</front>
+     </reference>
+
+     <reference anchor="dnscap" target="https://www.dns-oarc.net/tools/dnscap">
+	<front>
+	  <title>DNSCAP</title>
+	  <author>
+	    <organization>DNS-OARC</organization>
+	  </author>
+	  <date year="2018" month="May" day="7"/>
 	</front>
      </reference>
 
