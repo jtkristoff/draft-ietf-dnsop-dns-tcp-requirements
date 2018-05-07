@@ -26,6 +26,8 @@
   <!ENTITY RFC4953 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4953.xml">
   <!-- TCP SYN Flooding Attacks and Common Mitigations -->
   <!ENTITY RFC4987 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4987.xml">
+  <!-- Transport Layer Security (TLS) Session Resumption without Server-Side State-->
+  <!ENTITY RFC5077 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5077.xml">
   <!-- ICMP Attacks against TCP -->
   <!ENTITY RFC5927 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5927.xml">
   <!-- Improving TCP's Robustness to Blind In-Window Attacks -->
@@ -46,6 +48,8 @@
   <!ENTITY RFC7873 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7873.xml">
   <!-- CHAIN Query Requests in DNS -->
   <!ENTITY RFC7901 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7901.xml">
+  <!-- TLS False Start -->
+  <!ENTITY RFC7918 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7918.xml">
   <!-- DNSSEC Roadblock Avoidance -->
   <!ENTITY RFC8027 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8027.xml">
   <!-- DNS over DTLS -->
@@ -603,7 +607,21 @@
      </section>
 
      <section title="DNS-over-TLS">
-       <t>TODO: DNS-over-TLS</t>
+       <t>DNS messages may be sent over TLS to provide privacy
+       between stubs and recursive resolvers. <xref target="RFC7858"/>
+       is a standards track document describing how this works.
+       Although it utilizes TCP port 853 instead of port 53, this
+       document applies equally well to DNS-over-TLS.  Note, however,
+       DNS-over-TLS is currently only defined between stubs and
+       recursives.</t>
+
+       <t>The use of TLS places even strong operatational burdens
+       on DNS clients and servers.  Cryptographic functions for
+       authentication and encryption require additional processing.
+       Unoptimized connection setup takes two additional round-trips
+       compared to TCP, but can be reduced with Fast TLS connection
+       resumption <xref target="RFC5077"/> and TLS False Start <xref
+       target="RFC7918"/>.</t>
      </section>
 
    </section>
@@ -696,6 +714,7 @@
      <!-- &RFC2629; -->
      &RFC4953;
      &RFC4987;
+     &RFC5077;
      &RFC5927;
      &RFC5961;
      &RFC7413;
@@ -706,6 +725,7 @@
      &RFC7858;
      &RFC7873;
      &RFC7901;
+     &RFC7918;
      &RFC8027;
      &RFC8094;
      &RFC8162;
