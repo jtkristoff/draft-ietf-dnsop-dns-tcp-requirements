@@ -522,8 +522,25 @@
      </section>
 
      <section title="Connection Termination">
-       <t>Preferable for client to close connection and be in TIME_WAIT state</t>
-       <t>As server, be more aggressive as resource capacity drops</t>
+
+       <t>In general, it is preferable for clients to initiate the
+       close of a TCP connection.  The TCP peer that initiates a
+       connection close retains the socket in the TIME_WAIT state
+       for some amount of time, possibly a few minutes.  On a busy
+       server, the accumulation of many sockets in TIME_WAIT can
+       cause performance problems or even denial of service.</t>
+
+       <t>On systems where large numbers of sockets in TIME_WAIT
+       are observed, it may be beneficial to tune the local TCP
+       parameters.  For example, the Linux kernel provides a number
+       of "sysctl" parameters related to TIME_WAIT, such as
+       net.ipv4.tcp_fin_timeout, net.ipv4.tcp_tw_recycle, and
+       net.ipv4.tcp_tw_reuse.  In extreme cases, implementors and
+       operators of very busy servers may find it necessary to
+       utilize the SO_LINGER socket option (<xref target="Stevens"/> Section
+       7.5) with a value of zero so that the server doesn't accumlate
+       TIME_WAIT sockets.</t>
+
      </section>
 
    </section>
@@ -843,6 +860,16 @@
 	    <organization>Wikipedia</organization>
 	  </author>
 	  <date year="2018" month="May" day="4"/>
+	</front>
+     </reference>
+
+     <reference anchor="Stevens">
+	<front>
+	  <title>UNIX Network Programming Volume 1, Third Edition: The Sockets Networking API</title>
+	  <author fullname="W. Richard Stevens" initials="W.R." surname="Stevens"/>
+          <author fullname="Bill Fenner" initials="B." surname="Fenner"/>
+          <author fullname="Andrew M. Rudoff" initials="A.M." surname="Rudoff"/>
+	  <date year="2003" month="November" day="21"/>
 	</front>
      </reference>
 
