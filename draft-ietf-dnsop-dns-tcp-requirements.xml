@@ -542,7 +542,7 @@
        net.ipv4.tcp_tw_reuse.  In extreme cases, implementors and
        operators of very busy servers may find it necessary to
        utilize the SO_LINGER socket option (<xref target="Stevens"/> Section
-       7.5) with a value of zero so that the server doesn't accumlate
+       7.5) with a value of zero so that the server doesn't accumulate
        TIME_WAIT sockets.</t>
 
      </section>
@@ -615,7 +615,7 @@
        DNS-over-TLS is currently only defined between stubs and
        recursives.</t>
 
-       <t>The use of TLS places even strong operatational burdens
+       <t>The use of TLS places even strong operational burdens
        on DNS clients and servers.  Cryptographic functions for
        authentication and encryption require additional processing.
        Unoptimized connection setup takes two additional round-trips
@@ -632,7 +632,7 @@
      it is hard to process.  Operators are advised to ensure that
      their monitoring and logging applications properly capture
      DNS-over-TCP messages.  Otherwise, attacks, exfiltration
-     attemps, and normal traffic may got undetected.</t>
+     attempts, and normal traffic may got undetected.</t>
 
      <t>DNS messages over TCP are in no way guaranteed to arrive
      in single segments.  In fact, a clever attacker may attempt
