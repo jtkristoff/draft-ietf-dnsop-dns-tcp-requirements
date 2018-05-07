@@ -587,8 +587,8 @@
 
      <section title="DNS Root Zone KSK Rollover">
        <t>Recent plans for a new root zone DNSSEC KSK have highlighted
-       a potential problem in retrieving the keys.<xref
-       target="LEWIS"></xref>  Some packets in the KSK rollover process
+       a potential problem in retrieving the keys <xref
+       target="LEWIS"></xref>.  Some packets in the KSK rollover process
        will be larger than 1280 bytes, the IPv6 minimum MTU for links
        carrying IPv6 traffic.<xref target="RFC2460"></xref>  While
        studies have shown that problems due to fragment filtering or an
