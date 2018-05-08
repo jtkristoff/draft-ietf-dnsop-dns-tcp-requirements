@@ -162,8 +162,8 @@
 
    <abstract>
      <t>This document encourages the practice of permitting DNS messages to
-     be carried over TCP on the Internet.  It also describes some of the
-     consequences of this behavior and the potential operational issues
+     be carried over TCP on the Internet.  It also considers the consequences
+     with this form of DNS communication and the potential operational issues
      that can arise when this best common practice is not upheld.</t>
    </abstract>
  </front>
@@ -217,9 +217,9 @@
          </t>
        </list>
        and further stipulated:<list hangIndent="10" style="empty">
-         <t>A name server MAY limit the resources it devotes to TCP
+         <t>"A name server MAY limit the resources it devotes to TCP
          queries, but it SHOULD NOT refuse to service a TCP query just
-         because it would have succeeded with UDP.</t>
+         because it would have succeeded with UDP."</t>
        </list>
        </t>
 
@@ -400,9 +400,9 @@
      Regarding the choice of limiting the resources a server devotes to
      queries, Section 6.1.3.2 in <xref target="RFC1123" /> also says:
        <list hangIndent="10" style="empty">
-         <t>A name server MAY limit the resources it devotes to TCP
+         <t>"A name server MAY limit the resources it devotes to TCP
          queries, but it SHOULD NOT refuse to service a TCP query just
-         because it would have succeeded with UDP.</t>
+         because it would have succeeded with UDP."</t>
        </list>
      This requirement is hereby updated: A name server MAY limit the
      the resources it devotes to queries, but it MUST NOT refuse to
