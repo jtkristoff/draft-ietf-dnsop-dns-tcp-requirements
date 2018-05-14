@@ -194,6 +194,13 @@
    </section>
 
    <section title="Background">
+     <t>The curious state of disagreement in operational best practices and
+     guidance for DNS transport protocols derives from conflicting messages
+     operators have gotten from other operators, implementors, and even the
+     IETF.  Sometimes these mixed signals have been explicit, on other
+     occasions they have suspiciously implicit.  Here we summarize our
+     interpretation of the storied and conflicting history that has brought
+     us to this document.</t>
 
      <section title="Uneven Transport Usage and Preference">
        <t>In the original suite of DNS specifications, <xref
