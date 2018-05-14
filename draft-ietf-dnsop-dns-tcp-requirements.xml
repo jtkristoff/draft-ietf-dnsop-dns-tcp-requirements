@@ -237,11 +237,11 @@
      </section>
 
      <section title="Waiting for Large Messages and Reliability">
-       <t>As stipulated in the original specifications, DNS messages
-       over UDP were restricted to a 512-byte message size.  However,
-       even while <xref target="RFC1123"></xref> made a clear preference
-       for UDP, it foresaw DNS over TCP becoming more popular in the
-       future:<list hangIndent="10" style="empty">
+       <t>In the original specifications, the maximum DNS over UDP message
+       size was enshrined at 512 bytes.  However, even while
+       <xref target="RFC1123"></xref> made a clear preference for UDP, it
+       foresaw DNS over TCP becoming more popular in the future to overcome
+       this limitation:<list hangIndent="10" style="empty">
          <t>"[...] it is also clear that some new DNS record types
          defined in the future will contain information exceeding the
          512 byte limit that applies to UDP, and hence will require
