@@ -263,8 +263,8 @@
        <t>Yet defying some expectations, DNS over TCP remained little
        used in real traffic across the Internet.  Dynamic updates saw
        little deployment between autonomous networks.  Around the time
-       DNSSEC was first defined, another new feature affecting DNS over
-       UDP helped solidify its dominance for message transactions.</t>
+       DNSSEC was first defined, another new feature helped solidify UDP's
+       transport dominance for message transactions.</t>
      </section>
 
      <section title="EDNS0">
