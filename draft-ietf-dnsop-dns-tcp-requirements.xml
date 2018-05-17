@@ -293,42 +293,41 @@
      </section>
 
      <section title="Fragmentation and Truncation">
-       <t>Although EDNS0 provides a way for endpoints to signal support
-       for DNS messages exceeding 512 bytes, the realities of
-       today's Internet mean large messages do not always get
-       through.  Any IP packet whose size exceeds the MTU of a
-       link it transits will be fragmented and then reassembled
-       by the receiving host.  Unfortunately, it is not uncommon
-       for middleboxes and firewalls to block IP fragments.  If
-       one or more fragments do not arrive, the application does
-       not receive the message and the request times out.</t>
+       <t>Although EDNS0 provides a way for endpoints to signal support for
+       DNS messages exceeding 512 bytes, the realities of a diverse and
+       inconsistently deployed Internet may result in some large messages
+       being unable to reach their destination.  Any IP datagram whose size
+       exceeds the MTU of a link it transits will be fragmented and then
+       reassembled by the receiving host.  Unfortunately, it is not uncommon
+       for middleboxes and firewalls to block IP fragments.  If one or more
+       fragments do not arrive, the application does not receive the message
+       and the request times out.</t>
 
-       <t>For IPv4-connected hosts, the de-facto MTU is the Ethernet
-       payload size of 1500 bytes.  This means that the largest
-       unfragmented UDP DNS message that can be sent over IPv4 is 1472
-       bytes.  For IPv6 the situation is a little more complicated.
-       First, IPv6 headers are 40 bytes (versus 20 in IPv4).  Second, it
-       seems as though some people have mis-interpreted IPv6's required
-       minimum MTU of 1280 as a required maximum.  Third, fragmentation
-       in IPv6 can only be done by the host originating the packet.  The
-       need to fragment is conveyed in an ICMPv6 "packet too big"
-       message.  The originating host indicates a fragmented packet with
-       IPv6 extension headers.  Unfortunately, it is quite common for
-       both ICMPv6 and IPv6 extension headers to be blocked by
-       middleboxes.  According to <xref target="HUSTON"/> some 35%
-       <!-- 3,592 / 10,115 --> of IPv6-capable recursive resolvers are
-       unable to receive a fragmented IPv6 packet.</t>
+       <t>For IPv4-connected hosts, the de-facto MTU is often the Ethernet
+       payload size of 1500 bytes.  This means that the largest unfragmented
+       UDP DNS message that can be sent over IPv4 is likely 1472 bytes.  For
+       IPv6, the situation is a little more complicated.  First, IPv6 headers
+       are 40 bytes (versus 20 without option in IPv4).  Second, it seems as
+       though some people have mis-interpreted IPv6's required minimum MTU of
+       1280 as a required maximum.  Third, fragmentation in IPv6 can only be
+       done by the host originating the datagram.  The need to fragment is
+       conveyed in an ICMPv6 "packet too big" message.  The originating host
+       indicates a fragmented datagram with IPv6 extension headers.
+       Unfortunately, it is quite common for both ICMPv6 and IPv6 extension
+       headers to be blocked by middleboxes.  According to
+       <xref target="HUSTON"/> some 35%<!-- 3,592 / 10,115 --> of IPv6-capable
+       recursive resolvers are unable to receive a fragmented IPv6 packet.</t>
 
        <t>The practical consequence of all this is that DNS requestors
        must be prepared to retry queries with different EDNS0 maximum
        message size values.  Administrators of BIND are likely to be 
        familiar with seeing "success resolving ... after reducing the
-       advertised EDNS0 UDP packet size to 512 octets" in their system
-       logs.</t>
+       advertised EDNS0 UDP packet size to 512 octets" messages in their
+       system logs.</t>
 
        <t>Often, reducing the EDNS0 UDP packet size leads to a
        successful response.  That is, the necessary data fits within the
-       smaller packet size.  However, when the data does not fit, the
+       smaller message size.  However, when the data does not fit, the
        server sets the truncated flag in its response, indicating the
        client should retry over TCP to receive the whole response.  This
        is undesirable from the client's point of view because it adds
@@ -350,8 +349,8 @@
      </section>
 
      <section title="&quot;Only Zone Transfers Use TCP&quot;">
-       <t>There are many in the DNS community who configure DNS over TCP
-       services and expect DNS over TCP transactions to occur without
+       <t>Today, the majority of the DNS community expects, or at least
+       has a desire, to see DNS over TCP transactions to occur without
        interference.  However there has also been a long held belief by
        some operators, particularly for security-related reasons, that
        DNS over TCP services should be purposely limited or not provided
