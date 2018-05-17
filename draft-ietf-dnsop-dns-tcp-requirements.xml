@@ -32,6 +32,8 @@
   <!ENTITY RFC5927 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5927.xml">
   <!-- Improving TCP's Robustness to Blind In-Window Attacks -->
   <!ENTITY RFC5961 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5961.xml">
+  <!-- Multicast DNS -->
+  <!ENTITY RFC6762 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6762.xml">
   <!-- Extension Mechanisms for DNS (EDNS (0))
   <!ENTITY RFC6891 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6891.xml">
   <!-- Architectural Considerations on Application Features in the DNS -->
@@ -740,6 +742,7 @@
      &RFC5077;
      &RFC5927;
      &RFC5961;
+     &RFC6762;
      &RFC6891;
      &RFC6950;
      &RFC7413;
@@ -925,6 +928,14 @@
      the DNS germane to this document.</t>
 
      <section title="TODO - additional, relevant RFCs">
+     </section>
+
+     <section title="IETF RFC 6762 - Multicast DNS">
+       <t>This standards track document <xref target="RFC6762"</xref> the
+       TC bit is deemed to have essentially the same meaning as described
+       in the original DNS specifications.  That is, if a response with the
+       TCP bit set is receiver "[...] the querier SHOULD reissue its query
+       using TCP in order to receive the larger response."</t>
      </section>
 
      <section title="IETF RFC 6950 - Architectural Considerations on Application Features in the DNS">
