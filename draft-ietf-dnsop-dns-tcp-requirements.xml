@@ -32,6 +32,8 @@
   <!ENTITY RFC5927 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5927.xml">
   <!-- Improving TCP's Robustness to Blind In-Window Attacks -->
   <!ENTITY RFC5961 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5961.xml">
+  <!-- Architectural Considerations on Application Features in the DNS -->
+  <!ENTITY RFC 6950 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.650.xml">
   <!-- TCP Fast Open -->
   <!ENTITY RFC7413 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7413.xml">
   <!-- Child-to-Parent Synchronization in DNS -->
@@ -636,7 +638,7 @@
      it is hard to process.  Operators are advised to ensure that
      their monitoring and logging applications properly capture
      DNS-over-TCP messages.  Otherwise, attacks, exfiltration
-     attempts, and normal traffic may got undetected.</t>
+     attempts, and normal traffic may go undetected.</t>
 
      <t>DNS messages over TCP are in no way guaranteed to arrive
      in single segments.  In fact, a clever attacker may attempt
@@ -693,6 +695,7 @@
    </section>
 
    <section anchor="Privacy" title="Privacy Considerations">
+     <t>TODO: Does this document warrant privacy considerations?</t>
    </section>
 
  </middle>
@@ -734,6 +737,7 @@
      &RFC5077;
      &RFC5927;
      &RFC5961;
+     &RFC6950
      &RFC7413;
      &RFC7477;
      &RFC7720;
@@ -917,6 +921,13 @@
      the DNS germane to this document.</t>
 
      <section title="TODO - additional, relevant RFCs">
+     </section>
+
+     <section title="IETF RFC 6950 - Architectural Considerations on Application Features in the DNS">
+       <t>An informational document <xref target="RFC6950"></xref> that draws
+       attention to large data in the DNS.  TCP is referenced in the
+       context as a common fallback mechnanism and counter to some spoofing
+       attacks.</t>
      </section>
 
      <section title="IETF RFC 7477 - Child-to-Parent Synchronization in DNS">
