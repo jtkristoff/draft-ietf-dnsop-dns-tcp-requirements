@@ -32,8 +32,10 @@
   <!ENTITY RFC5927 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5927.xml">
   <!-- Improving TCP's Robustness to Blind In-Window Attacks -->
   <!ENTITY RFC5961 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5961.xml">
+  <!-- Extension Mechanisms for DNS (EDNS (0))
+  <!ENTITY RFC6891 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6891.xml">
   <!-- Architectural Considerations on Application Features in the DNS -->
-  <!ENTITY RFC 6950 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.650.xml">
+  <!ENTITY RFC6950 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6950.xml">
   <!-- TCP Fast Open -->
   <!ENTITY RFC7413 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7413.xml">
   <!-- Child-to-Parent Synchronization in DNS -->
@@ -271,7 +273,8 @@
 
      <section title="EDNS0">
        <t>In 1999 the IETF published the Extension Mechanisms for DNS
-       (EDNS0) in <xref target="RFC2671"></xref>.  This document
+       (EDNS0) in <xref target="RFC2671"></xref> (superseded in 2013 by
+       an update in <xref target="RFC6891"></xref>).  This document
        standardized a way for communicating DNS nodes to perform
        rudimentary capabilities negotiation.  One such capability
        written into the base specification and present in every ENDS0
@@ -737,7 +740,8 @@
      &RFC5077;
      &RFC5927;
      &RFC5961;
-     &RFC6950
+     &RFC6891;
+     &RFC6950;
      &RFC7413;
      &RFC7477;
      &RFC7720;
