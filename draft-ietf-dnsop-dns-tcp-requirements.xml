@@ -38,7 +38,7 @@
   <!ENTITY RFC6304 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6304.xml">
   <!-- Multicast DNS -->
   <!ENTITY RFC6762 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6762.xml">
-  <!-- Extension Mechanisms for DNS (EDNS (0))
+  <!-- Extension Mechanisms for DNS (EDNS (0)) -->
   <!ENTITY RFC6891 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6891.xml">
   <!-- Architectural Considerations on Application Features in the DNS -->
   <!ENTITY RFC6950 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6950.xml">
@@ -953,7 +953,7 @@
      </section>
 
      <section title="IETF RFC 6762 - Multicast DNS">
-       <t>This standards track document <xref target="RFC6762"</xref> the
+       <t>This standards track document <xref target="RFC6762"></xref> the
        TC bit is deemed to have essentially the same meaning as described
        in the original DNS specifications.  That is, if a response with the
        TCP bit set is receiver "[...] the querier SHOULD reissue its query
