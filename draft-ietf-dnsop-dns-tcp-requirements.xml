@@ -382,9 +382,9 @@
      security and privacy advantages over UDP transport <xref
      target="TDNS"></xref>.  In fact, <xref target="RFC7858"></xref>,
      a Standards Track document is just this sort of specification.
-     Therefore, it might be desirable for network operators to avoid
-     artificially inhibiting the potential utility and advances in the
-     DNS such as these.</t>
+     Therefore, we now believe it is undesirable for network operators to
+     artificially inhibit the potential utility and advances in the DNS
+     such as these.</t>
 
      <t>TODO: I think the text below needs some work/discussion
      because 7766 already updated 1123 in a very similar way except
@@ -563,13 +563,11 @@
      mitigation techniques, or perhaps some future capability that is as
      yet unforeseen will also demand TCP transport.</t>
 
-     <t>For example, both <xref target="RFC7901"/> and <xref
-     target="draft-extra-answers"/> describe latency-avoiding
-     techniques that send extra data in DNS responses.  This makes
-     the responses larger and potentially damaging in DDoS reflection
-     attacks.  The former mandates the use of TCP or DNS Cookies
-     (<xref target="RFC7873"/>) and the latter offers it as a possibility
-     in Security Considerations.</t>
+     <t>For example, <xref target="RFC7901"/> describes a latency-avoiding
+     technique that sends extra data in DNS responses.  This makes
+     responses larger and potentially increases the risk of DDoS reflection
+     attacks.  The specification mandates the use of TCP or DNS Cookies
+     (<xref target="RFC7873"/>).</t>
 
      <t>Even if any or all particular answers have consistently been
      returned successfully with UDP in the past, this continued behavior
@@ -847,19 +845,6 @@
        </front>
        <seriesInfo name="NANOG 32" value="Reston, VA USA" />
      </reference>         
-
-     <reference anchor="draft-extra-answers">
-	<front>
-	  <title>Returning extra answers in DNS responses.</title>
-	  <author fullname="Warren Kumari" initials="W." surname="Kumari" />
-	  <author fullname="Zhiwei Yan" initials="Z." surname="Yan" />
-	  <author fullname="Wes Hardaker" initials="W." surname="Hardaker" />
-	  <author fullname="David Lawrence" initials="D." surname="Lawrence" />
-	  <date year="2017" month="July" day="3"/>
-	</front>
-	<seriesInfo name="Internet-Draft" value="draft-wkumari-dnsop-multiple-responses-05"/>
-	<format type="TXT" target="https://www.ietf.org/id/draft-wkumari-dnsop-multiple-responses-05.txt"/>
-     </reference>
 
      <reference anchor="HUSTON" target="https://blog.apnic.net/2017/08/22/dealing-ipv6-fragmentation-dns/">
 	<front>
