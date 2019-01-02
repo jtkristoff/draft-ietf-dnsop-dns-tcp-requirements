@@ -66,6 +66,14 @@
   <!ENTITY RFC8094 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8094.xml">
   <!-- DNS-Based Authentication for S/MIME -->
   <!ENTITY RFC8162 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8162.xml">
+  <!-- DNS Privacy, Authorization, Special Uses, Encoding, Characters, Matching, and Root Structure: Time for Another Look? -->
+  <!ENTITY RFC8324 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8324.xml">
+  <!-- Padding Policies for Extension Mechanisms for DNS (EDNS(0)) -->
+  <!ENTITY RFC8467 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8467.xml">
+  <!-- Yeti DNS Testbed -->
+  <!ENTITY RFC8483 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8483.xml">
+  <!-- DNS Queries over HTTPS (DoH) -->
+  <!ENTITY RFC8484 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8484.xml">
 
   <!ENTITY RFC2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
   <!ENTITY RFC2629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2629.xml">
@@ -97,7 +105,7 @@
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
 
-<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-02" ipr="trust200902" updates="1123">
+<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-03" ipr="trust200902" updates="1123">
  <!-- category values: std, bcp, info, exp, and historic
     ipr values: trust200902, noModificationTrust200902, noDerivativesTrust200902,
        or pre5378Trust200902
@@ -146,7 +154,7 @@
      </address>
    </author>
 
-   <date year="2018" />
+   <date year="2019" />
    <!-- If the month and year are both specified and are the current ones, xml2rfc will fill 
         in the current day for you. If only the current year is specified, xml2rfc will fill 
 	 in the current day and month for you. If the year is not the current one, it is 
@@ -763,6 +771,10 @@
      &RFC8027;
      &RFC8094;
      &RFC8162;
+     &RFC8324;
+     &RFC8467;
+     &RFC8483;
+     &RFC8484;
 
      <!-- A reference written by by an organization not a person. -->
 
@@ -1060,6 +1072,38 @@
        large payloads, resulting in the suggestion that "applications
        SHOULD use TCP -- not UDP -- to perform queries for the SMIMEA
        resource record."</t>
+     </section>
+
+     <section title="IETF RFC 8324 - DNS Privacy, Authorization, Special Uses, Encoding, Characters, Matching, and Root Structure: Time for Another Look?">
+       <t>An informational document <xref target="RFC8324"></xref> that
+       briefly discusses the common role and challenges of DNS over TCP
+       throughout the history of DNS.</t>
+     </section>
+
+     <section title="IETF RFC 8467 - Padding Policies for Extension Mechanisms for DNS (EDNS(0))">
+       <t>An experimental document <xref target="RFC8467"></xref>
+       reminds implementers to consider the underlying transport
+       protocol (e.g. TCP) when calculating the padding length when
+       artificially increasing the DNS message size with an EDNS(0)
+       padding option.</t>
+     </section>
+
+     <section title="IETF RFC 8483 - Yeti DNS Testbed">
+       <t>This informational document <xref target="RFC8483"></xref>
+       describes a testbed environment that highlights some DNS over TCP
+       behaviors, including issues involving packet fragmentation and
+       operational requirements for TCP stream assembly in order to
+       conduct DNS measurement and analysis.</t>
+     </section>
+
+     <section title="IETF RFC 8484 - DNS Queries over HTTPS (DoH)">
+       <t>This standards track document <xref target="RFC8484"></xref>
+       defines a protocol for sending DNS queries and responses over
+       HTTPS.  This specification assumes TLS and TCP for the underlying
+       security and transport layers respectively.  Self-described as a
+       a technique that more closely resembles a tunneling mechanism,
+       DoH nevertheless likely implies DNS over TCP in some sense if not
+       directly.</t>
      </section>
  
    </section>
