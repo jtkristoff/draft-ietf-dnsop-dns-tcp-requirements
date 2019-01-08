@@ -28,6 +28,8 @@
   <!ENTITY RFC4987 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4987.xml">
   <!-- Transport Layer Security (TLS) Session Resumption without Server-Side State-->
   <!ENTITY RFC5077 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5077.xml">
+  <!-- Design Choices When Expanding the DNS -->
+  <!ENTITY RFC5507 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5507.xml">
   <!-- DNS Proxy Implementation Guidelines -->
   <!ENTITY RFC5625 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5625.xml">
   <!-- ICMP Attacks against TCP -->
@@ -756,6 +758,7 @@
      &RFC4953;
      &RFC4987;
      &RFC5077;
+     &RFC5507;
      &RFC5625;
      &RFC5927;
      &RFC5936;
@@ -952,6 +955,16 @@
      the DNS germane to this document.</t>
 
      <section title="TODO - additional, relevant RFCs">
+     </section>
+
+     <section title="IETF RFC 5507 - Design Choices When Expanding the DNS">
+       <t>This information document <xref target="RFC5507"></xref> was
+       largely an attempt to dissuade new DNS data types from overloading the
+       TXT resource record type.  In so doing it summarizes the conventional
+       wisdom of DNS design and implementation practices.  The authors
+       suggest TCP overhead and stateful properties pose challenges compared
+       to UDP, and imply that UDP is generally preferred for performance and
+       robustness.</t>
      </section>
 
      <section title="IETF RFC 5625 - DNS Proxy Implementation Guidelines">
