@@ -961,7 +961,7 @@
      </section>
 
      <section title="IETF RFC 5452 - Measures for Making DNS More Resilient against Forged Answers">
-       <t>This informational document <xref target="RFC5452"></xref"> arose
+       <t>This informational document <xref target="RFC5452"></xref> arose
        as public DNS systems began to experience widespread abuse from spoofed
        queries, resulting in amplification and reflection attacks against
        unwitting victims.  One of the leading justifications for supporting
