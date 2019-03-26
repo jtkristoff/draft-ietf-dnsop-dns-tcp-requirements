@@ -193,6 +193,8 @@
      that can arise when this best common practice is not upheld.</t>
      <t>DPW from IETF104 tcpm presentation, there was a suggestion to
      mention DNS-over-TLS applicability very early in the draft.</t>
+     <t>DPW from IETF104 dnsop presentation, there was a suggestion
+     (Sara) to somehow include DSO here as well.</t>
    </abstract>
  </front>
 
@@ -510,6 +512,8 @@
        <t>DPW from IETF104 tcpm presentaiton, suggestions to say clients MAY
        enable TFO since there are some lingering TFO implementation issues
        at this time.</t>
+       <t>DPW from IETF104 dnsop -- some potential privacy concerns
+       with TFO, so MAY is better.</t>
 
      </section>
 
@@ -726,6 +730,10 @@
 
    <section anchor="Privacy" title="Privacy Considerations">
      <t>TODO: Does this document warrant privacy considerations?</t>
+   </section>
+
+   <section anchor="Examples" title="Examples">
+     <t>Suggestion from IETF104 to include example config snippets ala 7706.</t>
    </section>
 
  </middle>
