@@ -22,6 +22,8 @@
   <!ENTITY RFC2541 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2541.xml">
   <!-- Extension Mechanisms for DNS (EDNS0) -->
   <!ENTITY RFC2671 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2671.xml">
+  <!-- DNS extensions to Network Address Translators (DNS_ALG) -->
+  <!ENTITY RFC2694 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2694.xml">
   <!-- Indicating Resolver Support of DNSSEC -->
   <!ENTITY RFC3225 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3225.xml">
   <!-- DNSSEC and IPv6 A6 aware server/resolver message size requirements -->
@@ -777,6 +779,7 @@
      &RFC2460;
      &RFC2541;
      &RFC2671;
+     &RFC2694;
      <!-- &RFC2629; -->
      &RFC3225;
      &RFC3226;
@@ -983,7 +986,17 @@
      the DNS germane to this document.</t>
 
      <section title="TODO - additional, relevant RFCs">
-     <!-- RFC search for "dns", checked down to rfc3225 so far -->
+     <!-- RFC search for "dns", checked down to rfc2694 so far -->
+     </section>
+
+     <section title="IETF RFC 2694 - DNS extensions to Network Address Translators (DNS_ALG)">
+       <t> The information document <xref target="RFC2694"></xref>
+       enumerates considerations for network address translation (NAT)
+       middle boxes to properly handle DNS traffic.  This document is
+       noteworthy in its suggestion that DNS over TCP is "[t]ypically"
+       used for zone transfer requests, further evidence that helps
+       explain why DNS over TCP may often have been treated very
+       differently than DNS over UDP in operational networks.</t>
      </section>
 
      <section title="IETF RFC 3225 - Indicating Resolver Support of DNSSEC">
