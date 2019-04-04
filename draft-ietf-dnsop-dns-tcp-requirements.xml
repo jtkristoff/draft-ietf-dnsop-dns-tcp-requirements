@@ -82,6 +82,8 @@
   <!ENTITY RFC8483 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8483.xml">
   <!-- DNS Queries over HTTPS (DoH) -->
   <!ENTITY RFC8484 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8484.xml">
+  <!-- DNS Stateful Operations -->
+  <!ENTITY RFC8490 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8490.xml">
 
   <!ENTITY RFC2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
   <!ENTITY RFC2629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2629.xml">
@@ -800,6 +802,7 @@
      &RFC8467;
      &RFC8483;
      &RFC8484;
+     &RFC8490;
 
      <!-- A reference written by by an organization not a person. -->
 
@@ -1164,6 +1167,13 @@
        a technique that more closely resembles a tunneling mechanism,
        DoH nevertheless likely implies DNS over TCP in some sense if not
        directly.</t>
+     </section>
+
+     <section title="IETF RFC 8490 - DNS Stateful Operations">
+       <>This standards track document <xref target="RFC8490"></xref>
+       updates the base protocol specification with a new OPCODE to
+       help manage stateful operations in persistent sessions such
+       as those that might be used by DNS over TCP.</t>
      </section>
  
    </section>
