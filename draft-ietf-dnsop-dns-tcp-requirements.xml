@@ -22,6 +22,8 @@
   <!ENTITY RFC2541 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2541.xml">
   <!-- Extension Mechanisms for DNS (EDNS0) -->
   <!ENTITY RFC2671 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2671.xml">
+  <!-- Operational Considerations and Issues with IPv6 DNS -->
+  <!ENTITY RFC4472 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4472.xml">
   <!-- Defending TCP Against Spoofing Attacks -->
   <!ENTITY RFC4953 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4953.xml">
   <!-- TCP SYN Flooding Attacks and Common Mitigations -->
@@ -772,6 +774,7 @@
      &RFC2541;
      &RFC2671;
      <!-- &RFC2629; -->
+     &RFC4472;
      &RFC4953;
      &RFC4987;
      &RFC5077;
@@ -974,6 +977,17 @@
      the DNS germane to this document.</t>
 
      <section title="TODO - additional, relevant RFCs">
+     <!-- RFC search for "dns", checked down to rfc4472 so far -->
+
+     </section>
+
+     <section title="IETF RFC 4472 - Operational Considerations and Issues with IPv6 DNS">
+       <t>This informational document <xref target="RFC4472"></xref> notes
+       that IPv6 data may increase DNS responses beyond what would fit in
+       a UDP message.  Particularly noteworthy, perhaps less common today
+       then when this document was written, refers to implementations that
+       truncate data without setting the TC bit to encourge the client to
+       resend the query using TCP.</t>
      </section>
 
      <section title="IETF RFC 5452 - Measures for Making DNS More Resilient against Forged Answers">
