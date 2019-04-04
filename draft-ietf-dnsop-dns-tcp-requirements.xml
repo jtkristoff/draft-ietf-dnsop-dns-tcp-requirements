@@ -986,11 +986,11 @@
      the DNS germane to this document.</t>
 
      <section title="TODO - additional, relevant RFCs">
-     <!-- RFC search for "dns", checked down to rfc2694 so far -->
+     <!-- RFC search for "dns", checked down to rfc2671 so far -->
      </section>
 
      <section title="IETF RFC 2694 - DNS extensions to Network Address Translators (DNS_ALG)">
-       <t> The information document <xref target="RFC2694"></xref>
+       <t>The information document <xref target="RFC2694"></xref>
        enumerates considerations for network address translation (NAT)
        middle boxes to properly handle DNS traffic.  This document is
        noteworthy in its suggestion that DNS over TCP is "[t]ypically"
@@ -1082,6 +1082,13 @@
        in the original DNS specifications.  That is, if a response with the
        TCP bit set is receiver "[...] the querier SHOULD reissue its query
        using TCP in order to receive the larger response."</t>
+     </section>
+
+     <section title="IETF RFC 6891 - Extension Mechanisms for DNS (EDNS(0))">
+       <t>This standards track document <xref target="RFC6891"></xref>
+       helped slow the use and need for DNS over TCP messages.  This
+       document highlights concerns over server load and scalability in
+       widespread use of DNS over TCP.</t>
      </section>
 
      <section title="IETF RFC 6950 - Architectural Considerations on Application Features in the DNS">
