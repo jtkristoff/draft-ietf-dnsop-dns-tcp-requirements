@@ -983,8 +983,7 @@
      the DNS germane to this document.</t>
 
      <section title="TODO - additional, relevant RFCs">
-     <!-- RFC search for "dns", checked down to rfc3325 so far -->
-
+     <!-- RFC search for "dns", checked down to rfc3225 so far -->
      </section>
 
      <section title="IETF RFC 3225 - Indicating Resolver Support of DNSSEC">
@@ -993,14 +992,16 @@
        result of increased traffic, latency, and server load.  This
        document is a companion to the next document in the RFC
        series expressing the requirement for EDNS0 support for DNSSEC.</t>
+     </section>
 
      <section title="IETF RFC 3326 - DNSSEC and IPv6 A6 aware server/resolver message size requirements">
-       <t>The <xref target="RFC3226"></xref"> standards track document,
+       <t>The <xref target="RFC3226"></xref> standards track document,
        although updated by later DNSSEC strongly argued in favor of
        UDP messages over TCP largely for performance reasons.  The
        document declares EDNS0 a requirement for DNSSEC servers and
        advocated packet fragmentation may be preferable to TCP in
        certain situations</t>
+     </section>
 
      <section title="IETF RFC 4472 - Operational Considerations and Issues with IPv6 DNS">
        <t>This informational document <xref target="RFC4472"></xref> notes
@@ -1205,7 +1206,7 @@
      </section>
 
      <section title="IETF RFC 8490 - DNS Stateful Operations">
-       <>This standards track document <xref target="RFC8490"></xref>
+       <t>This standards track document <xref target="RFC8490"></xref>
        updates the base protocol specification with a new OPCODE to
        help manage stateful operations in persistent sessions such
        as those that might be used by DNS over TCP.</t>
