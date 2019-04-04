@@ -416,18 +416,18 @@
 
    <section title="DNS over TCP Requirements">
      <t>An average increase in DNS message size,<!--XXX: cite needed-->
-     the continued development of new DNS features,<!---XXX: see appendix-->
-     and a denial of service mitigation technique (see <xref
-     target="Security"></xref>) have suggested that DNS over TCP
-     transactions are as important to the correct and safe operation of
-     the Internet DNS as ever, if not more so.  Furthermore, there has
-     been serious research that argues connection-oriented DNS transactions
-     may provide security and privacy advantages over UDP transport
-     <xref target="TDNS"></xref>.  In fact <xref
-     target="RFC7858"></xref>, a Standards Track document, is just this
-     sort of specification.  Therefore, this document makes explicit
-     that it is undesirable for network operators to artificially
-     inhibit DNS over TCP transport.</t>
+     the continued development of new DNS features [<xref
+     target="dnsrfcs"></xref>], and a denial of service mitigation
+     technique [<xref target="Security"></xref>] have suggested that
+     DNS over TCP transactions are as important to the correct and safe
+     operation of the Internet DNS as ever, if not more so.
+     Furthermore, there has been serious research that argues
+     connection-oriented DNS transactions may provide security and
+     privacy advantages over UDP transport. <xref target="TDNS"></xref>
+     In fact <xref target="RFC7858"></xref>, a Standards Track document,
+     is just this sort of specification.  Therefore, this document makes
+     explicit that it is undesirable for network operators to
+     artificially inhibit DNS over TCP transport.</t>
 
      <t>Section 6.1.3.2 in <xref target="RFC1123" /> is updated: All
      DNS resolvers and servers MUST support and service both UDP and
@@ -554,8 +554,8 @@
        might be set to a low value, such as a few seconds.  For
        less busy servers it might be set to a higher value, such
        as tens of seconds.  DNS clients and servers SHOULD signal
-       their timeout values using the edns-tcp-keepalive option
-       <xref target="RFC7828"/>.</t>
+       their timeout values using the edns-tcp-keepalive
+       option.<xref target="RFC7828"/></t>
 
        <t>DNS server software MAY provide a configurable limit on
        the number of transactions per TCP connection. This document
@@ -609,8 +609,8 @@
      <t>For example, <xref target="RFC7901"/> describes a latency-avoiding
      technique that sends extra data in DNS responses.  This makes
      responses larger and potentially increases the risk of DDoS reflection
-     attacks.  The specification mandates the use of TCP or DNS Cookies
-     (<xref target="RFC7873"/>).</t>
+     attacks.  The specification mandates the use of TCP or DNS
+     Cookies.<xref target="RFC7873"/></t>
 
      <t>Even if any or all particular answers have consistently been
      returned successfully with UDP in the past, this continued behavior
@@ -638,8 +638,8 @@
 
      <section title="DNS Root Zone KSK Rollover">
        <t>Recent plans for a new root zone DNSSEC KSK have highlighted
-       a potential problem in retrieving the keys <xref
-       target="LEWIS"></xref>.  Some packets in the KSK rollover process
+       a potential problem in retrieving the keys.<xref
+       target="LEWIS"></xref>  Some packets in the KSK rollover process
        will be larger than 1280 bytes, the IPv6 minimum MTU for links
        carrying IPv6 traffic.<xref target="RFC2460"></xref>  While
        studies have shown that problems due to fragment filtering or an
@@ -975,7 +975,7 @@
 
    </references>
 
-   <section title="Standards Related to DNS Transport over TCP">
+   <section anchor="dnsrfcs" title="Standards Related to DNS Transport over TCP">
      <t>This section enumerates all known IETF RFC documents that are
      currently of status standard, informational, best common practice
      or experimental and either implicitly or explicitly make
