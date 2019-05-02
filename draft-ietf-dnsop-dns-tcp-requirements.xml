@@ -994,8 +994,18 @@
      assumptions or statements about the use of TCP as a transport for
      the DNS germane to this document.</t>
 
-     <section title="TODO - additional, relevant RFCs">
-     <!-- RFC search for "dns", checked down to rfc1995 so far -->
+     <section title="IETF RFC 1035 - DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION">
+       <t>The internet standard <xref target="RFC1035"></xref> is the
+       base DNS specification that explicitly defines support for DNS
+       over TCP.</t>
+     </section>
+
+     <section title="IETF RFC 1536 - Common DNS Implementation Errors and Suggested Fixes">
+       <t>The informational document <xref target="RFC1536"></xref>
+       states UDP is the "chosen protocol for communication though TCP
+       is used for zone transfers."  That statement should now be
+       considered in its historical context and is no longer a proper
+       reflection of modern expectations.</t>
      </section>
 
      <section title="IETF RFC 1995 - Incremental Zone Transfer in DNS">
@@ -1023,7 +1033,7 @@
      </section>
 
      <section title="IETF RFC 2694 - DNS extensions to Network Address Translators (DNS_ALG)">
-       <t>The information document <xref target="RFC2694"></xref>
+       <t>The informational document <xref target="RFC2694"></xref>
        enumerates considerations for network address translation (NAT)
        middle boxes to properly handle DNS traffic.  This document is
        noteworthy in its suggestion that DNS over TCP is "[t]ypically"
