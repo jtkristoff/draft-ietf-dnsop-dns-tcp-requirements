@@ -14,8 +14,14 @@
   <!ENTITY RFC1123 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1123.xml">
   <!-- Common DNS Implementation Errors and Suggested Fixes -->
   <!ENTITY RFC1536 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1536.xml">
+  <!-- Incremental Zone Transfer in DNS -->
+  <!ENTITY RFC1995 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1995.xml">
+  <!-- A Mechanism for Prompt Notification of Zone Changes (DNS NOTIFY) -->
+  <!ENTITY RFC1996 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1996.xml">
   <!-- Dynamic Updates in the Domain Name System (DNS UPDATE) -->
   <!ENTITY RFC2136 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2136.xml">
+  <!-- Clarifications to the DNS Specification -->
+  <!ENTITY RFC2181 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2181.xml">
   <!-- Internet Protocol, Version 6 (IPv6) Specification -->
   <!ENTITY RFC2460 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2460.xml">
   <!-- DNS Security Operational Considerations -->
@@ -775,7 +781,10 @@
      &RFC1035;
      &RFC1123;
      &RFC1536;
+     &RFC1995;
+     &RFC1996;
      &RFC2136;
+     &RFC2181;
      &RFC2460;
      &RFC2541;
      &RFC2671;
@@ -986,7 +995,31 @@
      the DNS germane to this document.</t>
 
      <section title="TODO - additional, relevant RFCs">
-     <!-- RFC search for "dns", checked down to rfc2671 so far -->
+     <!-- RFC search for "dns", checked down to rfc1995 so far -->
+     </section>
+
+     <section title="IETF RFC 1995 - Incremental Zone Transfer in DNS">
+       <t>The <xref target="RFC1995"></xref> standards track document
+       documents the use of TCP as the fallback transport when IXFR
+       responses do not fit into a single UDP response.  As with AXFR,
+       IXFR messages are typically delivered over TCP by default in
+       practice.  XXX: is this an accurate statement?</t>
+     </section>
+
+     <section title="IETF RFC 1996 - A Mechanism for Prompt Notification of Zone Changes (DNS NOTIFY)">
+       <t>The <xref target="RFC1996"></xref> standards track document
+       suggests a zone master may decide to issue NOTIFY messages over
+       TCP.  In practice NOTIFY messages are generally sent over UDP,
+       but this specification leaves open the possibility that the
+       choice of transport protocol is up to the master, and therefore
+       a slave ought to be able to operate over both UDP and TCP.</t>
+     </section>
+
+     <section title="IETF RFC 2181 - Clarifications to the DNS Specification">
+       <t>The <xref target="RFC2181"></xref> standards track document
+       includes clarifying text on how a client should react to the TC
+       flag set on responses.  It is advised the the response should be
+       discarded and the query resent using TCP.</t>
      </section>
 
      <section title="IETF RFC 2694 - DNS extensions to Network Address Translators (DNS_ALG)">
