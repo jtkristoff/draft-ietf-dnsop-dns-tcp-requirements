@@ -207,10 +207,10 @@
      be carried over TCP on the Internet.  It also considers the consequences
      with this form of DNS communication and the potential operational issues
      that can arise when this best common practice is not upheld.</t>
-     <t>DPW from IETF104 tcpm presentation, there was a suggestion to
-     mention DNS-over-TLS applicability very early in the draft.</t>
-     <t>DPW from IETF104 dnsop presentation, there was a suggestion
-     (Sara) to somehow include DSO here as well.</t>
+     <!-- t>DPW from IETF104 tcpm presentation, there was a suggestion to
+     mention DNS-over-TLS applicability very early in the draft.</t -->
+     <!-- t>DPW from IETF104 dnsop presentation, there was a suggestion
+     (Sara) to somehow include DSO here as well.</t -->
    </abstract>
  </front>
 
@@ -524,11 +524,11 @@
        on some operating systems it is not implemented or disabled by default.
        <xref target="WIKIPEDIA_TFO"/> describes applications and operating systems
        that support TFO.</t>
-       <t>DPW from IETF104 tcpm presentaiton, suggestions to say clients MAY
+       <!-- t>DPW from IETF104 tcpm presentaiton, suggestions to say clients MAY
        enable TFO since there are some lingering TFO implementation issues
-       at this time.</t>
-       <t>DPW from IETF104 dnsop -- some potential privacy concerns
-       with TFO, so MAY is better.</t>
+       at this time.</t -->
+       <!-- t>DPW from IETF104 dnsop: some potential privacy concerns
+       with TFO, so MAY is better.</t -->
 
      </section>
 
