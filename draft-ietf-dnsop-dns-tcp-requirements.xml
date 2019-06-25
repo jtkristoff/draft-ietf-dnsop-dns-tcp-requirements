@@ -129,7 +129,7 @@
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
 
-<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-04" ipr="trust200902" updates="1123">
+<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-05" ipr="trust200902" updates="1123">
  <!-- category values: std, bcp, info, exp, and historic
     ipr values: trust200902, noModificationTrust200902, noDerivativesTrust200902,
        or pre5378Trust200902
@@ -639,7 +639,7 @@
        the full extent of TCP retransmissions and time outs.  This situation
        might place extreme strain on resolver resources.  If the number
        and frequency of these truncated answers are sufficiently high,
-       the steady-state of lost resources as a result is a "DNS" wedgie".
+       the steady-state of lost resources as a result is a "DNS wedgie".
        A DNS wedgie is generally not easily or completely mitigated by the
        affected DNS resolver operator.</t>
      </section>
@@ -670,7 +670,7 @@
        DNS-over-TLS is currently only defined between stubs and
        recursives.</t>
 
-       <t>The use of TLS places even strong operational burdens
+       <t>The use of TLS places even stronger operational burdens
        on DNS clients and servers.  Cryptographic functions for
        authentication and encryption require additional processing.
        Unoptimized connection setup takes two additional round-trips
