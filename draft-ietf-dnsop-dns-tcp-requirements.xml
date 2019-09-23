@@ -643,20 +643,22 @@
      </section>
 
      <section title="DNS Root Zone KSK Rollover">
-       <t>Recent plans for a new root zone DNSSEC KSK have highlighted
+       <t>The plans for deploying a new root zone DNSSEC KSK highlighted
        a potential problem in retrieving the keys.<xref
-       target="LEWIS"></xref>  Some packets in the KSK rollover process
-       will be larger than 1280 bytes, the IPv6 minimum MTU for links
-       carrying IPv6 traffic.<xref target="RFC2460"></xref>  While
-       studies have shown that problems due to fragment filtering or an
-       inability to generate and receive these larger messages are
-       negligible, any DNS server that is unable to receive large DNS over
-       UDP messages or perform DNS over TCP may experience severe
-       disruption of DNS service if performing DNSSEC validation.</t>
+       target="LEWIS"></xref>  During some phases of the KSK rollover process,
+       root zone DNSKEY reponses were
+       larger than 1280 bytes, the IPv6 minimum MTU for links
+       carrying IPv6 traffic.<xref target="RFC2460"/>
+       There was some concern that any DNS server unable to receive large
+       DNS messages over UDP, or any DNS message over TCP, would experience
+       disruption while performing DNSSEC validation.</t>
 
-       <t>TODO: Is this "overcome by events" now?  We've had 1414
-       byte DNSKEY responses at the three ZSK rollover periods since
-       KSK-2017 became published in the root zone.</t>
+       <t>However, during the
+       year-long posponment of the KSK rollover there were no reported problems
+       that could be attributed to the 1414 octet DNSKEY response when both
+       the old and new keys were publised in the zone.  Additionaly, there
+       were no reported problems during the two month period when the old key was
+       published as revoked and the DNSKEY response was 1425 octets in size.<xref target="ROLL_YOUR_ROOT"/></t>
      </section>
 
      <section title="DNS-over-TLS">
