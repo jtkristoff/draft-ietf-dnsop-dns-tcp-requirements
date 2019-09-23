@@ -999,6 +999,37 @@
 	</front>
      </reference>
 
+     <reference anchor="AVOID_FRAGS" target="https://blog.apnic.net/2019/07/12/its-time-to-consider-avoiding-ip-fragmentation-in-the-dns/">
+	<front>
+	  <title>It's time to consider avoiding IP fragmentation in the DNS</title>
+	  <author fullname="Kazunori Fujiwara" initials="K." surname="Fujiwara"/>
+	  <date year="2019" month="Jul" day="12"/>
+	</front>
+     </reference>
+
+     <reference anchor="FRAG_POISON" target="https://u.cs.biu.ac.il/~herzbea/security/13-03-frag.pdf">
+	<front>
+	  <title>Fragmentation Considered Poisonous</title>
+	  <author fullname="Amir Herzberg" initials="A." surname="Herzberg"/>
+	  <author fullname="Haya Shulman" initials="H." surname="Shulman"/>
+	  <date year="2012" month="May"/>
+	</front>
+     </reference>
+
+     <reference anchor="ROLL_YOUR_ROOT" target="TBD">
+	<front>
+	  <title>Roll, Roll, Roll Your Root: A Comprehensive Analysis of the First Ever DNSSEC Root KSK Rollover</title>
+	  <author fullname="Moritz M&uuml;ller" initials="M." surname="M&uuml;ller"/>
+	  <author fullname="Matthew Thomas" initials="M." surname="Thomas"/>
+	  <author fullname="Duane Wessels" initials="D." surname="Wessels"/>
+	  <author fullname="Wes Hardaker" initials="W." surname="Hardaker"/>
+	  <author fullname="Taejoong Chung" initials="T." surname="Chung"/>
+	  <author fullname="Willem Toorop" initials="W." surname="Toorop"/>
+	  <author fullname="Roland van Rijswijk-Deij" initials="R.v." surname="Rijswijk-Deij"/>
+	  <date year="2019" month="Oct"/>
+	</front>
+     </reference>
+
    </references>
 
    <section anchor="dnsrfcs" title="Standards Related to DNS Transport over TCP">
