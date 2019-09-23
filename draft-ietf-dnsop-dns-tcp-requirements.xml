@@ -686,7 +686,7 @@
      advised to not ignore TCP because it is rarely used or because
      it is hard to process.  Operators are advised to ensure that
      their monitoring and logging applications properly capture
-     DNS-over-TCP messages.  Otherwise, attacks, exfiltration
+     DNS message over TCP.  Otherwise, attacks, exfiltration
      attempts, and normal traffic may go undetected.</t>
 
      <t>DNS messages over TCP are in no way guaranteed to arrive
