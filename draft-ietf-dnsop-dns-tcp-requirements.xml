@@ -381,8 +381,7 @@
        client should retry over TCP to receive the whole response.  This
        is undesirable from the client's point of view because it adds
        more latency, and potentially undesirable from the server's point
-       of view due to the increased resource requirements of TCP.
-       <!-- TODO maybe there is a better way to put that? --></t>
+       of view due to the increased resource requirements of TCP.</t>
 
        <t>The issues around fragmentation, truncation, and TCP are
        driving certain implementation and policy decisions in the DNS.
@@ -395,6 +394,12 @@
        2048-bits are impractical and that critical infrastructure zones
        should transition to elliptic curve algorithms to keep response
        sizes manageable.</t>
+
+       <t>More recently, renewed security concerns about fragmented DNS
+       messages <xref target="AVOID_FRAGS"/>, <xref target="FRAG_POISON"/>
+       are leading implementors to consider lower default EDNS0 UDP payload
+       size values, for both queriers and responders.</t>
+
      </section>
 
      <section title="&quot;Only Zone Transfers Use TCP&quot;">
