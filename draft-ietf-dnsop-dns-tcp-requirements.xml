@@ -745,7 +745,21 @@
    </section>
 
    <section anchor="Privacy" title="Privacy Considerations">
-     <t>TODO: Does this document warrant privacy considerations?</t>
+
+     <t>Since DNS over both UDP and TCP use the same underlying message
+     format, the use of one transport instead of the other does change
+     the privacy characteristics of the message content (i.e., the name
+     being queried). DNS over TLS or DTLS is the recommended way to
+     achieve DNS privacy.</t>
+
+     <t>Because TCP is somewhat more complex than UDP, some
+     characteristics of a TCP conversation may enable fingerprinting and
+     tracking that is not possible with UDP.  For example, the choice of
+     initial sequence numbers, window size, and options might be able
+     to identify a particular TCP implementation, or even individual
+     hosts behind shared resources such as network address translators
+     (NATs).</t>
+
    </section>
 
    <section anchor="Examples" title="Examples">
