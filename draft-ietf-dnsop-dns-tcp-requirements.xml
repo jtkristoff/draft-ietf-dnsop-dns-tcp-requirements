@@ -426,7 +426,7 @@
    </section>
 
    <section title="DNS over TCP Requirements">
-     <t>An average increase in DNS message size,<!--XXX: cite needed-->
+     <t>An average increase in DNS message size (e.g., due to DNSSEC),
      the continued development of new DNS features [<xref
      target="dnsrfcs"></xref>], and a denial of service mitigation
      technique [<xref target="Security"></xref>] have suggested that
