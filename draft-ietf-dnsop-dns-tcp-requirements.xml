@@ -523,15 +523,10 @@
        address (e.g., anycast or load-balancing), SHOULD use the
        same TFO server key on all instances.</t>
 
-       <t>DNS clients SHOULD also enable TFO when possible.  Currently,
+       <t>DNS clients MAY also enable TFO when possible.  Currently,
        on some operating systems it is not implemented or disabled by default.
        <xref target="WIKIPEDIA_TFO"/> describes applications and operating systems
        that support TFO.</t>
-       <!-- t>DPW from IETF104 tcpm presentaiton, suggestions to say clients MAY
-       enable TFO since there are some lingering TFO implementation issues
-       at this time.</t -->
-       <!-- t>DPW from IETF104 dnsop: some potential privacy concerns
-       with TFO, so MAY is better.</t -->
 
      </section>
 
