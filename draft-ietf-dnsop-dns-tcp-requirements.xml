@@ -512,7 +512,7 @@
        to deploy access controls for DNS services that should
        otherwise be globally reachable.</t>
 
-       <t>The FreeBSD operating system has an "accept filter" feature
+       <t>The FreeBSD, OpenBSD, and NetBSD operating systems have an "accept filter" feature
        (<xref target="accept_filter"/>)
        that postpones delivery of TCP connections to applications
        until a complete, valid request has been received.  The
@@ -573,7 +573,7 @@
        less busy servers it might be set to a higher value, such
        as tens of seconds.  DNS clients and servers SHOULD signal
        their timeout values using the edns-tcp-keepalive
-       option.<xref target="RFC7828"/></t>
+       option <xref target="RFC7828"/>.</t>
 
        <t>DNS server software MAY provide a configurable limit on
        the number of transactions per TCP connection. This document
@@ -669,7 +669,7 @@
        the full extent of TCP retransmissions and timeouts.  This situation
        might place extreme strain on resolver resources.  If the number
        and frequency of these truncated answers are sufficiently high,
-       the steady-state of lost resources as a result is a "DNS wedgie".
+       the steady-state of lost resources as a result is a "DNS wedgie."
        A DNS wedgie is generally not easily or completely mitigated by the
        affected DNS resolver operator.</t>
      </section>
@@ -1307,7 +1307,7 @@
        details a protocol that uses a datagram transport (UDP), but
        stipulates that "DNS clients and servers that implement DNS over
        DTLS MUST also implement DNS over TLS in order to provide privacy
-       for clients that desire Strict Privacy [...]".  This requirement
+       for clients that desire Strict Privacy [...]."  This requirement
        implies DNS over TCP must be supported in case the message size
        is larger than the path MTU.</t>
      </section>
