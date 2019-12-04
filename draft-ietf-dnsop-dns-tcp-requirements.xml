@@ -484,7 +484,15 @@
    can take to optimize performance over TCP and to protect themselves
    from TCP-based resource exhaustion and attacks.</t>
 
-     <section title="Connection Admission">
+     <section title="Connection Establishment and Admission">
+
+       <t>Resolvers and other DNS clients should be aware that some
+       servers might not be reachable over TCP.  For this reason, clients
+       MAY want to track and limit the number of TCP connections and
+       connection attempts to a single server.  Additionally, DNS clients
+       MAY want to enforce a short timeout on unestablished connections,
+       rather than rely on the host operating system's TCP connection
+       timeout, which is often around 60-120 seconds.</t>
 
        <t>The SYN flooding attack is a denial-of-service method
        affecting hosts that run TCP server processes <xref
@@ -536,6 +544,7 @@
      <section title="Connection Management">
 
        <t>Since host memory for TCP state is a finite resource, DNS
+       clients and
        servers MUST actively manage their connections.  Applications
        that do not actively manage their connections
        can encounter resource exhaustion leading to denial of
