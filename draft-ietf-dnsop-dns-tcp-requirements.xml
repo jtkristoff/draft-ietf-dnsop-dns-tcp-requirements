@@ -1009,9 +1009,10 @@
      <reference anchor="libpcap" target="https://www.tcpdump.org">
 	<front>
 	  <title>Tcpdump and Libpcap</title>
-	  <!-- author>
+	  <author>
 	    <organization>Tcpdump/Libpcap</organization>
-	  </author -->
+	  </author>
+	  <date year="2018" month="May" day="7"/>
 	</front>
 	<format type="HTML" target="https://www.tcpdump.org"/>
      </reference>
