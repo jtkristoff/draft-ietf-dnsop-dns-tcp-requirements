@@ -614,6 +614,26 @@
 
      </section>
 
+     <section title="DNS-over-TLS">
+
+       <t>DNS messages may be sent over TLS to provide privacy
+       between stubs and recursive resolvers. <xref target="RFC7858"/>
+       is a standards track document describing how this works.
+       Although DNS-over-TLS utilizes TCP port 853 instead of port 53, this
+       document applies equally well to DNS-over-TLS.  Note, however,
+       DNS-over-TLS is currently only defined between stubs and
+       recursives.</t>
+
+       <t>The use of TLS places even stronger operational burdens
+       on DNS clients and servers.  Cryptographic functions for
+       authentication and encryption require additional processing.
+       Unoptimized connection setup takes two additional round-trips
+       compared to TCP, but can be reduced with Fast TLS connection
+       resumption <xref target="RFC5077"/> and TLS False Start <xref
+       target="RFC7918"/>.</t>
+
+     </section>
+
    </section>
 
    <section title="DNS over TCP Filtering Risks">
@@ -672,24 +692,6 @@
        the old and new keys were published in the zone.  Additionally, there
        were no reported problems during the two month period when the old key was
        published as revoked and the DNSKEY response was 1425 octets in size.<xref target="ROLL_YOUR_ROOT"/></t>
-     </section>
-
-     <section title="DNS-over-TLS">
-       <t>DNS messages may be sent over TLS to provide privacy
-       between stubs and recursive resolvers. <xref target="RFC7858"/>
-       is a standards track document describing how this works.
-       Although DNS-over-TLS utilizes TCP port 853 instead of port 53, this
-       document applies equally well to DNS-over-TLS.  Note, however,
-       DNS-over-TLS is currently only defined between stubs and
-       recursives.</t>
-
-       <t>The use of TLS places even stronger operational burdens
-       on DNS clients and servers.  Cryptographic functions for
-       authentication and encryption require additional processing.
-       Unoptimized connection setup takes two additional round-trips
-       compared to TCP, but can be reduced with Fast TLS connection
-       resumption <xref target="RFC5077"/> and TLS False Start <xref
-       target="RFC7918"/>.</t>
      </section>
 
    </section>
