@@ -227,7 +227,7 @@
      the correct and safe operation of an Internet DNS.  Reflecting
      modern usage, the DNS standards were recently updated to declare
      support for TCP is now a required part of the DNS implementation
-     specifications.<xref target="RFC7766"></xref>  This document is the
+     specifications <xref target="RFC7766"></xref>.  This document is the
      formal requirements equivalent for the operational community,
      encouraging system administrators, network engineers, and security
      staff to ensure DNS over TCP communications support is on par with
@@ -306,13 +306,13 @@
        second was the set of extensions collectively known as DNSSEC
        originally specified in <xref target="RFC2541"></xref>.  The
        former suggested "requestors who require an accurate response
-       code must use TCP", while the later warned "[...] larger keys
+       code must use TCP," while the latter warned "... larger keys
        increase the size of KEY and SIG RRs.  This increases the chance
        of DNS UDP packet overflow and the possible necessity for using
        higher overhead TCP in responses."</t>
 
-       <t>Yet defying some expectations, DNS over TCP remained little
-       used in real traffic across the Internet.  Dynamic updates saw
+       <t>Yet, defying some expectations, DNS over TCP remained little-used
+       in real traffic across the Internet around this time.  Dynamic updates saw
        little deployment between autonomous networks.  Around the time
        DNSSEC was first defined, another new feature helped solidify
        UDP transport dominance for message transactions.</t>
@@ -324,21 +324,21 @@
        an update in <xref target="RFC6891"></xref>).  This document
        standardized a way for communicating DNS nodes to perform
        rudimentary capabilities negotiation.  One such capability
-       written into the base specification and present in every ENDS0
-       compatible message is the value of the maximum UDP payload size
-       the sender can support.  This unsigned 16-bit field specifies
-       in bytes the maximum (possibly fragmented) DNS message size a
+       written into the base specification and present in every EDNS0-compatible
+       message is the value of the maximum UDP payload size
+       the sender can support.  This unsigned 16-bit field specifies,
+       in bytes, the maximum (possibly fragmented) DNS message size a
        node is capable of receiving.  In practice, typical values are
-       a subset of the 512 to 4096 byte range.  EDNS0 became
+       a subset of the 512- to 4096-byte range.  EDNS0 became
        widely deployed over the next several years and numerous surveys
+       (<xref target="CASTRO2010"></xref>, <xref target="NETALYZR"></xref>)
        have shown many systems currently support larger UDP MTUs
-       <xref target="CASTRO2010"></xref>, <xref target="NETALYZR"></xref>
        with EDNS0.</t>
 
        <t>The natural effect of EDNS0 deployment meant DNS messages
        larger than 512 bytes would be less reliant on TCP than they
        might otherwise have been.  While a non-negligible population of
-       DNS systems lacked EDNS0 or fall back to TCP when necessary,
+       DNS systems lacked EDNS0 or fell back to TCP when necessary,
        DNS over TCP transactions remained a very small fraction of
        overall DNS traffic <xref target="VERISIGN"></xref>.</t>
      </section>
@@ -382,7 +382,7 @@
        server sets the truncated flag in its response, indicating the
        client should retry over TCP to receive the whole response.  This
        is undesirable from the client's point of view because it adds
-       more latency, and potentially undesirable from the server's point
+       more latency and potentially undesirable from the server's point
        of view due to the increased resource requirements of TCP.</t>
 
        <t>The issues around fragmentation, truncation, and TCP are
@@ -398,21 +398,21 @@
        sizes manageable.</t>
 
        <t>More recently, renewed security concerns about fragmented DNS
-       messages <xref target="AVOID_FRAGS"/>, <xref target="FRAG_POISON"/>
+       messages (<xref target="AVOID_FRAGS"/>, <xref target="FRAG_POISON"/>)
        are leading implementors to consider lower default EDNS0 UDP payload
-       size values, for both queriers and responders.</t>
+       size values for both queriers and responders.</t>
 
      </section>
 
      <section title="&quot;Only Zone Transfers Use TCP&quot;">
        <t>Today, the majority of the DNS community expects, or at least
        has a desire, to see DNS over TCP transactions occur without
-       interference.  However there has also been a long held belief by
+       interference.  However there has also been a long-held belief by
        some operators, particularly for security-related reasons, that
        DNS over TCP services should be purposely limited or not provided
        at all <xref target="CHES94"></xref>, <xref
        target="DJBDNS"></xref>.  A popular meme has also held the
-       imagination of some that DNS over TCP is only ever used for zone
+       imagination of some: that DNS over TCP is only ever used for zone
        transfers and is generally unnecessary otherwise, with filtering
        all DNS over TCP traffic even described as a best practice.</t>
 
@@ -461,13 +461,13 @@
          queries, but it SHOULD NOT refuse to service a TCP query just
          because it would have succeeded with UDP."</t>
        </list>
-     This requirement is hereby updated: A name server MAY limit the
+     This requirement is hereby updated: A name server MAY limit
      the resources it devotes to queries, but it MUST NOT refuse to
      service a query just because it would have succeeded with another
      transport protocol.</t>
 
      <t>Filtering of DNS over TCP is considered harmful in the general
-     case.  DNS resolver and server operators MUST suport and provide
+     case.  DNS resolver and server operators MUST support and provide
      DNS service over both UDP and TCP transports.  Likewise, network
      operators MUST allow DNS service over both UDP and TCP transports.
      It is acknowledged that DNS over TCP service can pose operational
@@ -505,6 +505,7 @@
        otherwise be globally reachable.</t>
 
        <t>The FreeBSD operating system has an "accept filter" feature
+       (<xref target="accept_filter"/>)
        that postpones delivery of TCP connections to applications
        until a complete, valid request has been received.  The
        dns_accf(9) filter ensures that a valid DNS message is
@@ -608,7 +609,7 @@
 
    <section title="DNS over TCP Filtering Risks">
      <t>Networks that filter DNS over TCP risk losing access to
-     significant or important pieces of the DNS name space.  For a
+     significant or important pieces of the DNS namespace.  For a
      variety of reasons a DNS answer may require a DNS over TCP query.
      This may include large message sizes, lack of EDNS0 support, DDoS
      mitigation techniques, or perhaps some future capability that is as
@@ -616,9 +617,9 @@
 
      <t>For example, <xref target="RFC7901"/> describes a latency-avoiding
      technique that sends extra data in DNS responses.  This makes
-     responses larger and potentially increases the risk of DDoS reflection
+     responses larger and potentially increases the effectiveness of DDoS reflection
      attacks.  The specification mandates the use of TCP or DNS
-     Cookies.<xref target="RFC7873"/></t>
+     Cookies <xref target="RFC7873"/>.</t>
 
      <t>Even if any or all particular answers have consistently been
      returned successfully with UDP in the past, this continued behavior
@@ -631,12 +632,12 @@
 
      <section title="DNS Wedgie">
        <t>Networks that filter DNS over TCP may inadvertently cause
-       problems for third party resolvers as experienced by <xref
-       target="TOYAMA"></xref>.  If for instance a resolver receives a
+       problems for third-party resolvers as experienced by <xref
+       target="TOYAMA"></xref>.  If, for instance, a resolver receives a
        truncated answer from a server, but when the resolver resends
        the query using TCP and the TCP response never arrives, not only
        will a complete answer be unavailable, but the resolver will incur
-       the full extent of TCP retransmissions and time outs.  This situation
+       the full extent of TCP retransmissions and timeouts.  This situation
        might place extreme strain on resolver resources.  If the number
        and frequency of these truncated answers are sufficiently high,
        the steady-state of lost resources as a result is a "DNS wedgie".
@@ -646,19 +647,20 @@
 
      <section title="DNS Root Zone KSK Rollover">
        <t>The plans for deploying a new root zone DNSSEC KSK highlighted
-       a potential problem in retrieving the keys.<xref
-       target="LEWIS"></xref>  During some phases of the KSK rollover process,
-       root zone DNSKEY reponses were
+       a potential problem in retrieving the root zone key set <xref
+       target="LEWIS"></xref>.  During some phases of the KSK rollover process,
+       root zone DNSKEY responses were
        larger than 1280 bytes, the IPv6 minimum MTU for links
-       carrying IPv6 traffic.<xref target="RFC2460"/>
-       There was some concern that any DNS server unable to receive large
+       carrying IPv6 traffic <xref target="RFC2460"/>.
+       There was some concern <!-- XXX citation needed -->
+       that any DNS server unable to receive large
        DNS messages over UDP, or any DNS message over TCP, would experience
        disruption while performing DNSSEC validation.</t>
 
        <t>However, during the
-       year-long posponment of the KSK rollover there were no reported problems
+       year-long postponement of the KSK rollover there were no reported problems
        that could be attributed to the 1414 octet DNSKEY response when both
-       the old and new keys were publised in the zone.  Additionaly, there
+       the old and new keys were published in the zone.  Additionally, there
        were no reported problems during the two month period when the old key was
        published as revoked and the DNSKEY response was 1425 octets in size.<xref target="ROLL_YOUR_ROOT"/></t>
      </section>
@@ -667,7 +669,7 @@
        <t>DNS messages may be sent over TLS to provide privacy
        between stubs and recursive resolvers. <xref target="RFC7858"/>
        is a standards track document describing how this works.
-       Although it utilizes TCP port 853 instead of port 53, this
+       Although DNS-over-TLS utilizes TCP port 853 instead of port 53, this
        document applies equally well to DNS-over-TLS.  Note, however,
        DNS-over-TLS is currently only defined between stubs and
        recursives.</t>
@@ -685,8 +687,8 @@
 
    <section title="Logging and Monitoring">
      <t>Developers of applications that log or monitor DNS are
-     advised to not ignore TCP because it is rarely used or because
-     it is hard to process.  Operators are advised to ensure that
+     advised to not ignore TCP due to the perception that it is rarely used or 
+     is hard to process.  Operators are advised to ensure that
      their monitoring and logging applications properly capture
      DNS message over TCP.  Otherwise, attacks, exfiltration
      attempts, and normal traffic may go undetected.</t>
@@ -695,13 +697,13 @@
      in single segments.  In fact, a clever attacker may attempt
      to hide certain messages by forcing them over very small TCP
      segments.  Applications that capture network packets (e.g.,
-     with libpcap) should be prepared to implement and perform full
+     with libpcap <xref target="libpcap"/>) SHOULD be prepared to implement and perform full
      TCP segment reassembly.  dnscap <xref target="dnscap"/> is an
      open-source example of a DNS logging program that implements
      TCP reassembly.</t>
 
      <t>Developers should also keep in mind connection reuse,
-     pipelining, and out-of-order responses when building and testing
+     query pipelining, and out-of-order responses when building and testing
      DNS monitoring applications.</t>
    </section>
 
@@ -710,9 +712,10 @@
      who pointed out that they were hearing contradictory information
      about filtering DNS over TCP messages.  Thanks in particular to a
      teaching colleague, JPL, who perhaps unknowingly encouraged the
-     initial research into the differences of what the community has
+     initial research into the differences between what the community has
      historically said and did.  Thanks to all the NANOG 63 attendees
      who provided feedback to an early talk on this subject.</t>
+     <!-- https://archive.nanog.org/sites/default/files/nanog63-dnstrack-kristoff-dnstcp.pdf -->
 
      <t>The following individuals provided an array of feedback to help
      improve this document: Piet Barber, Sara Dickinson, Bob Harold, Tatuya Jinmei,
@@ -739,8 +742,8 @@
      past experience is no guarantee of future success.</t>
 
      <t>DNS over TCP is not unlike many other Internet TCP services.
-     TCP threats and many mitigation strategies have been well
-     documented in a series of documents such as <xref
+     TCP threats and many mitigation strategies have been
+     well-documented in a series of documents such as <xref
      target="RFC4953"></xref>, <xref target="RFC4987"></xref>, <xref
      target="RFC5927"></xref>, and <xref target="RFC5961"></xref>.</t>
 
@@ -992,6 +995,16 @@
 	</front>
      </reference>
 
+     <reference anchor="libpcap" target="https://www.tcpdump.org">
+	<front>
+	  <title>Tcpdump and Libpcap</title>
+	  <!-- author>
+	    <organization>Tcpdump/Libpcap</organization>
+	  </author -->
+	</front>
+	<format type="HTML" target="https://www.tcpdump.org"/>
+     </reference>
+
      <reference anchor="dnscap" target="https://www.dns-oarc.net/tools/dnscap">
 	<front>
 	  <title>DNSCAP</title>
@@ -1000,6 +1013,17 @@
 	  </author>
 	  <date year="2018" month="May" day="7"/>
 	</front>
+     </reference>
+
+     <reference anchor="accept_filter" target="https://www.freebsd.org/cgi/man.cgi?query=accept_filter">
+	<front>
+	  <title>FreeBSD accept_filter(9)</title>
+	  <author>
+	    <organization>FreeBSD</organization>
+	  </author>
+	  <date year="2018" month="May" day="7"/>
+	</front>
+        <format type="HTML" target="https://www.freebsd.org/cgi/man.cgi?query=accept_filter"/>
      </reference>
 
      <reference anchor="AVOID_FRAGS" target="https://blog.apnic.net/2019/07/12/its-time-to-consider-avoiding-ip-fragmentation-in-the-dns/">
@@ -1037,7 +1061,7 @@
 
    <section anchor="dnsrfcs" title="Standards Related to DNS Transport over TCP">
      <t>This section enumerates all known IETF RFC documents that are
-     currently of status standard, informational, best common practice
+     currently of status standard, informational, best common practice,
      or experimental and either implicitly or explicitly make
      assumptions or statements about the use of TCP as a transport for
      the DNS germane to this document.</t>
@@ -1066,26 +1090,27 @@
 
      <section title="IETF RFC 1996 - A Mechanism for Prompt Notification of Zone Changes (DNS NOTIFY)">
        <t>The <xref target="RFC1996"></xref> standards track document
-       suggests a zone master may decide to issue NOTIFY messages over
-       TCP.  In practice NOTIFY messages are generally sent over UDP,
+       suggests a master server may decide to issue NOTIFY messages over
+       TCP.  In practice, NOTIFY messages are generally sent over UDP,
        but this specification leaves open the possibility that the
-       choice of transport protocol is up to the master, and therefore
-       a slave ought to be able to operate over both UDP and TCP.</t>
+       choice of transport protocol is up to the master server, and therefore
+       a slave server ought to be able to operate over both UDP and TCP.</t>
      </section>
 
      <section title="IETF RFC 2181 - Clarifications to the DNS Specification">
        <t>The <xref target="RFC2181"></xref> standards track document
        includes clarifying text on how a client should react to the TC
-       flag set on responses.  It is advised the the response should be
+       bit set on responses.  It is advised that the response should be
        discarded and the query resent using TCP.</t>
      </section>
 
      <section title="IETF RFC 2694 - DNS extensions to Network Address Translators (DNS_ALG)">
        <t>The informational document <xref target="RFC2694"></xref>
        enumerates considerations for network address translation (NAT)
-       middle boxes to properly handle DNS traffic.  This document is
-       noteworthy in its suggestion that DNS over TCP is "[t]ypically"
-       used for zone transfer requests, further evidence that helps
+       devices to properly handle DNS traffic.  This document is
+       noteworthy in its suggestion that
+       "[t]ypically, TCP is used for AXFR requests,"
+       as further evidence that helps
        explain why DNS over TCP may often have been treated very
        differently than DNS over UDP in operational networks.</t>
      </section>
@@ -1099,20 +1124,21 @@
      </section>
 
      <section title="IETF RFC 3326 - DNSSEC and IPv6 A6 aware server/resolver message size requirements">
-       <t>The <xref target="RFC3226"></xref> standards track document,
-       although updated by later DNSSEC strongly argued in favor of
+       <t>Although updated by later DNSSEC RFCs,
+       the standards track document <xref target="RFC3226"></xref>
+       strongly argued in favor of
        UDP messages over TCP largely for performance reasons.  The
        document declares EDNS0 a requirement for DNSSEC servers and
        advocated packet fragmentation may be preferable to TCP in
-       certain situations</t>
+       certain situations.</t>
      </section>
 
      <section title="IETF RFC 4472 - Operational Considerations and Issues with IPv6 DNS">
        <t>This informational document <xref target="RFC4472"></xref> notes
        that IPv6 data may increase DNS responses beyond what would fit in
        a UDP message.  Particularly noteworthy, perhaps less common today
-       then when this document was written, refers to implementations that
-       truncate data without setting the TC bit to encourge the client to
+       then when this document was written, it refers to implementations that
+       truncate data without setting the TC bit to encourage the client to
        resend the query using TCP.</t>
      </section>
 
@@ -1168,16 +1194,16 @@
      </section>
 
      <section title="IETF RFC 6762 - Multicast DNS">
-       <t>In this standards track document <xref target="RFC6762"></xref> the
+       <t>In this standards track document <xref target="RFC6762"></xref>, the
        TC bit is deemed to have essentially the same meaning as described
        in the original DNS specifications.  That is, if a response with the
-       TCP bit set is receiver "[...] the querier SHOULD reissue its query
+       TCP bit set is received, "[...] the querier SHOULD reissue its query
        using TCP in order to receive the larger response."</t>
      </section>
 
      <section title="IETF RFC 6891 - Extension Mechanisms for DNS (EDNS(0))">
        <t>This standards track document <xref target="RFC6891"></xref>
-       helped slow the use and need for DNS over TCP messages.  This
+       helped slow the use of and need for DNS over TCP messages.  This
        document highlights concerns over server load and scalability in
        widespread use of DNS over TCP.</t>
      </section>
@@ -1185,7 +1211,7 @@
      <section title="IETF RFC 6950 - Architectural Considerations on Application Features in the DNS">
        <t>An informational document <xref target="RFC6950"></xref> that draws
        attention to large data in the DNS.  TCP is referenced in the
-       context as a common fallback mechnanism and counter to some spoofing
+       context as a common fallback mechanism and counter to some spoofing
        attacks.</t>
      </section>
 
@@ -1199,7 +1225,7 @@
      </section>
 
      <section title="IETF RFC 7720 - DNS Root Name Service Protocol and Deployment Requirements">
-       <t>This best current practice<xref target="RFC7720"></xref>
+       <t>This best current practice <xref target="RFC7720"></xref>
        declares root name service "MUST support UDP [RFC768] and TCP
        [RFC793] transport of DNS queries and responses."</t>
      </section>
@@ -1224,7 +1250,7 @@
        <t>This standards track document <xref target="RFC7858"></xref>
        defines a method for putting DNS messages into a TCP-based
        encrypted channel using TLS.  This specification is noteworthy
-       for explicitly targetting the stub-to-recursive traffic, but
+       for explicitly targeting the stub-to-recursive traffic, but
        does not preclude its application from recursive-to-authoritative
        traffic.</t> 
      </section>
@@ -1250,7 +1276,7 @@
        validating resolver to request and obtain a complete DNSSEC
        validation path for any single query.  This document requires the
        use of DNS over TCP or a source IP address verified transport
-       mechanism such as EDNS-COOKIE.<xref target="RFC7873"></xref></t>
+       mechanism such as EDNS-COOKIE <xref target="RFC7873"></xref>.</t>
      </section>
 
      <section title="IETF RFC 8027 - DNSSEC Roadblock Avoidance">
@@ -1310,16 +1336,16 @@
        <t>This standards track document <xref target="RFC8484"></xref>
        defines a protocol for sending DNS queries and responses over
        HTTPS.  This specification assumes TLS and TCP for the underlying
-       security and transport layers respectively.  Self-described as a
+       security and transport layers, respectively.  Self-described as a
        a technique that more closely resembles a tunneling mechanism,
-       DoH nevertheless likely implies DNS over TCP in some sense if not
+       DoH nevertheless likely implies DNS over TCP in some sense, if not
        directly.</t>
      </section>
 
      <section title="IETF RFC 8490 - DNS Stateful Operations">
        <t>This standards track document <xref target="RFC8490"></xref>
        updates the base protocol specification with a new OPCODE to
-       help manage stateful operations in persistent sessions such
+       help manage stateful operations in persistent sessions, such
        as those that might be used by DNS over TCP.</t>
      </section>
 
