@@ -691,21 +691,21 @@
        that could be attributed to the 1414 octet DNSKEY response when both
        the old and new keys were published in the zone.  Additionally, there
        were no reported problems during the two month period when the old key was
-       published as revoked and the DNSKEY response was 1425 octets in size.<xref target="ROLL_YOUR_ROOT"/></t>
+       published as revoked and the DNSKEY response was 1425 octets in size <xref target="ROLL_YOUR_ROOT"/>.</t>
      </section>
 
    </section>
 
    <section title="Logging and Monitoring">
-     <t>Developers of applications that log or monitor DNS are
-     advised to not ignore TCP due to the perception that it is rarely used or 
-     is hard to process.  Operators are advised to ensure that
+     <t>Developers of applications that log or monitor DNS
+     SHOULD NOT ignore TCP due to the perception that it is rarely used or
+     is hard to process.  Operators SHOULD ensure that
      their monitoring and logging applications properly capture
      DNS message over TCP.  Otherwise, attacks, exfiltration
      attempts, and normal traffic may go undetected.</t>
 
      <t>DNS messages over TCP are in no way guaranteed to arrive
-     in single segments.  In fact, a clever attacker may attempt
+     in single segments.  In fact, a clever attacker might attempt
      to hide certain messages by forcing them over very small TCP
      segments.  Applications that capture network packets (e.g.,
      with libpcap <xref target="libpcap"/>) SHOULD be prepared to implement and perform full
@@ -713,7 +713,7 @@
      open-source example of a DNS logging program that implements
      TCP reassembly.</t>
 
-     <t>Developers should also keep in mind connection reuse,
+     <t>Developers SHOULD also keep in mind connection reuse,
      query pipelining, and out-of-order responses when building and testing
      DNS monitoring applications.</t>
    </section>
