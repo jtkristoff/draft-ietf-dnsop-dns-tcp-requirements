@@ -716,6 +716,10 @@
      <t>Developers SHOULD also keep in mind connection reuse,
      query pipelining, and out-of-order responses when building and testing
      DNS monitoring applications.</t>
+
+     <t>As an alternative to packet capture, some DNS server software
+     supports dnstap <xref target="dnstap"/> as an integrated monitoring
+     protocol intended to facilitate wide-scale DNS monitoring.</t>
    </section>
 
    <section anchor="Acknowledgments" title="Acknowledgments">
@@ -1023,6 +1027,15 @@
 	  <author>
 	    <organization>DNS-OARC</organization>
 	  </author>
+	  <date year="2018" month="May" day="7"/>
+	</front>
+     </reference>
+
+     <reference anchor="dnstap" target="https://dnstap.info">
+	<front>
+	  <title>dnstap</title>
+	  <author fullname="Robert Edmonds" initials="R." surname="Edmonds"/>
+	  <author fullname="Paul Vixie" initials="P." surname="Vixie"/>
 	  <date year="2018" month="May" day="7"/>
 	</front>
      </reference>
