@@ -6,7 +6,7 @@ Domain Name System Operations                                J. Kristoff
 Internet-Draft                                         DePaul University
 Updates: 1123 (if approved)                                   D. Wessels
 Intended status: Best Current Practice                          Verisign
-Expires: June 6, 2020                                   December 4, 2019
+Expires: November 7, 2020                                    May 6, 2020
 
 
            DNS Transport over TCP - Operational Requirements
@@ -36,11 +36,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 6, 2020.
+   This Internet-Draft will expire on November 7, 2020.
 
 Copyright Notice
 
-   Copyright (c) 2019 IETF Trust and the persons identified as the
+   Copyright (c) 2020 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                  [Page 1]
+Kristoff & Wessels      Expires November 7, 2020                [Page 1]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    the Trust Legal Provisions and are provided without warranty as
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                  [Page 2]
+Kristoff & Wessels      Expires November 7, 2020                [Page 2]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
      A.11. IETF RFC 5507 - Design Choices When Expanding the DNS . .  22
@@ -165,9 +165,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                  [Page 3]
+Kristoff & Wessels      Expires November 7, 2020                [Page 3]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    TCP is now a required part of the DNS implementation specifications
@@ -221,9 +221,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                  [Page 4]
+Kristoff & Wessels      Expires November 7, 2020                [Page 4]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
 2.2.  Waiting for Large Messages and Reliability
@@ -277,9 +277,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                  [Page 5]
+Kristoff & Wessels      Expires November 7, 2020                [Page 5]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
 2.4.  Fragmentation and Truncation
@@ -333,9 +333,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                  [Page 6]
+Kristoff & Wessels      Expires November 7, 2020                [Page 6]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    growing sentiment in the DNSSEC community that RSA key sizes beyond
@@ -389,9 +389,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                  [Page 7]
+Kristoff & Wessels      Expires November 7, 2020                [Page 7]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    o  Authoritative servers MUST support and service all TCP queries so
@@ -445,9 +445,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                  [Page 8]
+Kristoff & Wessels      Expires November 7, 2020                [Page 8]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    The SYN flooding attack is a denial-of-service method affecting hosts
@@ -501,9 +501,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                  [Page 9]
+Kristoff & Wessels      Expires November 7, 2020                [Page 9]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    potential future use and the need to free up resources for new
@@ -557,9 +557,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 10]
+Kristoff & Wessels      Expires November 7, 2020               [Page 10]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    and net.ipv4.tcp_tw_reuse.  In extreme cases, implementors and
@@ -613,9 +613,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 11]
+Kristoff & Wessels      Expires November 7, 2020               [Page 11]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    when the resolver resends the query using TCP and the TCP response
@@ -669,9 +669,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 12]
+Kristoff & Wessels      Expires November 7, 2020               [Page 12]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    As an alternative to packet capture, some DNS server software
@@ -725,9 +725,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 13]
+Kristoff & Wessels      Expires November 7, 2020               [Page 13]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    queried).  DNS over TLS or DTLS is the recommended way to achieve DNS
@@ -781,9 +781,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 14]
+Kristoff & Wessels      Expires November 7, 2020               [Page 14]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    [DJBDNS]   D.J. Bernstein, "When are TCP queries sent?", 2002,
@@ -837,9 +837,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 15]
+Kristoff & Wessels      Expires November 7, 2020               [Page 15]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    [RFC1995]  Ohta, M., "Incremental Zone Transfer in DNS", RFC 1995,
@@ -893,9 +893,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 16]
+Kristoff & Wessels      Expires November 7, 2020               [Page 16]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    [RFC4953]  Touch, J., "Defending TCP Against Spoofing Attacks",
@@ -949,9 +949,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 17]
+Kristoff & Wessels      Expires November 7, 2020               [Page 17]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    [RFC6762]  Cheshire, S. and M. Krochmal, "Multicast DNS", RFC 6762,
@@ -1005,9 +1005,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 18]
+Kristoff & Wessels      Expires November 7, 2020               [Page 18]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    [RFC7901]  Wouters, P., "CHAIN Query Requests in DNS", RFC 7901,
@@ -1061,9 +1061,9 @@ Internet-Draft           DNS Transport over TCP            December 2019
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 19]
+Kristoff & Wessels      Expires November 7, 2020               [Page 19]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    [RFC8501]  Howard, L., "Reverse DNS in IPv6 for Internet Service
@@ -1117,9 +1117,9 @@ A.1.  IETF RFC 1035 - DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 20]
+Kristoff & Wessels      Expires November 7, 2020               [Page 20]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
 A.2.  IETF RFC 1536 - Common DNS Implementation Errors and Suggested
@@ -1173,9 +1173,9 @@ A.7.  IETF RFC 3225 - Indicating Resolver Support of DNSSEC
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 21]
+Kristoff & Wessels      Expires November 7, 2020               [Page 21]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    document in the RFC series expressing the requirement for EDNS0
@@ -1229,9 +1229,9 @@ A.12.  IETF RFC 5625 - DNS Proxy Implementation Guidelines
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 22]
+Kristoff & Wessels      Expires November 7, 2020               [Page 22]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
 A.13.  IETF RFC 5936 - DNS Zone Transfer Protocol (AXFR)
@@ -1285,9 +1285,9 @@ A.18.  IETF RFC 6950 - Architectural Considerations on Application
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 23]
+Kristoff & Wessels      Expires November 7, 2020               [Page 23]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
 A.19.  IETF RFC 7477 - Child-to-Parent Synchronization in DNS
@@ -1341,9 +1341,9 @@ A.24.  IETF RFC 7873 - Domain Name System (DNS) Cookies
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 24]
+Kristoff & Wessels      Expires November 7, 2020               [Page 24]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
    In one, when a server receives only a client cookie in a request, the
@@ -1397,9 +1397,9 @@ A.28.  IETF RFC 8162 - Using Secure DNS to Associate Certificates with
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 25]
+Kristoff & Wessels      Expires November 7, 2020               [Page 25]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
 A.29.  IETF RFC 8324 - DNS Privacy, Authorization, Special Uses,
@@ -1453,9 +1453,9 @@ A.34.  IETF RFC 8501 - Reverse DNS in IPv6 for Internet Service
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 26]
+Kristoff & Wessels      Expires November 7, 2020               [Page 26]
 
-Internet-Draft           DNS Transport over TCP            December 2019
+Internet-Draft           DNS Transport over TCP                 May 2020
 
 
 Authors' Addresses
@@ -1509,4 +1509,4 @@ Authors' Addresses
 
 
 
-Kristoff & Wessels        Expires June 6, 2020                 [Page 27]
+Kristoff & Wessels      Expires November 7, 2020               [Page 27]
