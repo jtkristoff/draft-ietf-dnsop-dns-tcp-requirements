@@ -210,7 +210,7 @@
      This includes both DNS over unencrypted TCP, as well as over an encrypted TLS session.
      The document also considers the consequences
      with this form of DNS communication and the potential operational issues
-     that can arise when this best common practice is not upheld.</t>
+     that can arise when this best current practice is not upheld.</t>
    </abstract>
  </front>
 
@@ -1086,7 +1086,7 @@
 
    <section anchor="dnsrfcs" title="Standards Related to DNS Transport over TCP">
      <t>This section enumerates all known IETF RFC documents that are
-     currently of status standard, informational, best common practice,
+     currently of status standard, informational, best current practice,
      or experimental and either implicitly or explicitly make
      assumptions or statements about the use of TCP as a transport for
      the DNS germane to this document.</t>
