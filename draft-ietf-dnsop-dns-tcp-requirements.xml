@@ -1222,7 +1222,7 @@
        <t>In this standards track document <xref target="RFC6762"></xref>, the
        TC bit is deemed to have essentially the same meaning as described
        in the original DNS specifications.  That is, if a response with the
-       TCP bit set is received, "[...] the querier SHOULD reissue its query
+       TC bit set is received, "[...] the querier SHOULD reissue its query
        using TCP in order to receive the larger response."</t>
      </section>
 
