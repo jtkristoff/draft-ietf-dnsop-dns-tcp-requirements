@@ -149,18 +149,18 @@
    <!-- Another author who claims to be an editor -->
 
    <author fullname="John Kristoff" initials="J.T." surname="Kristoff">
-     <organization>DePaul University</organization>
+     <organization>DataPlane.org</organization>
      <address>
        <postal>
          <street></street>
          <city>Chicago</city>
          <region>IL</region>
-         <code>60604</code>
+         <code>60605</code>
          <country>US</country>
        </postal>
        <phone>+1 312 493 0305</phone>
-       <email>jtk@depaul.edu</email>
-       <uri>https://aharp.iorc.depaul.edu</uri>
+       <email>jtk@dataplane.org</email>
+       <uri>https://dataplane.org/jtk/</uri>
      </address>
    </author>
 
