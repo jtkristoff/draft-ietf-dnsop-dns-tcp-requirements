@@ -26,7 +26,7 @@
   <!ENTITY RFC2460 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2460.xml">
   <!-- DNS Security Operational Considerations -->
   <!ENTITY RFC2541 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2541.xml">
-  <!-- Extension Mechanisms for DNS (EDNS0) -->
+  <!-- Extension Mechanisms for DNS (EDNS(0)) -->
   <!ENTITY RFC2671 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2671.xml">
   <!-- DNS extensions to Network Address Translators (DNS_ALG) -->
   <!ENTITY RFC2694 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2694.xml">
@@ -72,7 +72,7 @@
   <!ENTITY RFC7720 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7720.xml">
   <!-- DNS Transport over TCP - Implementation Requirements -->
   <!ENTITY RFC7766 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7766.xml">
-  <!-- The edns-tcp-keepalive EDNS0 Option -->
+  <!-- The edns-tcp-keepalive EDNS(0) Option -->
   <!ENTITY RFC7828 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7828.xml">
   <!-- Specification for DNS over Transport Layer Security (TLS) -->
   <!ENTITY RFC7858 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7858.xml">
@@ -318,33 +318,33 @@
        UDP transport dominance for message transactions.</t>
      </section>
 
-     <section title="EDNS0">
+     <section title="EDNS(0)">
        <t>In 1999 the IETF published the Extension Mechanisms for DNS
-       (EDNS0) in <xref target="RFC2671"></xref> (superseded in 2013 by
+       (EDNS(0)) in <xref target="RFC2671"></xref> (superseded in 2013 by
        an update in <xref target="RFC6891"></xref>).  This document
        standardized a way for communicating DNS nodes to perform
        rudimentary capabilities negotiation.  One such capability
-       written into the base specification and present in every EDNS0-compatible
+       written into the base specification and present in every EDNS(0)-compatible
        message is the value of the maximum UDP payload size
        the sender can support.  This unsigned 16-bit field specifies,
        in bytes, the maximum (possibly fragmented) DNS message size a
        node is capable of receiving.  In practice, typical values are
-       a subset of the 512- to 4096-byte range.  EDNS0 became
+       a subset of the 512- to 4096-byte range.  EDNS(0) became
        widely deployed over the next several years and numerous surveys
        (<xref target="CASTRO2010"></xref>, <xref target="NETALYZR"></xref>)
        have shown many systems currently support larger UDP MTUs
-       with EDNS0.</t>
+       with EDNS(0).</t>
 
-       <t>The natural effect of EDNS0 deployment meant DNS messages
+       <t>The natural effect of EDNS(0) deployment meant DNS messages
        larger than 512 bytes would be less reliant on TCP than they
        might otherwise have been.  While a non-negligible population of
-       DNS systems lacked EDNS0 or fell back to TCP when necessary,
+       DNS systems lacked EDNS(0) or fell back to TCP when necessary,
        DNS over TCP transactions remained a very small fraction of
        overall DNS traffic <xref target="VERISIGN"></xref>.</t>
      </section>
 
      <section title="Fragmentation and Truncation">
-       <t>Although EDNS0 provides a way for endpoints to signal support for
+       <t>Although EDNS(0) provides a way for endpoints to signal support for
        DNS messages exceeding 512 bytes, the realities of a diverse and
        inconsistently deployed Internet may result in some large messages
        being unable to reach their destination.  Any IP datagram whose size
@@ -370,13 +370,13 @@
        recursive resolvers were unable to receive a fragmented IPv6 packet.</t>
 
        <t>The practical consequence of all this is that DNS requestors
-       must be prepared to retry queries with different EDNS0 maximum
+       must be prepared to retry queries with different EDNS(0) maximum
        message size values.  Administrators of BIND are likely to be 
        familiar with seeing "success resolving ... after reducing the
-       advertised EDNS0 UDP packet size to 512 octets" messages in their
+       advertised EDNS(0) UDP packet size to 512 octets" messages in their
        system logs.</t>
 
-       <t>Often, reducing the EDNS0 UDP packet size leads to a
+       <t>Often, reducing the EDNS(0) UDP packet size leads to a
        successful response.  That is, the necessary data fits within the
        smaller message size.  However, when the data does not fit, the
        server sets the truncated flag in its response, indicating the
@@ -399,7 +399,7 @@
 
        <t>More recently, renewed security concerns about fragmented DNS
        messages (<xref target="AVOID_FRAGS"/>, <xref target="FRAG_POISON"/>)
-       are leading implementors to consider lower default EDNS0 UDP payload
+       are leading implementors to consider lower default EDNS(0) UDP payload
        size values for both queriers and responders.</t>
 
      </section>
@@ -601,7 +601,7 @@
        close of a TCP connection so that busy servers do not 
        accumulate many sockets in the TIME_WAIT state, which can
        cause performance problems or even denial of service.
-       The edns-tcp-keepalive EDNS0 option <xref target="RFC7828"/>
+       The edns-tcp-keepalive EDNS(0) option <xref target="RFC7828"/>
        can be used to encourage clients to close connections.</t>
 
        <t>On systems where large numbers of sockets in TIME_WAIT
@@ -643,7 +643,7 @@
      <t>Networks that filter DNS over TCP risk losing access to
      significant or important pieces of the DNS namespace.  For a
      variety of reasons a DNS answer may require a DNS over TCP query.
-     This may include large message sizes, lack of EDNS0 support, DDoS
+     This may include large message sizes, lack of EDNS(0) support, DDoS
      mitigation techniques, or perhaps some future capability that is as
      yet unforeseen will also demand TCP transport.</t>
 
@@ -1148,7 +1148,7 @@
        makes statements indicating DNS over TCP is "detrimental" as a
        result of increased traffic, latency, and server load.  This
        document is a companion to the next document in the RFC
-       series expressing the requirement for EDNS0 support for DNSSEC.</t>
+       series expressing the requirement for EDNS(0) support for DNSSEC.</t>
      </section>
 
      <section title="IETF RFC 3326 - DNSSEC and IPv6 A6 aware server/resolver message size requirements">
@@ -1156,7 +1156,7 @@
        the standards track document <xref target="RFC3226"></xref>
        strongly argued in favor of
        UDP messages over TCP largely for performance reasons.  The
-       document declares EDNS0 a requirement for DNSSEC servers and
+       document declares EDNS(0) a requirement for DNSSEC servers and
        advocated packet fragmentation may be preferable to TCP in
        certain situations.</t>
      </section>
@@ -1266,9 +1266,9 @@
        software.</t>
      </section>
 
-     <section title="IETF RFC 7828 - The edns-tcp-keepalive EDNS0 Option">
+     <section title="IETF RFC 7828 - The edns-tcp-keepalive EDNS(0) Option">
        <t>This standards track document <xref target="RFC7828"></xref>
-       defines an EDNS0 option to negotiate an idle timeout value for
+       defines an EDNS(0) option to negotiate an idle timeout value for
        long-lived DNS over TCP connections.  Consequently, this document
        is only applicable and relevant to DNS over TCP sessions and
        between implementations that support this option.</t>
@@ -1285,7 +1285,7 @@
 
      <section title="IETF RFC 7873 - Domain Name System (DNS) Cookies">
        <t>This standards track document <xref target="RFC7873"></xref>
-       describes an EDNS0 option to provide additional protection
+       describes an EDNS(0) option to provide additional protection
        against query and answer forgery.  This specification mentions
        DNS over TCP as a reasonable fallback mechanism when DNS Cookies
        are not available.  The specification does make mention of DNS
@@ -1300,7 +1300,7 @@
 
      <section title="IETF RFC 7901 - CHAIN Query Requests in DNS">
        <t>This experimental specification <xref target="RFC7901"></xref>
-       describes an EDNS0 option that can be used by a security-aware
+       describes an EDNS(0) option that can be used by a security-aware
        validating resolver to request and obtain a complete DNSSEC
        validation path for any single query.  This document requires the
        use of DNS over TCP or a source IP address verified transport
