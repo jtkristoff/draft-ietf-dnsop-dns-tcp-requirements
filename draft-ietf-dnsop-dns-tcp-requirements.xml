@@ -96,6 +96,8 @@
   <!ENTITY RFC8467 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8467.xml">
   <!-- Yeti DNS Testbed -->
   <!ENTITY RFC8483 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8483.xml">
+  <!-- Providing Minimal-Sized Responses to DNS Queries That Have QTYPE=ANY -->
+  <!ENTITY RFC8482 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8482.xml">
   <!-- DNS Queries over HTTPS (DoH) -->
   <!ENTITY RFC8484 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8484.xml">
   <!-- DNS Stateful Operations -->
@@ -870,6 +872,7 @@
      &RFC8162;
      &RFC8324;
      &RFC8467;
+     &RFC8482;
      &RFC8483;
      &RFC8484;
      &RFC8490;
@@ -1392,6 +1395,16 @@
        protocol (e.g. TCP) when calculating the padding length when
        artificially increasing the DNS message size with an EDNS(0)
        padding option.</t>
+     </section>
+
+     <section title="IETF RFC 8482 - Providing Minimal-Sized Responses to DNS Queries That Have QTYPE=ANY">
+       <t><xref target="RFC8482"/> is a standards-track document that
+       describes alternative ways that DNS servers can respond to queries
+       of type ANY, which are somtimes used to provide amplification
+       in DDoS attacks.  The specification notes that responders may
+       behave differently, depending on the transport.  For example,
+       mimimal-sized responses may be used over UDP transport, while
+       full responses may be given over TCP.</t>
      </section>
 
      <section title="IETF RFC 8483 - Yeti DNS Testbed">
