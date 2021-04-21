@@ -655,7 +655,7 @@
      significant or important pieces of the DNS namespace.  For a
      variety of reasons a DNS answer may require a DNS over TCP query.
      This may include large message sizes, lack of EDNS(0) support, DDoS
-     mitigation techniques, or perhaps some future capability that is as
+     mitigation techniques (including <xref target="RRL"/>), or perhaps some future capability that is as
      yet unforeseen will also demand TCP transport.</t>
 
      <t>For example, <xref target="RFC7901"/> describes a latency-avoiding
