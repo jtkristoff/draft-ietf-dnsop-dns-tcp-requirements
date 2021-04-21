@@ -24,8 +24,8 @@
   <!ENTITY RFC2181 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2181.xml">
   <!-- Internet Protocol, Version 6 (IPv6) Specification -->
   <!ENTITY RFC2460 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2460.xml">
-  <!-- DNS Security Operational Considerations -->
-  <!ENTITY RFC2541 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2541.xml">
+  <!-- Domain Name System Security Extensions -->
+  <!ENTITY RFC2535 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2535.xml">
   <!-- Extension Mechanisms for DNS (EDNS(0)) -->
   <!ENTITY RFC2671 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2671.xml">
   <!-- DNS extensions to Network Address Translators (DNS_ALG) -->
@@ -306,7 +306,7 @@
        elevate the need for DNS over TCP transactions.  The first was
        dynamic updates defined in <xref target="RFC2136"></xref> and the
        second was the set of extensions collectively known as DNSSEC
-       originally specified in <xref target="RFC2541"></xref>.  The
+       originally specified in <xref target="RFC2535"></xref>.  The
        former suggested "requestors who require an accurate response
        code must use TCP," while the latter warned "... larger keys
        increase the size of KEY and SIG RRs.  This increases the chance
@@ -834,7 +834,7 @@
      &RFC2136;
      &RFC2181;
      &RFC2460;
-     &RFC2541;
+     &RFC2535;
      &RFC2671;
      &RFC2694;
      <!-- &RFC2629; -->
