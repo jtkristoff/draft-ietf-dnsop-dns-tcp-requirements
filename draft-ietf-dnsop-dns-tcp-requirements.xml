@@ -781,7 +781,7 @@
    <section anchor="Privacy" title="Privacy Considerations">
 
      <t>Since DNS over both UDP and TCP use the same underlying message
-     format, the use of one transport instead of the other does change
+     format, the use of one transport instead of the other does not change
      the privacy characteristics of the message content (i.e., the name
      being queried). DNS over TLS or DTLS is the recommended way to
      achieve DNS privacy.</t>
