@@ -1251,7 +1251,8 @@
        instructs DNS implementers to provide support for carrying DNS
        over TCP messages in their software.  The authors explicitly
        make no recommendations to operators, which we seek to address
-       here.</t>
+       here.  Note that <xref target="RFC5966"/> has been obsoleted by <xref
+       target="RFC7766"/>, which is described in <xref target="app-rfc7766"/>.</t>
      </section>
 
      <section title="IETF RFC 6304 - AS112 Nameserver Operations">
@@ -1299,7 +1300,7 @@
        [RFC793] transport of DNS queries and responses."</t>
      </section>
 
-     <section title="IETF RFC 7766 - DNS Transport over TCP - Implementation Requirements">
+     <section anchor="app-rfc7766" title="IETF RFC 7766 - DNS Transport over TCP - Implementation Requirements">
        <t>The standards track document <xref target="RFC7766"></xref>
        might be considered the direct ancestor of this operational
        requirements document.  The implementation requirements document
