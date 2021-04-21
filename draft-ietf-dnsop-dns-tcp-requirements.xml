@@ -43,6 +43,8 @@
   <!-- Transport Layer Security (TLS) Session Resumption without Server-Side State-->
   <!ENTITY RFC5077 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5077.xml">
   <!-- Measures for Making DNS More Resilient against Forged Answers -->
+  <!ENTITY RFC5358 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5358.xml">
+  <!-- Preventing Use of Recursive Nameservers in Reflector Attacks -->
   <!ENTITY RFC5452 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5452.xml">
   <!-- Design Choices When Expanding the DNS -->
   <!ENTITY RFC5507 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5507.xml">
@@ -519,7 +521,7 @@
        possible, the controls can be placed in the application
        itself.  In some situations (e.g. attacks) it may be necessary
        to deploy access controls for DNS services that should
-       otherwise be globally reachable.</t>
+       otherwise be globally reachable.  See also <xref target="RFC5358"/>.</t>
 
        <t>The FreeBSD, OpenBSD, and NetBSD operating systems have an "accept filter" feature
        (<xref target="accept_filter"/>)
@@ -842,6 +844,7 @@
      &RFC4953;
      &RFC4987;
      &RFC5077;
+     &RFC5358;
      &RFC5452;
      &RFC5507;
      &RFC5625;
