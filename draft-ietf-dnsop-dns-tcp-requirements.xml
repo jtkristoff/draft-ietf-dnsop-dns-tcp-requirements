@@ -404,7 +404,7 @@
        sentiment in the DNSSEC community that RSA key sizes beyond
        2048-bits are impractical and that critical infrastructure zones
        should transition to elliptic curve algorithms to keep response
-       sizes manageable.</t>
+       sizes manageable <xref target="ECDSA"/>.</t>
 
        <t>More recently, renewed security concerns about fragmented DNS
        messages (<xref target="AVOID_FRAGS"/>, <xref target="FRAG_POISON"/>)
@@ -1104,6 +1104,14 @@
 	</front>
      </reference>
 
+     <reference anchor="ECDSA" target="https://dl.acm.org/doi/10.1145/2831347.2831350">
+       <front>
+         <title>Making the Case for Elliptic Curves in DNSSEC</title>
+         <author fullname="Roland van Rijswijk-Deij" initials="R." surname="Rijswijk-Deij"/>
+         <author fullname="Anna Sperotto" initials="A." surname="Sperotto"/>
+         <author fullname="Aiko Pras" initials="A." surname="Pras"/>
+       </front>
+     </reference>
    </references>
 
    <section anchor="dnsrfcs" title="Standards Related to DNS Transport over TCP">
