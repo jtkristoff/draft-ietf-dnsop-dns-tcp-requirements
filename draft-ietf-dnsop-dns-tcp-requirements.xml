@@ -619,7 +619,7 @@
        are observed (either as client or server), it may be beneficial to tune the local TCP
        parameters.  For example, the Linux kernel provides a number
        of "sysctl" parameters related to TIME_WAIT, such as
-       net.ipv4.tcp_fin_timeout, net.ipv4.tcp_tw_recycle, and
+       net.ipv4.tcp_fin_timeout and
        net.ipv4.tcp_tw_reuse.  In extreme cases, implementors and
        operators of very busy servers may find it necessary to
        utilize the SO_LINGER socket option (<xref target="Stevens"/> Section
