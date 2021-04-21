@@ -594,15 +594,18 @@
 
      <section title="Connection Termination">
 
-       <t>In general, it is preferable for clients to initiate the
-       close of a TCP connection.  The TCP peer that initiates a
+       <t>The TCP peer that initiates a
        connection close retains the socket in the TIME_WAIT state
-       for some amount of time, possibly a few minutes.  On a busy
-       server, the accumulation of many sockets in TIME_WAIT can
-       cause performance problems or even denial of service.</t>
+       for some amount of time, possibly a few minutes. 
+       It is generally preferable for clients to initiate the
+       close of a TCP connection so that busy servers do not 
+       accumulate many sockets in the TIME_WAIT state, which can
+       cause performance problems or even denial of service.
+       The edns-tcp-keepalive EDNS0 option <xref target="RFC7828"/>
+       can be used to encourage clients to close connections.</t>
 
        <t>On systems where large numbers of sockets in TIME_WAIT
-       are observed, it may be beneficial to tune the local TCP
+       are observed (either as client or server), it may be beneficial to tune the local TCP
        parameters.  For example, the Linux kernel provides a number
        of "sysctl" parameters related to TIME_WAIT, such as
        net.ipv4.tcp_fin_timeout, net.ipv4.tcp_tw_recycle, and
