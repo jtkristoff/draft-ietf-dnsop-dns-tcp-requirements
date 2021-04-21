@@ -380,7 +380,7 @@
 
        <t>The practical consequence of all this is that DNS requestors
        must be prepared to retry queries with different EDNS(0) maximum
-       message size values.  Administrators of BIND are likely to be 
+       message size values.  Administrators of <xref target="BIND"/> are likely to be 
        familiar with seeing "success resolving ... after reducing the
        advertised EDNS(0) UDP packet size to 512 octets" messages in their
        system logs.</t>
@@ -1091,6 +1091,16 @@
 	  <author fullname="Willem Toorop" initials="W." surname="Toorop"/>
 	  <author fullname="Roland van Rijswijk-Deij" initials="R.v." surname="Rijswijk-Deij"/>
 	  <date year="2019" month="Oct"/>
+	</front>
+     </reference>
+
+     <reference anchor="BIND" target="https://www.isc.org/bind/">
+	<front>
+	  <title>BIND 9 - ISC</title>
+	  <author>
+            <organization>Internet Systems Consortium</organization>
+	  </author>
+	  <date year="2021" month="Apr"/>
 	</front>
      </reference>
 
