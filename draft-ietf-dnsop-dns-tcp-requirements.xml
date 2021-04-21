@@ -411,7 +411,7 @@
        <t>More recently, renewed security concerns about fragmented DNS
        messages (<xref target="AVOID_FRAGS"/>, <xref target="FRAG_POISON"/>)
        are leading implementors to consider lower default EDNS(0) UDP payload
-       size values for both queriers and responders.</t>
+       size values for both queriers and responders <xref target="FLAGDAY2020"/>.</t>
 
      </section>
 
@@ -1115,6 +1115,17 @@
          <author fullname="Aiko Pras" initials="A." surname="Pras"/>
        </front>
      </reference>
+
+     <reference anchor="FLAGDAY2020" target="https://dnsflagday.net/2020/">
+	<front>
+	  <title>DNS Flag Day 2020</title>
+	  <author>
+            <organization>Various DNS software and service providers</organization>
+	  </author>
+	  <date year="2020" month="Oct"/>
+	</front>
+     </reference>
+
    </references>
 
    <section anchor="dnsrfcs" title="Standards Related to DNS Transport over TCP">
