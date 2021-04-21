@@ -531,8 +531,13 @@
        until a complete, valid request has been received.  The
        dns_accf(9) filter ensures that a valid DNS message is
        received.  If not, the bogus connection never reaches the
-       application.  Applications must be coded and configured to
-       make use of this filter.</t>
+       application.
+       The Linux TCP_DEFER_ACCEPT feature, while more limited in scope,
+       can provide some of the same benefits as the BSD accept filter
+       feature.
+       These features are implemented as low-level socket options.
+       It is necessary for applications to be specifically coded and
+       configured to make use of them.</t>
 
        <t>Per <xref target="RFC7766"/>, applications and administrators
        are advised to remember that TCP MAY be used before sending
