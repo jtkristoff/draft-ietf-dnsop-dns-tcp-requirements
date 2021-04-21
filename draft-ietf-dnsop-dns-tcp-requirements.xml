@@ -426,7 +426,7 @@
        all DNS over TCP traffic even described as a best practice.</t>
 
        <t>The position on restricting DNS over TCP had some
-       justification given that historic implementations of DNS
+       justification given that historical implementations of DNS
        nameservers provided very little in the way of TCP connection
        management (for example see Section 6.1.2 of <xref
        target="RFC7766"></xref> for more details).  However modern
