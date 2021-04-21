@@ -330,7 +330,7 @@
        message is the value of the maximum UDP payload size
        the sender can support.  This unsigned 16-bit field specifies,
        in bytes, the maximum (possibly fragmented) DNS message size a
-       node is capable of receiving.  In practice, typical values are
+       node is capable of receiving over UDP.  In practice, typical values are
        a subset of the 512- to 4096-byte range.  EDNS(0) became
        widely deployed over the next several years and numerous surveys
        (<xref target="CASTRO2010"></xref>, <xref target="NETALYZR"></xref>)
