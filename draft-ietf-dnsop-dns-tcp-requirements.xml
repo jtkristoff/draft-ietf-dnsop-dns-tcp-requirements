@@ -42,9 +42,9 @@
   <!ENTITY RFC4987 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4987.xml">
   <!-- Transport Layer Security (TLS) Session Resumption without Server-Side State-->
   <!ENTITY RFC5077 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5077.xml">
-  <!-- Measures for Making DNS More Resilient against Forged Answers -->
-  <!ENTITY RFC5358 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5358.xml">
   <!-- Preventing Use of Recursive Nameservers in Reflector Attacks -->
+  <!ENTITY RFC5358 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5358.xml">
+  <!-- Measures for Making DNS More Resilient against Forged Answers -->
   <!ENTITY RFC5452 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5452.xml">
   <!-- Design Choices When Expanding the DNS -->
   <!ENTITY RFC5507 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5507.xml">
