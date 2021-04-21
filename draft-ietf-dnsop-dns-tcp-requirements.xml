@@ -1196,7 +1196,7 @@
        <t>Although updated by later DNSSEC RFCs,
        the standards track document <xref target="RFC3226"></xref>
        strongly argued in favor of
-       UDP messages over TCP largely for performance reasons.  The
+       UDP messages instead of TCP, largely for performance reasons.  The
        document declares EDNS(0) a requirement for DNSSEC servers and
        advocated packet fragmentation may be preferable to TCP in
        certain situations.</t>
