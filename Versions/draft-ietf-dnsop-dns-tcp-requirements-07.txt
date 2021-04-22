@@ -1559,7 +1559,7 @@ Authors' Addresses
 
    Phone: +1 703 948 3200
    Email: dwessels@verisign.com
-   URI:   http://verisigninc.com
+   URI:   http://verisign.com
 
 
 
