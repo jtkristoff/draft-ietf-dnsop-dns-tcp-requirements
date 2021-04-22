@@ -22,8 +22,6 @@
   <!ENTITY RFC2136 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2136.xml">
   <!-- Clarifications to the DNS Specification -->
   <!ENTITY RFC2181 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2181.xml">
-  <!-- Internet Protocol, Version 6 (IPv6) Specification -->
-  <!ENTITY RFC2460 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2460.xml">
   <!-- Domain Name System Security Extensions -->
   <!ENTITY RFC2535 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2535.xml">
   <!-- Extension Mechanisms for DNS (EDNS(0)) -->
@@ -40,8 +38,6 @@
   <!ENTITY RFC4953 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4953.xml">
   <!-- TCP SYN Flooding Attacks and Common Mitigations -->
   <!ENTITY RFC4987 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4987.xml">
-  <!-- Transport Layer Security (TLS) Session Resumption without Server-Side State-->
-  <!ENTITY RFC5077 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5077.xml">
   <!-- Preventing Use of Recursive Nameservers in Reflector Attacks -->
   <!ENTITY RFC5358 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5358.xml">
   <!-- Measures for Making DNS More Resilient against Forged Answers -->
@@ -56,10 +52,6 @@
   <!ENTITY RFC5936 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5936.xml">
   <!-- Improving TCP's Robustness to Blind In-Window Attacks -->
   <!ENTITY RFC5961 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5961.xml">
-  <!-- DNS Transport over TCP - Implementation Requirements -->
-  <!ENTITY RFC5966 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5966.xml">
-  <!-- AS112 Nameserver Operations -->
-  <!ENTITY RFC6304 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6304.xml">
   <!-- Multicast DNS -->
   <!ENTITY RFC6762 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6762.xml">
   <!-- Extension Mechanisms for DNS (EDNS (0)) -->
@@ -70,6 +62,8 @@
   <!ENTITY RFC7413 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7413.xml">
   <!-- Child-to-Parent Synchronization in DNS -->
   <!ENTITY RFC7477 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7477.xml">
+  <!-- AS112 Nameserver Operations -->
+  <!ENTITY RFC7534 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7534.xml">
   <!-- Root Name Service Requirements -->
   <!ENTITY RFC7720 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7720.xml">
   <!-- DNS Transport over TCP - Implementation Requirements -->
@@ -90,8 +84,12 @@
   <!ENTITY RFC8094 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8094.xml">
   <!-- DNS-Based Authentication for S/MIME -->
   <!ENTITY RFC8162 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8162.xml">
+  <!-- Internet Protocol, Version 6 (IPv6) Specification -->
+  <!ENTITY RFC8200 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8200.xml">
   <!-- DNS Privacy, Authorization, Special Uses, Encoding, Characters, Matching, and Root Structure: Time for Another Look? -->
   <!ENTITY RFC8324 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8324.xml">
+  <!-- The Transport Layer Security (TLS) Protocol Version 1.3 -->
+  <!ENTITY RFC8446 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8446.xml">
   <!-- Padding Policies for Extension Mechanisms for DNS (EDNS(0)) -->
   <!ENTITY RFC8467 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8467.xml">
   <!-- Yeti DNS Testbed -->
@@ -539,7 +537,7 @@
        and are not activated automatically. If applications wish to
        use these features, they need to make specific calls to set the
        right options, and administrators may also need to configure the
-       applications to appropriately use the features.
+       applications to appropriately use the features.</t>
 
        <t>Per <xref target="RFC7766"/>, applications and administrators
        are advised to remember that TCP MAY be used before sending
@@ -651,8 +649,8 @@
        on DNS clients and servers.  Cryptographic functions for
        authentication and encryption require additional processing.
        Unoptimized connection setup takes two additional round-trips
-       compared to TCP, but can be reduced with Fast TLS connection
-       resumption <xref target="RFC5077"/> and TLS False Start <xref
+       compared to TCP, but can be reduced with TLS session
+       resumption <xref target="RFC8446"/> and TLS False Start <xref
        target="RFC7918"/>.</t>
 
      </section>
@@ -703,7 +701,7 @@
        target="LEWIS"></xref>.  During some phases of the KSK rollover process,
        root zone DNSKEY responses were
        larger than 1280 bytes, the IPv6 minimum MTU for links
-       carrying IPv6 traffic <xref target="RFC2460"/>.
+       carrying IPv6 traffic <xref target="RFC8200"/>.
        There was some concern <!-- XXX citation needed -->
        that any DNS server unable to receive large
        DNS messages over UDP, or any DNS message over TCP, would experience
@@ -842,7 +840,6 @@
      &RFC1996;
      &RFC2136;
      &RFC2181;
-     &RFC2460;
      &RFC2535;
      &RFC2671;
      &RFC2694;
@@ -852,7 +849,7 @@
      &RFC4472;
      &RFC4953;
      &RFC4987;
-     &RFC5077;
+     &RFC8446;
      &RFC5358;
      &RFC5452;
      &RFC5507;
@@ -860,8 +857,7 @@
      &RFC5927;
      &RFC5936;
      &RFC5961;
-     &RFC5966;
-     &RFC6304;
+     &RFC7534;
      &RFC6762;
      &RFC6891;
      &RFC6950;
@@ -877,6 +873,7 @@
      &RFC8027;
      &RFC8094;
      &RFC8162;
+     &RFC8200;
      &RFC8324;
      &RFC8467;
      &RFC8482;
@@ -1257,17 +1254,8 @@
        discusses TCP usage at length.</t>
      </section>
 
-     <section title="IETF RFC 5966 - DNS Transport over TCP - Implementation Requirements">
-       <t>This standards track document <xref target="RFC5966"></xref>
-       instructs DNS implementers to provide support for carrying DNS
-       over TCP messages in their software.  The authors explicitly
-       make no recommendations to operators, which we seek to address
-       here.  Note that <xref target="RFC5966"/> has been obsoleted by <xref
-       target="RFC7766"/>, which is described in <xref target="app-rfc7766"/>.</t>
-     </section>
-
-     <section title="IETF RFC 6304 - AS112 Nameserver Operations">
-       <t><xref target="RFC6304"></xref> is an informational document
+     <section title="IETF RFC 7534 - AS112 Nameserver Operations">
+       <t><xref target="RFC7534"></xref> is an informational document
        enumerating the requirements for operation of AS112 project DNS
        servers.  New AS112 nodes are tested for their ability to provide
        service on both UDP and TCP transports, with the implication that
@@ -1312,11 +1300,16 @@
      </section>
 
      <section anchor="app-rfc7766" title="IETF RFC 7766 - DNS Transport over TCP - Implementation Requirements">
-       <t>The standards track document <xref target="RFC7766"></xref>
+       <t>This standards track document <xref target="RFC7766"/>
+       instructs DNS implementers to provide support for carrying DNS
+       over TCP messages in their software, and 
        might be considered the direct ancestor of this operational
-       requirements document.  The implementation requirements document
+       requirements document.
+       The implementation requirements document
        codifies mandatory support for DNS over TCP in compliant DNS
-       software.</t>
+       software, but
+       makes no recommendations to operators, which we seek to address
+       here.</t>
      </section>
 
      <section title="IETF RFC 7828 - The edns-tcp-keepalive EDNS(0) Option">
