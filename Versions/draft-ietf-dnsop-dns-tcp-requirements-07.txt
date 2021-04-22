@@ -253,12 +253,12 @@ Internet-Draft           DNS Transport over TCP               April 2021
    At least two new, widely anticipated developments were set to elevate
    the need for DNS over TCP transactions.  The first was dynamic
    updates defined in [RFC2136] and the second was the set of extensions
-   collectively known as DNSSEC originally specified in [RFC2535].  The
-   former suggested "requestors who require an accurate response code
-   must use TCP," while the latter warned "... larger keys increase the
-   size of KEY and SIG RRs.  This increases the chance of DNS UDP packet
-   overflow and the possible necessity for using higher overhead TCP in
-   responses."
+   collectively known as DNSSEC, whose operational considerations are
+   originally given in [RFC2541].  The former suggested "requestors who
+   require an accurate response code must use TCP," while the latter
+   warned "... larger keys increase the size of KEY and SIG RRs.  This
+   increases the chance of DNS UDP packet overflow and the possible
+   necessity for using higher overhead TCP in responses."
 
    Yet, defying some expectations, DNS over TCP remained little-used in
    real traffic across the Internet around this time.  Dynamic updates
@@ -907,9 +907,9 @@ Internet-Draft           DNS Transport over TCP               April 2021
               Specification", RFC 2181, DOI 10.17487/RFC2181, July 1997,
               <https://www.rfc-editor.org/info/rfc2181>.
 
-   [RFC2535]  Eastlake 3rd, D., "Domain Name System Security
-              Extensions", RFC 2535, DOI 10.17487/RFC2535, March 1999,
-              <https://www.rfc-editor.org/info/rfc2535>.
+   [RFC2541]  Eastlake 3rd, D., "DNS Security Operational
+              Considerations", RFC 2541, DOI 10.17487/RFC2541, March
+              1999, <https://www.rfc-editor.org/info/rfc2541>.
 
    [RFC2671]  Vixie, P., "Extension Mechanisms for DNS (EDNS0)",
               RFC 2671, DOI 10.17487/RFC2671, August 1999,
