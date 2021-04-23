@@ -84,6 +84,8 @@
   <!ENTITY RFC8094 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8094.xml">
   <!-- DNS-Based Authentication for S/MIME -->
   <!ENTITY RFC8162 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8162.xml">
+  <!-- Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words -->
+  <!ENTITY RFC8174 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8174.xml">
   <!-- Internet Protocol, Version 6 (IPv6) Specification -->
   <!ENTITY RFC8200 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8200.xml">
   <!-- DNS Privacy, Authorization, Special Uses, Encoding, Characters, Matching, and Root Structure: Time for Another Look? -->
@@ -236,10 +238,11 @@
      DNS over UDP communications.</t>
 
      <section title="Requirements Language">
-       <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-       "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-       document are to be interpreted as described in <xref
-       target="RFC2119">RFC 2119</xref>.</t>
+       <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+       NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
+       "MAY", and "OPTIONAL" in this document are to be interpreted as
+       described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they
+       appear in all capitals, as shown here.</t>
      </section>
 
    </section>
