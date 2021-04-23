@@ -828,7 +828,24 @@
 
    <references title="Normative References">
      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml"?-->
+     &RFC1035;
+     &RFC1995;
+     &RFC1996;
      &RFC2119;
+     &RFC2181;
+     &RFC5625;
+     &RFC5936;
+     &RFC6762;
+     &RFC6891;
+     &RFC7477;
+     &RFC7720;
+     &RFC7766;
+     &RFC7828;
+     &RFC7873;
+     &RFC8162;
+     &RFC8174;
+     &RFC8482;
+     &RFC8490;
 
    </references>
 
@@ -836,13 +853,9 @@
      <!-- Here we use entities that we defined at the beginning. -->
 
      &RFC1034;
-     &RFC1035;
      &RFC1123;
      &RFC1536;
-     &RFC1995;
-     &RFC1996;
      &RFC2136;
-     &RFC2181;
      &RFC2541;
      &RFC2671;
      &RFC2694;
@@ -856,33 +869,21 @@
      &RFC5358;
      &RFC5452;
      &RFC5507;
-     &RFC5625;
      &RFC5927;
-     &RFC5936;
      &RFC5961;
      &RFC7534;
-     &RFC6762;
-     &RFC6891;
      &RFC6950;
      &RFC7413;
-     &RFC7477;
-     &RFC7720;
-     &RFC7766;
-     &RFC7828;
      &RFC7858;
-     &RFC7873;
      &RFC7901;
      &RFC7918;
      &RFC8027;
      &RFC8094;
-     &RFC8162;
      &RFC8200;
      &RFC8324;
      &RFC8467;
-     &RFC8482;
      &RFC8483;
      &RFC8484;
-     &RFC8490;
      &RFC8501;
 
      <!-- A reference written by by an organization not a person. -->
