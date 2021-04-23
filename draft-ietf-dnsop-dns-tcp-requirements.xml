@@ -486,8 +486,8 @@
      operators MUST allow DNS service over both UDP and TCP transports.
      It is acknowledged that DNS over TCP service can pose operational
      challenges that are not present when running DNS over UDP alone,
-     and vice-versa.  However, it is the aim of this document to argue
-     that the potential damage incurred by prohibiting DNS over TCP
+     and vice-versa.  However, <!-- it is the aim of this document to argue that -->
+     the potential damage incurred by prohibiting DNS over TCP
      service is more detrimental to the continued utility and success of
      the DNS than when its usage is allowed.</t>
    </section>
@@ -780,7 +780,7 @@
      have provided DNS over TCP service for many years without duress,
      past experience is no guarantee of future success.</t>
 
-     <t>DNS over TCP is not unlike many other Internet TCP services.
+     <t>DNS over TCP is similar to many other Internet TCP services.
      TCP threats and many mitigation strategies have been
      well-documented in a series of documents such as <xref
      target="RFC4953"></xref>, <xref target="RFC4987"></xref>, <xref
