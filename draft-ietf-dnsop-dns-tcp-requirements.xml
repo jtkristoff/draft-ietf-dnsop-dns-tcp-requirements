@@ -344,8 +344,10 @@
        larger than 512 bytes would be less reliant on TCP than they
        might otherwise have been.  While a non-negligible population of
        DNS systems lacked EDNS(0) or fell back to TCP when necessary,
+       DNS clients still strongly prefer UDP to TCP.
+       For example, as of 2014
        DNS over TCP transactions remained a very small fraction of
-       overall DNS traffic <xref target="VERISIGN"></xref>.</t>
+       overall DNS traffic received by root name servers <xref target="VERISIGN"></xref>.</t>
      </section>
 
      <section title="Fragmentation and Truncation">
