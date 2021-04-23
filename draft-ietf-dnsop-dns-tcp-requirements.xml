@@ -249,7 +249,7 @@
    </section>
 
    <section title="History of DNS over TCP">
-     <t>The curious state of disagreement in operational best practices from RFC 7766
+     <t>The curious state of disagreement in operational best practices
      and guidance for DNS transport protocols derives from conflicting
      messages operators have gotten from other operators, implementors,
      and even the IETF.  Sometimes these mixed signals have been
