@@ -209,9 +209,10 @@
         keywords will be used for the search engine. -->
 
    <abstract>
-     <t>This document encourages the practice of permitting DNS messages to
-     be carried over TCP on the Internet.
-     This includes both DNS over unencrypted TCP, as well as over an encrypted TLS session.
+     <t>This document strongly encourages the operational practice of permitting DNS messages to
+     be carried over TCP on the Internet as a best current practice.
+     Such encouragment is aligned with the implementation requirements in RFC 7766.
+     The use of TCP includes both DNS over unencrypted TCP, as well as over an encrypted TLS session.
      The document also considers the consequences
      with this form of DNS communication and the potential operational issues
      that can arise when this best current practice is not upheld.</t>
@@ -221,7 +222,7 @@
  <middle>
 
    <section title="Introduction">
-     <t>DNS messages may be delivered using UDP or TCP communications.
+     <t>DNS messages are delivered using UDP or TCP communications.
      While most DNS transactions are carried over UDP, some operators
      have been led to believe that any DNS over TCP traffic is unwanted
      or unnecessary for general DNS operation.  When DNS over TCP has
@@ -229,8 +230,8 @@
      challenges often arise.  As DNS and new naming system features have
      evolved, TCP as a transport has become increasingly important for
      the correct and safe operation of an Internet DNS.  Reflecting
-     modern usage, the DNS standards were recently updated to declare
-     support for TCP is now a required part of the DNS implementation
+     modern usage, the DNS standards declare that
+     support for TCP is a required part of the DNS implementation
      specifications <xref target="RFC7766"></xref>.  This document is the
      formal requirements equivalent for the operational community,
      encouraging system administrators, network engineers, and security
@@ -248,7 +249,7 @@
    </section>
 
    <section title="History of DNS over TCP">
-     <t>The curious state of disagreement in operational best practices
+     <t>The curious state of disagreement in operational best practices from RFC 7766
      and guidance for DNS transport protocols derives from conflicting
      messages operators have gotten from other operators, implementors,
      and even the IETF.  Sometimes these mixed signals have been
@@ -326,7 +327,7 @@
      <section title="EDNS(0)">
        <t>In 1999 the IETF published the Extension Mechanisms for DNS
        (EDNS(0)) in <xref target="RFC2671"></xref> (superseded in 2013 by
-       an update in <xref target="RFC6891"></xref>).  This document
+       an update in <xref target="RFC6891"></xref>).  That document
        standardized a way for communicating DNS nodes to perform
        rudimentary capabilities negotiation.  One such capability
        written into the base specification and present in every EDNS(0)-compatible
@@ -447,13 +448,13 @@
      <t>An average increase in DNS message size (e.g., due to DNSSEC),
      the continued development of new DNS features [<xref
      target="dnsrfcs"></xref>], and a denial of service mitigation
-     technique [<xref target="Security"></xref>] have suggested that
+     technique [<xref target="Security"></xref>] show that
      DNS over TCP transactions are as important to the correct and safe
      operation of the Internet DNS as ever, if not more so.
      Furthermore, there has been serious research that argues
      connection-oriented DNS transactions may provide security and
      privacy advantages over UDP transport. <xref target="TDNS"></xref>
-     In fact <xref target="RFC7858"></xref>, a Standards Track document,
+     In fact, the stnadard for DNS over TLS <xref target="RFC7858"></xref>
      is just this sort of specification.  Therefore, this document makes
      explicit that it is undesirable for network operators to
      artificially inhibit DNS over TCP transport.</t>
@@ -482,7 +483,7 @@
      service a query just because it would have succeeded with another
      transport protocol.</t>
 
-     <t>Filtering of DNS over TCP is considered harmful in the general
+     <t>Filtering of DNS over TCP is harmful in the general
      case.  DNS resolver and server operators MUST support and provide
      DNS service over both UDP and TCP transports.  Likewise, network
      operators MUST allow DNS service over both UDP and TCP transports.
