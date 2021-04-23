@@ -1337,7 +1337,7 @@
        <t>This standards track document <xref target="RFC7873"></xref>
        describes an EDNS(0) option to provide additional protection
        against query and answer forgery.  This specification mentions
-       DNS over TCP as a reasonable fallback mechanism when DNS Cookies
+       DNS over TCP as an alternative mechanism when DNS Cookies
        are not available.  The specification does make mention of DNS
        over TCP processing in two specific situations.  In one, when a
        server receives only a client cookie in a request, the server
