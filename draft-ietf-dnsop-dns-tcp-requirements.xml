@@ -529,7 +529,7 @@
        to deploy access controls for DNS services that should
        otherwise be globally reachable.  See also <xref target="RFC5358"/>.</t>
 
-       <t>The FreeBSD, OpenBSD, and NetBSD operating systems have an "accept filter" feature
+       <t>The FreeBSD and NetBSD operating systems have an "accept filter" feature
        (<xref target="accept_filter"/>)
        that postpones delivery of TCP connections to applications
        until a complete, valid request has been received.  The
