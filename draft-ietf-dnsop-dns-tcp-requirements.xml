@@ -522,7 +522,7 @@
        <t>Services not intended for use by the public Internet,
        such as most recursive name servers, SHOULD be protected
        with access controls.  Ideally these controls are placed in
-       the network, well before before any unwanted TCP packets can
+       the network, well before any unwanted TCP packets can
        reach the DNS server host or application.  If this is not
        possible, the controls can be placed in the application
        itself.  In some situations (e.g. attacks) it may be necessary
