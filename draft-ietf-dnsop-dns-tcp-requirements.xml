@@ -104,6 +104,14 @@
   <!ENTITY RFC8490 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8490.xml">
   <!-- Reverse DNS in IPv6 for Internet Service Providers -->
   <!ENTITY RFC8501 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8501.xml">
+  <!-- Running a Root Server Local to a Resolver -->
+  <!ENTITY RFC8501 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8806.xml">
+  <!-- A Common Operational Problem in DNS Servers: Failure to Communicate -->
+  <!ENTITY RFC8906 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8906.xml">
+  <!-- Recommendations for DNS Privacy Service Operators -->
+  <!ENTITY RFC8932 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8932.xml">
+  <!-- Secret Key Transaction Authentication for DNS (TSIG) -->
+  <!ENTITY RFC8945 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8945.xml">
 
   <!ENTITY RFC2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
   <!ENTITY RFC2629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2629.xml">
@@ -888,6 +896,10 @@
      &RFC8483;
      &RFC8484;
      &RFC8501;
+     &RFC8806;
+     &RFC8906;
+     &RFC8932;
+     &RFC8945;
 
      <!-- A reference written by by an organization not a person. -->
 
@@ -1447,7 +1459,36 @@
        may provide some advantages, but that updating hosts would need
        to be explicitly configured to use TCP instead of UDP.</t>
      </section>
- 
+
+     <section title="IETF RFC 8806 - Running a Root Server Local to a Resolver">
+       <t>This informational document <xref target="RFC8806"></xref>
+       describes how to obtain and operate a local copy of the root zone
+       with examples showing how to pull from authoritative sources using
+       a DNS over TCP zone transfer.</t>
+     </section>
+
+     <section title="IETF RFC 8906 - A Common Operational Problem in DNS Servers: Failure to Communicate">
+       <t>This best current practice document <xref target="RFC8906"></xref>
+       discusses a number of DNS operational failure scenarios and how to
+       avoid them.  This includes discussions involving DNS over TCP queries,
+       EDNS over TCP, and a testing methodoloy that includes a section on
+       verifying DNS over TCP functionality.</t>
+     </section>
+
+     <section title="IETF RFC 8932 - Recommendations for DNS Privacy Service Operators">
+       <t>This best current practice document <xref target="RFC8932"></xref>
+       presents privacy considerations to DNS privacy service operators.
+       These mechanisms sometimes include the use of TCP and are therefore
+       suspectible to information leakage such as TCP-based fingerprinting.
+       This document also references a draft version of this document.</t>
+     </section>
+
+     <section title="IETF RFC 8945 - Secret Key Transaction Authentication for DNS (TSIG)">
+       <t>This standards track document <xref target="RFC8945"</xref>
+       recommends a client use TCP if truncated TSIG messages are
+       received.
+     </section>
+
    </section>
 
  </back>
