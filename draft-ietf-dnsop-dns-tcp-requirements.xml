@@ -6,9 +6,9 @@
     An alternate method (rfc include) is described in the references. -->
 
   <!-- User Datagram Protocol -->
-  <!ENTITY RFC768 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.768.xml">
+  <!ENTITY RFC0768 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0768.xml">
   <!-- TRANSMISSION CONTROL PROTOCOL -->
-  <!ENTITY RFC793 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.793.xml">
+  <!ENTITY RFC0793 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0793.xml">
   <!-- DOMAIN NAMES - CONCEPTS AND FACILITIES -->
   <!ENTITY RFC1034 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1034.xml">
   <!-- DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION -->
@@ -109,7 +109,7 @@
   <!-- Reverse DNS in IPv6 for Internet Service Providers -->
   <!ENTITY RFC8501 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8501.xml">
   <!-- Running a Root Server Local to a Resolver -->
-  <!ENTITY RFC8501 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8806.xml">
+  <!ENTITY RFC8806 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8806.xml">
   <!-- A Common Operational Problem in DNS Servers: Failure to Communicate -->
   <!ENTITY RFC8906 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8906.xml">
   <!-- Recommendations for DNS Privacy Service Operators -->
@@ -870,8 +870,8 @@
    <references title="Informative References">
      <!-- Here we use entities that we defined at the beginning. -->
 
-     &RFC768;
-     &RFC793;
+     &RFC0768;
+     &RFC0793;
      &RFC1034;
      &RFC1123;
      &RFC1536;
@@ -1323,8 +1323,9 @@
 
      <section title="IETF RFC 7720 - DNS Root Name Service Protocol and Deployment Requirements">
        <t>This best current practice <xref target="RFC7720"></xref>
-       declares root name service "MUST support UDP [RFC768] and TCP
-       [RFC793] transport of DNS queries and responses."</t>
+       declares root name service "MUST support UDP <xref
+       target="RFC0768"></xref> and TCP <xref target="RFC0793"></xref>
+       transport of DNS queries and responses."</t>
      </section>
 
      <section anchor="app-rfc7766" title="IETF RFC 7766 - DNS Transport over TCP - Implementation Requirements">
@@ -1493,9 +1494,9 @@
      </section>
 
      <section title="IETF RFC 8945 - Secret Key Transaction Authentication for DNS (TSIG)">
-       <t>This standards track document <xref target="RFC8945"</xref>
+       <t>This standards track document <xref target="RFC8945"></xref>
        recommends a client use TCP if truncated TSIG messages are
-       received.
+       received.</t>
      </section>
 
    </section>
