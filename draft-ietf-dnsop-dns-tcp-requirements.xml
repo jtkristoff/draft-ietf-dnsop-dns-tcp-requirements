@@ -147,7 +147,7 @@
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
 
-<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-08" ipr="trust200902" updates="1123">
+<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-09" ipr="trust200902" updates="1123">
  <!-- category values: std, bcp, info, exp, and historic
     ipr values: trust200902, noModificationTrust200902, noDerivativesTrust200902,
        or pre5378Trust200902
@@ -267,7 +267,7 @@
      and guidance for DNS transport protocols derives from conflicting
      messages operators have gotten from other operators, implementors,
      and even the IETF.  Sometimes these mixed signals have been
-     explicit, on other occasions they have suspiciously implicit.  This
+     explicit, on other occasions they have been suspiciously implicit.  This
      section presents an interpretation of the storied and conflicting
      history that led to this document.</t>
 
@@ -468,8 +468,8 @@
      operation of the Internet DNS as ever, if not more so.
      Furthermore, there has been serious research that argues
      connection-oriented DNS transactions may provide security and
-     privacy advantages over UDP transport. <xref target="TDNS"></xref>
-     In fact, the stnadard for DNS over TLS <xref target="RFC7858"></xref>
+     privacy advantages over UDP transport.<xref target="TDNS"></xref>
+     In fact, the standard for DNS over TLS <xref target="RFC7858"></xref>
      is just this sort of specification.  Therefore, this document makes
      explicit that it is undesirable for network operators to
      artificially inhibit DNS over TCP transport.</t>
