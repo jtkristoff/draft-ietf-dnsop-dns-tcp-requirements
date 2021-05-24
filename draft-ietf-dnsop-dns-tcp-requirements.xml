@@ -5,6 +5,10 @@
     There has to be one entity for each item to be referenced. 
     An alternate method (rfc include) is described in the references. -->
 
+  <!-- User Datagram Protocol -->
+  <!ENTITY RFC768 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.768.xml">
+  <!-- TRANSMISSION CONTROL PROTOCOL -->
+  <!ENTITY RFC793 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.793.xml">
   <!-- DOMAIN NAMES - CONCEPTS AND FACILITIES -->
   <!ENTITY RFC1034 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1034.xml">
   <!-- DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION -->
@@ -143,7 +147,7 @@
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
 
-<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-07" ipr="trust200902" updates="1123">
+<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-08" ipr="trust200902" updates="1123">
  <!-- category values: std, bcp, info, exp, and historic
     ipr values: trust200902, noModificationTrust200902, noDerivativesTrust200902,
        or pre5378Trust200902
@@ -217,13 +221,15 @@
         keywords will be used for the search engine. -->
 
    <abstract>
-     <t>This document strongly encourages the operational practice of permitting DNS messages to
-     be carried over TCP on the Internet as a best current practice.
-     Such encouragment is aligned with the implementation requirements in RFC 7766.
-     The use of TCP includes both DNS over unencrypted TCP, as well as over an encrypted TLS session.
-     The document also considers the consequences
-     with this form of DNS communication and the potential operational issues
-     that can arise when this best current practice is not upheld.</t>
+     <t>This document updates <xref target="RFC1123"></xref>.  This
+     document strongly encourages the operational practice of permitting
+     DNS messages to be carried over TCP on the Internet as a best
+     current practice.  Such encouragment is aligned with the
+     implementation requirements in RFC 7766.  The use of TCP includes
+     both DNS over unencrypted TCP, as well as over an encrypted TLS
+     session.  The document also considers the consequences with this
+     form of DNS communication and the potential operational issues that
+     can arise when this best current practice is not upheld.</t>
    </abstract>
  </front>
 
@@ -424,8 +430,9 @@
 
        <t>More recently, renewed security concerns about fragmented DNS
        messages (<xref target="AVOID_FRAGS"/>, <xref target="FRAG_POISON"/>)
-       are leading implementors to consider lower default EDNS(0) UDP payload
-       size values for both queriers and responders <xref target="FLAGDAY2020"/>.</t>
+       are leading implementors to consider smaller responses and lower
+       default EDNS(0) UDP payload size values for both queriers and
+       responders <xref target="FLAGDAY2020"/>.</t>
 
      </section>
 
@@ -863,6 +870,8 @@
    <references title="Informative References">
      <!-- Here we use entities that we defined at the beginning. -->
 
+     &RFC768;
+     &RFC793;
      &RFC1034;
      &RFC1123;
      &RFC1536;
