@@ -1101,12 +1101,14 @@
         <format type="HTML" target="https://www.freebsd.org/cgi/man.cgi?query=accept_filter"/>
      </reference>
 
-     <reference anchor="AVOID_FRAGS" target="https://blog.apnic.net/2019/07/12/its-time-to-consider-avoiding-ip-fragmentation-in-the-dns/">
+     <reference anchor="AVOID_FRAGS">
 	<front>
-	  <title>It's time to consider avoiding IP fragmentation in the DNS</title>
+	  <title>Fragmentation Avoidance in DNS</title>
 	  <author fullname="Kazunori Fujiwara" initials="K." surname="Fujiwara"/>
-	  <date year="2019" month="Jul" day="12"/>
+          <author fullname="Paul Vixie" initials="P." surname="Vixie"/>
+	  <date year="2021" month="February"/>
 	</front>
+        <seriesInfo name="Work in Progress," value="draft-ietf-dnsop-avoid-fragmentation-04"/>
      </reference>
 
      <reference anchor="FRAG_POISON" target="https://u.cs.biu.ac.il/~herzbea/security/13-03-frag.pdf">
