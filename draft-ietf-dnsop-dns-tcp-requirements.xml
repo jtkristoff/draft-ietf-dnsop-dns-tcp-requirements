@@ -224,7 +224,7 @@
      <t>This document updates <xref target="RFC1123"></xref>.  This
      document strongly encourages the operational practice of permitting
      DNS messages to be carried over TCP on the Internet as a best
-     current practice.  Such encouragment is aligned with the
+     current practice.  Such encouragement is aligned with the
      implementation requirements in RFC 7766.  The use of TCP includes
      both DNS over unencrypted TCP, as well as over an encrypted TLS
      session.  The document also considers the consequences with this
@@ -668,7 +668,7 @@
 
        <t>The use of TLS places even stronger operational burdens
        on DNS clients and servers.  Cryptographic functions for
-       authentication and encryption require additional processing.
+       authentication and encryption requires additional processing.
        Unoptimized connection setup takes two additional round-trips
        compared to TCP, but can be reduced with TLS session
        resumption <xref target="RFC8446"/> and TLS False Start <xref
@@ -743,7 +743,7 @@
      SHOULD NOT ignore TCP due to the perception that it is rarely used or
      is hard to process.  Operators SHOULD ensure that
      their monitoring and logging applications properly capture
-     DNS message over TCP.  Otherwise, attacks, exfiltration
+     DNS messages over TCP.  Otherwise, attacks, exfiltration
      attempts, and normal traffic may go undetected.</t>
 
      <t>DNS messages over TCP are in no way guaranteed to arrive
@@ -1432,10 +1432,10 @@
      <section title="IETF RFC 8482 - Providing Minimal-Sized Responses to DNS Queries That Have QTYPE=ANY">
        <t><xref target="RFC8482"/> is a standards-track document that
        describes alternative ways that DNS servers can respond to queries
-       of type ANY, which are somtimes used to provide amplification
+       of type ANY, which are sometimes used to provide amplification
        in DDoS attacks.  The specification notes that responders may
        behave differently, depending on the transport.  For example,
-       mimimal-sized responses may be used over UDP transport, while
+       minimal-sized responses may be used over UDP transport, while
        full responses may be given over TCP.</t>
      </section>
 
@@ -1483,7 +1483,7 @@
        <t>This best current practice document <xref target="RFC8906"></xref>
        discusses a number of DNS operational failure scenarios and how to
        avoid them.  This includes discussions involving DNS over TCP queries,
-       EDNS over TCP, and a testing methodoloy that includes a section on
+       EDNS over TCP, and a testing methodology that includes a section on
        verifying DNS over TCP functionality.</t>
      </section>
 
@@ -1491,7 +1491,7 @@
        <t>This best current practice document <xref target="RFC8932"></xref>
        presents privacy considerations to DNS privacy service operators.
        These mechanisms sometimes include the use of TCP and are therefore
-       suspectible to information leakage such as TCP-based fingerprinting.
+       susceptible to information leakage such as TCP-based fingerprinting.
        This document also references a draft version of this document.</t>
      </section>
 
