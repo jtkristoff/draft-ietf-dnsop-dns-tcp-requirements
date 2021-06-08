@@ -147,7 +147,7 @@
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
 
-<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-09" ipr="trust200902" updates="1123">
+<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-10" ipr="trust200902" updates="1123">
  <!-- category values: std, bcp, info, exp, and historic
     ipr values: trust200902, noModificationTrust200902, noDerivativesTrust200902,
        or pre5378Trust200902
@@ -723,7 +723,7 @@
        root zone DNSKEY responses were
        larger than 1280 bytes, the IPv6 minimum MTU for links
        carrying IPv6 traffic <xref target="RFC8200"/>.
-       There was some concern <!-- XXX citation needed -->
+       There was some concern <xref target="KSK_ROLLOVER_ARCHIVES"/>
        that any DNS server unable to receive large
        DNS messages over UDP, or any DNS message over TCP, would experience
        disruption while performing DNSSEC validation.</t>
@@ -1161,6 +1161,16 @@
             <organization>Various DNS software and service providers</organization>
 	  </author>
 	  <date year="2020" month="Oct"/>
+	</front>
+     </reference>
+
+     <reference anchor="KSK_ROLLOVER_ARCHIVES" target="https://mm.icann.org/pipermail/ksk-rollover/2019-January/date.html">
+	<front>
+	  <title>KSK Rollover List Archives</title>
+	  <author>
+            <organization>Internet Coporation for Assigned Names and Numbers</organization>
+	  </author>
+	  <date year="2019" month="Jan"/>
 	</front>
      </reference>
 
