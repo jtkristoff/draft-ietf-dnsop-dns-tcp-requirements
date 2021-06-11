@@ -461,9 +461,9 @@
 
    <section title="DNS over TCP Requirements">
      <t>An average increase in DNS message size (e.g., due to DNSSEC),
-     the continued development of new DNS features [<xref
-     target="dnsrfcs"></xref>], and a denial of service mitigation
-     technique [<xref target="Security"></xref>] show that
+     the continued development of new DNS features (<xref
+     target="dnsrfcs"></xref>), and a denial of service mitigation
+     technique (<xref target="Security"></xref>) show that
      DNS over TCP transactions are as important to the correct and safe
      operation of the Internet DNS as ever, if not more so.
      Furthermore, there has been serious research that argues
