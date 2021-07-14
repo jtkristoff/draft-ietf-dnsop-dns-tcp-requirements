@@ -147,7 +147,7 @@
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
 
-<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-11" ipr="trust200902" updates="1123">
+<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-12" ipr="trust200902" updates="1123">
  <!-- category values: std, bcp, info, exp, and historic
     ipr values: trust200902, noModificationTrust200902, noDerivativesTrust200902,
        or pre5378Trust200902
@@ -266,11 +266,11 @@
    </section>
 
    <section title="History of DNS over TCP">
-     <t>The curious state of disagreement in operational best practices
+     <t>The curious state of disagreement between operational best practices
      and guidance for DNS transport protocols derives from conflicting
      messages operators have gotten from other operators, implementors,
      and even the IETF.  Sometimes these mixed signals have been
-     explicit, on other occasions they have been suspiciously implicit.  This
+     explicit; on other occasions, conflicting messages have been implicit.  This
      section presents an interpretation of the storied and conflicting
      history that led to this document.</t>
 
@@ -319,7 +319,7 @@
          <t>"[...] it is also clear that some new DNS record types
          defined in the future will contain information exceeding the
          512 byte limit that applies to UDP, and hence will require
-         TCP.</t>
+         TCP."</t>
        </list>
        </t>
 
@@ -353,7 +353,7 @@
        in bytes, the maximum (possibly fragmented) DNS message size a
        node is capable of receiving over UDP.  In practice, typical values are
        a subset of the 512- to 4096-byte range.  EDNS(0) became
-       widely deployed over the next several years and numerous surveys
+       widely deployed over the next several years, and numerous surveys
        (<xref target="CASTRO2010"></xref>, <xref target="NETALYZR"></xref>)
        have shown many systems currently support larger UDP MTUs
        with EDNS(0).</t>
@@ -363,7 +363,7 @@
        might otherwise have been.  While a non-negligible population of
        DNS systems lacked EDNS(0) or fell back to TCP when necessary,
        DNS clients still strongly prefer UDP to TCP.
-       For example, as of 2014
+       For example, as of 2014,
        DNS over TCP transactions remained a very small fraction of
        overall DNS traffic received by root name servers <xref target="VERISIGN"></xref>.</t>
      </section>
@@ -388,7 +388,7 @@
        <t>For
        IPv6, the situation is a little more complicated.  First, IPv6 headers
        are 40 bytes (versus 20 without options in IPv4).  Second, it seems as
-       though some people have mis-interpreted IPv6's required minimum MTU of
+       though some people have misinterpreted IPv6's required minimum MTU of
        1280 as a required maximum.  Third, fragmentation in IPv6 can only be
        done by the host originating the datagram.  The need to fragment is
        conveyed in an ICMPv6 "packet too big" message.  The originating host
@@ -446,8 +446,8 @@
        some operators, particularly for security-related reasons, that
        DNS over TCP services should be purposely limited or not provided
        at all <xref target="CHES94"></xref>, <xref
-       target="DJBDNS"></xref>.  A popular meme has also held the
-       imagination of some: that DNS over TCP is only ever used for zone
+       target="DJBDNS"></xref>.  A popular meme is
+       that DNS over TCP is only ever used for zone
        transfers and is generally unnecessary otherwise, with filtering
        all DNS over TCP traffic even described as a best practice.</t>
 
@@ -455,7 +455,7 @@
        justification given that historical implementations of DNS
        nameservers provided very little in the way of TCP connection
        management (for example see Section 6.1.2 of <xref
-       target="RFC7766"></xref> for more details).  However modern
+       target="RFC7766"></xref> for more details).  However, modern
        standards and implementations are nearing parity with the more
        sophisticated TCP management techniques employed by, for example,
        HTTP(S) servers and load balancers.</t>
@@ -466,7 +466,7 @@
      <t>An average increase in DNS message size (e.g., due to DNSSEC),
      the continued development of new DNS features (<xref
      target="dnsrfcs"></xref>), and a denial of service mitigation
-     technique (<xref target="Security"></xref>) show that
+     technique (<xref target="Security"></xref>), all show that
      DNS over TCP transactions are as important to the correct and safe
      operation of the Internet DNS as ever, if not more so.
      Furthermore, there has been serious research that argues
@@ -604,7 +604,7 @@
        <t>DNS server software MAY provide a configurable limit on
        the number of established connections per source IP address
        or subnet.  This can be used to ensure that a single or small
-       set of users can not consume all TCP resources and deny
+       set of users cannot consume all TCP resources and deny
        service to other users.  Operators SHOULD ensure this limit
        is configured appropriately, based on their number of diversity
        of users.</t>
@@ -701,19 +701,20 @@
      autonomous systems.  Therefore, filtering of DNS over TCP is
      considered harmful and contrary to the safe and successful operation
      of the Internet.  This section enumerates some of the known risks
-     known at the time of this writing when networks filter DNS over
+     at the time of this writing when networks filter DNS over
      TCP.</t>
 
      <section title="DNS Wedgie">
        <t>Networks that filter DNS over TCP may inadvertently cause
        problems for third-party resolvers as experienced by <xref
-       target="TOYAMA"></xref>.  If, for instance, a resolver receives a
-       truncated answer from a server, but when the resolver resends
-       the query using TCP and the TCP response never arrives, not only
-       will a complete answer be unavailable, but the resolver will incur
-       the full extent of TCP retransmissions and timeouts.  This situation
-       might place extreme strain on resolver resources.  If the number
-       and frequency of these truncated answers are sufficiently high,
+       target="TOYAMA"></xref>.  For example, a resolver receives queries
+       for a moderately popular domain.  The resolver forwards the queries
+       to the domain's authoritative name servers, but those servers
+       respond with the TC bit set.  The resolver retries over TCP,
+       but the authoritative server blocks DNS over TCP.  The pending
+       connections consume resources on the resolver until they time out.
+       If the number
+       and frequency of these truncated-and-then-blocked queries is sufficiently high,
        the steady-state of lost resources as a result is a "DNS wedgie."
        A DNS wedgie is generally not easily or completely mitigated by the
        affected DNS resolver operator.</t>
