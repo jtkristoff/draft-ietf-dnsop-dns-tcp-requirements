@@ -147,7 +147,7 @@
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
 
-<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-12" ipr="trust200902" updates="1123">
+<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-13" ipr="trust200902" updates="1123">
  <!-- category values: std, bcp, info, exp, and historic
     ipr values: trust200902, noModificationTrust200902, noDerivativesTrust200902,
        or pre5378Trust200902
@@ -798,9 +798,13 @@
      been wary of TCP-based attacks, but in recent years, UDP-based
      flooding attacks have proven to be the most common protocol attack
      on the DNS.  Nevertheless, a high rate of short-lived DNS
-     transactions over TCP may pose challenges.  While many operators
-     have provided DNS over TCP service for many years without duress,
-     past experience is no guarantee of future success.</t>
+     transactions over TCP may pose challenges.  In fact, <xref
+     target="DAI21"></xref> details a class of IP fragmenetation attacks
+     on DNS transactions if the IP ID field can be predicted and a
+     system is coerced to fragment rather than retransmit messages.
+     While many operators have provided DNS over TCP service for many
+     years without duress, past experience is no guarantee of future
+     success.</t>
 
      <t>DNS over TCP is similar to many other Internet TCP services.
      TCP threats and many mitigation strategies have been
@@ -918,6 +922,16 @@
          <author fullname="William R. Cheswick" initials="W.R." surname="Cheswick" />
          <author fullname="Steven M. Bellovin" initials="S.M." surname="Bellovin" /> 
          <date year="1994" />
+       </front>
+     </reference>
+
+     <reference anchor="DAI21">
+       <front>
+         <title>DNS-over-TCP Considered Vulnerable</title>
+         <author fullname="Tianxiang Dai" initials="T." surname="Tianxiang" />
+         <author fullname="Haya Shulman" initials="H." surname="Shulman" />
+         <author fullname="Michael Waidner" initials="M." surname="Waidner" />
+         <date year="2021" />
        </front>
      </reference>
 
