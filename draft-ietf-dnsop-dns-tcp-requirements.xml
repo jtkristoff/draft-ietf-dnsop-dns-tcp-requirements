@@ -673,7 +673,7 @@
        on DNS clients and servers.  Cryptographic functions for
        authentication and encryption requires additional processing.
        Unoptimized connection setup takes two additional round-trips
-       compared to TCP, but can be reduced with TLS session
+       compared to TCP, but can be reduced with TCP Fast Open, TLS session
        resumption <xref target="RFC8446"/> and TLS False Start <xref
        target="RFC7918"/>.</t>
 
