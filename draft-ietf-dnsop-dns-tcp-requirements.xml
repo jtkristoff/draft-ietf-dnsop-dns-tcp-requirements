@@ -252,6 +252,7 @@
      staff to ensure DNS over TCP communications support is on par with
      DNS over UDP communications. It updates <xref target="RFC1123"/>
      Section 6.1.3.2 to clarify that all DNS resolvers and recursive
+     servers
      MUST support and service both TCP and UDP queries.
      </t>
 
