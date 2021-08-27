@@ -755,8 +755,12 @@
      in single segments.  In fact, a clever attacker might attempt
      to hide certain messages by forcing them over very small TCP
      segments.  Applications that capture network packets (e.g.,
-     with libpcap <xref target="libpcap"/>) SHOULD be prepared to implement and perform full
-     TCP segment reassembly.  dnscap <xref target="dnscap"/> is an
+     with libpcap <xref target="libpcap"/>) SHOULD implement and perform full
+     TCP segment reassembly.
+     Furthermore, as with real TCP, such applications need to protect
+     themselves from resource exhaustion attacks by limiting the amount
+     of memory allocated to tracking unacknowleged connection state data.
+     dnscap <xref target="dnscap"/> is an
      open-source example of a DNS logging program that implements
      TCP reassembly.</t>
 
