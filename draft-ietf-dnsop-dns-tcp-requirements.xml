@@ -10,6 +10,8 @@
   <!-- TRANSMISSION CONTROL PROTOCOL -->
   <!ENTITY RFC0793 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0793.xml">
   <!-- DOMAIN NAMES - CONCEPTS AND FACILITIES -->
+  <!ENTITY RFC0883 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0883.xml">
+  <!-- DOMAIN NAMES - IMPLEMENTATION and SPECIFICATION -->
   <!ENTITY RFC1034 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1034.xml">
   <!-- DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION -->
   <!ENTITY RFC1035 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1035.xml">
@@ -71,6 +73,7 @@
   <!-- Root Name Service Requirements -->
   <!ENTITY RFC7720 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7720.xml">
   <!-- DNS Transport over TCP - Implementation Requirements -->
+  <!ENTITY RFC5966 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5966.xml">
   <!ENTITY RFC7766 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7766.xml">
   <!-- The edns-tcp-keepalive EDNS(0) Option -->
   <!ENTITY RFC7828 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7828.xml">
@@ -460,6 +463,31 @@
        standards and implementations are nearing parity with the more
        sophisticated TCP management techniques employed by, for example,
        HTTP(S) servers and load balancers.</t>
+     </section>
+
+     <section title="Reuse, Pipelining, and Out-of-Order Processing">
+       <t>The idea that a TCP connection can support multiple transactions
+       goes back as far as <xref target="RFC0883"/>, which states:
+       "Multiple messages may be sent over a virtual circuit." Although
+       <xref target="RFC1035"/>, which updates the former, omits this
+       particular detail, it has been generally accepted that a TCP connection
+       can be used for more than one query and response.</t>
+
+       <t><xref target="RFC5966"/> clarified that servers are not
+       required to preserve the order of queries and responses over
+       any transport.
+       <xref target="RFC7766"/>, which updates the former, further
+       encourages query pipelining over TCP to achieve performance on
+       par with UDP.
+       A server that sends out-of-order responses to pipelined queries
+       avoids head-of-line blocking when the response for a later
+       query is ready before the response to an earlier query.</t>
+
+       <t>However, TCP can potentially suffer from a different
+       head-of-line blocking problem due to packet loss.
+       Since TCP itself enforces ordering, a single lost segment
+       delays delivery of data in any following segments until
+       the lost segment is retransmitted and successfully received.</t>
      </section>
    </section>
 
@@ -880,6 +908,7 @@
 
      &RFC0768;
      &RFC0793;
+     &RFC0883;
      &RFC1034;
      &RFC1123;
      &RFC1536;
@@ -899,6 +928,7 @@
      &RFC5507;
      &RFC5927;
      &RFC5961;
+     &RFC5966;
      &RFC7534;
      &RFC6950;
      &RFC7413;
