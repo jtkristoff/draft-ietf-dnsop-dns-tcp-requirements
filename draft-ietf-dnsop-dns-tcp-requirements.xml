@@ -56,6 +56,7 @@
   <!ENTITY RFC5936 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5936.xml">
   <!-- Improving TCP's Robustness to Blind In-Window Attacks -->
   <!ENTITY RFC5961 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5961.xml">
+  <!ENTITY RFC6298 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6298.xml">
   <!-- Multicast DNS -->
   <!ENTITY RFC6762 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6762.xml">
   <!-- Extension Mechanisms for DNS (EDNS (0)) -->
@@ -527,7 +528,10 @@
        connection attempts to a single server.  Additionally, DNS clients
        MAY want to enforce a short timeout on unestablished connections,
        rather than rely on the host operating system's TCP connection
-       timeout, which is often around 60-120 seconds.</t>
+       timeout, which is often around 60-120 seconds (i.e., due to an
+       initial retransmission timeout of 1 second, the exponential
+       back off rules of <xref target="RFC6298"/>, and a limit of six
+       retries as is the default in Linux).</t>
 
        <t>The SYN flooding attack is a denial-of-service method
        affecting hosts that run TCP server processes <xref
@@ -880,23 +884,23 @@
      &RFC1536;
      &RFC2136;
      &RFC2541;
+     <!-- &RFC2629; -->
      &RFC2671;
      &RFC2694;
-     <!-- &RFC2629; -->
      &RFC3225;
      &RFC3226;
      &RFC4472;
      &RFC4953;
      &RFC4987;
-     &RFC8446;
      &RFC5358;
      &RFC5452;
      &RFC5507;
      &RFC5927;
      &RFC5961;
-     &RFC7534;
+     &RFC6298;
      &RFC6950;
      &RFC7413;
+     &RFC7534;
      &RFC7858;
      &RFC7901;
      &RFC7918;
@@ -905,6 +909,7 @@
      &RFC8162;
      &RFC8200;
      &RFC8324;
+     &RFC8446;
      &RFC8467;
      &RFC8483;
      &RFC8484;
