@@ -576,8 +576,8 @@
        address (e.g., anycast or load-balancing), SHOULD use the
        same TFO server key on all instances.</t>
 
-       <t>DNS clients MAY also enable TFO when possible.  Currently,
-       on some operating systems it is not implemented or disabled by default.
+       <t>DNS clients MAY also enable TFO.  Currently,
+       on some operating systems it is not implemented, or is disabled by default.
        <xref target="WIKIPEDIA_TFO"/> describes applications and operating systems
        that support TFO.</t>
 
