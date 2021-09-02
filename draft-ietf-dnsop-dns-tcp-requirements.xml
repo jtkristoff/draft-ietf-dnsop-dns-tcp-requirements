@@ -657,16 +657,16 @@
        can be used to encourage clients to close connections.</t>
 
        <t>On systems where large numbers of sockets in TIME_WAIT
-       are observed (either as client or server), it may be beneficial to tune the local TCP
-       parameters.  For example, the Linux kernel provides a number
-       of "sysctl" parameters related to TIME_WAIT, such as
-       net.ipv4.tcp_fin_timeout and
-       net.ipv4.tcp_tw_reuse.  In extreme cases, implementors and
-       operators of very busy servers may find it necessary to
-       utilize the SO_LINGER socket option (<xref target="Stevens"/> Section
-       7.5) with a value of zero so that the server doesn't accumulate
-       TIME_WAIT sockets.</t>
-
+       are observed (either as client or server), and are affecting
+       an application's performance, it may be tempting to tune local TCP
+       parameters.  For example, the Linux kernel has
+       a "sysctl" parameter named net.ipv4.tcp_tw_reuse which allows
+       connections in the TIME_WAIT state to be reused in specific
+       circumstances.  Note, however, this affects only outgoing (client)
+       connections and has no impact on servers.  In most cases it is NOT
+       RECOMMENDED to change parameters related to the TIME_WAIT state.
+       It should only be done by those with detailed knowledge of both TCP
+       and the affected application.</t>
      </section>
 
      <section title="DNS-over-TLS">
