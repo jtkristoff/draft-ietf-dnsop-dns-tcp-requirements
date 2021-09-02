@@ -490,17 +490,24 @@
          from a TCP-capable server from reaching its TCP-capable
          clients.</t>
        </list>
-     Regarding the choice of limiting the resources a server devotes to
-     queries, Section 6.1.3.2 in <xref target="RFC1123" /> also says:
+     Furthermore, the requirement in Section 6.1.3.2 of <xref
+     target="RFC1123" /> around limiting the resources a server devotes
+     to queries is hereby updated:</t>
+ 
+     <t>OLD:
        <list hangIndent="10" style="empty">
-         <t>"A name server MAY limit the resources it devotes to TCP
-         queries, but it SHOULD NOT refuse to service a TCP query just
-         because it would have succeeded with UDP."</t>
+          <t>A name server MAY limit the resources it devotes to TCP queries,
+          but it SHOULD NOT refuse to service a TCP query just
+          because it would have succeeded with UDP.</t>
        </list>
-     This requirement is hereby updated: A name server MAY limit
-     the resources it devotes to queries, but it MUST NOT refuse to
-     service a query just because it would have succeeded with another
-     transport protocol.</t>
+
+     NEW:
+       <list hangIndent="10" style="empty">
+           <t>A name server MAY limit the resources it devotes to queries, but
+           it MUST NOT refuse to service a query just because it would have
+           succeeded with another transport protocol.</t>
+       </list>
+     </t>
 
      <t>Filtering of DNS over TCP is harmful in the general
      case.  DNS resolver and server operators MUST support and provide
