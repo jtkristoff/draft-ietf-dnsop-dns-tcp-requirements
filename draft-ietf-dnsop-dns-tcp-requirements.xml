@@ -272,7 +272,8 @@
      and even the IETF.  Sometimes these mixed signals have been
      explicit; on other occasions, conflicting messages have been implicit.  This
      section presents an interpretation of the storied and conflicting
-     history that led to this document.</t>
+     history that led to this document.  This section is included for
+     informational purposes only.</t>
 
      <section title="Uneven Transport Usage and Preference">
        <t>In the original suite of DNS specifications, <xref
