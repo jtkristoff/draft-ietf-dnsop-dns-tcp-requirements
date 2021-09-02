@@ -603,7 +603,9 @@
        limit is reached, the application is expected to either close
        existing (idle) connections or refuse new connections.
        Operators SHOULD ensure the limit is configured appropriately
-       for their particular situation.</t>
+       for their particular situation.
+       Absent any other information, 150 is a reasonable value for
+       this limit in most cases.</t>
 
        <t>DNS server software MAY provide a configurable limit on
        the number of established connections per source IP address
@@ -611,7 +613,9 @@
        set of users cannot consume all TCP resources and deny
        service to other users.  Operators SHOULD ensure this limit
        is configured appropriately, based on their number of diversity
-       of users.</t>
+       of users.
+       Absent any other information, 25 is a reasonable value for
+       this limit in most cases.</t>
 
        <t>DNS server software SHOULD provide a configurable timeout
        for idle TCP connections.  For very busy name servers this
@@ -619,7 +623,9 @@
        less busy servers it might be set to a higher value, such
        as tens of seconds.  DNS clients and servers SHOULD signal
        their timeout values using the edns-tcp-keepalive
-       option <xref target="RFC7828"/>.</t>
+       option <xref target="RFC7828"/>.
+       Absent any other information, 10 seconds is a reasonable value for
+       this timeout in most cases.</t>
 
        <t>DNS server software MAY provide a configurable limit on
        the number of transactions per TCP connection. This document
