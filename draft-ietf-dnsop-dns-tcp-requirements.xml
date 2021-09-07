@@ -1134,7 +1134,7 @@
 	</front>
      </reference>
 
-     <reference anchor="ROLL_YOUR_ROOT" target="TBD">
+     <reference anchor="ROLL_YOUR_ROOT" target="https://dl.acm.org/doi/10.1145/3355369.3355570">
 	<front>
 	  <title>Roll, Roll, Roll Your Root: A Comprehensive Analysis of the First Ever DNSSEC Root KSK Rollover</title>
 	  <author fullname="Moritz M&uuml;ller" initials="M." surname="M&uuml;ller"/>
