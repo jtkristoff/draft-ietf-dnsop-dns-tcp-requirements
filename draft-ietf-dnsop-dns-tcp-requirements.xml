@@ -787,7 +787,7 @@
      TCP segment reassembly.
      Furthermore, as with real TCP, such applications need to protect
      themselves from resource exhaustion attacks by limiting the amount
-     of memory allocated to tracking unacknowleged connection state data.
+     of memory allocated to tracking unacknowledged connection state data.
      dnscap <xref target="dnscap"/> is an
      open-source example of a DNS logging program that implements
      TCP reassembly.</t>
