@@ -471,7 +471,7 @@
      operation of the Internet DNS as ever, if not more so.
      Furthermore, there has been serious research that argues
      connection-oriented DNS transactions may provide security and
-     privacy advantages over UDP transport.<xref target="TDNS"></xref>
+     privacy advantages over UDP transport <xref target="TDNS"></xref>.
      In fact, the standard for DNS over TLS <xref target="RFC7858"></xref>
      is just this sort of specification.  Therefore, this document makes
      explicit that it is undesirable for network operators to
