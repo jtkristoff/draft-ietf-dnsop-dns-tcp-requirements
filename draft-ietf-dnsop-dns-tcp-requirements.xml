@@ -423,7 +423,7 @@
        driving certain implementation and policy decisions in the DNS.
        Notably, Cloudflare implemented what it calls "DNSSEC black lies"
        <xref target="CLOUDFLARE"/> and uses ECDSA algorithms, such that
-       their signed responses fit easily in 512 bytes.  The KSK Rollover
+       their signed responses fit easily in 512 bytes.  The Key Signing Key (KSK) Rollover
        design team <xref target="DESIGNTEAM"/> spent a lot of time
        thinking and worrying about response sizes.  There is growing
        sentiment in the DNSSEC community that RSA key sizes beyond
@@ -715,7 +715,7 @@
        connections consume resources on the resolver until they time out.
        If the number
        and frequency of these truncated-and-then-blocked queries is sufficiently high,
-       the steady-state of lost resources as a result is a "DNS wedgie."
+       the steady state of the resulting lost resources is a "DNS wedgie."
        A DNS wedgie is generally not easily or completely mitigated by the
        affected DNS resolver operator.</t>
      </section>
@@ -799,7 +799,7 @@
      flooding attacks have proven to be the most common protocol attack
      on the DNS.  Nevertheless, a high rate of short-lived DNS
      transactions over TCP may pose challenges.  In fact, <xref
-     target="DAI21"></xref> details a class of IP fragmenetation attacks
+     target="DAI21"></xref> details a class of IP fragmentation attacks
      on DNS transactions if the IP ID field can be predicted and a
      system is coerced to fragment rather than retransmit messages.
      While many operators have provided DNS over TCP service for many
@@ -816,7 +816,7 @@
 
    <section anchor="Privacy" title="Privacy Considerations">
 
-     <t>Since DNS over both UDP and TCP use the same underlying message
+     <t>Since DNS over both UDP and TCP uses the same underlying message
      format, the use of one transport instead of the other does not change
      the privacy characteristics of the message content (i.e., the name
      being queried). DNS over TLS or DTLS is the recommended way to
@@ -1257,10 +1257,10 @@
      <section title="IETF RFC 3326 - DNSSEC and IPv6 A6 aware server/resolver message size requirements">
        <t>Although updated by later DNSSEC RFCs,
        the Standards Track document <xref target="RFC3226"></xref>
-       strongly argued in favor of
+       strongly argues in favor of
        UDP messages instead of TCP, largely for performance reasons.  The
        document declares EDNS(0) a requirement for DNSSEC servers and
-       advocated packet fragmentation may be preferable to TCP in
+       advocates that packet fragmentation may be preferable to TCP in
        certain situations.</t>
      </section>
 
@@ -1476,7 +1476,7 @@
        defines a protocol for sending DNS queries and responses over
        HTTPS.  This specification assumes TLS and TCP for the underlying
        security and transport layers, respectively.  Self-described as a
-       a technique that more closely resembles a tunneling mechanism,
+       technique that more closely resembles a tunneling mechanism,
        DoH nevertheless likely implies DNS over TCP in some sense, if not
        directly.</t>
      </section>
