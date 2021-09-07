@@ -272,7 +272,8 @@
      and even the IETF.  Sometimes these mixed signals have been
      explicit; on other occasions, conflicting messages have been implicit.  This
      section presents an interpretation of the storied and conflicting
-     history that led to this document.</t>
+     history that led to this document.  This section is included for
+     informational purposes only.</t>
 
      <section title="Uneven Transport Usage and Preference">
        <t>In the original suite of DNS specifications, <xref
@@ -489,17 +490,24 @@
          from a TCP-capable server from reaching its TCP-capable
          clients.</t>
        </list>
-     Regarding the choice of limiting the resources a server devotes to
-     queries, Section 6.1.3.2 in <xref target="RFC1123" /> also says:
+     Furthermore, the requirement in Section 6.1.3.2 of <xref
+     target="RFC1123" /> around limiting the resources a server devotes
+     to queries is hereby updated:</t>
+ 
+     <t>OLD:
        <list hangIndent="10" style="empty">
-         <t>"A name server MAY limit the resources it devotes to TCP
-         queries, but it SHOULD NOT refuse to service a TCP query just
-         because it would have succeeded with UDP."</t>
+          <t>A name server MAY limit the resources it devotes to TCP queries,
+          but it SHOULD NOT refuse to service a TCP query just
+          because it would have succeeded with UDP.</t>
        </list>
-     This requirement is hereby updated: A name server MAY limit
-     the resources it devotes to queries, but it MUST NOT refuse to
-     service a query just because it would have succeeded with another
-     transport protocol.</t>
+
+     NEW:
+       <list hangIndent="10" style="empty">
+           <t>A name server MAY limit the resources it devotes to queries, but
+           it MUST NOT refuse to service a query just because it would have
+           succeeded with another transport protocol.</t>
+       </list>
+     </t>
 
      <t>Filtering of DNS over TCP is harmful in the general
      case.  DNS resolver and server operators MUST support and provide
@@ -576,8 +584,8 @@
        address (e.g., anycast or load-balancing), SHOULD use the
        same TFO server key on all instances.</t>
 
-       <t>DNS clients MAY also enable TFO when possible.  Currently,
-       on some operating systems it is not implemented or disabled by default.
+       <t>DNS clients MAY also enable TFO.  Currently,
+       on some operating systems it is not implemented, or is disabled by default.
        <xref target="WIKIPEDIA_TFO"/> describes applications and operating systems
        that support TFO.</t>
 
