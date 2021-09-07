@@ -395,7 +395,7 @@
        indicates a fragmented datagram with IPv6 extension headers.
        Unfortunately, it is quite common for both ICMPv6 and IPv6 extension
        headers to be blocked by middleboxes.  According to
-       <xref target="HUSTON"/> some 35%<!-- 3,592 / 10,115 --> of IPv6-capable
+       <xref target="HUSTON"/> some 35% <!-- 3,592 / 10,115 --> of IPv6-capable
        recursive resolvers were unable to receive a fragmented IPv6 packet.
        Even if the originating host does receive a signal that
        fragmentation is required, the stateless nature of the DNS
