@@ -223,13 +223,13 @@
    <abstract>
      <t>This document updates RFC 1123.  This
      document strongly encourages the operational practice of permitting
-     DNS messages to be carried over TCP on the Internet as a best
-     current practice.  Such encouragement is aligned with the
+     DNS messages to be carried over TCP on the Internet as a Best
+     Current Practice.  Such encouragement is aligned with the
      implementation requirements in RFC 7766.  The use of TCP includes
      both DNS over unencrypted TCP, as well as over an encrypted TLS
      session.  The document also considers the consequences with this
      form of DNS communication and the potential operational issues that
-     can arise when this best current practice is not upheld.</t>
+     can arise when this Best Current Practice is not upheld.</t>
    </abstract>
  </front>
 
@@ -396,7 +396,7 @@
        indicates a fragmented datagram with IPv6 extension headers.
        Unfortunately, it is quite common for both ICMPv6 and IPv6 extension
        headers to be blocked by middleboxes.  According to
-       <xref target="HUSTON"/> some 35%<!-- 3,592 / 10,115 --> of IPv6-capable
+       <xref target="HUSTON"/> some 35% <!-- 3,592 / 10,115 --> of IPv6-capable
        recursive resolvers were unable to receive a fragmented IPv6 packet.
        Even if the originating host does receive a signal that
        fragmentation is required, the stateless nature of the DNS
@@ -424,7 +424,7 @@
        driving certain implementation and policy decisions in the DNS.
        Notably, Cloudflare implemented what it calls "DNSSEC black lies"
        <xref target="CLOUDFLARE"/> and uses ECDSA algorithms, such that
-       their signed responses fit easily in 512 bytes.  The KSK Rollover
+       their signed responses fit easily in 512 bytes.  The Key Signing Key (KSK) Rollover
        design team <xref target="DESIGNTEAM"/> spent a lot of time
        thinking and worrying about response sizes.  There is growing
        sentiment in the DNSSEC community that RSA key sizes beyond
@@ -472,7 +472,7 @@
      operation of the Internet DNS as ever, if not more so.
      Furthermore, there has been serious research that argues
      connection-oriented DNS transactions may provide security and
-     privacy advantages over UDP transport.<xref target="TDNS"></xref>
+     privacy advantages over UDP transport <xref target="TDNS"></xref>.
      In fact, the standard for DNS over TLS <xref target="RFC7858"></xref>
      is just this sort of specification.  Therefore, this document makes
      explicit that it is undesirable for network operators to
@@ -671,7 +671,7 @@
 
        <t>DNS messages may be sent over TLS to provide privacy
        between stubs and recursive resolvers. <xref target="RFC7858"/>
-       is a standards track document describing how this works.
+       is a Standards Track document describing how this works.
        Although DNS-over-TLS utilizes TCP port 853 instead of port 53, this
        document applies equally well to DNS-over-TLS.  Note, however,
        DNS-over-TLS is currently only defined between stubs and
@@ -723,7 +723,7 @@
        connections consume resources on the resolver until they time out.
        If the number
        and frequency of these truncated-and-then-blocked queries is sufficiently high,
-       the steady-state of lost resources as a result is a "DNS wedgie."
+       the steady state of the resulting lost resources is a "DNS wedgie."
        A DNS wedgie is generally not easily or completely mitigated by the
        affected DNS resolver operator.</t>
      </section>
@@ -776,24 +776,6 @@
      protocol intended to facilitate wide-scale DNS monitoring.</t>
    </section>
 
-   <section anchor="Acknowledgments" title="Acknowledgments">
-     <t>This document was initially motivated by feedback from students
-     who pointed out that they were hearing contradictory information
-     about filtering DNS over TCP messages.  Thanks in particular to a
-     teaching colleague, JPL, who perhaps unknowingly encouraged the
-     initial research into the differences between what the community has
-     historically said and did.  Thanks to all the NANOG 63 attendees
-     who provided feedback to an early talk on this subject.</t>
-     <!-- https://archive.nanog.org/sites/default/files/nanog63-dnstrack-kristoff-dnstcp.pdf -->
-
-     <t>The following individuals provided an array of feedback to help
-     improve this document: Piet Barber, Sara Dickinson, Tony Finch, Bob Harold, Tatuya Jinmei,
-     Paul Hoffman, Puneet Sood, and Richard Wilhelm.  The authors are also indebted to the contributions
-     stemming from discussion in the tcpm working group meeting at
-     IETF 104.  Any remaining errors or imperfections are the sole
-     responsibility of the document authors.</t>
-   </section>
-
    <section anchor="IANA" title="IANA Considerations">
      <t>This memo includes no request to IANA.</t>
    </section>
@@ -807,7 +789,7 @@
      flooding attacks have proven to be the most common protocol attack
      on the DNS.  Nevertheless, a high rate of short-lived DNS
      transactions over TCP may pose challenges.  In fact, <xref
-     target="DAI21"></xref> details a class of IP fragmenetation attacks
+     target="DAI21"></xref> details a class of IP fragmentation attacks
      on DNS transactions if the IP ID field can be predicted and a
      system is coerced to fragment rather than retransmit messages.
      While many operators have provided DNS over TCP service for many
@@ -824,7 +806,7 @@
 
    <section anchor="Privacy" title="Privacy Considerations">
 
-     <t>Since DNS over both UDP and TCP use the same underlying message
+     <t>Since DNS over both UDP and TCP uses the same underlying message
      format, the use of one transport instead of the other does not change
      the privacy characteristics of the message content (i.e., the name
      being queried). DNS over TLS or DTLS is the recommended way to
@@ -838,6 +820,24 @@
      hosts behind shared resources such as network address translators
      (NATs).</t>
 
+   </section>
+
+   <section anchor="Acknowledgments" title="Acknowledgments">
+     <t>This document was initially motivated by feedback from students
+     who pointed out that they were hearing contradictory information
+     about filtering DNS over TCP messages.  Thanks in particular to a
+     teaching colleague, JPL, who perhaps unknowingly encouraged the
+     initial research into the differences between what the community has
+     historically said and did.  Thanks to all the NANOG 63 attendees
+     who provided feedback to an early talk on this subject.</t>
+     <!-- https://archive.nanog.org/sites/default/files/nanog63-dnstrack-kristoff-dnstcp.pdf -->
+
+     <t>The following individuals provided an array of feedback to help
+     improve this document: Piet Barber, Sara Dickinson, Tony Finch, Bob Harold, Paul Hoffman, Tatuya Jinmei,
+     Puneet Sood, and Richard Wilhelm.  The authors are also indebted to the contributions
+     stemming from discussion in the tcpm working group meeting at
+     IETF 104.  Any remaining errors or imperfections are the sole
+     responsibility of the document authors.</t>
    </section>
 
  </middle>
@@ -1142,7 +1142,7 @@
 	</front>
      </reference>
 
-     <reference anchor="ROLL_YOUR_ROOT" target="TBD">
+     <reference anchor="ROLL_YOUR_ROOT" target="https://dl.acm.org/doi/10.1145/3355369.3355570">
 	<front>
 	  <title>Roll, Roll, Roll Your Root: A Comprehensive Analysis of the First Ever DNSSEC Root KSK Rollover</title>
 	  <author fullname="Moritz M&uuml;ller" initials="M." surname="M&uuml;ller"/>
@@ -1200,19 +1200,19 @@
 
    <section anchor="dnsrfcs" title="Standards Related to DNS Transport over TCP">
      <t>This section enumerates all known IETF RFC documents that are
-     currently of status standard, informational, best current practice,
-     or experimental and either implicitly or explicitly make
+     currently of status Standard, Informational, Best Current Practice,
+     or Experimental and either implicitly or explicitly make
      assumptions or statements about the use of TCP as a transport for
      the DNS germane to this document.</t>
 
      <section title="IETF RFC 1035 - DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION">
-       <t>The internet standard <xref target="RFC1035"></xref> is the
+       <t>The Internet Standard <xref target="RFC1035"></xref> is the
        base DNS specification that explicitly defines support for DNS
        over TCP.</t>
      </section>
 
      <section title="IETF RFC 1536 - Common DNS Implementation Errors and Suggested Fixes">
-       <t>The informational document <xref target="RFC1536"></xref>
+       <t>This Informational document <xref target="RFC1536"></xref>
        states UDP is the "chosen protocol for communication though TCP
        is used for zone transfers."  That statement should now be
        considered in its historical context and is no longer a proper
@@ -1220,7 +1220,7 @@
      </section>
 
      <section title="IETF RFC 1995 - Incremental Zone Transfer in DNS">
-       <t>The <xref target="RFC1995"></xref> standards track document
+       <t>This Standards Track document <xref target="RFC1995"/>
        documents the use of TCP as the fallback transport when IXFR
        responses do not fit into a single UDP response.  As with AXFR,
        IXFR messages are typically delivered over TCP by default in
@@ -1228,7 +1228,7 @@
      </section>
 
      <section title="IETF RFC 1996 - A Mechanism for Prompt Notification of Zone Changes (DNS NOTIFY)">
-       <t>The <xref target="RFC1996"></xref> standards track document
+       <t>This Standards Track document <xref target="RFC1996"/>
        suggests a master server may decide to issue NOTIFY messages over
        TCP.  In practice, NOTIFY messages are generally sent over UDP,
        but this specification leaves open the possibility that the
@@ -1237,14 +1237,14 @@
      </section>
 
      <section title="IETF RFC 2181 - Clarifications to the DNS Specification">
-       <t>The <xref target="RFC2181"></xref> standards track document
+       <t>This Standards Track document <xref target="RFC2181"/>
        includes clarifying text on how a client should react to the TC
        bit set on responses.  It is advised that the response should be
        discarded and the query resent using TCP.</t>
      </section>
 
      <section title="IETF RFC 2694 - DNS extensions to Network Address Translators (DNS_ALG)">
-       <t>The informational document <xref target="RFC2694"></xref>
+       <t>This Informational document <xref target="RFC2694"></xref>
        enumerates considerations for network address translation (NAT)
        devices to properly handle DNS traffic.  This document is
        noteworthy in its suggestion that
@@ -1255,7 +1255,7 @@
      </section>
 
      <section title="IETF RFC 3225 - Indicating Resolver Support of DNSSEC">
-       <t>The <xref target="RFC3225"></xref> standards track document
+       <t>This Standards Track document <xref target="RFC3225"/>
        makes statements indicating DNS over TCP is "detrimental" as a
        result of increased traffic, latency, and server load.  This
        document is a companion to the next document in the RFC
@@ -1264,16 +1264,16 @@
 
      <section title="IETF RFC 3326 - DNSSEC and IPv6 A6 aware server/resolver message size requirements">
        <t>Although updated by later DNSSEC RFCs,
-       the standards track document <xref target="RFC3226"></xref>
-       strongly argued in favor of
+       the Standards Track document <xref target="RFC3226"></xref>
+       strongly argues in favor of
        UDP messages instead of TCP, largely for performance reasons.  The
        document declares EDNS(0) a requirement for DNSSEC servers and
-       advocated packet fragmentation may be preferable to TCP in
+       advocates that packet fragmentation may be preferable to TCP in
        certain situations.</t>
      </section>
 
      <section title="IETF RFC 4472 - Operational Considerations and Issues with IPv6 DNS">
-       <t>This informational document <xref target="RFC4472"></xref> notes
+       <t>This Informational document <xref target="RFC4472"></xref> notes
        that IPv6 data may increase DNS responses beyond what would fit in
        a UDP message.  Particularly noteworthy, perhaps less common today
        then when this document was written, it refers to implementations that
@@ -1282,7 +1282,7 @@
      </section>
 
      <section title="IETF RFC 5452 - Measures for Making DNS More Resilient against Forged Answers">
-       <t>This informational document <xref target="RFC5452"></xref> arose
+       <t>This Informational document <xref target="RFC5452"></xref> arose
        as public DNS systems began to experience widespread abuse from spoofed
        queries, resulting in amplification and reflection attacks against
        unwitting victims.  One of the leading justifications for supporting
@@ -1291,7 +1291,7 @@
      </section>
 
      <section title="IETF RFC 5507 - Design Choices When Expanding the DNS">
-       <t>This informational document <xref target="RFC5507"></xref> was
+       <t>This Informational document <xref target="RFC5507"></xref> was
        largely an attempt to dissuade new DNS data types from overloading the
        TXT resource record type.  In so doing it summarizes the conventional
        wisdom of DNS design and implementation practices.  The authors
@@ -1301,7 +1301,7 @@
      </section>
 
      <section title="IETF RFC 5625 - DNS Proxy Implementation Guidelines">
-       <t>This best current practice document <xref target="RFC5625"></xref>
+       <t>This Best Current Practice document <xref target="RFC5625"></xref>
        provides DNS proxy implementation guidance including the mandate that a
        proxy "MUST [...] be prepared to receive and forward queries over TCP"
        even though it suggests historically TCP transport has not been strictly
@@ -1309,7 +1309,7 @@
      </section>
 
      <section title="IETF RFC 5936 - DNS Zone Transfer Protocol (AXFR)">
-       <t>The <xref target="RFC5936"></xref> standards track document
+       <t>This Standards Track document <xref target="RFC5936"/>
        provides a detailed specification for the zone transfer protocol,
        as originally outlined in the early DNS standards.  AXFR operation
        is limited to TCP and not specified for UDP.  This document
@@ -1317,7 +1317,7 @@
      </section>
 
      <section title="IETF RFC 7534 - AS112 Nameserver Operations">
-       <t><xref target="RFC7534"></xref> is an informational document
+       <t><xref target="RFC7534"></xref> is an Informational document
        enumerating the requirements for operation of AS112 project DNS
        servers.  New AS112 nodes are tested for their ability to provide
        service on both UDP and TCP transports, with the implication that
@@ -1325,7 +1325,7 @@
      </section>
 
      <section title="IETF RFC 6762 - Multicast DNS">
-       <t>In this standards track document <xref target="RFC6762"></xref>, the
+       <t>In this Standards Track document <xref target="RFC6762"></xref>, the
        TC bit is deemed to have essentially the same meaning as described
        in the original DNS specifications.  That is, if a response with the
        TC bit set is received, "[...] the querier SHOULD reissue its query
@@ -1333,21 +1333,21 @@
      </section>
 
      <section title="IETF RFC 6891 - Extension Mechanisms for DNS (EDNS(0))">
-       <t>This standards track document <xref target="RFC6891"></xref>
+       <t>This Standards Track document <xref target="RFC6891"></xref>
        helped slow the use of and need for DNS over TCP messages.  This
        document highlights concerns over server load and scalability in
        widespread use of DNS over TCP.</t>
      </section>
 
      <section title="IETF RFC 6950 - Architectural Considerations on Application Features in the DNS">
-       <t>An informational document <xref target="RFC6950"></xref> that draws
+       <t>An Informational document <xref target="RFC6950"></xref> that draws
        attention to large data in the DNS.  TCP is referenced in the
        context as a common fallback mechanism and counter to some spoofing
        attacks.</t>
      </section>
 
      <section title="IETF RFC 7477 - Child-to-Parent Synchronization in DNS">
-       <t>This standards track document <xref target="RFC7477"></xref>
+       <t>This Standards Track document <xref target="RFC7477"></xref>
        specifies a RRType and protocol to signal and synchronize NS, A,
        and AAAA resource record changes from a child to parent zone.
        Since this protocol may require multiple requests and responses,
@@ -1356,14 +1356,14 @@
      </section>
 
      <section title="IETF RFC 7720 - DNS Root Name Service Protocol and Deployment Requirements">
-       <t>This best current practice <xref target="RFC7720"></xref>
+       <t>This Best Current Practice <xref target="RFC7720"></xref>
        declares root name service "MUST support UDP <xref
        target="RFC0768"></xref> and TCP <xref target="RFC0793"></xref>
        transport of DNS queries and responses."</t>
      </section>
 
      <section anchor="app-rfc7766" title="IETF RFC 7766 - DNS Transport over TCP - Implementation Requirements">
-       <t>This standards track document <xref target="RFC7766"/>
+       <t>This Standards Track document <xref target="RFC7766"/>
        instructs DNS implementers to provide support for carrying DNS
        over TCP messages in their software, and 
        might be considered the direct ancestor of this operational
@@ -1376,7 +1376,7 @@
      </section>
 
      <section title="IETF RFC 7828 - The edns-tcp-keepalive EDNS(0) Option">
-       <t>This standards track document <xref target="RFC7828"></xref>
+       <t>This Standards Track document <xref target="RFC7828"></xref>
        defines an EDNS(0) option to negotiate an idle timeout value for
        long-lived DNS over TCP connections.  Consequently, this document
        is only applicable and relevant to DNS over TCP sessions and
@@ -1384,7 +1384,7 @@
      </section>
 
      <section title="IETF RFC 7858 - Specification for DNS over Transport Layer Security (TLS)">
-       <t>This standards track document <xref target="RFC7858"></xref>
+       <t>This Standards Track document <xref target="RFC7858"></xref>
        defines a method for putting DNS messages into a TCP-based
        encrypted channel using TLS.  This specification is noteworthy
        for explicitly targeting the stub-to-recursive traffic, but
@@ -1393,7 +1393,7 @@
      </section>
 
      <section title="IETF RFC 7873 - Domain Name System (DNS) Cookies">
-       <t>This standards track document <xref target="RFC7873"></xref>
+       <t>This Standards Track document <xref target="RFC7873"></xref>
        describes an EDNS(0) option to provide additional protection
        against query and answer forgery.  This specification mentions
        DNS over TCP as an alternative mechanism when DNS Cookies
@@ -1408,7 +1408,7 @@
      </section>
 
      <section title="IETF RFC 7901 - CHAIN Query Requests in DNS">
-       <t>This experimental specification <xref target="RFC7901"></xref>
+       <t>This Experimental specification <xref target="RFC7901"></xref>
        describes an EDNS(0) option that can be used by a security-aware
        validating resolver to request and obtain a complete DNSSEC
        validation path for any single query.  This document requires the
@@ -1428,7 +1428,7 @@
      </section>
 
      <section title="IETF RFC 8094 - DNS over Datagram Transport Layer Security (DTLS)">
-       <t>This experimental specification <xref target="RFC8094"></xref>
+       <t>This Experimental specification <xref target="RFC8094"></xref>
        details a protocol that uses a datagram transport (UDP), but
        stipulates that "DNS clients and servers that implement DNS over
        DTLS MUST also implement DNS over TLS in order to provide privacy
@@ -1438,7 +1438,7 @@
      </section>
 
      <section title="IETF RFC 8162 - Using Secure DNS to Associate Certificates with Domain Names for S/MIME">
-       <t>This experimental specification <xref target="RFC8162"></xref>
+       <t>This Experimental specification <xref target="RFC8162"></xref>
        describes a technique to authenticate user X.509 certificates
        in an S/MIME system via the DNS.  The document points out that
        the new experimental resource record types are expected to carry
@@ -1448,13 +1448,13 @@
      </section>
 
      <section title="IETF RFC 8324 - DNS Privacy, Authorization, Special Uses, Encoding, Characters, Matching, and Root Structure: Time for Another Look?">
-       <t>An informational document <xref target="RFC8324"></xref> that
+       <t>An Informational document <xref target="RFC8324"></xref> that
        briefly discusses the common role and challenges of DNS over TCP
        throughout the history of DNS.</t>
      </section>
 
      <section title="IETF RFC 8467 - Padding Policies for Extension Mechanisms for DNS (EDNS(0))">
-       <t>An experimental document <xref target="RFC8467"></xref>
+       <t>An Experimental document <xref target="RFC8467"></xref>
        reminds implementers to consider the underlying transport
        protocol (e.g. TCP) when calculating the padding length when
        artificially increasing the DNS message size with an EDNS(0)
@@ -1462,7 +1462,7 @@
      </section>
 
      <section title="IETF RFC 8482 - Providing Minimal-Sized Responses to DNS Queries That Have QTYPE=ANY">
-       <t><xref target="RFC8482"/> is a standards-track document that
+       <t><xref target="RFC8482"/> is a Standards Track document that
        describes alternative ways that DNS servers can respond to queries
        of type ANY, which are sometimes used to provide amplification
        in DDoS attacks.  The specification notes that responders may
@@ -1472,7 +1472,7 @@
      </section>
 
      <section title="IETF RFC 8483 - Yeti DNS Testbed">
-       <t>This informational document <xref target="RFC8483"></xref>
+       <t>This Informational document <xref target="RFC8483"></xref>
        describes a testbed environment that highlights some DNS over TCP
        behaviors, including issues involving packet fragmentation and
        operational requirements for TCP stream assembly in order to
@@ -1480,24 +1480,24 @@
      </section>
 
      <section title="IETF RFC 8484 - DNS Queries over HTTPS (DoH)">
-       <t>This standards track document <xref target="RFC8484"></xref>
+       <t>This Standards Track document <xref target="RFC8484"></xref>
        defines a protocol for sending DNS queries and responses over
        HTTPS.  This specification assumes TLS and TCP for the underlying
        security and transport layers, respectively.  Self-described as a
-       a technique that more closely resembles a tunneling mechanism,
+       technique that more closely resembles a tunneling mechanism,
        DoH nevertheless likely implies DNS over TCP in some sense, if not
        directly.</t>
      </section>
 
      <section title="IETF RFC 8490 - DNS Stateful Operations">
-       <t>This standards track document <xref target="RFC8490"></xref>
+       <t>This Standards Track document <xref target="RFC8490"></xref>
        updates the base protocol specification with a new OPCODE to
        help manage stateful operations in persistent sessions, such
        as those that might be used by DNS over TCP.</t>
      </section>
 
      <section title="IETF RFC 8501 - Reverse DNS in IPv6 for Internet Service Providers">
-       <t>This informational document <xref target="RFC8501"></xref>
+       <t>This Informational document <xref target="RFC8501"></xref>
        identifies potential operational challenges with Dynamic DNS
        including denial-of-service threats.  The document suggests TCP
        may provide some advantages, but that updating hosts would need
@@ -1505,14 +1505,14 @@
      </section>
 
      <section title="IETF RFC 8806 - Running a Root Server Local to a Resolver">
-       <t>This informational document <xref target="RFC8806"></xref>
+       <t>This Informational document <xref target="RFC8806"></xref>
        describes how to obtain and operate a local copy of the root zone
        with examples showing how to pull from authoritative sources using
        a DNS over TCP zone transfer.</t>
      </section>
 
      <section title="IETF RFC 8906 - A Common Operational Problem in DNS Servers: Failure to Communicate">
-       <t>This best current practice document <xref target="RFC8906"></xref>
+       <t>This Best Current Practice document <xref target="RFC8906"></xref>
        discusses a number of DNS operational failure scenarios and how to
        avoid them.  This includes discussions involving DNS over TCP queries,
        EDNS over TCP, and a testing methodology that includes a section on
@@ -1520,7 +1520,7 @@
      </section>
 
      <section title="IETF RFC 8932 - Recommendations for DNS Privacy Service Operators">
-       <t>This best current practice document <xref target="RFC8932"></xref>
+       <t>This Best Current Practice document <xref target="RFC8932"></xref>
        presents privacy considerations to DNS privacy service operators.
        These mechanisms sometimes include the use of TCP and are therefore
        susceptible to information leakage such as TCP-based fingerprinting.
@@ -1528,7 +1528,7 @@
      </section>
 
      <section title="IETF RFC 8945 - Secret Key Transaction Authentication for DNS (TSIG)">
-       <t>This standards track document <xref target="RFC8945"></xref>
+       <t>This Standards Track document <xref target="RFC8945"></xref>
        recommends a client use TCP if truncated TSIG messages are
        received.</t>
      </section>
