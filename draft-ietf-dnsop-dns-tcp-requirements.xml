@@ -1159,7 +1159,7 @@
 	</front>
      </reference>
 
-     <reference anchor="Stevens">
+     <!-- reference anchor="Stevens">
 	<front>
 	  <title>UNIX Network Programming Volume 1, Third Edition: The Sockets Networking API</title>
 	  <author fullname="W. Richard Stevens" initials="W.R." surname="Stevens"/>
@@ -1167,7 +1167,7 @@
           <author fullname="Andrew M. Rudoff" initials="A.M." surname="Rudoff"/>
 	  <date year="2003" month="November" day="21"/>
 	</front>
-     </reference>
+     </reference -->
 
      <reference anchor="libpcap" target="https://www.tcpdump.org">
 	<front>
