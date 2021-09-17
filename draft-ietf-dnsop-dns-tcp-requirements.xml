@@ -58,6 +58,7 @@
   <!ENTITY RFC5936 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5936.xml">
   <!-- Improving TCP's Robustness to Blind In-Window Attacks -->
   <!ENTITY RFC5961 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5961.xml">
+  <!ENTITY RFC6298 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6298.xml">
   <!-- Multicast DNS -->
   <!ENTITY RFC6762 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6762.xml">
   <!-- Extension Mechanisms for DNS (EDNS (0)) -->
@@ -564,7 +565,10 @@
        connection attempts to a single server.  Additionally, DNS clients
        MAY want to enforce a short timeout on unestablished connections,
        rather than rely on the host operating system's TCP connection
-       timeout, which is often around 60-120 seconds.</t>
+       timeout, which is often around 60-120 seconds (i.e., due to an
+       initial retransmission timeout of 1 second, the exponential
+       back off rules of <xref target="RFC6298"/>, and a limit of six
+       retries as is the default in Linux).</t>
 
        <t>The SYN flooding attack is a denial-of-service method
        affecting hosts that run TCP server processes <xref
@@ -636,7 +640,9 @@
        limit is reached, the application is expected to either close
        existing (idle) connections or refuse new connections.
        Operators SHOULD ensure the limit is configured appropriately
-       for their particular situation.</t>
+       for their particular situation.
+       Absent any other information, 150 is a reasonable value for
+       this limit in most cases.</t>
 
        <t>DNS server software MAY provide a configurable limit on
        the number of established connections per source IP address
@@ -644,7 +650,9 @@
        set of users cannot consume all TCP resources and deny
        service to other users.  Operators SHOULD ensure this limit
        is configured appropriately, based on their number of diversity
-       of users.</t>
+       of users.
+       Absent any other information, 25 is a reasonable value for
+       this limit in most cases.</t>
 
        <t>DNS server software SHOULD provide a configurable timeout
        for idle TCP connections.  For very busy name servers this
@@ -652,7 +660,9 @@
        less busy servers it might be set to a higher value, such
        as tens of seconds.  DNS clients and servers SHOULD signal
        their timeout values using the edns-tcp-keepalive
-       option <xref target="RFC7828"/>.</t>
+       option <xref target="RFC7828"/>.
+       Absent any other information, 10 seconds is a reasonable value for
+       this timeout in most cases.</t>
 
        <t>DNS server software MAY provide a configurable limit on
        the number of transactions per TCP connection. This document
@@ -684,16 +694,16 @@
        can be used to encourage clients to close connections.</t>
 
        <t>On systems where large numbers of sockets in TIME_WAIT
-       are observed (either as client or server), it may be beneficial to tune the local TCP
-       parameters.  For example, the Linux kernel provides a number
-       of "sysctl" parameters related to TIME_WAIT, such as
-       net.ipv4.tcp_fin_timeout and
-       net.ipv4.tcp_tw_reuse.  In extreme cases, implementors and
-       operators of very busy servers may find it necessary to
-       utilize the SO_LINGER socket option (<xref target="Stevens"/> Section
-       7.5) with a value of zero so that the server doesn't accumulate
-       TIME_WAIT sockets.</t>
-
+       are observed (either as client or server), and are affecting
+       an application's performance, it may be tempting to tune local TCP
+       parameters.  For example, the Linux kernel has
+       a "sysctl" parameter named net.ipv4.tcp_tw_reuse which allows
+       connections in the TIME_WAIT state to be reused in specific
+       circumstances.  Note, however, this affects only outgoing (client)
+       connections and has no impact on servers.  In most cases it is NOT
+       RECOMMENDED to change parameters related to the TIME_WAIT state.
+       It should only be done by those with detailed knowledge of both TCP
+       and the affected application.</t>
      </section>
 
      <section title="DNS-over-TLS">
@@ -710,7 +720,7 @@
        on DNS clients and servers.  Cryptographic functions for
        authentication and encryption requires additional processing.
        Unoptimized connection setup takes two additional round-trips
-       compared to TCP, but can be reduced with TLS session
+       compared to TCP, but can be reduced with TCP Fast Open, TLS session
        resumption <xref target="RFC8446"/> and TLS False Start <xref
        target="RFC7918"/>.</t>
 
@@ -922,24 +932,24 @@
      &RFC1536;
      &RFC2136;
      &RFC2541;
+     <!-- &RFC2629; -->
      &RFC2671;
      &RFC2694;
-     <!-- &RFC2629; -->
      &RFC3225;
      &RFC3226;
      &RFC4472;
      &RFC4953;
      &RFC4987;
-     &RFC8446;
      &RFC5358;
      &RFC5452;
      &RFC5507;
      &RFC5927;
      &RFC5961;
      &RFC5966;
-     &RFC7534;
+     &RFC6298;
      &RFC6950;
      &RFC7413;
+     &RFC7534;
      &RFC7858;
      &RFC7901;
      &RFC7918;
@@ -948,6 +958,7 @@
      &RFC8162;
      &RFC8200;
      &RFC8324;
+     &RFC8446;
      &RFC8467;
      &RFC8483;
      &RFC8484;
