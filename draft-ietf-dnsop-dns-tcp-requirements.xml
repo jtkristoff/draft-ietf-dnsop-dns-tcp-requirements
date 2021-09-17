@@ -10,6 +10,8 @@
   <!-- TRANSMISSION CONTROL PROTOCOL -->
   <!ENTITY RFC0793 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0793.xml">
   <!-- DOMAIN NAMES - CONCEPTS AND FACILITIES -->
+  <!ENTITY RFC0883 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0883.xml">
+  <!-- DOMAIN NAMES - IMPLEMENTATION and SPECIFICATION -->
   <!ENTITY RFC1034 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1034.xml">
   <!-- DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION -->
   <!ENTITY RFC1035 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1035.xml">
@@ -56,6 +58,7 @@
   <!ENTITY RFC5936 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5936.xml">
   <!-- Improving TCP's Robustness to Blind In-Window Attacks -->
   <!ENTITY RFC5961 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5961.xml">
+  <!ENTITY RFC6298 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6298.xml">
   <!-- Multicast DNS -->
   <!ENTITY RFC6762 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6762.xml">
   <!-- Extension Mechanisms for DNS (EDNS (0)) -->
@@ -71,6 +74,7 @@
   <!-- Root Name Service Requirements -->
   <!ENTITY RFC7720 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7720.xml">
   <!-- DNS Transport over TCP - Implementation Requirements -->
+  <!ENTITY RFC5966 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5966.xml">
   <!ENTITY RFC7766 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7766.xml">
   <!-- The edns-tcp-keepalive EDNS(0) Option -->
   <!ENTITY RFC7828 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7828.xml">
@@ -252,6 +256,7 @@
      staff to ensure DNS over TCP communications support is on par with
      DNS over UDP communications. It updates <xref target="RFC1123"/>
      Section 6.1.3.2 to clarify that all DNS resolvers and recursive
+     servers
      MUST support and service both TCP and UDP queries, and also
      updates <xref target="RFC1536"/> to remove the misconception
      that TCP is only useful for zone transfers.
@@ -463,6 +468,31 @@
        sophisticated TCP management techniques employed by, for example,
        HTTP(S) servers and load balancers.</t>
      </section>
+
+     <section title="Reuse, Pipelining, and Out-of-Order Processing">
+       <t>The idea that a TCP connection can support multiple transactions
+       goes back as far as <xref target="RFC0883"/>, which states:
+       "Multiple messages may be sent over a virtual circuit." Although
+       <xref target="RFC1035"/>, which updates the former, omits this
+       particular detail, it has been generally accepted that a TCP connection
+       can be used for more than one query and response.</t>
+
+       <t><xref target="RFC5966"/> clarified that servers are not
+       required to preserve the order of queries and responses over
+       any transport.
+       <xref target="RFC7766"/>, which updates the former, further
+       encourages query pipelining over TCP to achieve performance on
+       par with UDP.
+       A server that sends out-of-order responses to pipelined queries
+       avoids head-of-line blocking when the response for a later
+       query is ready before the response to an earlier query.</t>
+
+       <t>However, TCP can potentially suffer from a different
+       head-of-line blocking problem due to packet loss.
+       Since TCP itself enforces ordering, a single lost segment
+       delays delivery of data in any following segments until
+       the lost segment is retransmitted and successfully received.</t>
+     </section>
    </section>
 
    <section title="DNS over TCP Requirements">
@@ -540,7 +570,10 @@
        connection attempts to a single server.  Additionally, DNS clients
        MAY want to enforce a short timeout on unestablished connections,
        rather than rely on the host operating system's TCP connection
-       timeout, which is often around 60-120 seconds.</t>
+       timeout, which is often around 60-120 seconds (i.e., due to an
+       initial retransmission timeout of 1 second, the exponential
+       back off rules of <xref target="RFC6298"/>, and a limit of six
+       retries as is the default in Linux).</t>
 
        <t>The SYN flooding attack is a denial-of-service method
        affecting hosts that run TCP server processes <xref
@@ -612,7 +645,9 @@
        limit is reached, the application is expected to either close
        existing (idle) connections or refuse new connections.
        Operators SHOULD ensure the limit is configured appropriately
-       for their particular situation.</t>
+       for their particular situation.
+       Absent any other information, 150 is a reasonable value for
+       this limit in most cases.</t>
 
        <t>DNS server software MAY provide a configurable limit on
        the number of established connections per source IP address
@@ -620,7 +655,9 @@
        set of users cannot consume all TCP resources and deny
        service to other users.  Operators SHOULD ensure this limit
        is configured appropriately, based on their number of diversity
-       of users.</t>
+       of users.
+       Absent any other information, 25 is a reasonable value for
+       this limit in most cases.</t>
 
        <t>DNS server software SHOULD provide a configurable timeout
        for idle TCP connections.  For very busy name servers this
@@ -628,7 +665,9 @@
        less busy servers it might be set to a higher value, such
        as tens of seconds.  DNS clients and servers SHOULD signal
        their timeout values using the edns-tcp-keepalive
-       option <xref target="RFC7828"/>.</t>
+       option <xref target="RFC7828"/>.
+       Absent any other information, 10 seconds is a reasonable value for
+       this timeout in most cases.</t>
 
        <t>DNS server software MAY provide a configurable limit on
        the number of transactions per TCP connection. This document
@@ -660,16 +699,16 @@
        can be used to encourage clients to close connections.</t>
 
        <t>On systems where large numbers of sockets in TIME_WAIT
-       are observed (either as client or server), it may be beneficial to tune the local TCP
-       parameters.  For example, the Linux kernel provides a number
-       of "sysctl" parameters related to TIME_WAIT, such as
-       net.ipv4.tcp_fin_timeout and
-       net.ipv4.tcp_tw_reuse.  In extreme cases, implementors and
-       operators of very busy servers may find it necessary to
-       utilize the SO_LINGER socket option (<xref target="Stevens"/> Section
-       7.5) with a value of zero so that the server doesn't accumulate
-       TIME_WAIT sockets.</t>
-
+       are observed (either as client or server), and are affecting
+       an application's performance, it may be tempting to tune local TCP
+       parameters.  For example, the Linux kernel has
+       a "sysctl" parameter named net.ipv4.tcp_tw_reuse which allows
+       connections in the TIME_WAIT state to be reused in specific
+       circumstances.  Note, however, this affects only outgoing (client)
+       connections and has no impact on servers.  In most cases it is NOT
+       RECOMMENDED to change parameters related to the TIME_WAIT state.
+       It should only be done by those with detailed knowledge of both TCP
+       and the affected application.</t>
      </section>
 
      <section title="DNS-over-TLS">
@@ -686,7 +725,7 @@
        on DNS clients and servers.  Cryptographic functions for
        authentication and encryption requires additional processing.
        Unoptimized connection setup takes two additional round-trips
-       compared to TCP, but can be reduced with TLS session
+       compared to TCP, but can be reduced with TCP Fast Open, TLS session
        resumption <xref target="RFC8446"/> and TLS False Start <xref
        target="RFC7918"/>.</t>
 
@@ -767,8 +806,12 @@
      in single segments.  In fact, a clever attacker might attempt
      to hide certain messages by forcing them over very small TCP
      segments.  Applications that capture network packets (e.g.,
-     with libpcap <xref target="libpcap"/>) SHOULD be prepared to implement and perform full
-     TCP segment reassembly.  dnscap <xref target="dnscap"/> is an
+     with libpcap <xref target="libpcap"/>) SHOULD implement and perform full
+     TCP segment reassembly.
+     Furthermore, as with real TCP, such applications need to protect
+     themselves from resource exhaustion attacks by limiting the amount
+     of memory allocated to tracking unacknowledged connection state data.
+     dnscap <xref target="dnscap"/> is an
      open-source example of a DNS logging program that implements
      TCP reassembly.</t>
 
@@ -888,28 +931,30 @@
 
      &RFC0768;
      &RFC0793;
+     &RFC0883;
      &RFC1034;
      &RFC1123;
      &RFC1536;
      &RFC2136;
      &RFC2541;
+     <!-- &RFC2629; -->
      &RFC2671;
      &RFC2694;
-     <!-- &RFC2629; -->
      &RFC3225;
      &RFC3226;
      &RFC4472;
      &RFC4953;
      &RFC4987;
-     &RFC8446;
      &RFC5358;
      &RFC5452;
      &RFC5507;
      &RFC5927;
      &RFC5961;
-     &RFC7534;
+     &RFC5966;
+     &RFC6298;
      &RFC6950;
      &RFC7413;
+     &RFC7534;
      &RFC7858;
      &RFC7901;
      &RFC7918;
@@ -918,6 +963,7 @@
      &RFC8162;
      &RFC8200;
      &RFC8324;
+     &RFC8446;
      &RFC8467;
      &RFC8483;
      &RFC8484;
