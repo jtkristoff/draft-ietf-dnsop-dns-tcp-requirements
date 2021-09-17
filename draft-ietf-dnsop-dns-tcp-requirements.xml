@@ -645,9 +645,7 @@
        limit is reached, the application is expected to either close
        existing (idle) connections or refuse new connections.
        Operators SHOULD ensure the limit is configured appropriately
-       for their particular situation.
-       Absent any other information, 150 is a reasonable value for
-       this limit in most cases.</t>
+       for their particular situation.</t>
 
        <t>DNS server software MAY provide a configurable limit on
        the number of established connections per source IP address
@@ -655,9 +653,7 @@
        set of users cannot consume all TCP resources and deny
        service to other users.  Operators SHOULD ensure this limit
        is configured appropriately, based on their number and diversity
-       of users.
-       Absent any other information, 25 is a reasonable value for
-       this limit in most cases.</t>
+       of users.</t>
 
        <t>DNS server software SHOULD provide a configurable timeout
        for idle TCP connections.  For very busy name servers this
@@ -665,19 +661,13 @@
        less busy servers it might be set to a higher value, such
        as tens of seconds.  DNS clients and servers SHOULD signal
        their timeout values using the edns-tcp-keepalive
-       option <xref target="RFC7828"/>.
-       Absent any other information, 10 seconds is a reasonable value for
-       this timeout in most cases.</t>
+       option <xref target="RFC7828"/>.</t>
 
        <t>DNS server software MAY provide a configurable limit on
-       the number of transactions per TCP connection. This document
-       does not offer advice on particular values for such a
-       limit.</t>
+       the number of transactions per TCP connection.</t>
 
        <t>Similarly, DNS server software MAY provide a configurable
-       limit on the total duration of a TCP connection.  This
-       document does not offer advice on particular values for such
-       a limit.</t>
+       limit on the total duration of a TCP connection.</t>
 
        <t>Since clients may not be aware of server-imposed limits,
        clients utilizing TCP for DNS need to always be prepared to
@@ -728,6 +718,52 @@
        compared to TCP, but can be reduced with TCP Fast Open, TLS session
        resumption <xref target="RFC8446"/> and TLS False Start <xref
        target="RFC7918"/>.</t>
+
+     </section>
+
+     <section title="Defaults and Recommended Limits">
+
+       <t>A survey of features and defults was conducted for popular
+       open source DNS server implementations at the time of writing.
+       This section documents those defaults and makes recommendations
+       for configurable limits that can be used in the absence of any
+       other information.  Any recommended values in this document are
+       only intended as a starting point for administrators that are
+       unsure what sorts of limits might be reasonable. Operators SHOULD
+       use application-specific monitoring, system logs, and system
+       monitoring tools to gauge whether their service is operating
+       within or exceeding these limits, and adjust accordingly.</t>
+
+       <t>Most open sorcue DNS server implementations provide a
+       configurable limit on the total number of established connections.
+       Default values range from 20 to 150.  In most cases, where the
+       majority of queries take place over UDP, 150 is a reasonable limit.
+       For services or enviroments where most queries take place over
+       TCP or TLS, 5000 is a more appropriate limit.</t>
+
+       <t>Only some open source implementations provide a way to limit
+       the number of connections per source IP address or subnet, but
+       the default is to have no limit.  For environments or situations
+       where it may be neccessary to enable this limit, 25 connections
+       per source IP address is a reasonable starting point.  The limit
+       should be increased when aggregated by subnet, or for services
+       where most queries take place over TCP or TLS.</t>
+
+       <t>Most open source implementations provide a configurable idle
+       timeout on connections.  Default values range from 2 to 30 seconds.
+       In most cases, 10 seconds is a reasonable default for this limit.
+       Longer timeouts improve connection reuse, but busy servers may
+       need to use a lower limit.</t>
+
+       <t>Only some open source implementations provide a way to limit
+       the number of transactions per connection, but the default is to
+       have no limit.  This document does not offer advice on particular
+       values for such a limit.</t>
+
+       <t>Only some open source implementations provide a way to limit
+       the duration of connection, but the default is to have no limit.
+       This document does not offer advice on particular values for such
+       a limit.</t>
 
      </section>
 
