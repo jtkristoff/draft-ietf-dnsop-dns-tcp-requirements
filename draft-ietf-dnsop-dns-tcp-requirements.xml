@@ -147,7 +147,7 @@
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
 
-<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-13" ipr="trust200902" updates="1123">
+<rfc category="bcp" docName="draft-ietf-dnsop-dns-tcp-requirements-13" ipr="trust200902" updates="1123,1536">
  <!-- category values: std, bcp, info, exp, and historic
     ipr values: trust200902, noModificationTrust200902, noDerivativesTrust200902,
        or pre5378Trust200902
@@ -221,7 +221,7 @@
         keywords will be used for the search engine. -->
 
    <abstract>
-     <t>This document updates RFC 1123.  This
+     <t>This document updates RFC 1123 and RFC 1536.  This
      document strongly encourages the operational practice of permitting
      DNS messages to be carried over TCP on the Internet as a Best
      Current Practice.  Such encouragement is aligned with the
@@ -252,7 +252,9 @@
      staff to ensure DNS over TCP communications support is on par with
      DNS over UDP communications. It updates <xref target="RFC1123"/>
      Section 6.1.3.2 to clarify that all DNS resolvers and recursive
-     MUST support and service both TCP and UDP queries.
+     MUST support and service both TCP and UDP queries, and also
+     updates <xref target="RFC1536"/> to remove the misconception
+     that TCP is only useful for zone transfers.
      </t>
 
      <section title="Requirements Language">
@@ -508,6 +510,9 @@
            succeeded with another transport protocol.</t>
        </list>
      </t>
+
+     <t>Lastly, Section 1 of <xref target="RFC1536"/> is updated to eliminate
+     the misconception that TCP is only useful for zone transfers.</t>
 
      <t>Filtering of DNS over TCP is harmful in the general
      case.  DNS resolver and server operators MUST support and provide
