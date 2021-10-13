@@ -1,12 +1,18 @@
 SRC=draft-ietf-dnsop-dns-tcp-requirements
-DST=$(shell grep docName= ${SRC}.xml | awk '{print $$3}' | awk -F= '{print $$2}' | sed -e 's/"//g' )
+DST=${SRC}
+VER=$(shell cat ${SRC}.xml | grep '^.rfc category' | awk '{print $$3}' | awk -F= '{print $$2}' | sed -e s'/"//g' | awk -F- '{print $$NF}')
+VERP=$(shell expr ${VER} - 1)
+VERQ=$(shell printf '%02d' ${VERP})
 
-all: Versions/${DST}.txt
-
-Versions/${DST}.txt: ${SRC}.xml
-	xml2rfc ${SRC}.xml -o $@
-
-.PHONY: clean
+.PHONY: clean rfcdiff
 	
 clean:
-	rm -f ${DST}.txt
+	rm -f ${DST}-${VER}.txt
+
+all: Versions/${DST}-${VER}.txt
+
+Versions/${DST}-${VER}.txt: ${SRC}.xml
+	xml2rfc ${SRC}.xml -o $@
+
+rfcdiff: Versions/${DST}-${VER}.txt
+	cd Versions; bash ../rfcdiff ${DST}-${VERQ}.txt ${DST}-${VER}.txt ${DST}-${VER}-from-${VERQ}.diff.html
