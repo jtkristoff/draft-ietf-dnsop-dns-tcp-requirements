@@ -196,7 +196,7 @@
        </postal>
        <phone>+1 703 948 3200</phone>
        <email>dwessels@verisign.com</email>
-       <uri>http://verisign.com</uri>
+       <uri>https://verisign.com</uri>
      </address>
    </author>
 
@@ -231,7 +231,7 @@
      Current Practice.  This operational requirement is aligned with the
      implementation requirements in RFC 7766.  The use of TCP includes
      both DNS over unencrypted TCP, as well as over an encrypted TLS
-     session.  The document also considers the consequences with this
+     session.  The document also considers the consequences of this
      form of DNS communication and the potential operational issues that
      can arise when this Best Current Practice is not upheld.</t>
    </abstract>
@@ -459,7 +459,7 @@
      <section title="&quot;Only Zone Transfers Use TCP&quot;">
        <t>Today, the majority of the DNS community expects, or at least
        has a desire, to see DNS over TCP transactions occur without
-       interference.  However there has also been a long-held belief by
+       interference.  However, there has also been a long-held belief by
        some operators, particularly for security-related reasons, that
        DNS over TCP services should be purposely limited or not provided
        at all <xref target="CHES94"></xref>, <xref
@@ -873,7 +873,7 @@ given the capabilities of even low-end servers.
        year-long postponement of the KSK rollover there were no reported problems
        that could be attributed to the 1414 octet DNSKEY response when both
        the old and new keys were published in the zone.  Additionally, there
-       were no reported problems during the two month period when the old key was
+       were no reported problems during the two-month period when the old key was
        published as revoked and the DNSKEY response was 1425 octets in size <xref target="ROLL_YOUR_ROOT"/>.</t>
      </section>
 
@@ -1266,7 +1266,7 @@ given the capabilities of even low-end servers.
           <author fullname="Paul Vixie" initials="P." surname="Vixie"/>
 	  <date year="2021" month="February"/>
 	</front>
-        <seriesInfo name="Work in Progress," value="draft-ietf-dnsop-avoid-fragmentation-04"/>
+        <seriesInfo name="Work in Progress," value="draft-ietf-dnsop-avoid-fragmentation-05"/>
      </reference>
 
      <reference anchor="FRAG_POISON" target="https://u.cs.biu.ac.il/~herzbea/security/13-03-frag.pdf">
@@ -1387,7 +1387,7 @@ given the capabilities of even low-end servers.
        noteworthy in its suggestion that
        "[t]ypically, TCP is used for AXFR requests,"
        as further evidence that helps
-       explain why DNS over TCP may often have been treated very
+       explain why DNS over TCP may have often been treated very
        differently than DNS over UDP in operational networks.</t>
      </section>
 
@@ -1413,7 +1413,7 @@ given the capabilities of even low-end servers.
        <t>This Informational document <xref target="RFC4472"></xref> notes
        that IPv6 data may increase DNS responses beyond what would fit in
        a UDP message.  Particularly noteworthy, perhaps less common today
-       then when this document was written, it refers to implementations that
+       than when this document was written, it refers to implementations that
        truncate data without setting the TC bit to encourage the client to
        resend the query using TCP.</t>
      </section>
