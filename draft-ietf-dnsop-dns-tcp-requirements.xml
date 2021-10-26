@@ -1366,11 +1366,11 @@ given the capabilities of even low-end servers.
 
      <section title="IETF RFC 1996 - A Mechanism for Prompt Notification of Zone Changes (DNS NOTIFY)">
        <t>This Proposed Standard <xref target="RFC1996"/>
-       suggests a master server may decide to issue NOTIFY messages over
+       suggests a primary server may decide to issue NOTIFY messages over
        TCP.  In practice, NOTIFY messages are generally sent over UDP,
        but this specification leaves open the possibility that the
-       choice of transport protocol is up to the master server, and therefore
-       a slave server ought to be able to operate over both UDP and TCP.</t>
+       choice of transport protocol is up to the primary server, and therefore
+       a secondary server ought to be able to operate over both UDP and TCP.</t>
      </section>
 
      <section title="IETF RFC 2181 - Clarifications to the DNS Specification">
