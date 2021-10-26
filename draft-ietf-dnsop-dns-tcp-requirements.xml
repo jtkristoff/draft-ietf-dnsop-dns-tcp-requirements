@@ -427,6 +427,15 @@
        more latency and potentially undesirable from the server's point
        of view due to the increased resource requirements of TCP.</t>
 
+       <t>Note that a receiver is unable to differentiate between packets
+       lost due to congestion and packets (fragments) intentionally
+       dropped by firewalls or middleboxes.  Over network paths with
+       non-trival amounts of packet loss, larger, fragmented DNS responses
+       are more likely to never arrive and time out compared to smaller,
+       unfragmented responses.  Clients might be misled into retrying
+       queries with different EDNS(0) UDP packet size values for the
+       wrong reason.</t>
+
        <t>The issues around fragmentation, truncation, and TCP are
        driving certain implementation and policy decisions in the DNS.
        Notably, Cloudflare implemented what it calls "DNSSEC black lies"
