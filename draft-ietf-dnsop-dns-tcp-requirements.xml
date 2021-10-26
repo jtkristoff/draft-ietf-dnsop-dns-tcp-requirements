@@ -1399,7 +1399,7 @@ given the capabilities of even low-end servers.
        series expressing the requirement for EDNS(0) support for DNSSEC.</t>
      </section>
 
-     <section title="IETF RFC 3326 - DNSSEC and IPv6 A6 aware server/resolver message size requirements">
+     <section title="IETF RFC 3226 - DNSSEC and IPv6 A6 aware server/resolver message size requirements">
        <t>Although updated by later DNSSEC RFCs,
        the Proposed Standard <xref target="RFC3226"></xref>
        strongly argues in favor of
