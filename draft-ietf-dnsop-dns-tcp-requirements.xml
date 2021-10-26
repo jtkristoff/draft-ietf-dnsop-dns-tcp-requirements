@@ -634,6 +634,13 @@
        <t>Since host memory for TCP state is a finite resource, DNS
        clients and
        servers MUST actively manage their connections.  Applications
+<!-- DISCUSS from Lars Eggert
+For it to contain a MUST-level requirement, this section needs to give a lot
+more concrete guidance on what it means to "actively" manage connections. Most
+operating systems by default impose some application limits that usually
+effectively prevent DOS or other resource exhaustion issues. Is the intent here
+that DNS implementations need to do more? If so, what?
+-->
        that do not actively manage their connections
        can encounter resource exhaustion leading to denial of
        service.  For DNS, as in other protocols, there is a tradeoff
