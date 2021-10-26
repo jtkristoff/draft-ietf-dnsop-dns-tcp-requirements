@@ -504,6 +504,11 @@
      </section>
    </section>
 
+<!--
+COMMENT from Lars Eggert;
+While the history preceding this section is interesting for context, I think
+moving this section up would increase readability significantly.
+-->
    <section title="DNS over TCP Requirements">
      <t>An average increase in DNS message size (e.g., due to DNSSEC),
      the continued development of new DNS features (<xref
