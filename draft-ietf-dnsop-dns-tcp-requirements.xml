@@ -668,6 +668,11 @@ that DNS implementations need to do more? If so, what?
        Operators SHOULD ensure the limit is configured appropriately
        for their particular situation.</t>
 
+<!-- COMMENT from Lars Eggert on above
+Again, the OS generally already imposes limits. Why recommend that DNS
+implementations self-impose other (lower?) limits?
+-->
+
        <t>DNS server software MAY provide a configurable limit on
        the number of established connections per source IP address
        or subnet.  This can be used to ensure that a single or small
@@ -675,6 +680,12 @@ that DNS implementations need to do more? If so, what?
        service to other users.  Operators SHOULD ensure this limit
        is configured appropriately, based on their number and diversity
        of users.</t>
+
+<!-- COMMENT from Lars Eggert on above
+This limit only begins to establish fairness once the overall number of
+permitted connections is reached. Until that point, it possibly limits client
+performance without any benefit.
+-->
 
        <t>DNS server software SHOULD provide a configurable timeout
        for idle TCP connections.  For very busy name servers this
@@ -684,11 +695,23 @@ that DNS implementations need to do more? If so, what?
        their timeout values using the edns-tcp-keepalive
        option <xref target="RFC7828"/>.</t>
 
+<!-- COMMENT from Lars Eggert on above
+Ditto
+-->
+
        <t>DNS server software MAY provide a configurable limit on
        the number of transactions per TCP connection.</t>
 
+<!-- COMMENT from Lars Eggert on above
+What does that limit protect against?
+-->
+
        <t>Similarly, DNS server software MAY provide a configurable
        limit on the total duration of a TCP connection.</t>
+
+<!-- COMMENT from Lars Eggert on above
+What does that limit protect against?
+-->
 
        <t>Since clients may not be aware of server-imposed limits,
        clients utilizing TCP for DNS need to always be prepared to
@@ -761,6 +784,11 @@ that DNS implementations need to do more? If so, what?
        majority of queries take place over UDP, 150 is a reasonable limit.
        For services or environments where most queries take place over
        TCP or TLS, 5000 is a more appropriate limit.</t>
+
+<!-- COMMENT by Lars Eggert on above
+20-150 is orders of magnitude less than I expected. Even 5000 seems very low,
+given the capabilities of even low-end servers.
+-->
 
        <t>Only some open source implementations provide a way to limit
        the number of connections per source IP address or subnet, but
