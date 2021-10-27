@@ -758,10 +758,14 @@ What does that limit protect against?
        <t>The use of TLS places even stronger operational burdens
        on DNS clients and servers.  Cryptographic functions for
        authentication and encryption requires additional processing.
-       Unoptimized connection setup takes two additional round-trips
-       compared to TCP, but can be reduced with TCP Fast Open, TLS session
-       resumption <xref target="RFC8446"/> and TLS False Start <xref
-       target="RFC7918"/>.</t>
+       Unoptimized connection setup with TLS 1.3 <xref target="RFC8446"/>
+       takes one additional round-trip compared to TCP.  Connection setup
+       times can be reduced with TCP Fast Open, and TLS False Start <xref
+       target="RFC7918"/>. TLS session resumption does not reduce round-trip
+       latency becase no application profile for use of TLS 0-RTT data
+       with DNS has been published at the time of this writing.  However,
+       TLS session resumption can reduce the number of cryptographic
+       operations.</t>
 
      </section>
 
