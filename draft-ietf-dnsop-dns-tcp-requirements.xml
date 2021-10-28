@@ -343,7 +343,7 @@
        higher overhead TCP in responses."</t>
 
        <t>Yet, defying some expectations, DNS over TCP remained little-used
-       in real traffic across the Internet around this time.  Dynamic updates saw
+       in real traffic across the Internet in the late 1990s.  Dynamic updates saw
        little deployment between autonomous networks.  Around the time
        DNSSEC was first defined, another new feature helped solidify
        UDP transport dominance for message transactions.</t>
