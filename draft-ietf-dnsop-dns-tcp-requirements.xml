@@ -593,7 +593,7 @@ moving this section up would increase readability significantly.
        affecting hosts that run TCP server processes <xref
        target="RFC4987"/>.  This attack can be very effective if
        not mitigated.  One of the most effective mitigation techniques
-       is SYN cookies, which allows the server to avoid allocating
+       is SYN cookies <xref target="SYNCOOKIES"/>, which allows the server to avoid allocating
        any state until the successful completion of the three-way
        handshake.</t>
 
@@ -1093,6 +1093,16 @@ given the capabilities of even low-end servers.
            <organization>D.J. Bernstein</organization>
          </author>
          <date year="2002" />
+       </front> 
+     </reference>
+
+     <reference anchor="SYNCOOKIES" target="https://cr.yp.to/syncookies.html">
+       <front>
+         <title>SYN cookies</title>
+         <author>
+           <organization>D.J. Bernstein</organization>
+         </author>
+         <date year="2013"/>
        </front> 
      </reference>
 
