@@ -5,9 +5,6 @@ VERP=$(shell expr ${VER} - 1)
 VERQ=$(shell printf '%02d' ${VERP})
 
 .PHONY: clean rfcdiff
-	
-clean:
-	rm -f ${DST}-${VER}.txt
 
 all: Versions/${DST}-${VER}.txt
 
@@ -16,3 +13,6 @@ Versions/${DST}-${VER}.txt: ${SRC}.xml
 
 rfcdiff: Versions/${DST}-${VER}.txt
 	cd Versions; bash ../rfcdiff ${DST}-${VERQ}.txt ${DST}-${VER}.txt ${DST}-${VER}-from-${VERQ}.diff.html
+
+clean:
+	rm -f ${DST}-${VER}.txt
