@@ -1099,13 +1099,13 @@ Do you really want to use the term Wedgie?
        </front> 
      </reference>
 
-     <reference anchor="SYNCOOKIES" target="https://cr.yp.to/syncookies.html">
+     <reference anchor="SYNCOOKIES" target="https://en.wikipedia.org/wiki/SYN_cookies">
        <front>
          <title>SYN cookies</title>
          <author>
-           <organization>D.J. Bernstein</organization>
+	   <organization>Wikipedia</organization>
          </author>
-         <date year="2013"/>
+         <date year="2021" month="10"/>
        </front> 
      </reference>
 
