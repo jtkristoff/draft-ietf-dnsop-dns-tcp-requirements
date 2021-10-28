@@ -845,6 +845,9 @@ given the capabilities of even low-end servers.
      at the time of this writing when networks filter DNS over
      TCP.</t>
 
+<!-- COMMENT from Roman Danyliw
+Do you really want to use the term Wedgie?
+-->
      <section title="DNS Wedgie">
        <t>Networks that filter DNS over TCP may inadvertently cause
        problems for third-party resolvers as experienced by <xref
