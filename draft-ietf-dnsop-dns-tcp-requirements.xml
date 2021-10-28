@@ -459,7 +459,7 @@
      <section title="&quot;Only Zone Transfers Use TCP&quot;">
        <t>Today, the majority of the DNS community expects, or at least
        has a desire, to see DNS over TCP transactions occur without
-       interference.  However, there has also been a long-held belief by
+       interference <xref target="FLAGDAY2020"/>.  However, there has also been a long-held belief by
        some operators, particularly for security-related reasons, that
        DNS over TCP services should be purposely limited or not provided
        at all <xref target="CHES94"></xref>, <xref
