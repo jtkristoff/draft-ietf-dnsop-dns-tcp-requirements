@@ -896,7 +896,9 @@ given the capabilities of even low-end servers.
      to hide certain messages by forcing them over very small TCP
      segments.  Applications that capture network packets (e.g.,
      with libpcap <xref target="libpcap"/>) SHOULD implement and perform full
-     TCP stream reassembly.
+     TCP stream reassembly and analyze the reassembled stream instead of the individual packets.
+     Otherwise, they are vulnerable to network evasion attacks <xref target="phrack"/>.
+     
      Furthermore, such applications need to protect
      themselves from resource exhaustion attacks by limiting the amount
      of memory allocated to tracking unacknowledged connection state data.
@@ -1334,6 +1336,14 @@ given the capabilities of even low-end servers.
 	  </author>
 	  <date year="2019" month="Jan"/>
 	</front>
+     </reference>
+
+     <reference anchor="phrack" target="http://phrack.org/issues/54/10.html">
+       <front>
+         <title>Defeating Sniffers and Intrusion Detection Systems</title>
+         <author fullname="horizon"/>
+         <date year="1998" month="Dec"/>
+       </front>
      </reference>
 
    </references>
