@@ -955,7 +955,7 @@ Do you really want to use the term Wedgie?
      achieve DNS privacy.</t>
 
      <t>Because TCP is somewhat more complex than UDP, some
-     characteristics of a TCP conversation may enable fingerprinting and
+     characteristics of a TCP conversation may enable DNS client fingerprinting and
      tracking that is not possible with UDP.  For example, the choice of
      initial sequence numbers, window size, and options might be able
      to identify a particular TCP implementation, or even individual
