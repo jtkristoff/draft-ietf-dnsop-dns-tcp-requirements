@@ -896,13 +896,13 @@ given the capabilities of even low-end servers.
      to hide certain messages by forcing them over very small TCP
      segments.  Applications that capture network packets (e.g.,
      with libpcap <xref target="libpcap"/>) SHOULD implement and perform full
-     TCP segment reassembly.
-     Furthermore, as with real TCP, such applications need to protect
+     TCP stream reassembly.
+     Furthermore, such applications need to protect
      themselves from resource exhaustion attacks by limiting the amount
      of memory allocated to tracking unacknowledged connection state data.
      dnscap <xref target="dnscap"/> is an
      open-source example of a DNS logging program that implements
-     TCP reassembly.</t>
+     TCP stream reassembly.</t>
 
      <t>Developers SHOULD also keep in mind connection reuse,
      query pipelining, and out-of-order responses when building and testing
