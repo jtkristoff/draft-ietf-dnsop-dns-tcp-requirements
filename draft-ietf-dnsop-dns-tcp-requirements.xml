@@ -395,9 +395,9 @@
 
        <t>For
        IPv6, the situation is a little more complicated.  First, IPv6 headers
-       are 40 bytes (versus 20 without options in IPv4).  Second, it seems as
-       though some people have misinterpreted IPv6's required minimum MTU of
-       1280 as a required maximum.  Third, fragmentation in IPv6 can only be
+       are 40 bytes (versus 20 without options in IPv4).  Second, it is common
+       for IPv6-connected hosts to use the minimum MTU of 1280 bytes <xref target="PMTU"/>.
+       Third, fragmentation in IPv6 can only be
        done by the host originating the datagram.  The need to fragment is
        conveyed in an ICMPv6 "packet too big" message.  The originating host
        indicates a fragmented datagram with IPv6 extension headers.
@@ -1365,6 +1365,16 @@ Do you really want to use the term Wedgie?
          <title>Defeating Sniffers and Intrusion Detection Systems</title>
          <author fullname="horizon"/>
          <date year="1998" month="Dec"/>
+       </front>
+     </reference>
+
+     <reference anchor="PMTU" target="https://doi.org/10.23919/TMA.2018.8506538">
+       <front>
+         <title>Exploring Usable Path MTU in the Internet</title>
+         <author fullname="Ana Custura" initials="A." surname="Cusura"/>
+         <author fullname="Gorry Fairhurst" initials="G." surname="Fairhurst"/>
+         <author fullname="Iain Learmonth" initials="I." surname="Learmonth"/>
+         <date year="2018" month="Jun"/>
        </front>
      </reference>
 
