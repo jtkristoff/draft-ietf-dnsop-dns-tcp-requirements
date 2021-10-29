@@ -654,6 +654,8 @@ more concrete guidance on what it means to "actively" manage connections. Most
 operating systems by default impose some application limits that usually
 effectively prevent DOS or other resource exhaustion issues. Is the intent here
 that DNS implementations need to do more? If so, what?
+
+DW: SHOULD seems mor appropriate here.
 -->
        that do not actively manage their connections
        can encounter resource exhaustion leading to denial of
@@ -671,6 +673,13 @@ that DNS implementations need to do more? If so, what?
 <!-- COMMENT from Lars Eggert on above
 Again, the OS generally already imposes limits. Why recommend that DNS
 implementations self-impose other (lower?) limits?
+
+DW perhaps this: "operators of DNS server software SHOULD be aware that
+operating system and application vendors MAY impose a limit on the
+total number of established connections.
+These limits may be designed to protect against DDoS attacks or performance degradation.
+Operators SHOULD understand how to increase these limits if necessary, and the consequences of
+doing so.
 -->
 
        <t>DNS server software MAY provide a configurable limit on
