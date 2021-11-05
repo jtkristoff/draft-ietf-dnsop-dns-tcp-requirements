@@ -517,7 +517,7 @@ moving this section up would increase readability significantly.
      technique (<xref target="Security"></xref>), all show that
      DNS over TCP transactions are as important to the correct and safe
      operation of the Internet DNS as ever, if not more so.
-     Furthermore, there has been serious research that argues
+     Furthermore, there has been research that argues
      connection-oriented DNS transactions may provide security and
      privacy advantages over UDP transport <xref target="TDNS"></xref>.
      In fact, the standard for DNS over TLS <xref target="RFC7858"></xref>
