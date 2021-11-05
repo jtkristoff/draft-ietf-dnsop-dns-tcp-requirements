@@ -395,8 +395,9 @@
 
        <t>For
        IPv6, the situation is a little more complicated.  First, IPv6 headers
-       are 40 bytes (versus 20 without options in IPv4).  Second, it is common
-       for IPv6-connected hosts to use the minimum MTU of 1280 bytes <xref target="PMTU"/>.
+       are 40 bytes (versus 20 without options in IPv4).  Second, approximately
+       one third of DNS recursive resolvers
+       use the minimum MTU of 1280 bytes <xref target="APNIC"/>.
        Third, fragmentation in IPv6 can only be
        done by the host originating the datagram.  The need to fragment is
        conveyed in an ICMPv6 "packet too big" message.  The originating host
@@ -984,7 +985,7 @@ Do you really want to use the term Wedgie?
      <!-- https://archive.nanog.org/sites/default/files/nanog63-dnstrack-kristoff-dnstcp.pdf -->
 
      <t>The following individuals provided an array of feedback to help
-     improve this document: Piet Barber, Sara Dickinson, Tony Finch, Bob Harold, Paul Hoffman, Tatuya Jinmei,
+     improve this document: Piet Barber, Sara Dickinson, Tony Finch, Bob Harold, Paul Hoffman, Geoff Huston, Tatuya Jinmei,
      Puneet Sood, and Richard Wilhelm.  The authors are also indebted to the contributions
      stemming from discussion in the tcpm working group meeting at
      IETF 104.  Any remaining errors or imperfections are the sole
@@ -1368,13 +1369,11 @@ Do you really want to use the term Wedgie?
        </front>
      </reference>
 
-     <reference anchor="PMTU" target="https://doi.org/10.23919/TMA.2018.8506538">
+     <reference anchor="APNIC" target="https://labs.apnic.net/?p=1380">
        <front>
-         <title>Exploring Usable Path MTU in the Internet</title>
-         <author fullname="Ana Custura" initials="A." surname="Cusura"/>
-         <author fullname="Gorry Fairhurst" initials="G." surname="Fairhurst"/>
-         <author fullname="Iain Learmonth" initials="I." surname="Learmonth"/>
-         <date year="2018" month="Jun"/>
+         <title>DNS XL</title>
+         <author fullname="Geoff Huston" initials="G." surname="Huston"/>
+         <date year="2020" month="Oct"/>
        </front>
      </reference>
 
