@@ -406,11 +406,11 @@
        headers to be blocked by middleboxes.  According to
        <xref target="HUSTON"/> some 35% <!-- 3,592 / 10,115 --> of IPv6-capable
        recursive resolvers were unable to receive a fragmented IPv6 packet.
-       Even if the originating host does receive a signal that
-       fragmentation is required, the stateless nature of the DNS
-       protocol is such that the host does not generally retain a copy
-       of the message concerned and hence is unable to fragment and
-       re-send anyway.</t>
+       When the originating host receives a signal that
+       fragmentation is required, it is expected to populate its Path
+       MTU cache for that destination.  The application, then, will retry
+       the query after a timeout since the host does not generally retain
+       copies of messages sent over UDP for potential retransmission.</t>
 
        <t>The practical consequence of all this is that DNS requestors
        must be prepared to retry queries with different EDNS(0) maximum
