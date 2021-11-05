@@ -595,9 +595,15 @@ moving this section up would increase readability significantly.
 
        <t>Resolvers and other DNS clients should be aware that some
        servers might not be reachable over TCP.  For this reason, clients
-       MAY want to track and limit the number of TCP connections and
-       connection attempts to a single server.  Additionally, DNS clients
-       MAY want to enforce a short timeout on unestablished connections,
+       MAY track and limit the number of TCP connections and
+       connection attempts to a single server.  Reachability problems
+       can be caused by network elements close to the server, close
+       to the client, or anywhere along the path between them.  Mobile
+       clients that cache connection failures MAY do so on a per-network
+       basis, or MAY clear such a cache upon change of network.</t>
+
+       </t>Additionally, DNS clients
+       MAY enforce a short timeout on unestablished connections,
        rather than rely on the host operating system's TCP connection
        timeout, which is often around 60-120 seconds (i.e., due to an
        initial retransmission timeout of 1 second, the exponential
