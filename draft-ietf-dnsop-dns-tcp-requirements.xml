@@ -557,7 +557,7 @@ moving this section up would increase readability significantly.
      </t>
 
      <t>Lastly, Section 1 of <xref target="RFC1536"/> is updated to eliminate
-     the misconception that TCP is only useful for zone transfers.</t>
+     the misconception that TCP is only useful for zone transfers:</t>
 
      <t>OLD:
        <list hangIndent="10" style="empty">
