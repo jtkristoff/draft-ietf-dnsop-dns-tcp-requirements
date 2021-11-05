@@ -693,7 +693,7 @@ DW: SHOULD seems mor appropriate here.
        Operators SHOULD ensure the limit is configured appropriately
        for their particular situation, which includes factors such as the
        number of users or clients, typical traffic levels, and hardware
-       resource constraints.
+       resource constraints.</t>
 
 <!-- COMMENT from Lars Eggert on above
 Again, the OS generally already imposes limits. Why recommend that DNS

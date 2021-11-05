@@ -622,14 +622,17 @@ Internet-Draft           DNS Transport over TCP            November 2021
    number of established TCP connections.  If the limit is reached, the
    application is expected to either close existing (idle) connections
    or refuse new connections.  Operators SHOULD ensure the limit is
-   configured appropriately for their particular situation.
+   configured appropriately for their particular situation, which
+   includes factors such as the number of users or clients, typical
+   traffic levels, and hardware resource constraints.
 
    DNS server software MAY provide a configurable limit on the number of
    established connections per source IP address or subnet.  This can be
    used to ensure that a single or small set of users cannot consume all
    TCP resources and deny service to other users.  Operators SHOULD
    ensure this limit is configured appropriately, based on their number
-   and diversity of users.
+   and diversity of users, and whether users connect from unique IP
+   addresses or through a shared Network Address Translator.
 
    DNS server software SHOULD provide a configurable timeout for idle
    TCP connections.  For very busy name servers this might be set to a
@@ -663,9 +666,6 @@ Internet-Draft           DNS Transport over TCP            November 2021
    performance, it may be tempting to tune local TCP parameters.  For
    example, the Linux kernel has a "sysctl" parameter named
    net.ipv4.tcp_tw_reuse which allows connections in the TIME_WAIT state
-   to be reused in specific circumstances.  Note, however, this affects
-   only outgoing (client) connections and has no impact on servers.  In
-   most cases it is NOT RECOMMENDED to change parameters related to the
 
 
 
@@ -674,6 +674,9 @@ Kristoff & Wessels         Expires May 9, 2022                 [Page 12]
 Internet-Draft           DNS Transport over TCP            November 2021
 
 
+   to be reused in specific circumstances.  Note, however, this affects
+   only outgoing (client) connections and has no impact on servers.  In
+   most cases it is NOT RECOMMENDED to change parameters related to the
    TIME_WAIT state.  It should only be done by those with detailed
    knowledge of both TCP and the affected application.
 
@@ -719,9 +722,6 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
    Only some open source implementations provide a way to limit the
    number of connections per source IP address or subnet, but the
-   default is to have no limit.  For environments or situations where it
-   may be necessary to enable this limit, 25 connections per source IP
-   address is a reasonable starting point.  The limit should be
 
 
 
@@ -730,6 +730,9 @@ Kristoff & Wessels         Expires May 9, 2022                 [Page 13]
 Internet-Draft           DNS Transport over TCP            November 2021
 
 
+   default is to have no limit.  For environments or situations where it
+   may be necessary to enable this limit, 25 connections per source IP
+   address is a reasonable starting point.  The limit should be
    increased when aggregated by subnet, or for services where most
    queries take place over TCP or TLS.
 
@@ -775,9 +778,6 @@ Internet-Draft           DNS Transport over TCP            November 2021
    Networks that filter DNS over TCP may inadvertently cause problems
    for third-party resolvers as experienced by [TOYAMA].  For example, a
    resolver receives queries for a moderately popular domain.  The
-   resolver forwards the queries to the domain's authoritative name
-   servers, but those servers respond with the TC bit set.  The resolver
-   retries over TCP, but the authoritative server blocks DNS over TCP.
 
 
 
@@ -786,6 +786,9 @@ Kristoff & Wessels         Expires May 9, 2022                 [Page 14]
 Internet-Draft           DNS Transport over TCP            November 2021
 
 
+   resolver forwards the queries to the domain's authoritative name
+   servers, but those servers respond with the TC bit set.  The resolver
+   retries over TCP, but the authoritative server blocks DNS over TCP.
    The pending connections consume resources on the resolver until they
    time out.  If the number and frequency of these truncated-and-then-
    blocked queries is sufficiently high, the steady state of the
@@ -831,9 +834,6 @@ Internet-Draft           DNS Transport over TCP            November 2021
    allocated to tracking unacknowledged connection state data.  dnscap
    [dnscap] is an open-source example of a DNS logging program that
    implements TCP stream reassembly.
-
-
-
 
 
 
