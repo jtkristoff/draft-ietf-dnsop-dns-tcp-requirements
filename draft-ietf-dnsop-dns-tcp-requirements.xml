@@ -529,13 +529,15 @@ moving this section up would increase readability significantly.
      DNS resolvers and servers MUST support and service both UDP and
      TCP queries.
        <list hangIndent="10" style="symbols">
-         <t>Authoritative servers MUST support and service all TCP
+         <t>Authoritative servers MUST support and service TCP for receiving
          queries, so that resolvers can reliably receive responses that are
          larger than what fits in a single UDP packet.</t>
-         <t>Recursive servers (or forwarders) MUST support and service
-         all TCP queries so that they do not prevent large responses
-         from a TCP-capable server from reaching its TCP-capable
-         clients.</t>
+         <t>Recursive servers (and forwarders) MUST support and service
+         TCP for receiving queries, so their TCP-capable clients can
+         reliably receive responses that are larger than what fits in
+         a single UDP packet.</t>
+         <t>Recursive servers (and forwarders) MUST support TCP for sending
+         queries, so that they can retry truncated UDP responses as necessary.</t>
        </list>
      Furthermore, the requirement in Section 6.1.3.2 of <xref
      target="RFC1123" /> around limiting the resources a server devotes
