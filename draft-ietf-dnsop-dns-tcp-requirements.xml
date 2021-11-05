@@ -691,7 +691,9 @@ DW: SHOULD seems mor appropriate here.
        limit is reached, the application is expected to either close
        existing (idle) connections or refuse new connections.
        Operators SHOULD ensure the limit is configured appropriately
-       for their particular situation.</t>
+       for their particular situation, which includes factors such as the
+       number of users or clients, typical traffic levels, and hardware
+       resource constraints.
 
 <!-- COMMENT from Lars Eggert on above
 Again, the OS generally already imposes limits. Why recommend that DNS
@@ -711,7 +713,8 @@ doing so.
        set of users cannot consume all TCP resources and deny
        service to other users.  Operators SHOULD ensure this limit
        is configured appropriately, based on their number and diversity
-       of users.</t>
+       of users, and whether users connect from unique IP addresses or
+       through a shared Network Address Translator.</t>
 
 <!-- COMMENT from Lars Eggert on above
 This limit only begins to establish fairness once the overall number of
