@@ -6,7 +6,7 @@ Domain Name System Operations                                J. Kristoff
 Internet-Draft                                             DataPlane.org
 Updates: 1123,1536 (if approved)                              D. Wessels
 Intended status: Best Current Practice                          Verisign
-Expires: May 9, 2022                                    November 5, 2021
+Expires: May 12, 2022                                   November 8, 2021
 
 
            DNS Transport over TCP - Operational Requirements
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 9, 2022.
+   This Internet-Draft will expire on May 12, 2022.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                  [Page 1]
+Kristoff & Wessels        Expires May 12, 2022                  [Page 1]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -97,7 +97,7 @@ Table of Contents
      A.1.  IETF RFC 1035 - DOMAIN NAMES - IMPLEMENTATION AND
            SPECIFICATION . . . . . . . . . . . . . . . . . . . . . .  25
      A.2.  IETF RFC 1536 - Common DNS Implementation Errors and
-           Suggested Fixes . . . . . . . . . . . . . . . . . . . . .  25
+           Suggested Fixes . . . . . . . . . . . . . . . . . . . . .  26
      A.3.  IETF RFC 1995 - Incremental Zone Transfer in DNS  . . . .  26
      A.4.  IETF RFC 1996 - A Mechanism for Prompt Notification of
            Zone Changes (DNS NOTIFY) . . . . . . . . . . . . . . . .  26
@@ -109,19 +109,19 @@ Table of Contents
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                  [Page 2]
+Kristoff & Wessels        Expires May 12, 2022                  [Page 2]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
 
-           message size requirements . . . . . . . . . . . . . . . .  26
+           message size requirements . . . . . . . . . . . . . . . .  27
      A.9.  IETF RFC 4472 - Operational Considerations and Issues
            with IPv6 DNS . . . . . . . . . . . . . . . . . . . . . .  27
      A.10. IETF RFC 5452 - Measures for Making DNS More Resilient
            against Forged Answers  . . . . . . . . . . . . . . . . .  27
      A.11. IETF RFC 5507 - Design Choices When Expanding the DNS . .  27
      A.12. IETF RFC 5625 - DNS Proxy Implementation Guidelines . . .  27
-     A.13. IETF RFC 5936 - DNS Zone Transfer Protocol (AXFR) . . . .  27
+     A.13. IETF RFC 5936 - DNS Zone Transfer Protocol (AXFR) . . . .  28
      A.14. IETF RFC 7534 - AS112 Nameserver Operations . . . . . . .  28
      A.15. IETF RFC 6762 - Multicast DNS . . . . . . . . . . . . . .  28
      A.16. IETF RFC 6891 - Extension Mechanisms for DNS (EDNS(0))  .  28
@@ -129,14 +129,14 @@ Internet-Draft           DNS Transport over TCP            November 2021
            Application Features in the DNS . . . . . . . . . . . . .  28
      A.18. IETF RFC 7477 - Child-to-Parent Synchronization in DNS  .  28
      A.19. IETF RFC 7720 - DNS Root Name Service Protocol and
-           Deployment Requirements . . . . . . . . . . . . . . . . .  28
+           Deployment Requirements . . . . . . . . . . . . . . . . .  29
      A.20. IETF RFC 7766 - DNS Transport over TCP - Implementation
            Requirements  . . . . . . . . . . . . . . . . . . . . . .  29
      A.21. IETF RFC 7828 - The edns-tcp-keepalive EDNS(0) Option . .  29
      A.22. IETF RFC 7858 - Specification for DNS over Transport
            Layer Security (TLS)  . . . . . . . . . . . . . . . . . .  29
      A.23. IETF RFC 7873 - Domain Name System (DNS) Cookies  . . . .  29
-     A.24. IETF RFC 7901 - CHAIN Query Requests in DNS . . . . . . .  29
+     A.24. IETF RFC 7901 - CHAIN Query Requests in DNS . . . . . . .  30
      A.25. IETF RFC 8027 - DNSSEC Roadblock Avoidance  . . . . . . .  30
      A.26. IETF RFC 8094 - DNS over Datagram Transport Layer
            Security (DTLS) . . . . . . . . . . . . . . . . . . . . .  30
@@ -146,7 +146,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
            Encoding, Characters, Matching, and Root Structure: Time
            for Another Look? . . . . . . . . . . . . . . . . . . . .  30
      A.29. IETF RFC 8467 - Padding Policies for Extension Mechanisms
-           for DNS (EDNS(0)) . . . . . . . . . . . . . . . . . . . .  30
+           for DNS (EDNS(0)) . . . . . . . . . . . . . . . . . . . .  31
      A.30. IETF RFC 8482 - Providing Minimal-Sized Responses to DNS
            Queries That Have QTYPE=ANY . . . . . . . . . . . . . . .  31
      A.31. IETF RFC 8483 - Yeti DNS Testbed  . . . . . . . . . . . .  31
@@ -154,7 +154,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
      A.33. IETF RFC 8490 - DNS Stateful Operations . . . . . . . . .  31
      A.34. IETF RFC 8501 - Reverse DNS in IPv6 for Internet Service
            Providers . . . . . . . . . . . . . . . . . . . . . . . .  31
-     A.35. IETF RFC 8806 - Running a Root Server Local to a Resolver  31
+     A.35. IETF RFC 8806 - Running a Root Server Local to a Resolver  32
      A.36. IETF RFC 8906 - A Common Operational Problem in DNS
            Servers: Failure to Communicate . . . . . . . . . . . . .  32
      A.37. IETF RFC 8932 - Recommendations for DNS Privacy Service
@@ -165,7 +165,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                  [Page 3]
+Kristoff & Wessels        Expires May 12, 2022                  [Page 3]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -221,7 +221,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                  [Page 4]
+Kristoff & Wessels        Expires May 12, 2022                  [Page 4]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -277,7 +277,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                  [Page 5]
+Kristoff & Wessels        Expires May 12, 2022                  [Page 5]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -333,7 +333,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                  [Page 6]
+Kristoff & Wessels        Expires May 12, 2022                  [Page 6]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -389,7 +389,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                  [Page 7]
+Kristoff & Wessels        Expires May 12, 2022                  [Page 7]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -445,7 +445,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                  [Page 8]
+Kristoff & Wessels        Expires May 12, 2022                  [Page 8]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -501,7 +501,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                  [Page 9]
+Kristoff & Wessels        Expires May 12, 2022                  [Page 9]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -557,7 +557,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                 [Page 10]
+Kristoff & Wessels        Expires May 12, 2022                 [Page 10]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -592,7 +592,8 @@ Internet-Draft           DNS Transport over TCP            November 2021
    one round-trip time in the connection setup.  DNS servers SHOULD
    enable TFO when possible.  Furthermore, DNS servers clustered behind
    a single service address (e.g., anycast or load-balancing), SHOULD
-   use the same TFO server key on all instances.
+   [either] use the same TFO server key on all instances[, or disable
+   TFO for all members of the cluster].
 
    DNS clients MAY also enable TFO.  At the time of this writing, on
    some operating systems it is not implemented, or is disabled by
@@ -612,8 +613,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 11]
+Kristoff & Wessels        Expires May 12, 2022                 [Page 11]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -632,7 +632,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
    TCP resources and deny service to other users.  Operators SHOULD
    ensure this limit is configured appropriately, based on their number
    and diversity of users, and whether users connect from unique IP
-   addresses or through a shared Network Address Translator.
+   addresses or through a shared Network Address Translator [RFC3022].
 
    DNS server software SHOULD provide a configurable timeout for idle
    TCP connections.  For very busy name servers this might be set to a
@@ -669,7 +669,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                 [Page 12]
+Kristoff & Wessels        Expires May 12, 2022                 [Page 12]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -725,7 +725,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                 [Page 13]
+Kristoff & Wessels        Expires May 12, 2022                 [Page 13]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -781,7 +781,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                 [Page 14]
+Kristoff & Wessels        Expires May 12, 2022                 [Page 14]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -837,7 +837,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                 [Page 15]
+Kristoff & Wessels        Expires May 12, 2022                 [Page 15]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -874,6 +874,13 @@ Internet-Draft           DNS Transport over TCP            November 2021
    series of documents such as [RFC4953], [RFC4987], [RFC5927], and
    [RFC5961].
 
+   As mentioned in Section 6, applications that implement TCP stream
+   reassembly need to limit the amount of memory allocated to connection
+   tracking.  A failure to do so could lead to a total failure of the
+   logging or monitoring application.  Imposition of resource limits
+   creates a tradeoff between allowing some stream reassembly to
+   continue and allowing some evasion attacks to succeed.
+
 9.  Privacy Considerations
 
    Since DNS over both UDP and TCP uses the same underlying message
@@ -882,21 +889,21 @@ Internet-Draft           DNS Transport over TCP            November 2021
    being queried).  DNS over TLS or DTLS is the recommended way to
    achieve DNS privacy.
 
+
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 16]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
    Because TCP is somewhat more complex than UDP, some characteristics
    of a TCP conversation may enable DNS client fingerprinting and
    tracking that is not possible with UDP.  For example, the choice of
    initial sequence numbers, window size, and options might be able to
    identify a particular TCP implementation, or even individual hosts
    behind shared resources such as network address translators (NATs).
-
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 16]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
 
 10.  Acknowledgments
 
@@ -937,6 +944,16 @@ Internet-Draft           DNS Transport over TCP            November 2021
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
+
+
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 17]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
    [RFC2181]  Elz, R. and R. Bush, "Clarifications to the DNS
               Specification", RFC 2181, DOI 10.17487/RFC2181, July 1997,
               <https://www.rfc-editor.org/info/rfc2181>.
@@ -944,15 +961,6 @@ Internet-Draft           DNS Transport over TCP            November 2021
    [RFC5625]  Bellis, R., "DNS Proxy Implementation Guidelines",
               BCP 152, RFC 5625, DOI 10.17487/RFC5625, August 2009,
               <https://www.rfc-editor.org/info/rfc5625>.
-
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 17]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
 
    [RFC5936]  Lewis, E. and A. Hoenes, Ed., "DNS Zone Transfer Protocol
               (AXFR)", RFC 5936, DOI 10.17487/RFC5936, June 2010,
@@ -994,21 +1002,18 @@ Internet-Draft           DNS Transport over TCP            November 2021
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 18]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
    [RFC8482]  Abley, J., Gudmundsson, O., Majkowski, M., and E. Hunt,
               "Providing Minimal-Sized Responses to DNS Queries That
               Have QTYPE=ANY", RFC 8482, DOI 10.17487/RFC8482, January
               2019, <https://www.rfc-editor.org/info/rfc8482>.
-
-
-
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 18]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
 
    [RFC8490]  Bellis, R., Cheshire, S., Dickinson, J., Dickinson, S.,
               Lemon, T., and T. Pusateri, "DNS Stateful Operations",
@@ -1053,18 +1058,19 @@ Internet-Draft           DNS Transport over TCP            November 2021
               December 2015, <https://www.iana.org/reports/2016/root-
               ksk-rollover-design-20160307.pdf>.
 
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 19]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
    [DJBDNS]   D.J. Bernstein, "When are TCP queries sent?", 2002,
               <https://cr.yp.to/djbdns/tcp.html#why>.
 
    [dnscap]   DNS-OARC, "DNSCAP", May 2018,
               <https://www.dns-oarc.net/tools/dnscap>.
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 19]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
 
    [dnstap]   Edmonds, R. and P. Vixie, "dnstap", May 2018,
               <https://dnstap.info>.
@@ -1106,6 +1112,16 @@ Internet-Draft           DNS Transport over TCP            November 2021
    [phrack]   horizon, "Defeating Sniffers and Intrusion Detection
               Systems", Dec 1998, <http://phrack.org/issues/54/10.html>.
 
+
+
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 20]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
    [RFC0768]  Postel, J., "User Datagram Protocol", STD 6, RFC 768,
               DOI 10.17487/RFC0768, August 1980,
               <https://www.rfc-editor.org/info/rfc768>.
@@ -1113,14 +1129,6 @@ Internet-Draft           DNS Transport over TCP            November 2021
    [RFC0793]  Postel, J., "Transmission Control Protocol", STD 7,
               RFC 793, DOI 10.17487/RFC0793, September 1981,
               <https://www.rfc-editor.org/info/rfc793>.
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 20]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
 
    [RFC0883]  Mockapetris, P., "Domain names: Implementation
               specification", RFC 883, DOI 10.17487/RFC0883, November
@@ -1158,6 +1166,18 @@ Internet-Draft           DNS Transport over TCP            November 2021
               (DNS_ALG)", RFC 2694, DOI 10.17487/RFC2694, September
               1999, <https://www.rfc-editor.org/info/rfc2694>.
 
+   [RFC3022]  Srisuresh, P. and K. Egevang, "Traditional IP Network
+              Address Translator (Traditional NAT)", RFC 3022,
+              DOI 10.17487/RFC3022, January 2001,
+              <https://www.rfc-editor.org/info/rfc3022>.
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 21]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
    [RFC3225]  Conrad, D., "Indicating Resolver Support of DNSSEC",
               RFC 3225, DOI 10.17487/RFC3225, December 2001,
               <https://www.rfc-editor.org/info/rfc3225>.
@@ -1166,17 +1186,6 @@ Internet-Draft           DNS Transport over TCP            November 2021
               message size requirements", RFC 3226,
               DOI 10.17487/RFC3226, December 2001,
               <https://www.rfc-editor.org/info/rfc3226>.
-
-
-
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 21]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
 
    [RFC4472]  Durand, A., Ihren, J., and P. Savola, "Operational
               Considerations and Issues with IPv6 DNS", RFC 4472,
@@ -1215,6 +1224,16 @@ Internet-Draft           DNS Transport over TCP            November 2021
               DOI 10.17487/RFC5961, August 2010,
               <https://www.rfc-editor.org/info/rfc5961>.
 
+
+
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 22]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
    [RFC5966]  Bellis, R., "DNS Transport over TCP - Implementation
               Requirements", RFC 5966, DOI 10.17487/RFC5966, August
               2010, <https://www.rfc-editor.org/info/rfc5966>.
@@ -1223,16 +1242,6 @@ Internet-Draft           DNS Transport over TCP            November 2021
               "Computing TCP's Retransmission Timer", RFC 6298,
               DOI 10.17487/RFC6298, June 2011,
               <https://www.rfc-editor.org/info/rfc6298>.
-
-
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 22]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
 
    [RFC6950]  Peterson, J., Kolkman, O., Tschofenig, H., and B. Aboba,
               "Architectural Considerations on Application Features in
@@ -1271,6 +1280,16 @@ Internet-Draft           DNS Transport over TCP            November 2021
               DOI 10.17487/RFC8094, February 2017,
               <https://www.rfc-editor.org/info/rfc8094>.
 
+
+
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 23]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
    [RFC8162]  Hoffman, P. and J. Schlyter, "Using Secure DNS to
               Associate Certificates with Domain Names for S/MIME",
               RFC 8162, DOI 10.17487/RFC8162, May 2017,
@@ -1280,15 +1299,6 @@ Internet-Draft           DNS Transport over TCP            November 2021
               (IPv6) Specification", STD 86, RFC 8200,
               DOI 10.17487/RFC8200, July 2017,
               <https://www.rfc-editor.org/info/rfc8200>.
-
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 23]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
 
    [RFC8324]  Klensin, J., "DNS Privacy, Authorization, Special Uses,
               Encoding, Characters, Matching, and Root Structure: Time
@@ -1329,22 +1339,18 @@ Internet-Draft           DNS Transport over TCP            November 2021
               Operators", BCP 232, RFC 8932, DOI 10.17487/RFC8932,
               October 2020, <https://www.rfc-editor.org/info/rfc8932>.
 
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 24]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
    [RFC8945]  Dupont, F., Morris, S., Vixie, P., Eastlake 3rd, D.,
               Gudmundsson, O., and B. Wellington, "Secret Key
               Transaction Authentication for DNS (TSIG)", STD 93,
               RFC 8945, DOI 10.17487/RFC8945, November 2020,
               <https://www.rfc-editor.org/info/rfc8945>.
-
-
-
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 24]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
 
    [ROLL_YOUR_ROOT]
               Mueller, M., Thomas, M., Wessels, D., Hardaker, W., Chung,
@@ -1386,6 +1392,16 @@ A.1.  IETF RFC 1035 - DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION
    The Internet Standard [RFC1035] is the base DNS specification that
    explicitly defines support for DNS over TCP.
 
+
+
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 25]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
 A.2.  IETF RFC 1536 - Common DNS Implementation Errors and Suggested
       Fixes
 
@@ -1393,14 +1409,6 @@ A.2.  IETF RFC 1536 - Common DNS Implementation Errors and Suggested
    protocol for communication though TCP is used for zone transfers."
    That statement should now be considered in its historical context and
    is no longer a proper reflection of modern expectations.
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 25]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
 
 A.3.  IETF RFC 1995 - Incremental Zone Transfer in DNS
 
@@ -1443,21 +1451,19 @@ A.7.  IETF RFC 3225 - Indicating Resolver Support of DNSSEC
    the RFC series expressing the requirement for EDNS(0) support for
    DNSSEC.
 
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 26]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
 A.8.  IETF RFC 3226 - DNSSEC and IPv6 A6 aware server/resolver message
       size requirements
 
    Although updated by later DNSSEC RFCs, the Proposed Standard
    [RFC3226] strongly argues in favor of UDP messages instead of TCP,
    largely for performance reasons.  The document declares EDNS(0) a
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 26]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
-
    requirement for DNSSEC servers and advocates that packet
    fragmentation may be preferable to TCP in certain situations.
 
@@ -1498,21 +1504,22 @@ A.12.  IETF RFC 5625 - DNS Proxy Implementation Guidelines
    though it suggests historically TCP transport has not been strictly
    mandatory in stub resolvers or recursive servers.
 
+
+
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 27]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
 A.13.  IETF RFC 5936 - DNS Zone Transfer Protocol (AXFR)
 
    This Proposed Standard [RFC5936] provides a detailed specification
    for the zone transfer protocol, as originally outlined in the early
    DNS standards.  AXFR operation is limited to TCP and not specified
    for UDP.  This document discusses TCP usage at length.
-
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 27]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
 
 A.14.  IETF RFC 7534 - AS112 Nameserver Operations
 
@@ -1552,23 +1559,23 @@ A.18.  IETF RFC 7477 - Child-to-Parent Synchronization in DNS
    ensure the conversation takes place between a consistent pair of end
    nodes.
 
+
+
+
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 28]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
 A.19.  IETF RFC 7720 - DNS Root Name Service Protocol and Deployment
        Requirements
 
    This Best Current Practice [RFC7720] declares root name service "MUST
    support UDP [RFC0768] and TCP [RFC0793] transport of DNS queries and
    responses."
-
-
-
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 28]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
 
 A.20.  IETF RFC 7766 - DNS Transport over TCP - Implementation
        Requirements
@@ -1612,20 +1619,18 @@ A.23.  IETF RFC 7873 - Domain Name System (DNS) Cookies
    a BADCOOKIE reply using a fresh server cookie, the client should
    retry using TCP as the transport.
 
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 29]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
 A.24.  IETF RFC 7901 - CHAIN Query Requests in DNS
 
    This Experimental specification [RFC7901] describes an EDNS(0) option
    that can be used by a security-aware validating resolver to request
    and obtain a complete DNSSEC validation path for any single query.
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 29]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
-
    This document requires the use of DNS over TCP or a source IP address
    verified transport mechanism such as EDNS-COOKIE [RFC7873].
 
@@ -1665,6 +1670,18 @@ A.28.  IETF RFC 8324 - DNS Privacy, Authorization, Special Uses,
    An Informational document [RFC8324] that briefly discusses the common
    role and challenges of DNS over TCP throughout the history of DNS.
 
+
+
+
+
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 30]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
 A.29.  IETF RFC 8467 - Padding Policies for Extension Mechanisms for DNS
        (EDNS(0))
 
@@ -1672,15 +1689,6 @@ A.29.  IETF RFC 8467 - Padding Policies for Extension Mechanisms for DNS
    the underlying transport protocol (e.g.  TCP) when calculating the
    padding length when artificially increasing the DNS message size with
    an EDNS(0) padding option.
-
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 30]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
 
 A.30.  IETF RFC 8482 - Providing Minimal-Sized Responses to DNS Queries
        That Have QTYPE=ANY
@@ -1721,6 +1729,15 @@ A.34.  IETF RFC 8501 - Reverse DNS in IPv6 for Internet Service
    This Informational document [RFC8501] identifies potential
    operational challenges with Dynamic DNS including denial-of-service
    threats.  The document suggests TCP may provide some advantages, but
+
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 31]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
    that updating hosts would need to be explicitly configured to use TCP
    instead of UDP.
 
@@ -1729,14 +1746,6 @@ A.35.  IETF RFC 8806 - Running a Root Server Local to a Resolver
    This Informational document [RFC8806] describes how to obtain and
    operate a local copy of the root zone with examples showing how to
    pull from authoritative sources using a DNS over TCP zone transfer.
-
-
-
-
-Kristoff & Wessels         Expires May 9, 2022                 [Page 31]
-
-Internet-Draft           DNS Transport over TCP            November 2021
-
 
 A.36.  IETF RFC 8906 - A Common Operational Problem in DNS Servers:
        Failure to Communicate
@@ -1773,6 +1782,18 @@ Authors' Addresses
    URI:   https://dataplane.org/jtk/
 
 
+
+
+
+
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 32]
+
+Internet-Draft           DNS Transport over TCP            November 2021
+
+
    Duane Wessels
    Verisign
    12061 Bluemont Way
@@ -1789,4 +1810,39 @@ Authors' Addresses
 
 
 
-Kristoff & Wessels         Expires May 9, 2022                 [Page 32]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Kristoff & Wessels        Expires May 12, 2022                 [Page 33]

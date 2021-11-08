@@ -922,7 +922,7 @@ Do you really want to use the term Wedgie?
 
    </section>
 
-   <section title="Logging and Monitoring">
+   <section anchor="logging-monitoring" title="Logging and Monitoring">
      <t>Developers of applications that log or monitor DNS
      SHOULD NOT ignore TCP due to the perception that it is rarely used or
      is hard to process.  Operators SHOULD ensure that
@@ -979,6 +979,14 @@ Do you really want to use the term Wedgie?
      well-documented in a series of documents such as <xref
      target="RFC4953"></xref>, <xref target="RFC4987"></xref>, <xref
      target="RFC5927"></xref>, and <xref target="RFC5961"></xref>.</t>
+
+     <t>As mentioned in <xref target="logging-monitoring"/>, applications
+     that implement TCP stream reassembly need to limit the amount of
+     memory allocated to connection tracking.  A failure to do so could
+     lead to a total failure of the logging or monitoring application.
+     Imposition of resource limits creates a tradeoff between allowing
+     some stream reassembly to continue and allowing some evasion attacks
+     to succeed.</t>
 
    </section>
 
