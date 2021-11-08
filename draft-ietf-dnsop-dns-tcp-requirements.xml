@@ -968,7 +968,7 @@ Do you really want to use the term Wedgie?
      on the DNS.  Nevertheless, a high rate of short-lived DNS
      transactions over TCP may pose challenges.  In fact, <xref
      target="DAI21"></xref> details a class of IP fragmentation attacks
-     on DNS transactions if the IP ID field can be predicted and a
+     on DNS transactions if the IP Identifier field (16 bits in IPv4 and 32 bits in IPv6) can be predicted and a
      system is coerced to fragment rather than retransmit messages.
      While many operators have provided DNS over TCP service for many
      years without duress, past experience is no guarantee of future
