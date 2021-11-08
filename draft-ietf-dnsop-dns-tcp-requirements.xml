@@ -995,8 +995,10 @@ Do you really want to use the term Wedgie?
      <t>Since DNS over both UDP and TCP uses the same underlying message
      format, the use of one transport instead of the other does not change
      the privacy characteristics of the message content (i.e., the name
-     being queried). DNS over TLS or DTLS is the recommended way to
-     achieve DNS privacy.</t>
+     being queried). A number of protocols have recently been developed to 
+     provide DNS privacy, including DNS over TLS <xref target="RFC7858"/>,
+     DNS over DTLS <xref target="RFC8094"/>, DNS over HTTPS <xref
+     target="RFC8484"/>, with even more on the way.</t>
 
      <t>Because TCP is somewhat more complex than UDP, some
      characteristics of a TCP conversation may enable DNS client fingerprinting and
