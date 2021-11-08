@@ -1047,22 +1047,13 @@ Do you really want to use the term Wedgie?
    <references title="Normative References">
      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml"?-->
      &RFC1035;
-     &RFC1995;
-     &RFC1996;
      &RFC2119;
      &RFC2181;
-     &RFC5625;
-     &RFC5936;
-     &RFC6762;
      &RFC6891;
-     &RFC7477;
-     &RFC7720;
      &RFC7766;
      &RFC7828;
      &RFC7873;
      &RFC8174;
-     &RFC8482;
-     &RFC8490;
 
    </references>
 
@@ -1075,6 +1066,8 @@ Do you really want to use the term Wedgie?
      &RFC1034;
      &RFC1123;
      &RFC1536;
+     &RFC1995;
+     &RFC1996;
      &RFC2136;
      &RFC2541;
      <!-- &RFC2629; -->
@@ -1089,13 +1082,18 @@ Do you really want to use the term Wedgie?
      &RFC5358;
      &RFC5452;
      &RFC5507;
+     &RFC5625;
      &RFC5927;
+     &RFC5936;
      &RFC5961;
      &RFC5966;
      &RFC6298;
+     &RFC6762;
      &RFC6950;
      &RFC7413;
+     &RFC7477;
      &RFC7534;
+     &RFC7720;
      &RFC7858;
      &RFC7901;
      &RFC7918;
@@ -1106,8 +1104,10 @@ Do you really want to use the term Wedgie?
      &RFC8324;
      &RFC8446;
      &RFC8467;
+     &RFC8482;
      &RFC8483;
      &RFC8484;
+     &RFC8490;
      &RFC8501;
      &RFC8806;
      &RFC8906;
