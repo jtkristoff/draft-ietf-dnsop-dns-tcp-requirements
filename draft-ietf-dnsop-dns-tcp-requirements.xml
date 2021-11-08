@@ -34,6 +34,7 @@
   <!ENTITY RFC2671 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2671.xml">
   <!-- DNS extensions to Network Address Translators (DNS_ALG) -->
   <!ENTITY RFC2694 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2694.xml">
+  <!ENTITY RFC3022 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3022.xml">
   <!-- Indicating Resolver Support of DNSSEC -->
   <!ENTITY RFC3225 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3225.xml">
   <!-- DNSSEC and IPv6 A6 aware server/resolver message size requirements -->
@@ -714,7 +715,7 @@ doing so.
        service to other users.  Operators SHOULD ensure this limit
        is configured appropriately, based on their number and diversity
        of users, and whether users connect from unique IP addresses or
-       through a shared Network Address Translator.</t>
+       through a shared Network Address Translator <xref target="RFC3022"/>.</t>
 
 <!-- COMMENT from Lars Eggert on above
 This limit only begins to establish fairness once the overall number of
@@ -1069,6 +1070,7 @@ Do you really want to use the term Wedgie?
      <!-- &RFC2629; -->
      &RFC2671;
      &RFC2694;
+     &RFC3022;
      &RFC3225;
      &RFC3226;
      &RFC4472;
