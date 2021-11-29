@@ -671,7 +671,7 @@ moving this section up would increase readability significantly.
 
        <t>Since host memory for TCP state is a finite resource, DNS
        clients and
-       servers MUST actively manage their connections.  Applications
+       servers SHOULD actively manage their connections.  Applications
 <!-- DISCUSS from Lars Eggert
 For it to contain a MUST-level requirement, this section needs to give a lot
 more concrete guidance on what it means to "actively" manage connections. Most
