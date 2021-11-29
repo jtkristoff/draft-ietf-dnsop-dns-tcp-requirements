@@ -687,26 +687,27 @@ DW: SHOULD seems mor appropriate here.
        between keeping connections open for potential future use and
        the need to free up resources for new connections that will arrive.</t>
 
-       <t>DNS server software SHOULD provide a configurable limit
+       <!-- OLD t>DNS server software SHOULD provide a configurable limit
        on the total number of established TCP connections.  If the
        limit is reached, the application is expected to either close
        existing (idle) connections or refuse new connections.
        Operators SHOULD ensure the limit is configured appropriately
        for their particular situation, which includes factors such as the
        number of users or clients, typical traffic levels, and hardware
-       resource constraints.</t>
+       resource constraints.</t -->
 
 <!-- COMMENT from Lars Eggert on above
 Again, the OS generally already imposes limits. Why recommend that DNS
 implementations self-impose other (lower?) limits?
-
-DW perhaps this: "operators of DNS server software SHOULD be aware that
-operating system and application vendors MAY impose a limit on the
-total number of established connections.
-These limits may be designed to protect against DDoS attacks or performance degradation.
-Operators SHOULD understand how to increase these limits if necessary, and the consequences of
-doing so.
 -->
+
+       <!-- NEW -->
+       <t>Operators of DNS server software SHOULD be aware that operating
+       system and application vendors MAY impose a limit on the total
+       number of established connections.  These limits may be designed
+       to protect against DDoS attacks or performance degradation.
+       Operators SHOULD understand how to increase these limits if
+       necessary, and the consequences of doing so.</t>
 
        <t>DNS server software MAY provide a configurable limit on
        the number of established connections per source IP address
@@ -736,18 +737,14 @@ Ditto
 -->
 
        <t>DNS server software MAY provide a configurable limit on
-       the number of transactions per TCP connection.</t>
-
-<!-- COMMENT from Lars Eggert on above
-What does that limit protect against?
--->
+       the number of transactions per TCP connection.
+       This can help protect against unfair connection use (e.g., not releasing
+       connection slots to other clients) and network evasion attacks.</t>
 
        <t>Similarly, DNS server software MAY provide a configurable
-       limit on the total duration of a TCP connection.</t>
-
-<!-- COMMENT from Lars Eggert on above
-What does that limit protect against?
--->
+       limit on the total duration of a TCP connection.
+       This can help protect against unfair connection use, slow read attacks, 
+       and network evasion attacks.</t>
 
        <t>Since clients may not be aware of server-imposed limits,
        clients utilizing TCP for DNS need to always be prepared to
