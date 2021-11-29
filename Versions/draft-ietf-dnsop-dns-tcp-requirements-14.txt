@@ -628,10 +628,13 @@ Internet-Draft           DNS Transport over TCP            November 2021
    DNS server software MAY provide a configurable limit on the number of
    established connections per source IP address or subnet.  This can be
    used to ensure that a single or small set of users cannot consume all
-   TCP resources and deny service to other users.  Operators SHOULD
-   ensure this limit is configured appropriately, based on their number
-   and diversity of users, and whether users connect from unique IP
-   addresses or through a shared Network Address Translator [RFC3022].
+   TCP resources and deny service to other users.  Note, however, that
+   if this limit is enabled, it possibly limits client performance while
+   leaving some TCP resources unutilized.  Operators SHOULD be aware of
+   these tradeoffs and ensure this limit, if configured, is set
+   appropriately based on the number and diversity of their users, and
+   whether users connect from unique IP addresses or through a shared
+   Network Address Translator [RFC3022].
 
    DNS server software SHOULD provide a configurable timeout for idle
    TCP connections.  For very busy name servers this might be set to a
@@ -664,9 +667,6 @@ Internet-Draft           DNS Transport over TCP            November 2021
    of service.  The edns-tcp-keepalive EDNS(0) option [RFC7828] can be
    used to encourage clients to close connections.
 
-   On systems where large numbers of sockets in TIME_WAIT are observed
-   (either as client or server), and are affecting an application's
-
 
 
 Kristoff & Wessels        Expires June 2, 2022                 [Page 12]
@@ -674,6 +674,8 @@ Kristoff & Wessels        Expires June 2, 2022                 [Page 12]
 Internet-Draft           DNS Transport over TCP            November 2021
 
 
+   On systems where large numbers of sockets in TIME_WAIT are observed
+   (either as client or server), and are affecting an application's
    performance, it may be tempting to tune local TCP parameters.  For
    example, the Linux kernel has a "sysctl" parameter named
    net.ipv4.tcp_tw_reuse which allows connections in the TIME_WAIT state
@@ -720,8 +722,6 @@ Internet-Draft           DNS Transport over TCP            November 2021
    limit on the total number of established connections.  Default values
    range from 20 to 150.  In most cases, where the majority of queries
    take place over UDP, 150 is a reasonable limit.  For services or
-   environments where most queries take place over TCP or TLS, 5000 is a
-   more appropriate limit.
 
 
 
@@ -729,6 +729,9 @@ Kristoff & Wessels        Expires June 2, 2022                 [Page 13]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
+
+   environments where most queries take place over TCP or TLS, 5000 is a
+   more appropriate limit.
 
    Only some open source implementations provide a way to limit the
    number of connections per source IP address or subnet, but the
@@ -774,9 +777,6 @@ Internet-Draft           DNS Transport over TCP            November 2021
    and contrary to the safe and successful operation of the Internet.
    This section enumerates some of the known risks at the time of this
    writing when networks filter DNS over TCP.
-
-
-
 
 
 
