@@ -6,7 +6,7 @@ Domain Name System Operations                                J. Kristoff
 Internet-Draft                                             DataPlane.org
 Updates: 1123,1536 (if approved)                              D. Wessels
 Intended status: Best Current Practice                          Verisign
-Expires: May 12, 2022                                   November 8, 2021
+Expires: June 2, 2022                                  November 29, 2021
 
 
            DNS Transport over TCP - Operational Requirements
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 12, 2022.
+   This Internet-Draft will expire on June 2, 2022.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                  [Page 1]
+Kristoff & Wessels        Expires June 2, 2022                  [Page 1]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -83,7 +83,7 @@ Table of Contents
      4.4.  DNS-over-TLS  . . . . . . . . . . . . . . . . . . . . . .  13
      4.5.  Defaults and Recommended Limits . . . . . . . . . . . . .  13
    5.  DNS over TCP Filtering Risks  . . . . . . . . . . . . . . . .  14
-     5.1.  DNS Wedgie  . . . . . . . . . . . . . . . . . . . . . . .  14
+     5.1.  Truncation, Retries, and Timeouts . . . . . . . . . . . .  14
      5.2.  DNS Root Zone KSK Rollover  . . . . . . . . . . . . . . .  15
    6.  Logging and Monitoring  . . . . . . . . . . . . . . . . . . .  15
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                  [Page 2]
+Kristoff & Wessels        Expires June 2, 2022                  [Page 2]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -165,7 +165,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                  [Page 3]
+Kristoff & Wessels        Expires June 2, 2022                  [Page 3]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -221,7 +221,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                  [Page 4]
+Kristoff & Wessels        Expires June 2, 2022                  [Page 4]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -277,7 +277,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                  [Page 5]
+Kristoff & Wessels        Expires June 2, 2022                  [Page 5]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -333,7 +333,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                  [Page 6]
+Kristoff & Wessels        Expires June 2, 2022                  [Page 6]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -389,7 +389,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                  [Page 7]
+Kristoff & Wessels        Expires June 2, 2022                  [Page 7]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -445,7 +445,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                  [Page 8]
+Kristoff & Wessels        Expires June 2, 2022                  [Page 8]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -501,7 +501,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                  [Page 9]
+Kristoff & Wessels        Expires June 2, 2022                  [Page 9]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -557,7 +557,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 10]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 10]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -613,7 +613,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 11]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 11]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -669,7 +669,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 12]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 12]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -725,7 +725,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 13]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 13]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -773,7 +773,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
    This section enumerates some of the known risks at the time of this
    writing when networks filter DNS over TCP.
 
-5.1.  DNS Wedgie
+5.1.  Truncation, Retries, and Timeouts
 
    Networks that filter DNS over TCP may inadvertently cause problems
    for third-party resolvers as experienced by [TOYAMA].  For example, a
@@ -781,7 +781,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 14]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 14]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -791,8 +791,8 @@ Internet-Draft           DNS Transport over TCP            November 2021
    retries over TCP, but the authoritative server blocks DNS over TCP.
    The pending connections consume resources on the resolver until they
    time out.  If the number and frequency of these truncated-and-then-
-   blocked queries is sufficiently high, the steady state of the
-   resulting lost resources is a "DNS wedgie."  A DNS wedgie is
+   blocked queries is sufficiently high, the resolver wastes valuable
+   resources on queries that can never be answered.  This condition is
    generally not easily or completely mitigated by the affected DNS
    resolver operator.
 
@@ -837,7 +837,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 15]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 15]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -893,7 +893,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 16]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 16]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -949,7 +949,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 17]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 17]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1005,7 +1005,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 18]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 18]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1061,7 +1061,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 19]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 19]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1117,7 +1117,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 20]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 20]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1173,7 +1173,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 21]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 21]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1229,7 +1229,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 22]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 22]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1285,7 +1285,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 23]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 23]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1341,7 +1341,7 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 24]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 24]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1397,7 +1397,7 @@ A.1.  IETF RFC 1035 - DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 25]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 25]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1453,7 +1453,7 @@ A.7.  IETF RFC 3225 - Indicating Resolver Support of DNSSEC
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 26]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 26]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1509,7 +1509,7 @@ A.12.  IETF RFC 5625 - DNS Proxy Implementation Guidelines
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 27]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 27]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1565,7 +1565,7 @@ A.18.  IETF RFC 7477 - Child-to-Parent Synchronization in DNS
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 28]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 28]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1621,7 +1621,7 @@ A.23.  IETF RFC 7873 - Domain Name System (DNS) Cookies
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 29]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 29]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1677,7 +1677,7 @@ A.28.  IETF RFC 8324 - DNS Privacy, Authorization, Special Uses,
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 30]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 30]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1733,7 +1733,7 @@ A.34.  IETF RFC 8501 - Reverse DNS in IPv6 for Internet Service
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 31]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 31]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1789,7 +1789,7 @@ Authors' Addresses
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 32]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 32]
 
 Internet-Draft           DNS Transport over TCP            November 2021
 
@@ -1845,4 +1845,4 @@ Internet-Draft           DNS Transport over TCP            November 2021
 
 
 
-Kristoff & Wessels        Expires May 12, 2022                 [Page 33]
+Kristoff & Wessels        Expires June 2, 2022                 [Page 33]

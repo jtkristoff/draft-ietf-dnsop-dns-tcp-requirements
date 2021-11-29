@@ -881,10 +881,7 @@ given the capabilities of even low-end servers.
      at the time of this writing when networks filter DNS over
      TCP.</t>
 
-<!-- COMMENT from Roman Danyliw
-Do you really want to use the term Wedgie?
--->
-     <section title="DNS Wedgie">
+     <section title="Truncation, Retries, and Timeouts">	<!-- formerly DNS Wedgie -->
        <t>Networks that filter DNS over TCP may inadvertently cause
        problems for third-party resolvers as experienced by <xref
        target="TOYAMA"></xref>.  For example, a resolver receives queries
@@ -895,8 +892,8 @@ Do you really want to use the term Wedgie?
        connections consume resources on the resolver until they time out.
        If the number
        and frequency of these truncated-and-then-blocked queries is sufficiently high,
-       the steady state of the resulting lost resources is a "DNS wedgie."
-       A DNS wedgie is generally not easily or completely mitigated by the
+       the resolver wastes valuable resources on queries that can never be answered.
+       This condition is generally not easily or completely mitigated by the
        affected DNS resolver operator.</t>
      </section>
 
