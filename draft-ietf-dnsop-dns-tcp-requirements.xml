@@ -713,8 +713,11 @@ implementations self-impose other (lower?) limits?
        the number of established connections per source IP address
        or subnet.  This can be used to ensure that a single or small
        set of users cannot consume all TCP resources and deny
-       service to other users.  Operators SHOULD ensure this limit
-       is configured appropriately, based on the number and diversity
+       service to other users.  Note, however, that if this limit
+       is enabled, it possibly limits client performance while leaving
+       some TCP resources unutilized.  Operators SHOULD be aware of
+       these tradeoffs and ensure this limit, if configured, 
+       is set appropriately based on the number and diversity
        of their users, and whether users connect from unique IP addresses or
        through a shared Network Address Translator <xref target="RFC3022"/>.</t>
 
