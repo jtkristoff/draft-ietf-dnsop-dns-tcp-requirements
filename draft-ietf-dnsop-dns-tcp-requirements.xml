@@ -506,12 +506,10 @@
      </section>
    </section>
 
-<!--
-COMMENT from Lars Eggert;
-While the history preceding this section is interesting for context, I think
-moving this section up would increase readability significantly.
--->
    <section title="DNS over TCP Requirements">
+     <t>[NOTE: IESG reviewer Lars Eggert suggests putting this section
+     before this History section.]</t>
+
      <t>An average increase in DNS message size (e.g., due to DNSSEC),
      the continued development of new DNS features (<xref
      target="dnsrfcs"></xref>), and a denial of service mitigation
@@ -672,42 +670,22 @@ moving this section up would increase readability significantly.
        <t>Since host memory for TCP state is a finite resource, DNS
        clients and
        servers SHOULD actively manage their connections.  Applications
-<!-- DISCUSS from Lars Eggert
-For it to contain a MUST-level requirement, this section needs to give a lot
-more concrete guidance on what it means to "actively" manage connections. Most
-operating systems by default impose some application limits that usually
-effectively prevent DOS or other resource exhaustion issues. Is the intent here
-that DNS implementations need to do more? If so, what?
-
-DW: SHOULD seems mor appropriate here.
--->
        that do not actively manage their connections
        can encounter resource exhaustion leading to denial of
        service.  For DNS, as in other protocols, there is a tradeoff
        between keeping connections open for potential future use and
        the need to free up resources for new connections that will arrive.</t>
 
-       <!-- OLD t>DNS server software SHOULD provide a configurable limit
-       on the total number of established TCP connections.  If the
-       limit is reached, the application is expected to either close
-       existing (idle) connections or refuse new connections.
-       Operators SHOULD ensure the limit is configured appropriately
-       for their particular situation, which includes factors such as the
-       number of users or clients, typical traffic levels, and hardware
-       resource constraints.</t -->
-
-<!-- COMMENT from Lars Eggert on above
-Again, the OS generally already imposes limits. Why recommend that DNS
-implementations self-impose other (lower?) limits?
--->
-
-       <!-- NEW -->
        <t>Operators of DNS server software SHOULD be aware that operating
        system and application vendors MAY impose a limit on the total
        number of established connections.  These limits may be designed
        to protect against DDoS attacks or performance degradation.
        Operators SHOULD understand how to increase these limits if
-       necessary, and the consequences of doing so.</t>
+       necessary, and the consequences of doing so.  Limits imposed by
+       the application SHOULD be lower than limits imposed by the
+       operating system, so that the application can apply its own
+       policy to connection management, such as closing the oldest
+       idle connections first.</t>
 
        <t>DNS server software MAY provide a configurable limit on
        the number of established connections per source IP address
@@ -721,23 +699,17 @@ implementations self-impose other (lower?) limits?
        of their users, and whether users connect from unique IP addresses or
        through a shared Network Address Translator <xref target="RFC3022"/>.</t>
 
-<!-- COMMENT from Lars Eggert on above
-This limit only begins to establish fairness once the overall number of
-permitted connections is reached. Until that point, it possibly limits client
-performance without any benefit.
--->
-
        <t>DNS server software SHOULD provide a configurable timeout
-       for idle TCP connections.  For very busy name servers this
+       for idle TCP connections.  This can be used to free up resources
+       for new connections and to ensure that idle
+       connections are eventually closed.  At the same time, it possibly
+       limits client performance while leaving some TCP resources untilizied.
+       For very busy name servers this
        might be set to a low value, such as a few seconds.  For
        less busy servers it might be set to a higher value, such
        as tens of seconds.  DNS clients and servers SHOULD signal
        their timeout values using the edns-tcp-keepalive
        option <xref target="RFC7828"/>.</t>
-
-<!-- COMMENT from Lars Eggert on above
-Ditto
--->
 
        <t>DNS server software MAY provide a configurable limit on
        the number of transactions per TCP connection.
@@ -824,11 +796,6 @@ Ditto
        majority of queries take place over UDP, 150 is a reasonable limit.
        For services or environments where most queries take place over
        TCP or TLS, 5000 is a more appropriate limit.</t>
-
-<!-- COMMENT by Lars Eggert on above
-20-150 is orders of magnitude less than I expected. Even 5000 seems very low,
-given the capabilities of even low-end servers.
--->
 
        <t>Only some open source implementations provide a way to limit
        the number of connections per source IP address or subnet, but
