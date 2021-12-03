@@ -765,7 +765,7 @@
 
        <t>The use of TLS places even stronger operational burdens
        on DNS clients and servers.  Cryptographic functions for
-       authentication and encryption requires additional processing.
+       authentication and encryption require additional processing.
        Unoptimized connection setup with TLS 1.3 <xref target="RFC8446"/>
        takes one additional round-trip compared to TCP.  Connection setup
        times can be reduced with TCP Fast Open, and TLS False Start <xref
