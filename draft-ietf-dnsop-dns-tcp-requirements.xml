@@ -650,8 +650,8 @@
        to the same server.  TFO saves one round-trip time in the
        connection setup.  DNS servers SHOULD enable TFO when possible.
        Furthermore, DNS servers clustered behind a single service
-       address (e.g., anycast or load-balancing), SHOULD [either] use the
-       same TFO server key on all instances[, or disable TFO for all members of the cluster].</t>
+       address (e.g., anycast or load-balancing), SHOULD either use the
+       same TFO server key on all instances, or disable TFO for all members of the cluster.</t>
 
        <t>DNS clients MAY also enable TFO.  At the time of this writing,
        on some operating systems it is not implemented, or is disabled by default.
