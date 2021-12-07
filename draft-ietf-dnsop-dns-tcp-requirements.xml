@@ -507,8 +507,6 @@
    </section>
 
    <section title="DNS over TCP Requirements">
-     <t>[NOTE: IESG reviewer Lars Eggert suggests putting this section
-     before this History section.]</t>
 
      <t>An average increase in DNS message size (e.g., due to DNSSEC),
      the continued development of new DNS features (<xref
