@@ -6,7 +6,7 @@ Domain Name System Operations                                J. Kristoff
 Internet-Draft                                             DataPlane.org
 Updates: 1123,1536 (if approved)                              D. Wessels
 Intended status: Best Current Practice                          Verisign
-Expires: June 6, 2022                                   December 3, 2021
+Expires: June 10, 2022                                  December 7, 2021
 
 
            DNS Transport over TCP - Operational Requirements
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 6, 2022.
+   This Internet-Draft will expire on June 10, 2022.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                  [Page 1]
+Kristoff & Wessels        Expires June 10, 2022                 [Page 1]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                  [Page 2]
+Kristoff & Wessels        Expires June 10, 2022                 [Page 2]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -165,7 +165,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                  [Page 3]
+Kristoff & Wessels        Expires June 10, 2022                 [Page 3]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -221,7 +221,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                  [Page 4]
+Kristoff & Wessels        Expires June 10, 2022                 [Page 4]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -277,7 +277,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                  [Page 5]
+Kristoff & Wessels        Expires June 10, 2022                 [Page 5]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -333,7 +333,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                  [Page 6]
+Kristoff & Wessels        Expires June 10, 2022                 [Page 6]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -364,9 +364,9 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
    Note that a receiver is unable to differentiate between packets lost
    due to congestion and packets (fragments) intentionally dropped by
-   firewalls or middleboxes.  Over network paths with non-trival amounts
-   of packet loss, larger, fragmented DNS responses are more likely to
-   never arrive and time out compared to smaller, unfragmented
+   firewalls or middleboxes.  Over network paths with non-trivial
+   amounts of packet loss, larger, fragmented DNS responses are more
+   likely to never arrive and time out compared to smaller, unfragmented
    responses.  Clients might be misled into retrying queries with
    different EDNS(0) UDP packet size values for the wrong reason.
 
@@ -389,7 +389,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                  [Page 7]
+Kristoff & Wessels        Expires June 10, 2022                 [Page 7]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -438,22 +438,18 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 3.  DNS over TCP Requirements
 
-   [NOTE: IESG reviewer Lars Eggert suggests putting this section before
-   this History section.]
-
-
-
-
-
-Kristoff & Wessels        Expires June 6, 2022                  [Page 8]
-
-Internet-Draft           DNS Transport over TCP            December 2021
-
-
    An average increase in DNS message size (e.g., due to DNSSEC), the
    continued development of new DNS features (Appendix A), and a denial
    of service mitigation technique (Section 8), all show that DNS over
    TCP transactions are as important to the correct and safe operation
+
+
+
+Kristoff & Wessels        Expires June 10, 2022                 [Page 8]
+
+Internet-Draft           DNS Transport over TCP            December 2021
+
+
    of the Internet DNS as ever, if not more so.  Furthermore, there has
    been research that argues connection-oriented DNS transactions may
    provide security and privacy advantages over UDP transport [TDNS].
@@ -499,15 +495,16 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
    NEW:
 
+      DNS implements the classic request-response scheme of client-
+      server interaction.
 
 
-Kristoff & Wessels        Expires June 6, 2022                  [Page 9]
+
+
+Kristoff & Wessels        Expires June 10, 2022                 [Page 9]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
-
-      DNS implements the classic request-response scheme of client-
-      server interaction.
 
    Filtering of DNS over TCP is harmful in the general case.  DNS
    resolver and server operators MUST support and provide DNS service
@@ -554,16 +551,17 @@ Internet-Draft           DNS Transport over TCP            December 2021
    recursive name servers, SHOULD be protected with access controls.
    Ideally these controls are placed in the network, well before any
    unwanted TCP packets can reach the DNS server host or application.
+   If this is not possible, the controls can be placed in the
+   application itself.  In some situations (e.g. attacks) it may be
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 10]
+
+Kristoff & Wessels        Expires June 10, 2022                [Page 10]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
 
-   If this is not possible, the controls can be placed in the
-   application itself.  In some situations (e.g. attacks) it may be
    necessary to deploy access controls for DNS services that should
    otherwise be globally reachable.  See also [RFC5358].
 
@@ -590,8 +588,8 @@ Internet-Draft           DNS Transport over TCP            December 2021
    one round-trip time in the connection setup.  DNS servers SHOULD
    enable TFO when possible.  Furthermore, DNS servers clustered behind
    a single service address (e.g., anycast or load-balancing), SHOULD
-   [either] use the same TFO server key on all instances[, or disable
-   TFO for all members of the cluster].
+   either use the same TFO server key on all instances, or disable TFO
+   for all members of the cluster.
 
    DNS clients MAY also enable TFO.  At the time of this writing, on
    some operating systems it is not implemented, or is disabled by
@@ -610,16 +608,16 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
    Operators of DNS server software SHOULD be aware that operating
    system and application vendors MAY impose a limit on the total number
+   of established connections.  These limits may be designed to protect
+   against DDoS attacks or performance degradation.  Operators SHOULD
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 11]
+Kristoff & Wessels        Expires June 10, 2022                [Page 11]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
 
-   of established connections.  These limits may be designed to protect
-   against DDoS attacks or performance degradation.  Operators SHOULD
    understand how to increase these limits if necessary, and the
    consequences of doing so.  Limits imposed by the application SHOULD
    be lower than limits imposed by the operating system, so that the
@@ -641,7 +639,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
    TCP connections.  This can be used to free up resources for new
    connections and to ensure that idle connections are eventually
    closed.  At the same time, it possibly limits client performance
-   while leaving some TCP resources untilizied.  For very busy name
+   while leaving some TCP resources unutilized.  For very busy name
    servers this might be set to a low value, such as a few seconds.  For
    less busy servers it might be set to a higher value, such as tens of
    seconds.  DNS clients and servers SHOULD signal their timeout values
@@ -666,16 +664,16 @@ Internet-Draft           DNS Transport over TCP            December 2021
    The TCP peer that initiates a connection close retains the socket in
    the TIME_WAIT state for some amount of time, possibly a few minutes.
    It is generally preferable for clients to initiate the close of a TCP
+   connection so that busy servers do not accumulate many sockets in the
+   TIME_WAIT state, which can cause performance problems or even denial
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 12]
+Kristoff & Wessels        Expires June 10, 2022                [Page 12]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
 
-   connection so that busy servers do not accumulate many sockets in the
-   TIME_WAIT state, which can cause performance problems or even denial
    of service.  The edns-tcp-keepalive EDNS(0) option [RFC7828] can be
    used to encourage clients to close connections.
 
@@ -705,7 +703,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
    setup with TLS 1.3 [RFC8446] takes one additional round-trip compared
    to TCP.  Connection setup times can be reduced with TCP Fast Open,
    and TLS False Start [RFC7918].  TLS session resumption does not
-   reduce round-trip latency becase no application profile for use of
+   reduce round-trip latency because no application profile for use of
    TLS 0-RTT data with DNS has been published at the time of this
    writing.  However, TLS session resumption can reduce the number of
    cryptographic operations.
@@ -725,7 +723,9 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 13]
+
+
+Kristoff & Wessels        Expires June 10, 2022                [Page 13]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -781,7 +781,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 14]
+Kristoff & Wessels        Expires June 10, 2022                [Page 14]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -837,7 +837,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 15]
+Kristoff & Wessels        Expires June 10, 2022                [Page 15]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -893,7 +893,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 16]
+Kristoff & Wessels        Expires June 10, 2022                [Page 16]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -949,7 +949,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 17]
+Kristoff & Wessels        Expires June 10, 2022                [Page 17]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1005,7 +1005,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 18]
+Kristoff & Wessels        Expires June 10, 2022                [Page 18]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1061,7 +1061,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 19]
+Kristoff & Wessels        Expires June 10, 2022                [Page 19]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1117,7 +1117,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 20]
+Kristoff & Wessels        Expires June 10, 2022                [Page 20]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1173,7 +1173,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 21]
+Kristoff & Wessels        Expires June 10, 2022                [Page 21]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1229,7 +1229,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 22]
+Kristoff & Wessels        Expires June 10, 2022                [Page 22]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1285,7 +1285,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 23]
+Kristoff & Wessels        Expires June 10, 2022                [Page 23]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1341,7 +1341,7 @@ Internet-Draft           DNS Transport over TCP            December 2021
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 24]
+Kristoff & Wessels        Expires June 10, 2022                [Page 24]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1397,7 +1397,7 @@ Appendix A.  Standards Related to DNS Transport over TCP
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 25]
+Kristoff & Wessels        Expires June 10, 2022                [Page 25]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1453,7 +1453,7 @@ A.6.  IETF RFC 2694 - DNS extensions to Network Address Translators
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 26]
+Kristoff & Wessels        Expires June 10, 2022                [Page 26]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1509,7 +1509,7 @@ A.11.  IETF RFC 5507 - Design Choices When Expanding the DNS
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 27]
+Kristoff & Wessels        Expires June 10, 2022                [Page 27]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1565,7 +1565,7 @@ A.17.  IETF RFC 6950 - Architectural Considerations on Application
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 28]
+Kristoff & Wessels        Expires June 10, 2022                [Page 28]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1621,7 +1621,7 @@ A.22.  IETF RFC 7858 - Specification for DNS over Transport Layer
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 29]
+Kristoff & Wessels        Expires June 10, 2022                [Page 29]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1677,7 +1677,7 @@ A.27.  IETF RFC 8162 - Using Secure DNS to Associate Certificates with
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 30]
+Kristoff & Wessels        Expires June 10, 2022                [Page 30]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1733,7 +1733,7 @@ A.32.  IETF RFC 8484 - DNS Queries over HTTPS (DoH)
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 31]
+Kristoff & Wessels        Expires June 10, 2022                [Page 31]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1789,7 +1789,7 @@ A.38.  IETF RFC 8945 - Secret Key Transaction Authentication for DNS
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 32]
+Kristoff & Wessels        Expires June 10, 2022                [Page 32]
 
 Internet-Draft           DNS Transport over TCP            December 2021
 
@@ -1845,4 +1845,4 @@ Authors' Addresses
 
 
 
-Kristoff & Wessels        Expires June 6, 2022                 [Page 33]
+Kristoff & Wessels        Expires June 10, 2022                [Page 33]
