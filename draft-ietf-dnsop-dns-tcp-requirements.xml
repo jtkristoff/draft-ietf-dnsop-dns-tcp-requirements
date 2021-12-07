@@ -432,7 +432,7 @@
        <t>Note that a receiver is unable to differentiate between packets
        lost due to congestion and packets (fragments) intentionally
        dropped by firewalls or middleboxes.  Over network paths with
-       non-trival amounts of packet loss, larger, fragmented DNS responses
+       non-trivial amounts of packet loss, larger, fragmented DNS responses
        are more likely to never arrive and time out compared to smaller,
        unfragmented responses.  Clients might be misled into retrying
        queries with different EDNS(0) UDP packet size values for the
@@ -700,7 +700,7 @@
        for idle TCP connections.  This can be used to free up resources
        for new connections and to ensure that idle
        connections are eventually closed.  At the same time, it possibly
-       limits client performance while leaving some TCP resources untilizied.
+       limits client performance while leaving some TCP resources unutilized.
        For very busy name servers this
        might be set to a low value, such as a few seconds.  For
        less busy servers it might be set to a higher value, such
@@ -767,7 +767,7 @@
        takes one additional round-trip compared to TCP.  Connection setup
        times can be reduced with TCP Fast Open, and TLS False Start <xref
        target="RFC7918"/>. TLS session resumption does not reduce round-trip
-       latency becase no application profile for use of TLS 0-RTT data
+       latency because no application profile for use of TLS 0-RTT data
        with DNS has been published at the time of this writing.  However,
        TLS session resumption can reduce the number of cryptographic
        operations.</t>
