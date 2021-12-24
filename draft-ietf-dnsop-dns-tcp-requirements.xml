@@ -764,11 +764,12 @@
        Unoptimized connection setup with TLS 1.3 <xref target="RFC8446"/>
        takes one additional round-trip compared to TCP.  Connection setup
        times can be reduced with TCP Fast Open, and TLS False Start <xref
-       target="RFC7918"/>. TLS session resumption does not reduce round-trip
-       latency because no application profile for use of TLS 0-RTT data
-       with DNS has been published at the time of this writing.  However,
-       TLS session resumption can reduce the number of cryptographic
-       operations.</t>
+       target="RFC7918"/> for TLS 1.2.  TLS 1.3 session resumption does not
+       reduce round-trip latency because no application profile for use of
+       TLS 0-RTT data with DNS has been published at the time of this
+       writing.  However, TLS session resumption can reduce the number of
+       cryptographic operations, and in TLS 1.2, session resumption does
+       reduce the number of additional round trips from two to one.</t>
 
      </section>
 
