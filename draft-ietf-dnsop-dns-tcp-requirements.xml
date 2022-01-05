@@ -919,6 +919,12 @@
    </section>
 
    <section anchor="Security" title="Security Considerations">
+
+     <t>This document, providing operational requirements, is the
+     companion to the implementation requirements of DNS over TCP,
+     provided in <xref target="RFC7766"/>.  The security considerations
+     from <xref target="RFC7766"/> still apply.</t>
+
      <t>Ironically, returning truncated DNS over UDP answers in order
      to induce a client query to switch to DNS over TCP has become
      a common response to source address spoofed, DNS denial-of-service
