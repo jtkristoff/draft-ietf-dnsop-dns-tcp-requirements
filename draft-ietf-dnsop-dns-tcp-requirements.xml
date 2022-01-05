@@ -948,6 +948,14 @@
      some stream reassembly to continue and allowing some evasion attacks
      to succeed.</t>
 
+     <t>This document recommends that DNS Servers enable TFO when possible.  <xref target="RFC7413"/>
+     recommends that a pool of servers behind a load balancer with shared
+     server IP address also share the key used to generate Fast Open cookies,
+     to prevent inordinate fallback to the 3WHS.  This guidance remains
+     accurate, but comes with a caveat: compromise of one server would reveal
+     this group-shared key, and allow for attacks involving the other servers
+     in the pool by forging invalid Fast Open cookies.</t>
+
    </section>
 
    <section anchor="Privacy" title="Privacy Considerations">
