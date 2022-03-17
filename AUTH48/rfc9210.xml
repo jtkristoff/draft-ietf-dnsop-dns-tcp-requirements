@@ -251,9 +251,9 @@ code must use TCP.</blockquote>
         <t>The issues around fragmentation, truncation, and TCP are
        driving certain implementation and policy decisions in the DNS.
        Notably, Cloudflare implemented a technique that minimizes the number of DNSSEC denial-of-existence records (for its online signing platform)
-       <xref target="CLOUDFLARE" format="default"/> and uses Elliptic Curve Digital
-       Signature Algorithms (ECDSAs) such that
-       their signed responses fit easily in 512 bytes.  The Key Signing Key (KSK) Rollover
+       <xref target="CLOUDFLARE" format="default"/> and uses an Elliptic Curve Digital
+       Signature Algorithm (ECDSA) such that
+       its signed responses fit easily in 512 bytes.  The Key Signing Key (KSK) Rollover
        Design Team <xref target="DESIGNTEAM" format="default"/> spent a lot of time
        thinking and worrying about response sizes.  There is growing
        sentiment in the DNSSEC community that RSA key sizes beyond
