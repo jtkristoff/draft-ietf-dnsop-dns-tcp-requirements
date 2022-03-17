@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- [CS] updated by Chris 01/19/22 -->
-
 <!DOCTYPE rfc [
   <!ENTITY nbsp    "&#160;">
   <!ENTITY zwsp   "&#8203;">
@@ -151,29 +149,7 @@ A name server <bcp14>MAY</bcp14> limit the resources it devotes to TCP
          TCP.
         </blockquote>
         <t>At least two new, widely anticipated developments were set to
-	elevate the need for DNS-over-TCP transactions.
-
-<!--[rfced] Since RFC 2541 has been obsoleted by RFC 6781, may we
-include the following note (i.e., "note that [RFC2541] has 
-been obsoleted by [RFC6781]")?
-
-Original:
-   The first was dynamic updates defined in [RFC2136] and the 
-   second was the set of extensions collectively known as 
-   DNSSEC, whose operational considerations are originally 
-   given in [RFC2541]. 
-
-Perhaps:
-   The first was dynamic updates defined in [RFC2136], and the 
-   second was the set of extensions collectively known as 
-   "DNSSEC", whose operational considerations were originally 
-   given in [RFC2541] (note that [RFC2541] has been obsoleted
-   by [RFC6781]).
-
-DW: Approved
--->
-
-       The first was
+	elevate the need for DNS-over-TCP transactions. The first was
        dynamic updates defined in <xref target="RFC2136" format="default"/>, and the
        second was the set of extensions collectively known as "DNSSEC",
        whose operational considerations were originally given in <xref target="RFC2541" format="default"/>
@@ -244,7 +220,7 @@ code must use TCP.</blockquote>
        indicates a fragmented datagram with IPv6 extension headers.
        Unfortunately, it is quite common for both ICMPv6 and IPv6 extension
        headers to be blocked by middleboxes.  According to
-       <xref target="HUSTON" format="default"/>, some 35% <!-- 3,592 / 10,115 --> of IPv6-capable
+       <xref target="HUSTON" format="default"/>, some 35% of IPv6-capable
        recursive resolvers were unable to receive a fragmented IPv6 packet.
        When the originating host receives a signal that
        fragmentation is required, it is expected to populate its path
@@ -253,25 +229,7 @@ code must use TCP.</blockquote>
        copies of messages sent over UDP for potential retransmission.</t>
         <t>The practical consequence of all this is that DNS requestors
        must be prepared to retry queries with different EDNS(0) maximum
-       message size values.
-
-<!--[rfced] Would it be correct to say that the administrators see the
-following "message" rather than "messages" in their system logs?
-
-Original:
-   Administrators of [BIND] are likely to be familiar with
-   seeing "success resolving ... after reducing the advertised EDNS(0)
-   UDP packet size to 512 octets" messages in their system logs.
-
-Perhaps:
-   Administrators of [BIND] are likely to be familiar with
-   seeing the following message in their system logs: “success 
-   resolving ... after reducing the advertised EDNS(0) UDP 
-   packet size to 512 octets”.
-
-DW: Agreed
--->
-       Administrators of <xref target="BIND" format="default"/> are likely to be 
+       message size values. Administrators of <xref target="BIND" format="default"/> are likely to be 
        familiar with seeing the following message in their system logs: "success resolving ... after reducing the
        advertised EDNS(0) UDP packet size to 512 octets".</t>
         <t>Often, reducing the EDNS(0) UDP packet size leads to a
@@ -292,7 +250,7 @@ DW: Agreed
        wrong reason.</t>
         <t>The issues around fragmentation, truncation, and TCP are
        driving certain implementation and policy decisions in the DNS.
-       Notably, Cloudflare implemented what it calls "DNSSEC black lies"
+       Notably, Cloudflare implemented a technique that minimizes the number of DNSSEC denial-of-existence records (for its online signing platform)
        <xref target="CLOUDFLARE" format="default"/> and uses Elliptic Curve Digital
        Signature Algorithms (ECDSAs) such that
        their signed responses fit easily in 512 bytes.  The Key Signing Key (KSK) Rollover
@@ -308,21 +266,7 @@ DW: Agreed
        default EDNS(0) UDP payload size values for both queriers and
        responders <xref target="FLAGDAY2020" format="default"/>.</t>
       </section>
-      <section numbered="true" toc="default">
-<!--[rfced] Is it necessary for this section title to have quote marks
-or should the quote marks be removed for consistency with the
-other titles?
-
-Original:
-   2.5.  "Only Zone Transfers Use TCP"
-
-Perhaps:
-   2.5.  Only Zone Transfers Use TCP
-
-DW: it would be preferable to keep the quotes as it indicates 
-the folklore status of this phrase.
--->
-	
+      <section numbered="true" toc="default">	
         <name>"Only Zone Transfers Use TCP"</name>
         <t>Today, the majority of the DNS community expects, or at least
        has a desire, to see DNS-over-TCP transactions occur without
@@ -378,49 +322,7 @@ the folklore status of this phrase.
      In fact, the standard for DNS over TLS <xref target="RFC7858" format="default"/>
      is just this sort of specification.  Therefore, this document makes
      explicit that it is undesirable for network operators to
-      artificially inhibit DNS-over-TCP transport.</t>
-
-<!--[rfced] Should this text be presented in "Old/New" format for consistency with the other updates in this section?
-
-Original:
-   Section 6.1.3.2 in [RFC1123] is updated: All DNS resolvers and
-   servers MUST support and service both UDP and TCP queries.
-
-   *  DNS servers (including forwarders) MUST support and service TCP
-      for receiving queries, so that clients can reliably receive
-      responses that are larger than what either side considers too
-      large for UDP.
-
-   *  DNS clients MUST support TCP for sending queries, so that they can
-      retry truncated UDP responses as necessary.
-
-Perhaps:
-   Section 6.1.3.2 of [RFC1123] is updated as follows: 
-
-Old:
-
-   DNS resolvers and recursive servers MUST support UDP, and
-   SHOULD support TCP, for sending (non-zone-transfer) queries.
-
-New:
-
-   All DNS resolvers and servers MUST support and service 
-   both UDP and TCP queries.
-
-Note that:
-
-   *  DNS servers (including forwarders) MUST support and service TCP
-      for receiving queries so that clients can reliably receive
-      responses that are larger than what either side considers too
-      large for UDP.
-
-   *  DNS clients MUST support TCP for sending queries so that they can
-      retry truncated UDP responses as necessary.
-
-DW: agreed
--->
-
-      
+      artificially inhibit DNS-over-TCP transport.</t>    
       <t><xref target="RFC1123" sectionFormat="of" section="6.1.3.2"/> is updated as follows:</t>
       <t>OLD:
       </t>
@@ -435,7 +337,7 @@ DW: agreed
           All DNS resolvers and servers <bcp14>MUST</bcp14> support and service 
           both UDP and TCP queries.
         </blockquote>
-      </t>
+     
 
       <t>Note that:</t>
       <ul spacing="normal">
@@ -488,7 +390,7 @@ DW: agreed
      operators <bcp14>MUST</bcp14> allow DNS service over both UDP and TCP transports.
      It is acknowledged that DNS-over-TCP service can pose operational
      challenges that are not present when running DNS over UDP alone,
-     and vice versa.  However, <!-- it is the aim of this document to argue that -->
+     and vice versa.  However,
      the potential damage incurred by prohibiting DNS-over-TCP
      service is more detrimental to the continued utility and success of
      the DNS than when its usage is allowed.</t>
@@ -599,25 +501,7 @@ DW: agreed
        For very busy name servers, this
        might be set to a low value, such as a few seconds.  For
        less busy servers, it might be set to a higher value, such
-       as tens of seconds.
-
-<!--[rfced] We updated one instance of "edns-tcp-keepalive option" to
-"edns-tcp-keepalive EDNS(0) option" for consistency and per use
-in RFC 7828. Please let us know of any objections.
-
-Original:
-   DNS clients and servers SHOULD signal their timeout
-   values using the edns-tcp-keepalive option [RFC7828].
-
-Current:
-   DNS clients and servers SHOULD signal their timeout
-   values using the edns-tcp-keepalive EDNS(0) option 
-   [RFC7828].
-
-DW: agreed
--->
-
-       DNS clients and servers <bcp14>SHOULD</bcp14> signal
+       as tens of seconds. DNS clients and servers <bcp14>SHOULD</bcp14> signal
        their timeout values using the edns-tcp-keepalive EDNS(0)
        option <xref target="RFC7828" format="default"/>.</t>
         <t>DNS server software <bcp14>MAY</bcp14> provide a configurable limit on
@@ -632,7 +516,6 @@ DW: agreed
        clients utilizing TCP for DNS need to always be prepared to
        re-establish connections or otherwise retry outstanding
        queries.</t>
-        <!-- language lifted from RFC7766 -->
 
      </section>
       <section numbered="true" toc="default">
@@ -672,20 +555,8 @@ DW: agreed
        authentication and encryption require additional processing.
        Unoptimized connection setup with TLS 1.3 <xref target="RFC8446" format="default"/>
        takes one additional round trip compared to TCP.
-<!-- [rfced] Is TCP Fast Open only for TLS 1.3 and TLS False Start only for TLS 1.2?
-
-Original:
-   Connection setup times can be reduced with TCP Fast Open, and TLS False
-   Start [RFC7918] for TLS 1.2.
-
-Perhaps:
-   Connection setup times can be reduced with TCP Fast Open for TLS 1.3 and
-   TLS False Start [RFC7918] for TLS 1.2.
--->
-
-
        Connection setup
-       times can be reduced with TCP Fast Open, and TLS False Start <xref target="RFC7918" format="default"/> for TLS 1.2.  TLS 1.3 session resumption does not
+       times can be reduced with TCP Fast Open and TLS False Start <xref target="RFC7918" format="default"/> for TLS 1.2.  TLS 1.3 session resumption does not
        reduce round-trip latency because no application profile for use of
        TLS 0-RTT data with DNS has been published at the time of this
        writing.  However, TLS session resumption can reduce the number of
@@ -755,7 +626,6 @@ Perhaps:
      TCP.</t>
       <section numbered="true" toc="default">
         <name>Truncation, Retries, and Timeouts</name>
-        <!-- formerly DNS Wedgie -->
        <t>Networks that filter DNS over TCP may inadvertently cause
        problems for third-party resolvers as experienced by <xref target="TOYAMA" format="default"/>.  For example, a resolver receives queries
        for a moderately popular domain.  The resolver forwards the queries
@@ -771,42 +641,12 @@ Perhaps:
       </section>
       <section numbered="true" toc="default">
         <name>DNS Root Zone KSK Rollover</name>
-<!-- [rfced] Is the new root zone called "DNSSEC KSK"?
 
-Original:
-   The plans for deploying a new root zone DNSSEC KSK highlighted a
-   potential problem in retrieving the root zone key set [LEWIS].
-   
-Perhaps:
-   The plans for deploying a new root zone, DNSSEC KSK, highlighted a
-   potential problem in retrieving the root zone key set [LEWIS].
--->
-
-
-        <t>The plans for deploying a new root zone DNSSEC KSK highlighted
+        <t>The plans for deploying DNSSEC KSK for the root zone highlighted
        a potential problem in retrieving the root zone key set <xref target="LEWIS" format="default"/>.  During some phases of the KSK rollover process,
        root zone DNSKEY responses were
        larger than 1280 bytes, the IPv6 minimum MTU for links
        carrying IPv6 traffic <xref target="RFC8200" format="default"/>.
-
-
-<!--[rfced] We believe this text refers to "[KSK_ROLLOVER_ARCHIVES]",
-so we moved the citation to the end of the sentence for
-clarity. Please let us know of any objections.
-
-Original:
-   There was some concern [KSK_ROLLOVER_ARCHIVES] that any DNS server unable 
-   to receive large DNS messages over UDP, or any DNS message over TCP, 
-   would experience disruption while performing DNSSEC validation.
-
-Current:
-   There was some concern that any DNS server unable to receive large
-   DNS messages over UDP, or any DNS message over TCP, would experience
-   disruption while performing DNSSEC validation [KSK_ROLLOVER_ARCHIVES].
-
-DW: thats fine
--->
-       
        There was some concern
        that any DNS server unable to receive large
        DNS messages over UDP, or any DNS message over TCP, would experience
@@ -935,7 +775,6 @@ DW: thats fine
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.1996.xml"/>
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2136.xml"/>
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2541.xml"/>
-        <!-- &RFC2629; -->
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2671.xml"/>
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2694.xml"/>
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3022.xml"/>
@@ -954,6 +793,7 @@ DW: thats fine
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5966.xml"/>
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6298.xml"/>
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6762.xml"/>
+     <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6781.xml"/>
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6950.xml"/>
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7413.xml"/>
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7477.xml"/>
@@ -978,7 +818,6 @@ DW: thats fine
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8906.xml"/>
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8932.xml"/>
      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8945.xml"/>
-      <!-- A reference written by by an organization not a person. -->
 
      <reference anchor="CHES94">
           <front>
@@ -1129,16 +968,6 @@ DW: thats fine
             <date year="2022" month="February"/>
           </front>
         </reference>
-        <!-- reference anchor="Stevens">
-	<front>
-	  <title>UNIX Network Programming Volume 1, Third Edition: The Sockets Networking API</title>
-	  <author fullname="W. Richard Stevens" initials="W.R." surname="Stevens"/>
-          <author fullname="Bill Fenner" initials="B." surname="Fenner"/>
-          <author fullname="Andrew M. Rudoff" initials="A.M." surname="Rudoff"/>
-	  <date year="2003" month="November" day="21"/>
-	</front>
-     </reference -->
-
      <reference anchor="libpcap" target="https://www.tcpdump.org">
           <front>
             <title>Tcpdump and Libpcap</title>
@@ -1148,25 +977,13 @@ DW: thats fine
           </front>
         </reference>
 
-<!-- [rfced] For "[dnscap]", the date listed at "https://www.dns-oarc.net/tools/dnscap" is "February 2014". May we update the reference information to reflect this?
-
-Original:
-   [dnscap]   DNS-OARC, "DNSCAP", February 2014,
-              <https://www.dns-oarc.net/tools/dnscap>
-Perhaps:
-   [dnscap]   DNS-OARC, "DNSCAP", 7 May 2018,
-              <https://www.dns-oarc.net/tools/dnscap>
-
-DW: I defer to your better judgement on this, but I'm not sure where May 2018 comes from?
--->
-
         <reference anchor="dnscap" target="https://www.dns-oarc.net/tools/dnscap">
           <front>
             <title>DNSCAP</title>
             <author>
               <organization>DNS-OARC</organization>
             </author>
-            <date year="2018" month="May"/>
+            <date year="2014" month="February"/>
           </front>
         </reference>
 
@@ -1178,53 +995,19 @@ DW: I defer to your better judgement on this, but I'm not sure where May 2018 co
           </front>
         </reference>
 
-<!--[rfced] For the reference [accept_filter], we see "June 2000"
-listed as the date; may we use this date instead of "May 2018"?
-Also, should the title perhaps be updated as "BSD Kernel
-Developer's Manual: accept_filter(9)"?
-
-Original:
-   [accept_filter]
-              FreeBSD, "FreeBSD accept_filter(9)", June 2000,
-              <https://www.freebsd.org/cgi/man.cgi?query=accept_filter>.
-
-Perhaps:
-    [accept_filter]
-              FreeBSD, "BSD Kernel Developer's Manual: accept_filter(9)", May 2018,
-              <https://www.freebsd.org/cgi/man.cgi?query=accept_filter>.
-
-DW: I defer to your better judgement on this, but I'm not sure where May 2018 comes from?
--->
         <reference anchor="accept_filter" target="https://www.freebsd.org/cgi/man.cgi?query=accept_filter">
           <front>
             <title>FreeBSD accept_filter(9)</title>
             <author>
               <organization>FreeBSD</organization>
             </author>
-            <date month="May" year="2018"/>
+            <date month="June" year="2000"/>
           </front>
         </reference>
 
 <!-- [AVOID_FRAGS] [I-D.ietf-dnsop-avoid-fragmentation] IESG state I-D Exists -->
 
 <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-dnsop-avoid-fragmentation.xml"/>
-
-<!-- [rfced] The link for [FRAG_POISON] redirects to "https://cs.biu.ac.il/".  Should "https://arxiv.org/pdf/1205.4011.pdf" be used instead? 
-
-Original:
-   [FRAG_POISON]
-        Herzberg, A. and H. Shulman, "Fragmentation Considered
-        Poisonous", May 2012,
-        <https://u.cs.biu.ac.il/~herzbea/security/13-03-frag.pdf>.
-
-Perhaps:
-   [FRAG_POISON]
-        Herzberg, A. and H. Shulman, "Fragmentation Considered
-        Poisonous", May 2012,
-        <https://arxiv.org/pdf/1205.4011.pdf>.
-
-DW: yes
--->
 
         <reference anchor="FRAG_POISON" target="https://arxiv.org/pdf/1205.4011.pdf">
           <front>
@@ -1309,63 +1092,6 @@ DW: yes
     </references>
     <section anchor="dnsrfcs" numbered="true" toc="default">
       <name>RFCs Related to DNS Transport over TCP</name>
-<!-- [rfced] FYI: We have removed "IETF" in the following text because
-not all documents listed in the Appendix are IETF documents. For
-example, RFCs 8324 and 8483 are from the Independent Stream
-rather than the IETF Stream. 
-
-Also, which RFC(s) is a "Draft Standard"? If none 
-are, this term should be removed. Please confirm.
-
-Original:
-   This section enumerates all known IETF RFC documents that are
-   currently of status Internet Standard, Draft Standard, Proposed
-   Standard, Informational, Best Current Practice, or Experimental 
-   and either implicitly or explicitly make assumptions or statements 
-   about the use of TCP as a transport for the DNS germane to this 
-   document.
-   
-Current:
-   This section enumerates all known RFCs with a status of
-   Internet Standard, Draft Standard, Proposed Standard, Informational,
-   Best Current Practice, or Experimental that either implicitly or
-   explicitly make assumptions or statements about the use of TCP as a
-   transport for the DNS germane to this document.
-
-DW: agreed
--->
-
-<!-- [rfced] Unless we hear objection, we will update “Standards” to
-“RFCs” in the title of Appendix A as not all documents listed are
-standards (e.g., some are Experimental or Informational). In
-addition, we will remove “IETF" from the subsection titles as not
-all the RFCs listed are from the IETF Stream.
-
-Original:
-   Appendix A.  Standards Related to DNS Transport over TCP
-     A.1.  IETF RFC 1035 - DOMAIN NAMES - IMPLEMENTATION AND
-            SPECIFICATION
-     A.2.  IETF RFC 1536 - Common DNS Implementation Errors and
-            Suggested Fixes
-     A.3.  IETF RFC 1995 - Incremental Zone Transfer in DNS
-     A.4.  IETF RFC 1996 - A Mechanism for Prompt Notification of Zone
-     Changes (DNS NOTIFY)
-     ....., etc.
-     
-Perhaps:
-   Appendix A.  RFCs Related to DNS Transport over TCP
-     A.1.  RFC 1035 - DOMAIN NAMES - IMPLEMENTATION AND
-            SPECIFICATION
-     A.2.  RFC 1536 - Common DNS Implementation Errors and
-            Suggested Fixes
-     A.3.  RFC 1995 - Incremental Zone Transfer in DNS
-     A.4.  RFC 1996 - A Mechanism for Prompt Notification of Zone
-     Changes (DNS NOTIFY)
-     ....., etc.
-
-DW: agreed
--->
-
      <t>This section enumerates all known RFCs with a status of
      Internet Standard, Proposed Standard,
      Informational, Best Current Practice,
@@ -1423,20 +1149,6 @@ DW: agreed
       </section>
       <section numbered="true" toc="default">
         <name>RFC 3225 - Indicating Resolver Support of DNSSEC</name>
-
-<!-- [rfced] Would "that describes" be clearer than "expressing"?
-
-Original:
-   This document is a companion to the next document in the RFC series
-   expressing the requirement for EDNS(0) support for DNSSEC.
-
-Perhaps:
-   This document is a companion to the next document in the RFC Series
-   that describes the requirement for EDNS(0) support for DNSSEC.
-
-DW: agreed
--->
-	
         <t>The Proposed Standard <xref target="RFC3225" format="default"/>
        makes statements indicating that DNS over TCP is "detrimental" as a
        result of increased traffic, latency, and server load.  This
@@ -1730,17 +1442,4 @@ DW: agreed
      responsibility of the document authors.</t>
     </section>
   </back>
-<!-- [rfced] Some author comments are present in the XML. Please confirm that no updates related to these comments are outstanding. Note that the comments will be deleted prior to publication.
-DW: I confirm there are no outstanding updates related to the remaining comments 
--->
-
-<!-- [rfced] Please review the "Inclusive Language" portion of the online 
-Style Guide <https://www.rfc-editor.org/styleguide/part2/#inclusive_language>
-and let us know if any changes are needed.
-
-Specifically, please review use of the term "black".
--->
-
-
-
 </rfc>
