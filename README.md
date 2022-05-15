@@ -1,4 +1,9 @@
 # draft-ietf-dnsop-dns-tcp-requirements
+
+**NOTE:** [IETF RFC 9210](https://www.rfc-editor.org/info/rfc9210) (aka
+BCP 235) was published in March, 2022. This repo therefore moves to
+archival state for posterity.
+
 Proposal: DNS Transport over TCP - Operational Requirements
 
 This IETF Internet-Draft is a work-in-progress.  From the abstract:
